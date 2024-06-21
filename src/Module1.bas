@@ -25,10 +25,10 @@ Dim Fld_Adrs1   As Variant
 Dim Fld_Area    As Variant
 Dim Fld_Field   As Variant
 '--------------------------------------------------------------------------------
-'   Eiyo01_000 ‰æ–Ê€–Ú’è‹`
+'   Eiyo01_000 ç”»é¢é …ç›®å®šç¾©
 '   0:Field-Name
-'   1:ƒZƒ‹”ÍˆÍ
-'   2:i/o “ü—Í‰Â”Û‚ğ–¾Šm‰»
+'   1:ã‚»ãƒ«ç¯„å›²
+'   2:i/o å…¥åŠ›å¯å¦ã‚’æ˜ç¢ºåŒ–
 '   3:Field (D:DB G:Guid)
 '   4:Type
 '   5:Sample
@@ -38,126 +38,126 @@ Dim Wtext   As String
     Wtext = "Gmesg,a025:a025,o,00,X ,Message"
     Wtext = Wtext & vbLf & "Fcode,g003:k003,i,D,X,1234567890"    'Fcode
     Wtext = Wtext & vbLf & "Fsave,l003:p003,o,G,90,1234567890"   'Fcode save
-    Wtext = Wtext & vbLf & "Date1,g004:k004,i,D,Ds,2008/10/10"   '’²¸ŠúŠÔ©
-    Wtext = Wtext & vbLf & "Nissu,l004:l004,i,D,90,1"            'ŠúŠÔ
-    Wtext = Wtext & vbLf & "Namej,g005:o005,i,D,J ,–¼‚P–¼‚Q–¼‚R"
-    Wtext = Wtext & vbLf & "Sex  ,g006:g006,i,D,X ,1"            '«•Ê"
-    Wtext = Wtext & vbLf & "Birth,g007:k007,i,D,Ds,2001/1/1"     '¶”NŒ“ú"
-    Wtext = Wtext & vbLf & "Gyyyy,l007:m007,o,G,X ,"             '˜a—ï¶”N
-    Wtext = Wtext & vbLf & "Age  ,n007:o007,o,D,90,"             '”N—î"
-    Wtext = Wtext & vbLf & "Hight,g008:i008,i,D,91,123.4"        'g’·
-    Wtext = Wtext & vbLf & "Weght,g009:i009,i,D,91,123.4"        '‘Ìd
-    Wtext = Wtext & vbLf & "Sibou,g010:i010,i,D,91,123.4"        '”ç‰º‰–b
-    Wtext = Wtext & vbLf & "Adrno,g011:j011,i,D,X ,123-4567"     '—X•Ö”Ô†
-    Wtext = Wtext & vbLf & "Adrs1,g012:v012,i,D,J ,ZŠ[‚P”ZŠ[‚P”ZŠ[‚P”ZŠ["
-    Wtext = Wtext & vbLf & "Adrs2,g013:v013,i,D,J ,ZŠ[‚Q”ZŠ[‚Q”ZŠ[‚Q”ZŠ["
-    Wtext = Wtext & vbLf & "Area1,g014:h014,o,D,X ,12"           '’n‹æ
-    Wtext = Wtext & vbLf & "Gare1,i014:i014,o,G,X ,’nˆæ–¼"       '’nˆæ
-    Wtext = Wtext & vbLf & "Area2,g015:h015,o,D,X ,12"           '’n‹æ
-    Wtext = Wtext & vbLf & "Gare2,i015:i015,o,G,X ,“s•{Œ§"       '’nˆæ
-    Wtext = Wtext & vbLf & "Q3rec,g016:k016,i,D,X ,1234567890"   'Q3.HK
-    Wtext = Wtext & vbLf & "Q4rec,g017:i017,i,D,X ,12345"        'Q4.‹x—{
-    Wtext = Wtext & vbLf & "Q5rec,g018:h018,i,D,X ,123"          'Q5.‰^“®
-    Wtext = Wtext & vbLf & "Q6r_a,g019:k019,i,D,X ,1234567890"   'Q6.Œ’N-1
-    Wtext = Wtext & vbLf & "Q6r_b,g020:k020,i,D,X ,1234567890"   'Q6.Œ’N-2
-    Wtext = Wtext & vbLf & "Q6r_c,g021:k021,i,D,X ,1234567890"   'Q6.Œ’N-3
-    Wtext = Wtext & vbLf & "Q6r_d,g022:k022,i,D,X ,1234567890"   'Q6.Œ’N-4
-    Wtext = Wtext & vbLf & "Q6r_e,g023:k023,i,D,X ,1234567890"   'Q6.Œ’N-5
-    Wtext = Wtext & vbLf & "Qjob1,q008:r008,i,D,X ,1234"         'Q7.E‹Æ-1
-    Wtext = Wtext & vbLf & "Qjob5,s008:s008,i,D,X ,1"            'Q7.E‹Æ-2
-    Wtext = Wtext & vbLf & "Qsyuf,q009:q009,i,D,X ,1"            'Qa.å•w
-    Wtext = Wtext & vbLf & "Qcnd1,q010:q010,i,D,X ,1"            'Qb.”DP
-    Wtext = Wtext & vbLf & "Qtony,q011:q011,i,G,X ,1"            'Qc.“œ”A
-    Wtext = Wtext & vbLf & "Qill1,r011:r011,o,D,X ,123456"       'Qc.“œ”A
-    Wtext = Wtext & vbLf & "Qkoke,q014:q014,i,G,X ,1"            'Qd.‚ŒŒˆ³
-    Wtext = Wtext & vbLf & "Qill2,r014:r014,o,D,X ,123456"       'Qd.‚ŒŒˆ³
+    Wtext = Wtext & vbLf & "Date1,g004:k004,i,D,Ds,2008/10/10"   'èª¿æŸ»æœŸé–“è‡ª
+    Wtext = Wtext & vbLf & "Nissu,l004:l004,i,D,90,1"            'æœŸé–“
+    Wtext = Wtext & vbLf & "Namej,g005:o005,i,D,J ,æ°åï¼‘æ°åï¼’æ°åï¼“æ°"
+    Wtext = Wtext & vbLf & "Sex  ,g006:g006,i,D,X ,1"            'æ€§åˆ¥"
+    Wtext = Wtext & vbLf & "Birth,g007:k007,i,D,Ds,2001/1/1"     'ç”Ÿå¹´æœˆæ—¥"
+    Wtext = Wtext & vbLf & "Gyyyy,l007:m007,o,G,X ,"             'å’Œæš¦ç”Ÿå¹´
+    Wtext = Wtext & vbLf & "Age  ,n007:o007,o,D,90,"             'å¹´é½¢"
+    Wtext = Wtext & vbLf & "Hight,g008:i008,i,D,91,123.4"        'èº«é•·
+    Wtext = Wtext & vbLf & "Weght,g009:i009,i,D,91,123.4"        'ä½“é‡
+    Wtext = Wtext & vbLf & "Sibou,g010:i010,i,D,91,123.4"        'çš®ä¸‹è„‚è‚ª
+    Wtext = Wtext & vbLf & "Adrno,g011:j011,i,D,X ,123-4567"     'éƒµä¾¿ç•ªå·
+    Wtext = Wtext & vbLf & "Adrs1,g012:v012,i,D,J ,ä½æ‰€ãƒ¼ï¼‘ï¼ƒä½æ‰€ãƒ¼ï¼‘ï¼ƒä½æ‰€ãƒ¼ï¼‘ï¼ƒä½æ‰€ãƒ¼"
+    Wtext = Wtext & vbLf & "Adrs2,g013:v013,i,D,J ,ä½æ‰€ãƒ¼ï¼’ï¼ƒä½æ‰€ãƒ¼ï¼’ï¼ƒä½æ‰€ãƒ¼ï¼’ï¼ƒä½æ‰€ãƒ¼"
+    Wtext = Wtext & vbLf & "Area1,g014:h014,o,D,X ,12"           'åœ°åŒº
+    Wtext = Wtext & vbLf & "Gare1,i014:i014,o,G,X ,åœ°åŸŸå"       'åœ°åŸŸ
+    Wtext = Wtext & vbLf & "Area2,g015:h015,o,D,X ,12"           'åœ°åŒº
+    Wtext = Wtext & vbLf & "Gare2,i015:i015,o,G,X ,éƒ½åºœçœŒ"       'åœ°åŸŸ
+    Wtext = Wtext & vbLf & "Q3rec,g016:k016,i,D,X ,1234567890"   'Q3.é£Ÿç¿’
+    Wtext = Wtext & vbLf & "Q4rec,g017:i017,i,D,X ,12345"        'Q4.ä¼‘é¤Š
+    Wtext = Wtext & vbLf & "Q5rec,g018:h018,i,D,X ,123"          'Q5.é‹å‹•
+    Wtext = Wtext & vbLf & "Q6r_a,g019:k019,i,D,X ,1234567890"   'Q6.å¥åº·-1
+    Wtext = Wtext & vbLf & "Q6r_b,g020:k020,i,D,X ,1234567890"   'Q6.å¥åº·-2
+    Wtext = Wtext & vbLf & "Q6r_c,g021:k021,i,D,X ,1234567890"   'Q6.å¥åº·-3
+    Wtext = Wtext & vbLf & "Q6r_d,g022:k022,i,D,X ,1234567890"   'Q6.å¥åº·-4
+    Wtext = Wtext & vbLf & "Q6r_e,g023:k023,i,D,X ,1234567890"   'Q6.å¥åº·-5
+    Wtext = Wtext & vbLf & "Qjob1,q008:r008,i,D,X ,1234"         'Q7.è·æ¥­-1
+    Wtext = Wtext & vbLf & "Qjob5,s008:s008,i,D,X ,1"            'Q7.è·æ¥­-2
+    Wtext = Wtext & vbLf & "Qsyuf,q009:q009,i,D,X ,1"            'Qa.ä¸»å©¦
+    Wtext = Wtext & vbLf & "Qcnd1,q010:q010,i,D,X ,1"            'Qb.å¦Šå¨ 
+    Wtext = Wtext & vbLf & "Qtony,q011:q011,i,G,X ,1"            'Qc.é »å°¿
+    Wtext = Wtext & vbLf & "Qill1,r011:r011,o,D,X ,123456"       'Qc.é »å°¿
+    Wtext = Wtext & vbLf & "Qkoke,q014:q014,i,G,X ,1"            'Qd.é«˜è¡€åœ§
+    Wtext = Wtext & vbLf & "Qill2,r014:r014,o,D,X ,123456"       'Qd.é«˜è¡€åœ§
     Wtext = Wtext & vbLf & "Qsrmr,q015:r015,i,D,90,123"          'Qe.Spot-1
     Wtext = Wtext & vbLf & "Qsmin,s015:t015,i,D,90,123"          'Qe.Spot-2
-    Wtext = Wtext & vbLf & "Qclab,q016:q016,i,D,90,1"            'Qf.‰^“®•”
-    Wtext = Wtext & vbLf & "Qtobc,q017:q017,i,D,90,1"            'Qt.‹i‰Œ
-    Wtext = Wtext & vbLf & "Qsyog,q018:r018,i,D,90,12"           'Qg.g‘ÌáŠQ
-    Wtext = Wtext & vbLf & "Qwcnt,q019:q019,i,D,90,1"            'Qh.³´²ÄCT
-    Wtext = Wtext & vbLf & "Tenes,q020:q020,i,D,90,1"            'Qi.´ÈÙ·Ş°w’è-1
-    Wtext = Wtext & vbLf & "Tenee,r020:u020,i,D,92,12345.67"     'Qi.´ÈÙ·Ş°w’è-2
-    Wtext = Wtext & vbLf & "Tanps,q021:q021,i,D,90,1"            'Qj.ÀİÊß¸ w’è-1
-    Wtext = Wtext & vbLf & "Tanpe,r021:u021,i,D,92,12345.67"     'Qj.ÀİÊß¸ w’è-2
-    Wtext = Wtext & vbLf & "¶³İ¾×1,q023:af23,i,D,J ,¶³İ¾×1"      '
-    Wtext = Wtext & vbLf & "¶³İ¾×2,q024:af24,i,D,J ,¶³İ¾×2"      '
-    Wtext = Wtext & vbLf & "¶³İ¾×3,q025:af25,i,D,J ,¶³İ¾×3"      '
-    Wtext = Wtext & vbLf & "Blood,ab03:ac03,i,D,X ,12"           'B1.ŒŒ‰tŒ^
-    Wtext = Wtext & vbLf & "Bscd1,ab04:ac04,i,D,X ,123"          'B2.xĞ•”-1
-    Wtext = Wtext & vbLf & "Bscd2,ad04:ae04,i,D,X ,12"           'B2.xĞ•”-2
-    Wtext = Wtext & vbLf & "Bhok1,ab05:ae05,i,D,X ,12345678"     'B3.•ÛŒ’‹L†
-    Wtext = Wtext & vbLf & "Bhok2,ab06:ae06,i,D,X ,12345678"     'B4.•ÛŒ’”Ô†
-    Wtext = Wtext & vbLf & "Bhant,ab07:ac07,i,D,X ,12"           'B5.’èŠúŒ’f”»’è
-    Wtext = Wtext & vbLf & "Barm ,ab08:ab08,i,D,X ,1"            'B6.ŒŸ¸˜r
-    Wtext = Wtext & vbLf & "Bdate,ab09:af09,i,D,Ds,2008/10/10"   'B7.ŒŸ¸“ú
-    Wtext = Wtext & vbLf & "Bbl01,ab10:ad10,i,D,91,123.41"       'B8.ÔŒŒ‹…”
-    Wtext = Wtext & vbLf & "Bbl02,ab11:ad11,i,D,91,123.41"       'B8.ŒŒF‘f—Ê
-    Wtext = Wtext & vbLf & "Bbl03,ab12:ad12,i,D,91,123.41"       'B8.ÍÏÄ¸Ø¯Ä
-    Wtext = Wtext & vbLf & "Bbl04,ab13:ad13,i,D,91,123.41"       'B8.ºÚ½ÃÛ°Ù
+    Wtext = Wtext & vbLf & "Qclab,q016:q016,i,D,90,1"            'Qf.é‹å‹•éƒ¨
+    Wtext = Wtext & vbLf & "Qtobc,q017:q017,i,D,90,1"            'Qt.å–«ç…™
+    Wtext = Wtext & vbLf & "Qsyog,q018:r018,i,D,90,12"           'Qg.èº«ä½“éšœå®³
+    Wtext = Wtext & vbLf & "Qwcnt,q019:q019,i,D,90,1"            'Qh.ï½³ï½´ï½²ï¾„CT
+    Wtext = Wtext & vbLf & "Tenes,q020:q020,i,D,90,1"            'Qi.ï½´ï¾ˆï¾™ï½·ï¾ï½°æŒ‡å®š-1
+    Wtext = Wtext & vbLf & "Tenee,r020:u020,i,D,92,12345.67"     'Qi.ï½´ï¾ˆï¾™ï½·ï¾ï½°æŒ‡å®š-2
+    Wtext = Wtext & vbLf & "Tanps,q021:q021,i,D,90,1"            'Qj.ï¾€ï¾ï¾Šï¾Ÿï½¸æŒ‡å®š-1
+    Wtext = Wtext & vbLf & "Tanpe,r021:u021,i,D,92,12345.67"     'Qj.ï¾€ï¾ï¾Šï¾Ÿï½¸æŒ‡å®š-2
+    Wtext = Wtext & vbLf & "ï½¶ï½³ï¾ï½¾ï¾—1,q023:af23,i,D,J ,ï½¶ï½³ï¾ï½¾ï¾—1"      '
+    Wtext = Wtext & vbLf & "ï½¶ï½³ï¾ï½¾ï¾—2,q024:af24,i,D,J ,ï½¶ï½³ï¾ï½¾ï¾—2"      '
+    Wtext = Wtext & vbLf & "ï½¶ï½³ï¾ï½¾ï¾—3,q025:af25,i,D,J ,ï½¶ï½³ï¾ï½¾ï¾—3"      '
+    Wtext = Wtext & vbLf & "Blood,ab03:ac03,i,D,X ,12"           'B1.è¡€æ¶²å‹
+    Wtext = Wtext & vbLf & "Bscd1,ab04:ac04,i,D,X ,123"          'B2.æ”¯ç¤¾éƒ¨-1
+    Wtext = Wtext & vbLf & "Bscd2,ad04:ae04,i,D,X ,12"           'B2.æ”¯ç¤¾éƒ¨-2
+    Wtext = Wtext & vbLf & "Bhok1,ab05:ae05,i,D,X ,12345678"     'B3.ä¿å¥è¨˜å·
+    Wtext = Wtext & vbLf & "Bhok2,ab06:ae06,i,D,X ,12345678"     'B4.ä¿å¥è¨˜å·
+    Wtext = Wtext & vbLf & "Bhant,ab07:ac07,i,D,X ,12"           'B5.å®šæœŸæ¤œè¨ºåˆ¤å®š
+    Wtext = Wtext & vbLf & "Barm ,ab08:ab08,i,D,X ,1"            'B6.æ¤œæŸ»è…•
+    Wtext = Wtext & vbLf & "Bdate,ab09:af09,i,D,Ds,2008/10/10"   'B7.æ¤œæŸ»æ—¥
+    Wtext = Wtext & vbLf & "Bbl01,ab10:ad10,i,D,91,123.41"       'B8.èµ¤è¡€çƒæ•°
+    Wtext = Wtext & vbLf & "Bbl02,ab11:ad11,i,D,91,123.41"       'B8.è¡€è‰²ç´ é‡
+    Wtext = Wtext & vbLf & "Bbl03,ab12:ad12,i,D,91,123.41"       'B8.ï¾ï¾ï¾„ï½¸ï¾˜ï½¯ï¾„
+    Wtext = Wtext & vbLf & "Bbl04,ab13:ad13,i,D,91,123.41"       'B8.ï½ºï¾šï½½ï¾ƒï¾›ï½°ï¾™
     Wtext = Wtext & vbLf & "Bbl05,ab14:ad14,i,D,91,123.41"       'B8.HDL
-    Wtext = Wtext & vbLf & "Bbl06,ab15:ad15,i,D,91,123.41"       'B8.’†«‰–b
+    Wtext = Wtext & vbLf & "Bbl06,ab15:ad15,i,D,91,123.41"       'B8.ä¸­æ€§è„‚è‚ª
     Wtext = Wtext & vbLf & "Bbl07,ab16:ad16,i,D,91,123.41"       'B8.G.O.T.
     Wtext = Wtext & vbLf & "Bbl08,ab17:ad17,i,D,91,123.41"       'B8.G.P.T.
-    Wtext = Wtext & vbLf & "Bbl09,ab18:ad18,i,D,91,123.41"       'B8.”A_
-    Wtext = Wtext & vbLf & "Bbl10,ab19:ad19,i,D,91,123.41"       'B8.ŒŒ“œ
-    Wtext = Wtext & vbLf & "Bbl11,ab20:ad20,i,D,91,123.41"       'B8.ŒŒˆ³Å‚
-    Wtext = Wtext & vbLf & "Bbl12,ab21:ad21,i,D,91,123.41"       'B8.ŒŒˆ³Å’á
+    Wtext = Wtext & vbLf & "Bbl09,ab18:ad18,i,D,91,123.41"       'B8.å°¿é…¸
+    Wtext = Wtext & vbLf & "Bbl10,ab19:ad19,i,D,91,123.41"       'B8.è¡€ç³–
+    Wtext = Wtext & vbLf & "Bbl11,ab20:ad20,i,D,91,123.41"       'B8.è¡€åœ§æœ€é«˜
+    Wtext = Wtext & vbLf & "Bbl12,ab21:ad21,i,D,91,123.41"       'B8.è¡€åœ§æœ€ä½
     Fld_Adrs1 = Split(Wtext, vbLf)
 
-    Wtext = "100,ŠÖ“Œ…Ÿ,100" & vbLf & "101,ŠÖ“Œ… ,101" & vbLf & "102,–k@—¤,102"
-    Wtext = Wtext & vbLf & "103,“Œ@ŠC,103" & vbLf & "104,‹ß‹E…Ÿ,104" & vbLf & "105,‹ß‹E… ,105"
-    Wtext = Wtext & vbLf & "106,’†@‘,106" & vbLf & "107,l@‘,107" & vbLf & "108,–k‹ãB,108"
-    Wtext = Wtext & vbLf & "109,“ì‹ãB,109" & vbLf & "110,–kŠC“¹,110" & vbLf & "111,“Œ@–k,111"
-    Wtext = Wtext & vbLf & "201,–kŠC“¹,110" & vbLf & "202,ÂX@,111" & vbLf & "203,Šâè@,111"
-    Wtext = Wtext & vbLf & "204,‹{é@,111" & vbLf & "205,H“c@,111" & vbLf & "206,RŒ`@,111"
-    Wtext = Wtext & vbLf & "207,•Ÿ“‡@,111" & vbLf & "208,ˆïé@,101" & vbLf & "209,“È–Ø@,101"
-    Wtext = Wtext & vbLf & "210,ŒQ”n@,101" & vbLf & "211,é‹Ê@,100" & vbLf & "212,ç—t@,100"
-    Wtext = Wtext & vbLf & "213,“Œ‹@,100" & vbLf & "214,_“Şì,100" & vbLf & "215,VŠƒ@,102"
-    Wtext = Wtext & vbLf & "216,•xR@,102" & vbLf & "217,Îì@,102" & vbLf & "218,•Ÿˆä@,102"
-    Wtext = Wtext & vbLf & "219,R—œ@,101" & vbLf & "220,’·–ì@,101" & vbLf & "221,Šò•Œ@,103"
-    Wtext = Wtext & vbLf & "222,Ã‰ª@,103" & vbLf & "223,ˆ¤’m@,103" & vbLf & "224,Od@,103"
-    Wtext = Wtext & vbLf & "225, ‰ê@,105" & vbLf & "226,‹“s@,104" & vbLf & "227,‘åã@,104"
-    Wtext = Wtext & vbLf & "228,•ºŒÉ@,104" & vbLf & "229,“Ş—Ç@,105" & vbLf & "230,˜a‰ÌR,105"
-    Wtext = Wtext & vbLf & "231,’¹æ@,106" & vbLf & "232,“‡ª@,106" & vbLf & "233,‰ªR@,106"
-    Wtext = Wtext & vbLf & "234,L“‡@,106" & vbLf & "235,RŒû@,106" & vbLf & "236,“¿“‡@,107"
-    Wtext = Wtext & vbLf & "237,ì@,107" & vbLf & "238,ˆ¤•Q@,107" & vbLf & "239,‚’m@,107"
-    Wtext = Wtext & vbLf & "240,•Ÿ‰ª@,108" & vbLf & "241,²‰ê@,108" & vbLf & "242,’·è@,108"
-    Wtext = Wtext & vbLf & "243,ŒF–{@,109" & vbLf & "244,‘å•ª@,108" & vbLf & "245,‹{è@,109"
-    Wtext = Wtext & vbLf & "246,­™“‡,109" & vbLf & "247,‰«“ê@,109"
+    Wtext = "100,é–¢æ±â… ,100" & vbLf & "101,é–¢æ±â…¡,101" & vbLf & "102,åŒ—ã€€é™¸,102"
+    Wtext = Wtext & vbLf & "103,æ±ã€€æµ·,103" & vbLf & "104,è¿‘ç•¿â… ,104" & vbLf & "105,è¿‘ç•¿â…¡,105"
+    Wtext = Wtext & vbLf & "106,ä¸­ã€€å›½,106" & vbLf & "107,å››ã€€å›½,107" & vbLf & "108,åŒ—ä¹å·,108"
+    Wtext = Wtext & vbLf & "109,å—ä¹å·,109" & vbLf & "110,åŒ—æµ·é“,110" & vbLf & "111,æ±ã€€åŒ—,111"
+    Wtext = Wtext & vbLf & "201,åŒ—æµ·é“,110" & vbLf & "202,é’æ£®ã€€,111" & vbLf & "203,å²©æ‰‹ã€€,111"
+    Wtext = Wtext & vbLf & "204,å®®åŸã€€,111" & vbLf & "205,ç§‹ç”°ã€€,111" & vbLf & "206,å±±å½¢ã€€,111"
+    Wtext = Wtext & vbLf & "207,ç¦å³¶ã€€,111" & vbLf & "208,èŒ¨åŸã€€,101" & vbLf & "209,æ ƒæœ¨ã€€,101"
+    Wtext = Wtext & vbLf & "210,ç¾¤é¦¬ã€€,101" & vbLf & "211,åŸ¼ç‰ã€€,100" & vbLf & "212,åƒè‘‰ã€€,100"
+    Wtext = Wtext & vbLf & "213,æ±äº¬ã€€,100" & vbLf & "214,ç¥å¥ˆå·,100" & vbLf & "215,æ–°æ½Ÿã€€,102"
+    Wtext = Wtext & vbLf & "216,å¯Œå±±ã€€,102" & vbLf & "217,çŸ³å·ã€€,102" & vbLf & "218,ç¦äº•ã€€,102"
+    Wtext = Wtext & vbLf & "219,å±±æ¢¨ã€€,101" & vbLf & "220,é•·é‡ã€€,101" & vbLf & "221,å²é˜œã€€,103"
+    Wtext = Wtext & vbLf & "222,é™å²¡ã€€,103" & vbLf & "223,æ„›çŸ¥ã€€,103" & vbLf & "224,ä¸‰é‡ã€€,103"
+    Wtext = Wtext & vbLf & "225,æ»‹è³€ã€€,105" & vbLf & "226,äº¬éƒ½ã€€,104" & vbLf & "227,å¤§é˜ªã€€,104"
+    Wtext = Wtext & vbLf & "228,å…µåº«ã€€,104" & vbLf & "229,å¥ˆè‰¯ã€€,105" & vbLf & "230,å’Œæ­Œå±±,105"
+    Wtext = Wtext & vbLf & "231,é³¥å–ã€€,106" & vbLf & "232,å³¶æ ¹ã€€,106" & vbLf & "233,å²¡å±±ã€€,106"
+    Wtext = Wtext & vbLf & "234,åºƒå³¶ã€€,106" & vbLf & "235,å±±å£ã€€,106" & vbLf & "236,å¾³å³¶ã€€,107"
+    Wtext = Wtext & vbLf & "237,é¦™å·ã€€,107" & vbLf & "238,æ„›åª›ã€€,107" & vbLf & "239,é«˜çŸ¥ã€€,107"
+    Wtext = Wtext & vbLf & "240,ç¦å²¡ã€€,108" & vbLf & "241,ä½è³€ã€€,108" & vbLf & "242,é•·å´ã€€,108"
+    Wtext = Wtext & vbLf & "243,ç†Šæœ¬ã€€,109" & vbLf & "244,å¤§åˆ†ã€€,108" & vbLf & "245,å®®å´ã€€,109"
+    Wtext = Wtext & vbLf & "246,é¹¿å…å³¶,109" & vbLf & "247,æ²–ç¸„ã€€,109"
     Fld_Area = Split(Wtext, vbLf)
 End Function
 '--------------------------------------------------------------------------------
-'   01_010 ÛH‰æ–Ê‚Ìƒ[ƒNƒV[ƒg‚ªƒAƒNƒeƒBƒu‚É‚È‚Á‚½
+'   01_010 æ‘‚é£Ÿç”»é¢ã®ãƒ¯ãƒ¼ã‚¯ã‚·ãƒ¼ãƒˆãŒã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ãªã£ãŸ
 '--------------------------------------------------------------------------------
-Function Eiyo01_010ÛH_Activate()
-    ActiveSheet.Unprotect                           'ƒV[ƒg‚Ì•ÛŒì‚ğ‰ğœ
-'    ActiveSheet.Protect UserInterfaceOnly:=True     '•ÛŒì‚ğ—LŒø‚É‚·‚é
+Function Eiyo01_010ï¿½ÛH_Activate()
+    ActiveSheet.Unprotect                           'ã‚·ãƒ¼ãƒˆã®ä¿è­·ã‚’è§£é™¤
+'    ActiveSheet.Protect UserInterfaceOnly:=True     'ä¿è­·ã‚’æœ‰åŠ¹ã«ã™ã‚‹ï¡¿
 End Function
 '--------------------------------------------------------------------------------
-'   01_020 Šî‘b‰æ–Ê‚Ìƒ_ƒuƒ‹ƒNƒŠƒbƒN
-'   AA—ñiŒŸõŠY“–•¡”j‚Ìƒ_ƒuƒ‹ƒNƒŠƒbƒN‚ÍŠY“–”Ô†‚ğƒZƒ‹[G3]‚Éİ’è
+'   01_020 åŸºç¤ç”»é¢ã®ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯
+'   AAåˆ—ï¼ˆæ¤œç´¢è©²å½“è¤‡æ•°æ™‚ï¼‰ã®ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã¯è©²å½“ç•ªå·ã‚’ã‚»ãƒ«[G3]ã«è¨­å®šï¡¿
 '--------------------------------------------------------------------------------
-Function Eiyo01_020Šî‘b_BeforedoubleClick()
+Function Eiyo01_020ï¿½ï¿½b_BeforedoubleClick()
 Dim Wadrs   As String
 Dim Wcoul   As String
 Dim Wtext   As String
 Dim i1      As Long     'Fld_Adrs Index
-Dim i3      As Long     'ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚Ìs”Ô†
+Dim i3      As Long     'ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã®è¡Œç•ªå·
 
 End Function
 '--------------------------------------------------------------------------------
-'   01_030 ƒNƒŠƒA_Click
-'   “ü—Í€–Ú‚ÌÁ‹A’ •[EŒŸØƒV[ƒg‚Ìíœ
+'   01_030 ã‚¯ãƒªã‚¢_Click
+'   å…¥åŠ›é …ç›®ã®æ¶ˆå»ã€å¸³ç¥¨ãƒ»æ¤œè¨¼ã‚·ãƒ¼ãƒˆã®å‰Šé™¤
 '--------------------------------------------------------------------------------
-Function Eiyo01_030ƒNƒŠƒAClick()
+Function Eiyo01_030ã‚¯ãƒªã‚¢Click()
 Dim i1      As Long
 Dim FldItem As Variant
 Dim Lmax    As Long
 
     Call Eiyo01_000init
-    Call Eiyo930Screen_Hold     '‰æ–Ê—}~‚Ù‚©
+    Call Eiyo930Screen_Hold     'ç”»é¢æŠ‘æ­¢ã»ã‹
     
     For i1 = 0 To UBound(Fld_Adrs1)
         FldItem = Split(Fld_Adrs1(i1), ",")
@@ -168,25 +168,26 @@ Dim Lmax    As Long
            Range(Trim(FldItem(0))) = Empty
         End If
     Next i1
-    Call Eiyo01_820‘€ìƒKƒCƒh
-    Lmax = Sheets("ÛH").UsedRange.Rows.Count
-    If Lmax > 4 Then: Sheets("ÛH").Rows("5:" & Lmax).Delete Shift:=xlUp
-    Call Eiyo99_w’èƒV[ƒgíœ("ŒŸØ")
-    Call Eiyo99_w’èƒV[ƒgíœ("ŒŸØ2")
-    Call Eiyo99_w’èƒV[ƒgíœ("DBmirror")
-    Call Eiyo99_w’èƒV[ƒgíœ("¶³İ¾Øİ¸Ş¼°Ä")
+
+    Call Eiyo01_820æ“ä½œã‚¬ã‚¤ãƒ‰
+    Lmax = Sheets("æ‘‚é£Ÿ").UsedRange.Rows.Count
+    If Lmax > 4 Then: Sheets("æ‘‚é£Ÿ").Rows("5:" & Lmax).Delete Shift:=xlUp
+    Call Eiyo99_æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤("æ¤œè¨¼")
+    Call Eiyo99_æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤("æ¤œè¨¼2")
+    Call Eiyo99_æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤("DBmirror")
+    Call Eiyo99_æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„")
     Range("Fcode").Select
-    Call Eiyo940Screen_Start    '‰æ–Ê•`‰æ‚Ù‚©
+    Call Eiyo940Screen_Start    'ç”»é¢æç”»ã»ã‹
 End Function
 '--------------------------------------------------------------------------------
-'   01_100 ŒŸõ_Click
-'       Šî‘bî•ñ‚ÌŒŸõA“Á’è‚³‚ê‚½ê‡‚ÉÛHî•ñ‚àæ“¾‚·‚é
+'   01_100 æ¤œç´¢_Click
+'       åŸºç¤æƒ…å ±ã®æ¤œç´¢ã€ç‰¹å®šã•ã‚ŒãŸå ´åˆã«æ‘‚é£Ÿæƒ…å ±ã‚‚å–å¾—ã™ã‚‹
 '--------------------------------------------------------------------------------
-Function Eiyo01_100ŒŸõClick()
+Function Eiyo01_100æ¤œç´¢Click()
 Dim FldItem     As Variant
 Dim i1          As Long
 
-    Call Eiyo930Screen_Hold     '‰æ–Ê—}~‚Ù‚©
+    Call Eiyo930Screen_Hold     'ç”»é¢æŠ‘æ­¢ã»ã‹
     Call Eiyo01_000init
     Range("Gmesg") = Empty
     For i1 = 1 To UBound(Fld_Adrs1)
@@ -206,24 +207,24 @@ Dim i1          As Long
     End If
     
     If i1 > UBound(Fld_Adrs1) Then
-        Range("Gmesg") = "ŒŸõƒL[‚ª‚ ‚è‚Ü‚¹‚ñ"
+        Range("Gmesg") = "æ¤œç´¢ã‚­ãƒ¼ãŒã‚ã‚Šã¾ã›ã‚“"
     Else
-        Call Eiyo01_110ŒŸõ(i1)
+        Call Eiyo01_110æ¤œç´¢(i1)
     End If
     
     If IsEmpty(Range("Fcode")) = False And _
-       Range("Fcode") = Range("Fsave") Then         '“Á’è‚³‚ê‚½ê‡‚ÍÛHî•ñ
-        Application.ScreenUpdating = False          '‰æ–Ê•`‰æ—}~
+       Range("Fcode") = Range("Fsave") Then         'ç‰¹å®šã•ã‚ŒãŸå ´åˆã¯æ‘‚é£Ÿæƒ…å ±
+        Application.ScreenUpdating = False          'ç”»é¢æç”»æŠ‘æ­¢
         Call Eiyo01_130MealGet
-        Sheets("Šî‘b").Select
+        Sheets("åŸºç¤").Select
     End If
     Range("Fcode").Select
-    Call Eiyo940Screen_Start                        '‰æ–Ê•`‰æ‚Ù‚©
+    Call Eiyo940Screen_Start                        'ç”»é¢æç”»ã»ã‹
 End Function
 '--------------------------------------------------------------------------------
-'   01_110 ‚c‚aŒŸõˆ—     F-024
+'   01_110 ï¼¤ï¼¢æ¤œç´¢å‡¦ç†     F-024
 '--------------------------------------------------------------------------------
-Function Eiyo01_110ŒŸõ(i1 As Long)
+Function Eiyo01_110æ¤œç´¢(i1 As Long)
 Dim mySqlStr    As String
 Dim i2          As Long
 Dim in_key      As String
@@ -236,9 +237,9 @@ Dim FldName     As String
     FldItem = Split(Fld_Adrs1(i1), ",")
     Range("Fsave") = Empty
         
-    'SQL‚Å“Ç‚İ‚Şƒf[ƒ^‚ğw’è‚·‚é
+    'SQLã§èª­ã¿è¾¼ã‚€ãƒ‡ãƒ¼ã‚¿ã‚’æŒ‡å®šã™ã‚‹
     in_key = Range(Trim(FldItem(0))).Text
-    If Left(in_key, 1) = "“" Then: in_key = "%" & Right(in_key, Len(in_key) - 1)
+    If Left(in_key, 1) = "%" Then: in_key = "%" & Right(in_key, Len(in_key) - 1)
     Call Eiyo91DB_Open      'DB Open
     If FldItem(0) = "Fcode" Then
         mySqlStr = "SELECT * FROM " & Tbl_Kiso & " Where Fcode = """ & in_key & """"
@@ -248,16 +249,16 @@ Dim FldName     As String
     End If
     Set Rst_Kiso = myCon.Execute(mySqlStr)
     If Rst_Kiso.EOF Then
-        Range("Gmesg") = "ŠY“–ƒf[ƒ^‚Í‚ ‚è‚Ü‚¹‚ñ"
+        Range("Gmesg") = "è©²å½“ãƒ‡ãƒ¼ã‚¿ã¯ã‚ã‚Šã¾ã›ã‚“"
         Range("Fcode").Select
     Else
         With Rst_Kiso
-            Range("Ah2").CopyFromRecordset Rst_Kiso           'ƒŒƒR[ƒh
-            If Range("Ah3") = Empty Then                        'ŠY“–‚ª‚PŒ‚Ì‚Æ‚«
-                For i1 = 1 To UBound(Fld_Adrs1)                 '‰æ–Ê€–Ú‚Ì‡Ÿˆ—
+            Range("Ah2").CopyFromRecordset Rst_Kiso           'ãƒ¬ã‚³ãƒ¼ãƒ‰
+            If Range("Ah3") = Empty Then                        'è©²å½“ãŒï¼‘ä»¶ã®ã¨ãï¡¿
+                For i1 = 1 To UBound(Fld_Adrs1)                 'ç”»é¢é …ç›®ã®é †æ¬¡å‡¦ç†
                     FldItem = Split(Fld_Adrs1(i1), ",")
                     If FldItem(3) = "D" Then
-                        For i2 = 0 To .Fields.Count - 1             'ƒtƒB[ƒ‹ƒh–¼
+                        For i2 = 0 To .Fields.Count - 1             'ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å
                             If .Fields(i2).Name = Trim(FldItem(0)) And _
                                .Fields(i2).Name <> "Age" Then
                                 Range(Trim(FldItem(0))) = Range("ah2").Offset(0, i2)
@@ -284,91 +285,91 @@ Dim FldName     As String
                     Range("Q6r_d") = Mid(Wtext, 31, 10)
                     Range("Q6r_e") = Mid(Wtext, 41, 10)
                 End If
-                Range("Gare1") = Eiyo01_120’nˆæ("1" & Range("area1"))
-                Range("Gare2") = Eiyo01_120’nˆæ("2" & Range("area2"))
+                Range("Gare1") = Eiyo01_120ï¿½nï¿½ï¿½("1" & Range("area1"))
+                Range("Gare2") = Eiyo01_120ï¿½nï¿½ï¿½("2" & Range("area2"))
                 Range("Fsave") = Range("Fcode")
-                Call Eiyo01_820‘€ìƒKƒCƒh
+                Call Eiyo01_820æ“ä½œã‚¬ã‚¤ãƒ‰
             Else
-                For i1 = 1 To .Fields.Count                     'ƒtƒB[ƒ‹ƒh–¼
+                For i1 = 1 To .Fields.Count                     'ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å
                     Cells(1, i1 + 33).Value = .Fields(i1 - 1).Name
                 Next
-                Columns("ah:hz").EntireColumn.AutoFit           '•
+                Columns("ah:hz").EntireColumn.AutoFit           'å¹…
                 i1 = Range("ah1").End(xlDown).Row
-                Range("Ah2:ah" & i1).Locked = False             '“ü—Í‰Â
+                Range("Ah2:ah" & i1).Locked = False             'å…¥åŠ›å¯
                 Range("Ah2:ah" & i1).Interior.ColorIndex = 34
             End If
             .Close
         End With
     End If
-    Set Rst_Kiso = Nothing                        'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+    Set Rst_Kiso = Nothing                        'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
     Call Eiyo920DB_Close    'DB Close
 End Function
 '--------------------------------------------------------------------------------
-'   01_120 ’nˆæE“s“¹•{Œ§•\¦
+'   01_120 åœ°åŸŸãƒ»éƒ½é“åºœçœŒè¡¨ç¤º
 '--------------------------------------------------------------------------------
-Function Eiyo01_120’nˆæ(in_code As String) As String
+Function Eiyo01_120åœ°åŸŸ(in_code As String) As String
 Dim i1      As Long
 Dim Witem   As Variant
 
-    Eiyo01_120’nˆæ = Empty
+    Eiyo01_120åœ°åŸŸ = Empty
     For i1 = 0 To UBound(Fld_Area)
         Witem = Split(Fld_Area(i1), ",")
         If Witem(0) = in_code Then
-            Eiyo01_120’nˆæ = Witem(1)
+            Eiyo01_120åœ°åŸŸ = Witem(1)
             Exit For
         End If
     Next i1
 End Function
 '--------------------------------------------------------------------------------
-'   01_130@ÛHæ“¾
+'   01_130ã€€æ‘‚é£Ÿå–å¾—
 '--------------------------------------------------------------------------------
 Function Eiyo01_130MealGet()
 Dim mySqlStr    As String
 Dim Lmax        As Long
 Dim i1          As Long
 
-    Sheets("ÛH").Select
-    Application.EnableEvents = False                'ƒCƒxƒ“ƒg”­¶—}~
-'    ActiveSheet.Unprotect                           'ƒV[ƒg‚Ì•ÛŒì‚ğ‰ğœ
+    Sheets("æ‘‚é£Ÿ").Select
+    Application.EnableEvents = False                'ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”ŸæŠ‘æ­¢ï¡¿
+'    ActiveSheet.Unprotect                           'ã‚·ãƒ¼ãƒˆã®ä¿è­·ã‚’è§£é™¤
     Range("b1") = Empty
     Range("a2") = Range("Fcode") & ":" & Range("Namej")
     Lmax = ActiveSheet.UsedRange.Rows.Count
     If Lmax > 4 Then: Rows("5:" & Lmax).Delete Shift:=xlUp
         
-    'SQL‚Å“Ç‚İ‚Şƒf[ƒ^‚ğw’è‚·‚é
+    'SQLã§èª­ã¿è¾¼ã‚€ãƒ‡ãƒ¼ã‚¿ã‚’æŒ‡å®šã™ã‚‹
     Call Eiyo91DB_Open      'DB Open
     mySqlStr = "SELECT Sdate,Ekubn,Foodc,Suryo FROM " & Tbl_Meal & " Where Fcode = """ & Range("Fcode") & """"
     Set Rst_Meal = myCon.Execute(mySqlStr)
     If Rst_Meal.EOF Then
         Lmax = 0
     Else
-        Range("A5").CopyFromRecordset Rst_Meal           'ƒŒƒR[ƒh
+        Range("A5").CopyFromRecordset Rst_Meal           'ãƒ¬ã‚³ãƒ¼ãƒ‰
     End If
     
     Lmax = ActiveSheet.UsedRange.Rows.Count
     For i1 = 5 To Lmax
         Cells(i1, 6) = Cells(i1, 4)
         Cells(i1, 4) = Cells(i1, 3)
-        Cells(i1, 3) = Eiyo01_401H–‹æ•ª(Cells(i1, 2))
-        Call Eiyo01_402H•iƒ}ƒXƒ^(i1)
+        Cells(i1, 3) = Eiyo01_401é£Ÿäº‹åŒºåˆ†(Cells(i1, 2))
+        Call Eiyo01_402é£Ÿå“ãƒã‚¹ã‚¿(i1)
     Next i1
-    Set Rst_Meal = Nothing                    'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+    Set Rst_Meal = Nothing                    'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
     Call Eiyo920DB_Close    'DB Close
 End Function
 '--------------------------------------------------------------------------------
-'   01_200 XV_Click
+'   01_200 æ›´æ–°_Click
 '--------------------------------------------------------------------------------
-Function Eiyo01_200XVClick()
+Function Eiyo01_200æ›´æ–°Click()
 Dim Rtn As Long
-    Call Eiyo930Screen_Hold                     '‰æ–Ê—}~‚Ù‚©
+    Call Eiyo930Screen_Hold                     'ç”»é¢æŠ‘æ­¢ã»ã‹
     Call Eiyo01_000init
-    Rtn = Eiyo01_210KeyCheck                    'ƒL[ƒ`ƒFƒbƒN
-    If Rtn = 0 Then: Rtn = Eiyo01_220€–ÚCheck  '€–Úƒ`ƒFƒbƒN
-    If Rtn = 0 Then: Rtn = Eiyo01_230DBXV     'DBXV
-    Call Eiyo940Screen_Start                    '‰æ–Ê•`‰æ‚Ù‚©
+    Rtn = Eiyo01_210KeyCheck                    'ã‚­ãƒ¼ãƒã‚§ãƒƒã‚¯
+    If Rtn = 0 Then: Rtn = Eiyo01_220é …ç›®Check  'é …ç›®ãƒã‚§ãƒƒã‚¯
+    If Rtn = 0 Then: Rtn = Eiyo01_230DBæ›´æ–°     'DBæ›´æ–°
+    Call Eiyo940Screen_Start                    'ç”»é¢æç”»ã»ã‹
 End Function
 '--------------------------------------------------------------------------------
-'   01_210 ƒL[ƒ`ƒFƒbƒN
+'   01_210 ã‚­ãƒ¼ãƒã‚§ãƒƒã‚¯
 '--------------------------------------------------------------------------------
 Function Eiyo01_210KeyCheck() As Long
 Dim mySqlStr    As String
@@ -378,195 +379,195 @@ Dim mySqlStr    As String
     Set Rst_Kiso = myCon.Execute(mySqlStr)
     If Rst_Kiso.EOF Then
         If Range("Fcode") = Range("Fsave") Then
-            Range("Gmesg") = "Program Error Non Key & Save Key Same"    '~FƒL[‚È‚µASave“¯‚¶
+            Range("Gmesg") = "Program Error Non Key & Save Key Same"    'Ã—ï¼šã‚­ãƒ¼ãªã—ã€SaveåŒã˜
             Eiyo01_210KeyCheck = 1
         Else
-            Eiyo01_210KeyCheck = 0                                      '›FƒL[‚È‚µASaveˆÙ‚È‚é(V‹K)
+            Eiyo01_210KeyCheck = 0                                      'â—‹ï¼šã‚­ãƒ¼ãªã—ã€Saveç•°ãªã‚‹(æ–°è¦)
         End If
     Else
         If Range("Fcode") = Range("Fsave") Then
-            Eiyo01_210KeyCheck = 0                                      '›FƒL[‚ ‚èASave“¯‚¶(XV)
+            Eiyo01_210KeyCheck = 0                                      'â—‹ï¼šã‚­ãƒ¼ã‚ã‚Šã€SaveåŒã˜(æ›´æ–°)
         Else
-            Range("Gmesg") = "ƒR[ƒh‚ªd•¡‚µ‚Ä‚¢‚Ü‚·"                   '~FƒL[‚ ‚èASaveˆÙ‚È‚é
+            Range("Gmesg") = "ã‚³ãƒ¼ãƒ‰ãŒé‡è¤‡ã—ã¦ã„ã¾ã™"                   'Ã—ï¼šã‚­ãƒ¼ã‚ã‚Šã€Saveç•°ãªã‚‹
             Eiyo01_210KeyCheck = 1
         End If
     End If
-    Set Rst_Kiso = Nothing                        'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+    Set Rst_Kiso = Nothing                        'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
     Call Eiyo920DB_Close    'DB Close
 End Function
 '--------------------------------------------------------------------------------
-'   01_220 €–Úƒ`ƒFƒbƒN
+'   01_220 é …ç›®ãƒã‚§ãƒƒã‚¯
 '--------------------------------------------------------------------------------
-Function Eiyo01_220€–ÚCheck() As Long
+Function Eiyo01_220é …ç›®Check() As Long
 Dim Witem   As Variant
 Dim Wlen    As Long
 Dim i1      As Long
 Dim Wtemp   As String
 
-    Eiyo01_220€–ÚCheck = 1
+    Eiyo01_220é …ç›®Check = 1
     Range("Gmesg") = Empty
-'   ƒR[ƒh
+'   ã‚³ãƒ¼ãƒ‰
 '    Witem = Range("Fcode")
 '    If IsNumeric(Witem) = True And Len(Witem) <= 10 Then
 '    Else
-'        Range("Gmesg") = "ƒR[ƒh‚Í‚P‚OŒ…ˆÈ“à‚Ì”š‚É‚µ‚Ä‚­‚¾‚³‚¢@" & Len(Witem)
+'        Range("Gmesg") = "ã‚³ãƒ¼ãƒ‰ã¯ï¼‘ï¼æ¡ä»¥å†…ã®æ•°å­—ã«ã—ã¦ãã ã•ã„" & Len(Witem)
 '        Range("Fcode").Activate
 '        Exit Function
 '    End If
-'   ’²¸ŠúŠÔŠJn“ú
+'   èª¿æŸ»æœŸé–“é–‹å§‹æ—¥
     If IsDate(Range("Date1")) Then
     Else
-        Range("Gmesg") = "’²¸ŠúŠÔŠJn“ú‚ğÀİ“ú‚É‚µ‚Ä‚­‚¾‚³‚¢"
+        Range("Gmesg") = "èª¿æŸ»æœŸé–“é–‹å§‹æ—¥ã‚’å®Ÿåœ¨æ—¥ã«ã—ã¦ãã ã•ã„"
         Range("Date1").Activate
         Exit Function
     End If
-'   ’²¸ŠúŠÔ“ú”
+'   èª¿æŸ»æœŸé–“æ—¥æ•°
     Witem = Range("Nissu")
     If IsNumeric(Witem) = True And Len(Witem) = 1 Then
     Else
-        Range("Gmesg") = "’²¸ŠúŠÔ“ú”‚Í‚PŒ…‚Ì”š‚É‚µ‚Ä‚­‚¾‚³‚¢"
+        Range("Gmesg") = "èª¿æŸ»æœŸé–“æ—¥æ•°ã¯ï¼‘æ¡ã®æ•°å­—ã«ã—ã¦ãã ã•ã„"
         Range("Nissu").Activate
         Exit Function
     End If
-'   –¼
-    If Eiyo01_221Œ…”check("Namej", "–¼", 10) = 1 Then: Exit Function
-'   «•Ê
+'   æ°å
+    If Eiyo01_221ï¿½ï¿½ï¿½ï¿½check("Namej", "ï¿½ï¿½ï¿½ï¿½", 10) = 1 Then: Exit Function
+'   æ€§åˆ¥
     Witem = Range("sex")
     If Witem = "" Or Witem = "0" Or Witem = "1" Then
     Else
-        Range("Gmesg") = "«•Ê‚Í‚PŒ…‚Ì”š‚É‚µ‚Ä‚­‚¾‚³‚¢"
+        Range("Gmesg") = "æ€§åˆ¥ã¯ï¼‘æ¡ã®æ•°å­—ã«ã—ã¦ãã ã•ã„"
         Range("sex").Activate
         Exit Function
     End If
-'   ¶”NŒ“ú
+'   ç”Ÿå¹´æœˆæ—¥
     If IsDate(Range("Birth")) Then
     Else
-        Range("Gmesg") = "¶”NŒ“ú‚ğÀİ“ú‚É‚µ‚Ä‚­‚¾‚³‚¢"
+        Range("Gmesg") = "ç”Ÿå¹´æœˆæ—¥ã‚’å®Ÿåœ¨æ—¥ã«ã—ã¦ãã ã•ã„"
         Range("Birth").Activate
         Exit Function
     End If
     
-    If Eiyo01_223”’lcheck("Hight", "g’·", 3, 1, 300) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Weght", "‘Ìd", 3, 1, 300) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Sibou", "”ç‰º‰–b", 2, 1, 50) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤lcheck("Hight", "èº«é•·", 3, 1, 300) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤lcheck("Weght", "ä½“é‡", 3, 1, 300) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤lcheck("Sibou", "çš®ä¸‹è„‚è‚ª", 2, 1, 50) = 1 Then: Exit Function
     
-    If Eiyo01_221Œ…”check("Adrno", "—X•Ö”Ô†", 18) = 1 Then: Exit Function
-    If Eiyo01_221Œ…”check("Adrs1", "ZŠ[‚P", 18) = 1 Then: Exit Function
-    If Eiyo01_221Œ…”check("Adrs2", "ZŠ[‚Q", 18) = 1 Then: Exit Function
-'   ’n‹æE’nˆæ
+    If Eiyo01_221æ¡æ•°check("Adrno", "éƒµä¾¿ç•ªå·", 18) = 1 Then: Exit Function
+    If Eiyo01_221æ¡æ•°check("Adrs1", "ä½æ‰€ãƒ¼ï¼‘", 18) = 1 Then: Exit Function
+    If Eiyo01_221æ¡æ•°check("Adrs2", "ä½æ‰€ãƒ¼ï¼’", 18) = 1 Then: Exit Function
+'   åœ°åŒºãƒ»åœ°åŸŸ
     Wtemp = Left(Range("adrs1"), 2)
     For i1 = 0 To UBound(Fld_Area)
         Witem = Split(Fld_Area(i1), ",")
         If Left(Witem(0), 1) = "2" And _
            Left(Witem(1), 2) = Wtemp Then
             Range("Area1") = Right(Witem(2), 2)
-            Range("Gare1") = Eiyo01_120’nˆæ("1" & Range("Area1"))
+            Range("Gare1") = Eiyo01_120åœ°åŸŸ("1" & Range("Area1"))
             Range("Area2") = Right(Witem(0), 2)
             Range("Gare2") = Witem(1)
             Exit For
         End If
     Next i1
-    If Eiyo01_222”šcheck("Q3rec", "Q3.HKŠµ", 10) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Q4rec", "Q4.‹x—{", 5) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Q5rec", "Q5.‰^“®", 3) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Q6r_a", "Q6.Œ’N‚P", 10) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Q6r_b", "Q6.Œ’N‚Q", 10) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Q6r_c", "Q6.Œ’N‚R", 10) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Q6r_d", "Q6.Œ’N‚S", 10) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Q6r_e", "Q6.Œ’N‚T", 10) = 1 Then: Exit Function
-'   E‹Æ
+    If Eiyo01_222æ•°å­—check("Q3rec", "Q3.é£Ÿç¿’æ…£", 10) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Q4rec", "Q4.ä¼‘é¤Š", 5) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Q5rec", "Q5.é‹å‹•", 3) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Q6r_a", "Q6.å¥åº·ï¼‘", 10) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Q6r_b", "Q6.å¥åº·ï¼’", 10) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Q6r_c", "Q6.å¥åº·ï¼“", 10) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Q6r_d", "Q6.å¥åº·ï¼”", 10) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Q6r_e", "Q6.å¥åº·ï¼•", 10) = 1 Then: Exit Function
+'   è·æ¥­
     Range("Qjob1") = UCase(Range("Qjob1"))
     If Len(Range("Qjob1")) = 4 Then
     Else
-        Range("Gmesg") = "E‹Æ‚Í‚SŒ…‚Æ‚µ‚Ä‚­‚¾‚³‚¢@" & Len(Range("Qjob1"))
+        Range("Gmesg") = "è·æ¥­ã¯ï¼”æ¡ã¨ã—ã¦ãã ã•ã„ã€€" & Len(Range("Qjob1"))
         Range("Qjob1").Activate
     End If
 
-    If Eiyo01_222”šcheck("Qsyuf", "QA.å•w", 1) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Qcnd1", "QB.”DP", 1) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Qtony", "QC.“œ”A", 1) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Qsyuf", "QA.ä¸»å©¦", 1) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Qcnd1", "QB.å¦Šå¨ ", 1) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Qtony", "QC.ç³–å°¿", 1) = 1 Then: Exit Function
     If Range("Qtony") = "0" Then
         Range("Qill1") = "000000"
     Else
         Range("Qill1") = "000321"
     End If
-    If Eiyo01_222”šcheck("Qkoke", "QC.“œ”A", 1) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Qkoke", "QC.ç³–å°¿", 1) = 1 Then: Exit Function
     If Range("Qkoke") = "0" Then
         Range("Qill2") = "000000"
     Else
         Range("Qill2") = "000313"
     End If
-    If Eiyo01_223”’lcheck("Qsrmr", "QE.½Îß°Â1", 3, 0, 1000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Qsmin", "QE.½Îß°Â2", 3, 0, 1000) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Qclab", "QF.‰^“®•”", 1) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Qclab", "Q .‹i‰Œ", 1) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Qsyog", "QG.gáŠQ", 2, 0, 100) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Qwcnt", "QG.³´²ÄCT", 1) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Tenes", "´ÈÙ·Şw’è", 1) = 1 Then: Exit Function
-    If Eiyo01_222”šcheck("Tanps", "ÀİÊß¸w’è", 1) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Tenee", "´ÈÙ·Şw’è", 5, 2, 100000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Tanpe", "ÀİÊß¸w’è", 5, 2, 100000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤lcheck("Qsrmr", "QE.ï½½ï¾ï¾Ÿï½°ï¾‚1", 3, 0, 1000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤lcheck("Qsmin", "QE.ï½½ï¾ï¾Ÿï½°ï¾‚2", 3, 0, 1000) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Qclab", "QF.é‹å‹•éƒ¨", 1) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Qclab", "Q .å–«ç…™", 1) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤lcheck("Qsyog", "QG.èº«éšœå®³", 2, 0, 100) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Qwcnt", "QG.ï½³ï½´ï½²ï¾„CT", 1) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Tenes", "ï½´ï¾ˆï¾™ï½·ï¾æŒ‡å®š", 1) = 1 Then: Exit Function
+    If Eiyo01_222æ•°å­—check("Tanps", "ï¾€ï¾ï¾Šï¾Ÿï½¸æŒ‡å®š", 1) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤lcheck("Tenee", "ï½´ï¾ˆï¾™ï½·ï¾æŒ‡å®š", 5, 2, 100000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤lcheck("Tanpe", "ï¾€ï¾ï¾Šï¾Ÿï½¸æŒ‡å®š", 5, 2, 100000) = 1 Then: Exit Function
 '
     Range("Blood") = UCase(Range("Blood"))
     Wtemp = Range("Blood")
     If Wtemp = "" Or Wtemp = "A" Or Wtemp = "B" Or Wtemp = "O" Or Wtemp = "AB" Then
     Else
-        Range("Gmesg") = "ŒŒ‰tŒ^‚ª•s³‚Å‚·"
+        Range("Gmesg") = "è¡€æ¶²å‹ãŒä¸æ­£ã§ã™"
         Range("Blood").Activate
         Exit Function
     End If
 
-    If Eiyo01_221Œ…”check("Bscd1", "x“X", 3) = 1 Then: Exit Function
-    If Eiyo01_221Œ…”check("Bscd2", "x•”", 2) = 1 Then: Exit Function
-    If Eiyo01_221Œ…”check("Bhok1", "•ÛŒ¯Ø‹L†", 8) = 1 Then: Exit Function
-    If Eiyo01_221Œ…”check("Bhok2", "•ÛŒ¯ØNo", 8) = 1 Then: Exit Function
-    If Eiyo01_221Œ…”check("Bhant", "’èŠúŒ’f", 2) = 1 Then: Exit Function
+    If Eiyo01_221æ¡æ•°check("Bscd1", "æ”¯åº—", 3) = 1 Then: Exit Function
+    If Eiyo01_221æ¡æ•°check("Bscd2", "æ”¯éƒ¨", 2) = 1 Then: Exit Function
+    If Eiyo01_221æ¡æ•°check("Bhok1", "ä¿é™ºè¨¼è¨˜å·", 8) = 1 Then: Exit Function
+    If Eiyo01_221æ¡æ•°check("Bhok2", "ä¿é™ºè¨¼No", 8) = 1 Then: Exit Function
+    If Eiyo01_221æ¡æ•°check("Bhant", "å®šæœŸå¥è¨º", 2) = 1 Then: Exit Function
 '
     Range("Barm") = UCase(Range("Barm"))
     Wtemp = Range("Barm")
     If Wtemp = "" Or Wtemp = "L" Or Wtemp = "R" Then
     Else
-        Range("Gmesg") = "ŒŸ¸˜r‚ª•s³‚Å‚·"
+        Range("Gmesg") = "æ¤œæŸ»è…•ãŒä¸æ­£ã§ã™"
         Range("Barm").Activate
         Exit Function
     End If
-'   ŒŒ‰tŒŸ¸“ú
+'   è¡€æ¶²æ¤œæŸ»æ—¥
     If IsEmpty(Range("Bdate")) Or IsDate(Range("Bdate")) Then
     Else
-        Range("Gmesg") = "ŒŒ‰tŒŸ¸“ú‚ğÀİ“ú‚É‚µ‚Ä‚­‚¾‚³‚¢"
+        Range("Gmesg") = "è¡€æ¶²æ¤œæŸ»æ—¥ã‚’å®Ÿåœ¨æ—¥ã«ã—ã¦ãã ã•ã„"
         Range("Bdate").Activate
         Exit Function
     End If
-    If Eiyo01_223”’lcheck("Bbl01", "ÔŒŒ‹…”", 3, 1, 10000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Bbl02", "ŒŒF‘f—Ê", 3, 1, 10000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Bbl03", "ÍÏÄ¸Ø¯Ä", 3, 1, 10000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Bbl04", "ºÚ½ÃÛ°Ù", 3, 1, 10000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Bbl05", "HDL", 3, 1, 10000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Bbl06", "’†«‰–b", 3, 1, 10000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Bbl07", "G.O.T.", 3, 1, 10000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Bbl08", "G.P.T.", 3, 1, 10000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Bbl09", "”A_", 3, 1, 10000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Bbl10", "ŒŒ“œ", 3, 1, 10000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Bbl11", "ŒŒˆ³Å‚", 3, 1, 10000) = 1 Then: Exit Function
-    If Eiyo01_223”’lcheck("Bbl12", "ŒŒˆ³Å’á", 3, 1, 10000) = 1 Then: Exit Function
-    Eiyo01_220€–ÚCheck = 0
+    If Eiyo01_223æ•°å€¤check("Bbl01", "èµ¤è¡€çƒæ•°", 3, 1, 10000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤check("Bbl02", "è¡€è‰²ç´ é‡", 3, 1, 10000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤check("Bbl03", "ï¾ï¾ï¾„ï½¸ï¾˜ï½¯ï¾„", 3, 1, 10000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤check("Bbl04", "ï½ºï¾šï½½ï¾ƒï¾›ï½°ï¾™", 3, 1, 10000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤check("Bbl05", "HDL", 3, 1, 10000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤check("Bbl06", "ä¸­æ€§è„‚è‚ª", 3, 1, 10000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤check("Bbl07", "G.O.T.", 3, 1, 10000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤check("Bbl08", "G.P.T.", 3, 1, 10000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤check("Bbl09", "å°¿é…¸", 3, 1, 10000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤check("Bbl10", "è¡€ç³–", 3, 1, 10000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤check("Bbl11", "è¡€åœ§æœ€é«˜", 3, 1, 10000) = 1 Then: Exit Function
+    If Eiyo01_223æ•°å€¤check("Bbl12", "è¡€åœ§æœ€ä½", 3, 1, 10000) = 1 Then: Exit Function
+    Eiyo01_220é …ç›®Check = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_221 Œ…”ƒ`ƒFƒbƒN
+'   01_221 æ¡æ•°ãƒã‚§ãƒƒã‚¯
 '--------------------------------------------------------------------------------
-Function Eiyo01_221Œ…”check(Ifld As String, Iname As String, Ilen As Long) As Long
+Function Eiyo01_221æ¡æ•°check(Ifld As String, Iname As String, Ilen As Long) As Long
     If Len(Range(Ifld)) > Ilen Then
-        Range("Gmesg") = Iname & "‚Í" & Ilen & "Œ…ˆÈ“à‚É‚µ‚Ä‚­‚¾‚³‚¢@" & Len(Range(Ifld))
+        Range("Gmesg") = Iname & "ã¯" & Ilen & "æ¡ä»¥å†…ã«ã—ã¦ãã ã•ã„" & Len(Range(Ifld))
         Range(Ifld).Activate
-        Eiyo01_221Œ…”check = 1
+        Eiyo01_221æ¡æ•°check = 1
     Else
-        Eiyo01_221Œ…”check = 0
+        Eiyo01_221æ¡æ•°check = 0
     End If
 End Function
 '--------------------------------------------------------------------------------
-'   01_222 ŒÅ’èŒ…”š€–Úƒ`ƒFƒbƒN
+'   01_222 å›ºå®šæ¡æ•°å­—é …ç›®ãƒã‚§ãƒƒã‚¯
 '--------------------------------------------------------------------------------
-Function Eiyo01_222”šcheck(Ifld As String, Iname As String, Ilen As Long) As Long
+Function Eiyo01_222æ•°å­—check(Ifld As String, Iname As String, Ilen As Long) As Long
 Dim Witem   As Variant
 Dim Wlen    As Long
 
@@ -574,57 +575,57 @@ Dim Wlen    As Long
     Witem = Range(Ifld)
     Wlen = Len(Witem)
     If IsNumeric(Witem) And Wlen = Ilen Then
-        Eiyo01_222”šcheck = 0
+        Eiyo01_222æ•°å­—check = 0
     Else
-        Range("Gmesg") = Iname & "‚Í" & Ilen & "Œ…‚Ì”š‚É‚µ‚Ä‚­‚¾‚³‚¢@" & Wlen
+        Range("Gmesg") = Iname & "ã¯" & Ilen & "æ¡ã®æ•°å­—ã«ã—ã¦ãã ã•ã„ã€€" & Wlen
         Range(Ifld).Activate
-        Eiyo01_222”šcheck = 1
+        Eiyo01_222æ•°å­—check = 1
     End If
 End Function
 '--------------------------------------------------------------------------------
-'   01_223 ”’l€–Úƒ`ƒFƒbƒN
+'   01_223 æ•°å€¤é …ç›®ãƒã‚§ãƒƒã‚¯
 '--------------------------------------------------------------------------------
-Function Eiyo01_223”’lcheck(Ifld As String, Iname As String, _
+Function Eiyo01_223æ•°å€¤check(Ifld As String, Iname As String, _
                               Ilen1 As Long, Ilen2 As Long, Imax As Long) As Long
 Dim Witem   As Variant
     
     Witem = Range(Ifld)
     If IsNumeric(Witem) And Witem < Imax Then
-        Eiyo01_223”’lcheck = 0
+        Eiyo01_223æ•°å€¤lcheck = 0
     Else
-        Range("Gmesg") = Iname & "‚Íã" & Ilen1 & "Œ…‰º" & Ilen2 & "Œ…ˆÈ“à‚Ì”’l‚É‚µ‚Ä‚­‚¾‚³‚¢"
+        Range("Gmesg") = Iname & "ã¯ä¸Š" & Ilen1 & "æ¡ä¸‹" & Ilen2 & "æ¡ä»¥å†…ã®æ•°å€¤ã«ã—ã¦ãã ã•ã„"
         Range(Ifld).Activate
-        Eiyo01_223”’lcheck = 1
+        Eiyo01_223æ•°å€¤check = 1
     End If
 End Function
 '--------------------------------------------------------------------------------
-'   01_230 ‚c‚aXV                                     F-026
-'   Microsoft ActiveX Data Objects 2.X Library QÆİ’è
+'   01_230 ï¼¤ï¼¢æ›´æ–°                                     F-026
+'   Microsoft ActiveX Data Objects 2.X Library å‚ç…§è¨­å®š
 '--------------------------------------------------------------------------------
-Function Eiyo01_230DBXV() As Long
+Function Eiyo01_230DBæ›´æ–°() As Long
 Dim FldItem     As Variant
 Dim FldName     As String
 Dim i1          As Long
 
     Call Eiyo91DB_Open      'DB Open
-    '€”õ‚±‚±‚Ü‚Å
+    'æº–å‚™ã“ã“ã¾ã§
     With Rst_Kiso
-        'ƒCƒ“ƒfƒbƒNƒX‚Ìİ’è
+        'ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¨­å®š
         .Index = "PrimaryKey"
-        'ƒŒƒR[ƒhƒZƒbƒg‚ğŠJ‚­
+        'ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã‚’é–‹ã
         Rst_Kiso.Open Source:=Tbl_Kiso, ActiveConnection:=myCon, _
             CursorType:=adOpenKeyset, LockType:=adLockOptimistic, _
             Options:=adCmdTableDirect
-        '”Ô†‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©ŒŸõ‚·‚é
+        'ç•ªå·ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹æ¤œç´¢ã™ã‚‹
         If Not .EOF Then .Seek Range("Fcode")
         If .EOF Then
             .AddNew
-            Range("Gmesg") = "’Ç‰Á“o˜^‚³‚ê‚Ü‚µ‚½B"
+            Range("Gmesg") = "è¿½åŠ ç™»éŒ²ã•ã‚Œã¾ã—ãŸã€‚"
             Range("Fsave") = Range("Fcode")
         Else
-            Range("Gmesg") = "XV‚³‚ê‚Ü‚µ‚½B"
+            Range("Gmesg") = "æ›´æ–°ã•ã‚Œã¾ã—ãŸã€‚"
         End If
-        For i1 = 1 To UBound(Fld_Adrs1)                 '‰æ–Ê€–Ú‚Ì‡Ÿˆ—
+        For i1 = 1 To UBound(Fld_Adrs1)                 'ç”»é¢é …ç›®ã®é †æ¬¡å‡¦ç†
             FldItem = Split(Fld_Adrs1(i1), ",")         '
             If FldItem(3) = "D" Then
                 FldName = Trim(FldItem(0))
@@ -634,57 +635,57 @@ Dim i1          As Long
         .Update
         .Close
     End With
-    Set Rst_Kiso = Nothing      'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+    Set Rst_Kiso = Nothing      'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
     Call Eiyo920DB_Close        'DB Close
-    Eiyo01_230DBXV = 0
+    Eiyo01_230DBæ›´æ–° = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_300@æÁ_Click
+'   01_300ã€€å–æ¶ˆ_Click
 '--------------------------------------------------------------------------------
-Function Eiyo01_300æÁClick()
+Function Eiyo01_300å–æ¶ˆClick()
     If Range("Fcode") = Range("Fsave") And _
         IsEmpty(Range("Fcode")) = False Then
         Call Eiyo91DB_Open      'DB Open
         myCon.Execute "DELETE FROM " & Tbl_Kiso & " Where Fcode = """ & Range("Fcode") & """"
         myCon.Execute "DELETE FROM " & Tbl_Meal & " Where Fcode = """ & Range("Fcode") & """"
-        Range("Gmesg") = "æÁíœ‚³‚ê‚Ü‚µ‚½B"
+        Range("Gmesg") = "å–æ¶ˆå‰Šé™¤ã•ã‚Œã¾ã—ãŸã€‚"
         Range("Fsave") = Empty
         Call Eiyo920DB_Close    'DB Close
     Else
-        Range("Gmesg") = "ŒŸõ‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB"
+        Range("Gmesg") = "æ¤œç´¢ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"
     End If
 End Function
 '--------------------------------------------------------------------------------
-'   01_400@ÛH•\¦
+'   01_400ã€€æ‘‚é£Ÿè¡¨ç¤º
 '--------------------------------------------------------------------------------
 Function Eiyo01_400MealDisp()
 Dim Rtn     As Long
 Dim Wmsg    As String
     
     Range("a2") = Range("Fcode") & ":" & Range("Namej")
-    Wmsg = "Šî‘bî•ñ‚ÌŒŸõ‚ªs‚í‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+    Wmsg = "åŸºç¤æƒ…å ±ã®æ¤œç´¢ãŒè¡Œã‚ã‚Œã¦ã„ã¾ã›ã‚“"
     If IsEmpty(Range("Fcode")) Or Range("Fcode") <> Range("Fsave") Then
         Rtn = CreateObject("WScript.Shell").Popup(Wmsg, 3, "Microsoft Excel", 0)
-        Sheets("Šî‘b").Select
+        Sheets("åŸºç¤").Select
     End If
 End Function
 '--------------------------------------------------------------------------------
-'   01_401@H–‹æ•ª
+'   01_401ã€€é£Ÿäº‹åŒºåˆ†
 '--------------------------------------------------------------------------------
-Function Eiyo01_401H–‹æ•ª(kbn As Long) As String
+Function Eiyo01_401é£Ÿäº‹åŒºåˆ†(kbn As Long) As String
     Select Case kbn
-        Case 1: Eiyo01_401H–‹æ•ª = "’©"
-        Case 2: Eiyo01_401H–‹æ•ª = "’‹"
-        Case 3: Eiyo01_401H–‹æ•ª = "—["
-        Case 4: Eiyo01_401H–‹æ•ª = "–é"
-        Case 5: Eiyo01_401H–‹æ•ª = "ŠÔ"
-        Case Else: Eiyo01_401H–‹æ•ª = Empty
+        Case 1: Eiyo01_401é£Ÿäº‹åŒºåˆ† = "æœ"
+        Case 2: Eiyo01_401é£Ÿäº‹åŒºåˆ† = "æ˜¼"
+        Case 3: Eiyo01_401é£Ÿäº‹åŒºåˆ† = "å¤•"
+        Case 4: Eiyo01_401é£Ÿäº‹åŒºåˆ† = "å¤œ"
+        Case 5: Eiyo01_401é£Ÿäº‹åŒºåˆ† = "é–“"
+        Case Else: Eiyo01_401é£Ÿäº‹åŒºåˆ† = Empty
     End Select
 End Function
 '--------------------------------------------------------------------------------
-'   01_402@H•iƒ}ƒXƒ^æ“¾
+'   01_402ã€€é£Ÿå“ãƒã‚¹ã‚¿å–å¾—
 '--------------------------------------------------------------------------------
-Function Eiyo01_402H•iƒ}ƒXƒ^(in_line As Long)
+Function Eiyo01_402é£Ÿå“ãƒã‚¹ã‚¿(in_line As Long)
 Dim mySqlStr    As String
     If IsEmpty(Cells(in_line, 4)) Then
         Cells(in_line, 5) = Empty
@@ -695,7 +696,7 @@ Dim mySqlStr    As String
     mySqlStr = "SELECT * FROM " & Tbl_Food & " Where Foodc = " & Cells(in_line, 4)
     Set Rst_Food = myCon.Execute(mySqlStr)
     If Rst_Food.EOF Then
-        Cells(in_line, 5) = "ƒL[‚È‚µ"
+        Cells(in_line, 5) = "ã‚­ãƒ¼ãªã—"
         Range("g" & in_line & ":z" & in_line) = Empty
     Else
         Cells(in_line, 7).CopyFromRecordset Rst_Food
@@ -705,7 +706,7 @@ Dim mySqlStr    As String
     Set Rst_Food = Nothing
 End Function
 '--------------------------------------------------------------------------------
-'   01_410@ÛH‰æ–Ê‚ª•ÏX‚³‚ê‚½
+'   01_410ã€€æ‘‚é£Ÿç”»é¢ãŒå¤‰æ›´ã•ã‚ŒãŸ
 '--------------------------------------------------------------------------------
 Function Eiyo01_410MealChange(ChangeCell As String)
 Dim Wl      As Long
@@ -713,16 +714,16 @@ Dim Wc      As Long
 
     Wl = Range(ChangeCell).Row
     Wc = Range(ChangeCell).Column
-'    ActiveSheet.Unprotect                           'ƒV[ƒg‚Ì•ÛŒì‚ğ‰ğœ
+'    ActiveSheet.Unprotect                           'ã‚·ãƒ¼ãƒˆã®ä¿è­·ã‚’è§£é™¤
     Select Case Wc
         Case 1: Cells(Wl, 2).Select
         Case 2
-            Cells(Wl, 3) = Eiyo01_401H–‹æ•ª(Cells(Wl, 2))
+            Cells(Wl, 3) = Eiyo01_401é£Ÿäº‹åŒºåˆ†(Cells(Wl, 2))
             Cells(Wl, 4).Select
         Case 4
-            'SQL‚Å“Ç‚İ‚Şƒf[ƒ^‚ğw’è‚·‚é
+            'SQLã§èª­ã¿è¾¼ã‚€ãƒ‡ãƒ¼ã‚¿ã‚’æŒ‡å®šã™ã‚‹
             Call Eiyo91DB_Open      'DB Open
-            Call Eiyo01_402H•iƒ}ƒXƒ^(Wl)
+            Call Eiyo01_402é£Ÿå“ãƒã‚¹ã‚¿(Wl)
             Call Eiyo920DB_Close    'DB Close
             If Wl > 5 Then
                 If IsEmpty(Cells(Wl, 1)) Then: Cells(Wl, 1) = Cells(Wl - 1, 1)
@@ -734,10 +735,10 @@ Dim Wc      As Long
             Cells(Wl, 6).Select
         Case 6: Cells(Wl + 1, 4).Select
     End Select
-'    ActiveSheet.Protect UserInterfaceOnly:=True     '•ÛŒì‚ğ—LŒø‚É‚·‚é
+'    ActiveSheet.Protect UserInterfaceOnly:=True     'ä¿è­·ã‚’æœ‰åŠ¹ã«ã™ã‚‹
 End Function
 '--------------------------------------------------------------------------------
-'   01_420@ƒƒjƒ…[‚ª‘I‘ğ‚³‚ê‚½
+'   01_420ã€€ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãŒé¸æŠã•ã‚ŒãŸ
 '--------------------------------------------------------------------------------
 Function Eiyo01_420Menu(in_cell As String)
 Dim Wcode   As String
@@ -749,52 +750,52 @@ Dim Wcell   As String
     Wcode = Range(in_cell).Offset(0, 10)
     If Wcode = "" Then: Exit Function
     Wname = Range(in_cell)
-    If IsEmpty(Sheets("ÛH").Range("b1")) Then
-        Wmsg = Wcode & ":" & Wname & "‚ª‘I‘ğ‚³‚ê‚Ü‚µ‚½B"
+    If IsEmpty(Sheets("æ‘‚é£Ÿ").Range("b1")) Then
+        Wmsg = Wcode & ":" & Wname & "ãŒé¸æŠã•ã‚Œã¾ã—ãŸã€‚"
         Rtn = CreateObject("WScript.Shell").Popup(Wmsg, 3, "Microsoft Excel", 0)
     Else
-        Application.EnableEvents = False            'ƒCƒxƒ“ƒg”­¶—}~
-        Sheets("ÛH").Select
+        Application.EnableEvents = False            'ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”ŸæŠ‘æ­¢
+        Sheets("æ‘‚é£Ÿ").Select
         Wcell = Range("b1")
         Range("b1") = Empty
-        Application.EnableEvents = True             'ƒCƒxƒ“ƒg”­¶ÄŠJ
+        Application.EnableEvents = True             'ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿå†é–‹
         Range(Wcell) = Wcode
     End If
 End Function
 '--------------------------------------------------------------------------------
-'   01_500@“o˜^ Click
+'   01_500ã€€ç™»éŒ² Click
 '--------------------------------------------------------------------------------
 Function Eiyo01_500MealCalc(in_Func As Long)
-    Call Eiyo930Screen_Hold                                 '‰æ–Ê—}~‚Ù‚©
+    Call Eiyo930Screen_Hold                                 'ç”»é¢æŠ‘æ­¢ã»ã‹
     Call Eiyo91DB_Open                                      'DB Open
-    If Eiyo01_501MealEntry = 1 Then: GoTo Eiyo01_503Exit    '–¢“ü—Íƒ`ƒFƒbƒN
-    If Eiyo01_502Mealscope = 1 Then: GoTo Eiyo01_503Exit    'ÛH—Ê‚Ì”ÍˆÍƒ`ƒFƒbƒN
-    If Eiyo01_503Mealzerod = 1 Then: GoTo Eiyo01_503Exit    'ÛH—Êƒ[ƒ‚Ìíœ
-    If Eiyo01_504MealDoubl = 1 Then: GoTo Eiyo01_503Exit    'ÛH‚Ìd•¡“ü—Í
-    If Eiyo01_510MealUdate = 1 Then: GoTo Eiyo01_503Exit    '‚c‚aXV
-    If Eiyo01_511MealFldgt = 1 Then: GoTo Eiyo01_501Exit    '€–Ú—v‘fæ“¾
-    If Eiyo01_512MealSheet = 1 Then: GoTo Eiyo01_501Exit    'ÛHŒvZƒV[ƒg
-    If Eiyo01_513kenso2sht = 1 Then: GoTo Eiyo01_501Exit    'ŒŸØ‚QƒV[ƒgì¬
-    If Eiyo01_514MealCalc1 = 1 Then: GoTo Eiyo01_501Exit    'ÛHŒvZ
-    If Eiyo01_515MealTotal = 1 Then: GoTo Eiyo01_501Exit    'ÛH—Ê‡Œv
-    If Eiyo01_521CalcDbGet(1) = 1 Then: GoTo Eiyo01_501Exit 'ÛH—Ê‡Œv
-    If Eiyo01_522Mealcalc2 = 1 Then: GoTo Eiyo01_501Exit    '•W€‘Ìd‚Ù‚©
-    If Eiyo01_525MealDiffe = 1 Then: GoTo Eiyo01_501Exit    '‰ß•s‘«ƒAƒhƒoƒCƒX
-    If Eiyo01_528Eiyohirit = 1 Then: GoTo Eiyo01_501Exit    '‰h—{”ä—¦
+    If Eiyo01_501MealEntry = 1 Then: GoTo Eiyo01_503Exit    'æœªå…¥åŠ›ãƒã‚§ãƒƒã‚¯
+    If Eiyo01_502Mealscope = 1 Then: GoTo Eiyo01_503Exit    'æ‘‚é£Ÿé‡ã®ç¯„å›²ãƒã‚§ãƒƒã‚¯
+    If Eiyo01_503Mealzerod = 1 Then: GoTo Eiyo01_503Exit    'æ‘‚é£Ÿé‡ã‚¼ãƒ­ã®å‰Šé™¤
+    If Eiyo01_504MealDoubl = 1 Then: GoTo Eiyo01_503Exit    'æ‘‚é£Ÿã®é‡è¤‡å…¥åŠ›
+    If Eiyo01_510MealUdate = 1 Then: GoTo Eiyo01_503Exit    'ï¼¤ï¼¢æ›´æ–°
+    If Eiyo01_511MealFldgt = 1 Then: GoTo Eiyo01_501Exit    'é …ç›®è¦ç´ å–å¾—
+    If Eiyo01_512MealSheet = 1 Then: GoTo Eiyo01_501Exit    'æ‘‚é£Ÿè¨ˆç®—ã‚·ãƒ¼ãƒˆ
+    If Eiyo01_513kenso2sht = 1 Then: GoTo Eiyo01_501Exit    'æ¤œè¨¼ï¼’ã‚·ãƒ¼ãƒˆä½œæˆ
+    If Eiyo01_514MealCalc1 = 1 Then: GoTo Eiyo01_501Exit    'æ‘‚é£Ÿè¨ˆç®—
+    If Eiyo01_515MealTotal = 1 Then: GoTo Eiyo01_501Exit    'æ‘‚é£Ÿé‡åˆè¨ˆ
+    If Eiyo01_521CalcDbGet(1) = 1 Then: GoTo Eiyo01_501Exit 'æ‘‚é£Ÿé‡åˆè¨ˆ
+    If Eiyo01_522Mealcalc2 = 1 Then: GoTo Eiyo01_501Exit    'æ¨™æº–ä½“é‡ã»ã‹
+    If Eiyo01_525MealDiffe = 1 Then: GoTo Eiyo01_501Exit    'éä¸è¶³ã‚¢ãƒ‰ãƒã‚¤ã‚¹
+    If Eiyo01_528Eiyohirit = 1 Then: GoTo Eiyo01_501Exit    'æ „é¤Šæ¯”ç‡
     If in_Func = 2 Then
-        If Eiyo01_540Old_Check = 1 Then: GoTo Eiyo01_501Exit    '‹ŒŒvZ’l
+        If Eiyo01_540Old_Check = 1 Then: GoTo Eiyo01_501Exit    'æ—§è¨ˆç®—å€¤
 '    Else
-'        Call Eiyo99_w’èƒV[ƒgíœ("DBmirror")
+'        Call Eiyo99_æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤("DBmirror")
     End If
 Eiyo01_501Exit:
     Call Eiyo01_550RstClose
 Eiyo01_503Exit:
     Call Eiyo920DB_Close                'DB Close
-    Sheets("Šî‘b").Select
-    Call Eiyo940Screen_Start            '‰æ–Ê•`‰æ‚Ù‚©
+    Sheets("åŸºç¤").Select
+    Call Eiyo940Screen_Start            'ç”»é¢æç”»ã»ã‹
 End Function
 '--------------------------------------------------------------------------------
-'   01_501@ÛHî•ñ–¢“ü—Íƒ`ƒFƒbƒN
+'   01_501ã€€æ‘‚é£Ÿæƒ…å ±æœªå…¥åŠ›ãƒã‚§ãƒƒã‚¯
 '--------------------------------------------------------------------------------
 Function Eiyo01_501MealEntry() As Long
 Dim Lmax    As Long
@@ -804,7 +805,7 @@ Dim Wnon    As Long
     Eiyo01_501MealEntry = 1
     Lmax = ActiveSheet.UsedRange.Rows.Count
     If Lmax < 5 Then
-        MsgBox "ƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ"
+        MsgBox "ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“"
         Exit Function
     End If
         
@@ -829,13 +830,13 @@ Dim Wnon    As Long
         End If
     Next i1
     If i1 <= Lmax Then
-        MsgBox ("Œë‚è‚Ì€–Ú‚ğC³‚µ‚Ä‚­‚¾‚³‚¢B")
+        MsgBox ("èª¤ã‚Šã®é …ç›®ã‚’ä¿®æ­£ã—ã¦ãã ã•ã„ã€‚")
     Else
         Eiyo01_501MealEntry = 0
     End If
 End Function
 '--------------------------------------------------------------------------------
-'   01_502@ÛH—Ê‚Ì”ÍˆÍƒ`ƒFƒbƒN
+'   01_502ã€€æ‘‚é£Ÿé‡ã®ç¯„å›²ãƒã‚§ãƒƒã‚¯
 '--------------------------------------------------------------------------------
 Function Eiyo01_502Mealscope() As Long
 Dim Lmax    As Long
@@ -858,14 +859,14 @@ Dim Wmsg    As String
         End If
     Next i1
     If Wover > 0 Then
-        Wmsg = "ÛH—Ê‚ÌˆÙí’l‚ª" & Wover & "ƒ•Š‚ ‚è‚Ü‚·"
+        Wmsg = "æ‘‚é£Ÿé‡ã®ç•°å¸¸å€¤ãŒ" & Wover & "ãƒµæ‰€ã‚ã‚Šã¾ã™"
         i1 = CreateObject("WScript.Shell").Popup(Wmsg, 1, "Microsoft Excel", 0)
         Eiyo01_502Mealscope = 0
     End If
     Eiyo01_502Mealscope = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_503@ÛH—Êƒ[ƒ‚Ìíœ
+'   01_503ã€€æ‘‚é£Ÿé‡ã‚¼ãƒ­ã®å‰Šé™¤
 '--------------------------------------------------------------------------------
 Function Eiyo01_503Mealzerod() As Long
 Dim Lmax    As Long
@@ -883,13 +884,13 @@ Dim Wmsg    As String
         End If
     Next i1
     If Wzero > 0 Then
-        Wmsg = "ÛH—Êƒ[ƒ‚Ì" & Wzero / 2 & "s‚ğíœ‚µ‚Ü‚µ‚½B"
+        Wmsg = "æ‘‚é£Ÿé‡ã‚¼ãƒ­ã®" & Wzero / 2 & "è¡Œã‚’å‰Šé™¤ã—ã¾ã—ãŸã€‚"
         i1 = CreateObject("WScript.Shell").Popup(Wmsg, 1, "Microsoft Excel", 0)
     End If
     Eiyo01_503Mealzerod = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_504@ÛH‚Ìd•¡ƒ`ƒFƒbƒN
+'   01_504ã€€æ‘‚é£Ÿã®é‡è¤‡ãƒã‚§ãƒƒã‚¯
 '--------------------------------------------------------------------------------
 Function Eiyo01_504MealDoubl() As Long
 Dim Lmax    As Long
@@ -916,7 +917,7 @@ Dim i1      As Long
     Eiyo01_504MealDoubl = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_510@ÛHDB“o˜^
+'   01_510ã€€æ‘‚é£ŸDBç™»éŒ²
 '--------------------------------------------------------------------------------
 Function Eiyo01_510MealUdate() As Long
 Dim Lmax    As Long
@@ -925,16 +926,16 @@ Dim Wkey    As Variant
 
     Lmax = Range("a4").End(xlDown).Row
     myCon.Execute "DELETE FROM " & Tbl_Meal & " Where Fcode = """ & Range("Fcode") & """"
-    '€”õ‚±‚±‚Ü‚Å
+    'æº–å‚™ã“ã“ã¾ã§
     With Rst_Meal
-        'ƒCƒ“ƒfƒbƒNƒX‚Ìİ’è
+        'ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¨­å®š
         .Index = "PrimaryKey"
-        'ƒŒƒR[ƒhƒZƒbƒg‚ğŠJ‚­
+        'ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã‚’é–‹ã
         Rst_Meal.Open Source:=Tbl_Meal, ActiveConnection:=myCon, _
             CursorType:=adOpenKeyset, LockType:=adLockOptimistic, _
             Options:=adCmdTableDirect
         For i1 = 5 To Lmax
-        '”Ô†‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©ŒŸõ‚·‚é
+        'ç•ªå·ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹æ¤œç´¢ã™ã‚‹
             Wkey = Array(Range("Fcode"), Cells(i1, 1), Cells(i1, 2), Cells(i1, 4))
             If Not .EOF Then .Seek Wkey
             If .EOF Then: .AddNew
@@ -948,122 +949,122 @@ Dim Wkey    As Variant
         Next i1
         .Close
     End With
-    Set Rst_Meal = Nothing                    'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+    Set Rst_Meal = Nothing                    'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
     Eiyo01_510MealUdate = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_511@‰h—{‘f€–Ú‚ÌŠeíî•ñæ“¾    F-018
+'   01_511ã€€æ „é¤Šç´ é …ç›®ã®å„ç¨®æƒ…å ±å–å¾—   F-018
 '--------------------------------------------------------------------------------
 Function Eiyo01_511MealFldgt() As Long
     
-    Sheets.Add After:=Sheets(Sheets.Count)      'ƒV[ƒg’Ç‰Á
-    'ƒŒƒR[ƒhƒZƒbƒg‚ğŠJ‚­
+    Sheets.Add After:=Sheets(Sheets.Count)      'ã‚·ãƒ¼ãƒˆè¿½åŠ 
+    'ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã‚’é–‹ã
     Rst_Field.Open Source:=Tbl_Field, _
                 ActiveConnection:=myCon, _
                 CursorType:=adOpenForwardOnly, _
                 LockType:=adLockReadOnly, _
                 Options:=adCmdTableDirect
-    'ƒŒƒR[ƒh
+    'ãƒ¬ã‚³ãƒ¼ãƒ‰
     Range("a1").CopyFromRecordset Rst_Field
     Fld_Field = ActiveSheet.UsedRange
     Rst_Field.Close
-    Set Rst_Field = Nothing    'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
-    Application.DisplayAlerts = False               'Šm”F—}~
+    Set Rst_Field = Nothing    'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
+    Application.DisplayAlerts = False               'ç¢ºèªæŠ‘æ­¢
     ActiveSheet.Delete
-    Application.DisplayAlerts = True                'Šm”F•œŠˆ
+    Application.DisplayAlerts = True                'ç¢ºèªå¾©æ´»
     Eiyo01_511MealFldgt = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_512@ÛHŒvZƒV[ƒgì¬
+'   01_512ã€€æ‘‚é£Ÿè¨ˆç®—ã‚·ãƒ¼ãƒˆä½œæˆ
 '--------------------------------------------------------------------------------
 Function Eiyo01_512MealSheet() As Long
-Dim i1      As Long     'sIndex
-Dim i2      As Long     '—“Index
+Dim i1      As Long     'è¡ŒIndex
+Dim i2      As Long     'æ¬„Index
 Dim Wno     As String
 Dim Wtext   As String
 
-    Call Eiyo99_w’èƒV[ƒgíœ("ŒŸØ")
-    Sheets.Add After:=Sheets(Sheets.Count)      'ƒV[ƒg’Ç‰Á
-    ActiveSheet.Name = "ŒŸØ"
-    Range("d1") = "‰h—{ŒvZ@ÛHŒŸØ"
-    Range("a2") = Sheets("ÛH").Range("a2")
+    Call Eiyo99_æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤("æ¤œè¨¼")
+    Sheets.Add After:=Sheets(Sheets.Count)      'ã‚·ãƒ¼ãƒˆè¿½åŠ 
+    ActiveSheet.Name = "æ¤œè¨¼"
+    Range("d1") = "æ „é¤Šè¨ˆç®—ã€€æ‘‚é£Ÿæ¤œè¨¼"
+    Range("a2") = Sheets("æ‘‚é£Ÿ").Range("a2")
     Wtext = Empty
-    For i1 = 1 To 27                            '‰h—{‘f
+    For i1 = 1 To 27                            'æ „é¤Šç´ 
         Wno = Format(i1, "00")
-        Wtext = Wtext & "Ûæ—Ê" & Wno & vbTab
-        Wtext = Wtext & "”M‘¹Œã" & Wno & vbTab
+        Wtext = Wtext & "æ‘‚å–é‡" & Wno & vbTab
+        Wtext = Wtext & "ç†±æå¾Œ" & Wno & vbTab
     Next i1
     For i1 = 1 To 15
-        Wtext = Wtext & "´ÈÙ·ŞC" & Format(i1, "00") & vbTab
+        Wtext = Wtext & "ï½´ï¾ˆï¾™ï½·ï¾C" & Format(i1, "00") & vbTab
     Next i1
     For i1 = 1 To 15
-        Wtext = Wtext & "´ÈÙ·ŞW" & Format(i1, "00") & vbTab
+        Wtext = Wtext & "ï½´ï¾ˆï¾™ï½·ï¾W" & Format(i1, "00") & vbTab
     Next i1
     For i1 = 1 To 15
-        Wtext = Wtext & "¶Ù¼³Ñ1" & Format(i1, "00") & vbTab
+        Wtext = Wtext & "ï½¶ï¾™ï½¼ï½³ï¾‘1" & Format(i1, "00") & vbTab
     Next i1
     For i1 = 1 To 15
-        Wtext = Wtext & "¶Ù¼³Ñ2" & Format(i1, "00") & vbTab
+        Wtext = Wtext & "ï½¶ï¾™ï½¼ï½³ï¾‘2" & Format(i1, "00") & vbTab
     Next i1
-    Wtext = Wtext & "‰¿“®•¨" & vbTab
-    Wtext = Wtext & "‰¿‹›‰î" & vbTab
-    Wtext = Wtext & "‰¿A•¨" & vbTab
-    Wtext = Wtext & "”M‘¹“®•¨" & vbTab
-    Wtext = Wtext & "”M‘¹‹›‰î" & vbTab
-    Wtext = Wtext & "”M‘¹A•¨"
+    Wtext = Wtext & "è„‚è³ªå‹•ç‰©" & vbTab
+    Wtext = Wtext & "è„‚è³ªé­šä»‹" & vbTab
+    Wtext = Wtext & "è„‚è³ªæ¤ç‰©" & vbTab
+    Wtext = Wtext & "ç†±æå‹•ç‰©" & vbTab
+    Wtext = Wtext & "ç†±æé­šä»‹" & vbTab
+    Wtext = Wtext & "ç†±ææ¤ç‰©"
     Range("a4:dp4") = Split(Wtext, vbTab)
-    ActiveWindow.FreezePanes = False        'ƒEƒCƒ“ƒh˜gŒÅ’è‚Ì‰ğœ
+    ActiveWindow.FreezePanes = False        'ã‚¦ã‚¤ãƒ³ãƒ‰æ å›ºå®šã®è§£é™¤
     Range("a5").Select
-    ActiveWindow.FreezePanes = True         'ƒEƒCƒ“ƒh˜gŒÅ’è‚Ìİ’è
-    Cells.NumberFormatLocal = "#,##0.00;[Ô]-#,##0.00"
+    ActiveWindow.FreezePanes = True         'ã‚¦ã‚¤ãƒ³ãƒ‰æ å›ºå®šã®è¨­å®š
+    Cells.NumberFormatLocal = "#,##0.00;[èµ¤]-#,##0.00"
     Eiyo01_512MealSheet = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_513@ŒŸØ‚QƒV[ƒgì¬
+'   01_513ã€€æ¤œè¨¼ï¼’ã‚·ãƒ¼ãƒˆä½œæˆ
 '--------------------------------------------------------------------------------
 Function Eiyo01_513kenso2sht() As Long
 Dim i1      As Long
-    Call Eiyo99_w’èƒV[ƒgíœ("ŒŸØ2")
-    Sheets.Add After:=Sheets(Sheets.Count)      'ƒV[ƒg’Ç‰Á
-    ActiveSheet.Name = "ŒŸØ2"
-    Cells.Interior.ColorIndex = 36              '‘S‰æ–Ê”wŒiF
-'   •\‘è
+    Call Eiyo99_æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤("æ¤œè¨¼2")
+    Sheets.Add After:=Sheets(Sheets.Count)      'ã‚·ãƒ¼ãƒˆè¿½åŠ 
+    ActiveSheet.Name = "æ¤œè¨¼2"
+    Cells.Interior.ColorIndex = 36              'å…¨ç”»é¢èƒŒæ™¯è‰²
+'   è¡¨é¡Œ
     Range("C1:F1").Select
-    Selection.MergeCells = True                 '•\‘èƒZƒ‹˜AŒ‹
-    Selection.HorizontalAlignment = xlCenter    '•\‘èƒZƒ“ƒ^ƒŠƒ“ƒO
-    Selection.Interior.ColorIndex = 37          '•\‘èFiƒy[ƒ‹ƒuƒ‹[j
-    With Selection.Font                         'ƒtƒHƒ“ƒg
-        .FontStyle = "‘¾š"
+    Selection.MergeCells = True                 'è¡¨é¡Œã‚»ãƒ«é€£çµ
+    Selection.HorizontalAlignment = xlCenter    'è¡¨é¡Œã‚»ãƒ³ã‚¿ãƒªãƒ³ã‚°
+    Selection.Interior.ColorIndex = 37          'è¡¨é¡Œè‰²ï¼ˆãƒšãƒ¼ãƒ«ãƒ–ãƒ«ãƒ¼ï¼‰
+    With Selection.Font                         'ãƒ•ã‚©ãƒ³ãƒˆ
+        .FontStyle = "å¤ªå­—"
         .Size = 16
     End With
-    Range("C1") = "‰h—{ŒvZ@ŒŸØ‘—¿‚Q"
+    Range("C1") = "æ „é¤Šè¨ˆç®—ã€€æ¤œè¨¼è³‡æ–™ï¼’"
     
-'   ‰h—{‘f–¼
-    Range("a4") = "No.‰h—{‘f–¼"
-    Range("b4") = "’PˆÊ"
+'   æ „é¤Šç´ å
+    Range("a4") = "No.æ „é¤Šç´ å"
+    Range("b4") = "å˜ä½"
     For i1 = 1 To 27
         Cells(4 + i1, 1) = Format(i1, "00") & "." & Fld_Field(i1, 4)
         Cells(4 + i1, 2) = Fld_Field(i1, 5)
     Next i1
-'   Ûæ—Ê
-    Range("c3") = "<========= ”M‘¹ŒãÛæ—Ê ==========>"
-    Range("c4") = "‘—Ê"
-    Range("d4") = "^“ú"
-    Range("e4") = "®"
-    Range("f4") = "•â³Œã"
+'   æ‘‚å–é‡
+    Range("c3") = "<========= ç†±æå¾Œæ‘‚å–é‡ ==========>"
+    Range("c4") = "ç·é‡"
+    Range("d4") = "ï¼æ—¥"
+    Range("e4") = "å¼"
+    Range("f4") = "è£œæ­£å¾Œ"
     Range("c4:p4").HorizontalAlignment = xlCenter
-    Range("c5:d31,f5:f31").Interior.ColorIndex = xlNone      '”’”²‚«‰»
-    With Range("c5:d31,f5:f31").Borders                      '˜gŒrü
+    Range("c5:d31,f5:f31").Interior.ColorIndex = xlNone      'ç™½æŠœãåŒ–
+    With Range("c5:d31,f5:f31").Borders                      'æ ç½«ç·š
         .LineStyle = xlContinuous
         .ColorIndex = xlAutomatic
         .Weight = xlThin
     End With
-    Range("c5:d31,f5:f31").NumberFormatLocal = "#,##0.00;[Ô]-#,##0.00"
+    Range("c5:d31,f5:f31").NumberFormatLocal = "#,##0.00;[èµ¤]-#,##0.00"
     Range("c5").Name = "ks2_eiyoso"
-'   Ûæ—Ê‚Ì•â³ğŒ
-    Range("e:e,o:o").HorizontalAlignment = xlCenter '‰¡’†‰›
-    Range("e15,e20,e24,e27").Interior.ColorIndex = xlNone   '”’”²‚«‰»
-    With Range("e15,e20,e24,e27").Borders                   '˜gŒrü
+'   æ‘‚å–é‡ã®è£œæ­£æ¡ä»¶
+    Range("e:e,o:o").HorizontalAlignment = xlCenter 'æ¨ªä¸­å¤®
+    Range("e15,e20,e24,e27").Interior.ColorIndex = xlNone   'ç™½æŠœãåŒ–
+    With Range("e15,e20,e24,e27").Borders                   'æ ç½«ç·š
         .LineStyle = xlContinuous
         .ColorIndex = xlAutomatic
         .Weight = xlThin
@@ -1072,105 +1073,105 @@ Dim i1      As Long
     Range("e20").Name = "ks2_hosei16"
     Range("e24").Name = "ks2_hosei20"
     Range("e27").Name = "ks2_hosei23"
-'   Šî‘bî•ñ
-    Range("i4") = "À‘Ìd"
-    Range("j4") = "•W€‘Ìd"
-    Range("h5") = "a.‘Ìd"
-    Range("H6") = "b.‘Ì•\–ÊÏ"
-    Range("H8") = "Šî‘b‘ãÓ"
-    Range("h9") = "c.¶Šˆw”"
-    Range("H10") = "d.ƒR[ƒh"
-    Range("H11") = "e.–ÊÏ“–‚è"
-    Range("H12") = "f.^“ú"
-    Range("H13") = "g.^•ª"
-    Range("H15") = "ƒGƒlƒ‹ƒM["
-    Range("H16") = "h.•W€—Ê"
-    Range("H17") = "i.“K—pğŒ"
-    Range("H18") = "j.´ÈÙ·Ş°1"
-    Range("H19") = "k.´ÈÙ·Ş°2"
+'   åŸºç¤æƒ…å ±
+    Range("i4") = "å®Ÿä½“é‡"
+    Range("j4") = "æ¨™æº–ä½“é‡"
+    Range("h5") = "a.ä½“é‡"
+    Range("H6") = "b.ä½“è¡¨é¢ç©"
+    Range("H8") = "åŸºç¤ä»£è¬"
+    Range("h9") = "c.ç”Ÿæ´»æŒ‡æ•°"
+    Range("H10") = "d.ã‚³ãƒ¼ãƒ‰"
+    Range("H11") = "e.é¢ç©å½“ã‚Š"
+    Range("H12") = "f.ï¼æ—¥"
+    Range("H13") = "g.ï¼åˆ†"
+    Range("H15") = "ã‚¨ãƒãƒ«ã‚®ãƒ¼"
+    Range("H16") = "h.æ¨™æº–é‡"
+    Range("H17") = "i.é©ç”¨æ¡ä»¶"
+    Range("H18") = "j.ï½´ï¾ˆï¾™ï½·ï¾ï½°1"
+    Range("H19") = "k.ï½´ï¾ˆï¾™ï½·ï¾ï½°2"
     Range("i21") = "f = b * e * 24"
     Range("i22") = "h = f * (1+c) * 1.1"
     Range("F05").Copy Range("I5:j6,i9:i11,i12:j13,i16:j16,i18:i19")
     Range("E15").Copy Range("I10,i17")
-    Range("i05").Name = "ks2_weght"     '‘Ìd
-    Range("i06").Name = "ks2_Aansa"     '‘Ì•\–ÊÏ
-    Range("i09").Name = "ks2_Aansx"     '¶Šˆw”
-    Range("i10").Name = "ks2_kisocd"    'Šî‘bƒR[ƒh
-    Range("i11").Name = "ks2_kisot"     '–ÊÏ“–‚èŠî‘b‘ãÓ
-    Range("i12").Name = "ks2_Aansb"     'Šî‘b‘ãÓ^“ú
-    Range("i13").Name = "ks2_Aansc"     'Šî‘b‘ãÓ^“ú
-    Range("i16").Name = "ks2_Aansd"     '´ÈÙ·Ş°•W€—Ê
-    Range("i17").Name = "ks2_energ"     'Š—v—Ê´ÈÙ·Ş°ğŒ
-'   Š—v—Ê(´ÈÙ·Ş°ˆÈŠO)
-    Range("l3") = "Š—vTBL"
-    Range("m3") = "¶Šˆ‹­“x"
-    Range("n3") = "”DP•â³"
-    Range("o3") = "®"
-    Range("p3") = "Š—v—Ê"
-    Range("q3") = "“E—v"
+    Range("i05").Name = "ks2_weght"     'ä½“é‡
+    Range("i06").Name = "ks2_Aansa"     'ä½“è¡¨é¢ç©
+    Range("i09").Name = "ks2_Aansx"     'ç”Ÿæ´»æŒ‡æ•°
+    Range("i10").Name = "ks2_kisocd"    'åŸºç¤ã‚³ãƒ¼ãƒ‰
+    Range("i11").Name = "ks2_kisot"     'é¢ç©å½“ã‚ŠåŸºç¤ä»£è¬
+    Range("i12").Name = "ks2_Aansb"     'åŸºç¤ä»£è¬ï¼æ—¥
+    Range("i13").Name = "ks2_Aansc"     'åŸºç¤ä»£è¬ï¼æ—¥
+    Range("i16").Name = "ks2_Aansd"     'ï½´ï¾ˆï¾™ï½·ï¾ï½°æ¨™æº–é‡
+    Range("i17").Name = "ks2_energ"     'æ‰€è¦é‡ï½´ï¾ˆï¾™ï½·ï¾ï½°æ¡ä»¶
+'   æ‰€è¦é‡(ï½´ï¾ˆï¾™ï½·ï¾ï½°ä»¥å¤–)
+    Range("l3") = "æ‰€è¦TBL"
+    Range("m3") = "ç”Ÿæ´»å¼·åº¦"
+    Range("n3") = "å¦Šå¨ è£œæ­£"
+    Range("o3") = "å¼"
+    Range("p3") = "æ‰€è¦é‡"
+    Range("q3") = "æ‘˜è¦"
     Range("E15").Copy Range("l4:n4")
     Range("F05").Copy Range("l6:n31")
     Range("l4").Name = "ks2_syoyo"
     Range("F05").Copy Range("p5:p31")
 
     With ActiveSheet.PageSetup
-        .Orientation = xlLandscape                      '‰¡’·
-'        .PrintHeadings = True                           's—ñ”Ô†
-        .LeftMargin = Application.InchesToPoints(0.4)   '¶—]”’
-        .RightMargin = Application.InchesToPoints(0.2)  '‰E—]”’
+        .Orientation = xlLandscape                      'æ¨ªé•·
+'        .PrintHeadings = True                           'è¡Œåˆ—ç•ªå·
+        .LeftMargin = Application.InchesToPoints(0.4)   'å·¦ä½™ç™½
+        .RightMargin = Application.InchesToPoints(0.2)  'å³ä½™ç™½
         .Zoom = False
-        .FitToPagesWide = 1                             '‰¡‚P•Å
-        .FitToPagesTall = 1                             'c‚P•Å
+        .FitToPagesWide = 1                             'æ¨ªï¼‘é 
+        .FitToPagesTall = 1                             'ç¸¦ï¼‘é 
     End With
-    Cells.EntireColumn.AutoFit                          '—ñ•
+    Cells.EntireColumn.AutoFit                          'åˆ—å¹…
     Range("C:D,F:F,I:J,L:N,P:P").ColumnWidth = 10
     Range("G:G,K:K").ColumnWidth = 4
     Range("a01") = Range("Namej")
     Range("a02") = "[" & Range("Fcode") & "]"
-    Range("q05") = "´ÈÙ·Ş°1"
-    Range("q06") = "”N—ß«•Ê‚Ù‚©"
-    Range("q07") = "‚½‚ñ‚Ï‚­¿ 1/2"
-    Range("q08") = "‚½‚ñ‚Ï‚­¿ 1/2"
-    Range("q09") = "´ÈÙ·Ş°1 & ¶Šˆ‹­“x"
-    Range("q10") = "´ÈÙ·Ş°1‚©‚çŒvZ"
-    Range("q11") = "´ÈÙ·Ş°1 * 0.0099"
-    Range("q12") = "À‘Ìd‚ÆŒW”"
-    Range("q13") = "¶Ù¼³Ñ“¯’l"
-    Range("q14") = "”N—ß"
-    Range("q15") = "TBL’l(‚ŒŒˆ³‚Íw’è’l)"
-    Range("q16") = "TBL’l"
-    Range("q17") = "´ÈÙ·Ş°2 * 0.0004"
-    Range("q18") = "´ÈÙ·Ş°2 * 0.00055"
-    Range("q19") = "´ÈÙ·Ş°2 * 0.0066"
-    Range("q20") = "TBL’l"
-    Range("q21") = "(TBL’l)"
-    Range("q22") = "(TBL’l)"
-    Range("q23") = "(TBL’l)"
-    Range("q24") = "•s–O˜a‰–b_ * 0.6"
-    Range("q25") = "ÅÄØ³Ñ“¯’l"
-    Range("q26") = "¶Ù¼³Ñ 1/2"
-    Range("q27") = "‚ŒŒˆ³‚Íw’è’l"
-    Range("q28") = "ˆê—¥"
-    Range("q29") = "‰¿ 66%"
-    Range("q30") = "‰¿ 34%"
-    Range("q31") = "“œ”A/³´²Ä¥ºİÄÛ°Ù/ˆê”Ê"
-    Sheets("ŒŸØ").Select
+    Range("q05") = "ï½´ï¾ˆï¾™ï½·ï¾ï½°1"
+    Range("q06") = "å¹´ä»¤æ€§åˆ¥ã»ã‹"
+    Range("q07") = "ãŸã‚“ã±ãè³ª 1/2"
+    Range("q08") = "ãŸã‚“ã±ãè³ª 1/2"
+    Range("q09") = "ï½´ï¾ˆï¾™ï½·ï¾ï½°1 & ç”Ÿæ´»å¼·åº¦"
+    Range("q10") = "ï½´ï¾ˆï¾™ï½·ï¾ï½°1ã‹ã‚‰è¨ˆç®—"
+    Range("q11") = "ï½´ï¾ˆï¾™ï½·ï¾ï½°1 * 0.0099"
+    Range("q12") = "å®Ÿä½“é‡ã¨ä¿‚æ•°"
+    Range("q13") = "ï½¶ï¾™ï½¼ï½³ï¾‘åŒå€¤"
+    Range("q14") = "å¹´ä»¤"
+    Range("q15") = "TBLå€¤(é«˜è¡€åœ§ã¯æŒ‡å®šå€¤)"
+    Range("q16") = "TBLå€¤"
+    Range("q17") = "ï½´ï¾ˆï¾™ï½·ï¾ï½°2 * 0.0004"
+    Range("q18") = "ï½´ï¾ˆï¾™ï½·ï¾ï½°2 * 0.00055"
+    Range("q19") = "ï½´ï¾ˆï¾™ï½·ï¾ï½°2 * 0.0066"
+    Range("q20") = "TBLå€¤"
+    Range("q21") = "(TBLå€¤)"
+    Range("q22") = "(TBLå€¤)"
+    Range("q23") = "(TBLå€¤)"
+    Range("q24") = "ä¸é£½å’Œè„‚è‚ªé…¸ * 0.6"
+    Range("q25") = "ï¾…ï¾„ï¾˜ï½³ï¾‘åŒå€¤"
+    Range("q26") = "ï½¶ï¾™ï½¼ï½³ï¾‘ 1/2"
+    Range("q27") = "é«˜è¡€åœ§ã¯æŒ‡å®šå€¤"
+    Range("q28") = "ä¸€å¾‹"
+    Range("q29") = "è„‚è³ª 66%"
+    Range("q30") = "è„‚è³ª 34%"
+    Range("q31") = "ç³–å°¿/ï½³ï½´ï½²ï¾„ï½¥ï½ºï¾ï¾„ï¾›ï½°ï¾™/ä¸€èˆ¬"
+    Sheets("æ¤œè¨¼").Selec
     Eiyo01_513kenso2sht = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_514@ÛHŒvZ
+'   01_514ã€€æ‘‚é£Ÿè¨ˆç®—
 '--------------------------------------------------------------------------------
 Function Eiyo01_514MealCalc1() As Long
 Dim aa      As Variant
 Dim bb      As Worksheet
-Dim i1      As Long     'sIndex
-Dim i2      As Long     '—“Index
-Dim Lmax    As Long     'sMax
+Dim i1      As Long     'è¡ŒIndex
+Dim i2      As Long     'æ¬„Index
+Dim Lmax    As Long     'è¡ŒMax
 Dim Wtemp1  As Double
 Dim wtemp2  As Double
     
-    aa = Sheets("ÛH").UsedRange
-    Set bb = Sheets("ŒŸØ")
+    aa = Sheets("æ‘‚é£Ÿ").UsedRange
+    Set bb = Sheets("æ¤œè¨¼")
     Lmax = UBound(aa, 1)
     For i1 = 5 To Lmax
         For i2 = 1 To 27
@@ -1178,7 +1179,7 @@ Dim wtemp2  As Double
                 Wtemp1 = 1
             End If
             
-'           ‰h—{‘fŒvZ =   Ûæ—Ê(F) * ‰h—{‘f(S)       * Š·Z’l(M)
+'           æ „é¤Šç´ è¨ˆç®— =   æ‘‚å–é‡(F) * æ „é¤Šç´ (S)       * æ›ç®—å€¤(M)
             Wtemp1 = WorksheetFunction.Round(aa(i1, 6) * aa(i1, i2 + 18) * aa(i1, 13), 2)
             If aa(i1, 16) = 2 Then
                 wtemp2 = Wtemp1
@@ -1189,27 +1190,27 @@ Dim wtemp2  As Double
             bb.Cells(i1, i2 * 2) = wtemp2
         Next i2
         For i2 = 1 To 15
-'           ´ÈÙ·Ş°C              =      Ûæ—Ê(F) * ´ÈÙ·Ş°C(AT)     * Š·Z’l(M)
+'           ï½´ï¾ˆï¾™ï½·ï¾ï½°C              =      æ‘‚å–é‡(F) * ï½´ï¾ˆï¾™ï½·ï¾ï½°C(AT)     * æ›ç®—å€¤(M)
             Cells(i1, i2 + 54) = WorksheetFunction.Round(aa(i1, 6) * aa(i1, i2 + 45) * aa(i1, 13), 2)
-'           ´ÈÙ·Ş°W              =      Ûæ—Ê(F) * ´ÈÙ·Ş°W(BI)     * Š·Z’l(M)
+'           ï½´ï¾ˆï¾™ï½·ï¾ï½°W              =      æ‘‚å–é‡(F) * ï½´ï¾ˆï¾™ï½·ï¾ï½°W(BI)     * æ›ç®—å€¤(M)
             Cells(i1, i2 + 69) = WorksheetFunction.Round(aa(i1, 6) * aa(i1, i2 + 60) * aa(i1, 13), 2)
-'           ¶Ù¼³Ñ  =       Ûæ—Ê(F) * ¶Ù¼³Ñ           * Š·Z’l
+'           ï½¶ï¾™ï½¼ï½³ï¾‘  =       æ‘‚å–é‡(F) * ï½¶ï¾™ï½¼ï½³ï¾‘           * æ›ç®—å€¤
             Wtemp1 = WorksheetFunction.Round(aa(i1, 6) * aa(i1, i2 + 75) * aa(i1, 13), 2)
             If aa(i1, 16) = 2 Then
                 wtemp2 = Wtemp1
             Else
-                wtemp2 = WorksheetFunction.Round(Wtemp1 * (100 - Fld_Field(8, 20)) / 100, 2)  '”M‘¹‚Í(8)
+                wtemp2 = WorksheetFunction.Round(Wtemp1 * (100 - Fld_Field(8, 20)) / 100, 2)  'ï¿½Mï¿½ï¿½ï¿½ï¿½(8)
             End If
             Cells(i1, i2 + 84) = Wtemp1
             Cells(i1, i2 + 99) = wtemp2
         Next i2
         For i2 = 1 To 3
-'           ‰¿    =      Ûæ—Ê(F) * ‰¿(CM)        * Š·Z’l(M)
+'           è„‚è³ª    =      æ‘‚å–é‡(F) * è„‚è³ª(CM)        * æ›ç®—å€¤(M)
             Wtemp1 = WorksheetFunction.Round(aa(i1, 6) * aa(i1, i2 + 90) * aa(i1, 13), 2)
             If aa(i1, 16) = 2 Then
                 wtemp2 = Wtemp1
             Else
-                wtemp2 = WorksheetFunction.Round(Wtemp1 * (100 - Fld_Field(i2, 20)) / 100, 2) '”M‘¹?
+                wtemp2 = WorksheetFunction.Round(Wtemp1 * (100 - Fld_Field(i2, 20)) / 100, 2) 'ï¿½Mï¿½ï¿½?
             End If
             bb.Cells(i1, i2 + 114) = Wtemp1
             bb.Cells(i1, i2 + 117) = wtemp2
@@ -1220,16 +1221,16 @@ Dim wtemp2  As Double
     Eiyo01_514MealCalc1 = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_515@ÛH—Ê‡Œv
+'   01_515ã€€æ‘‚é£Ÿé‡åˆè¨ˆ
 '--------------------------------------------------------------------------------
 Function Eiyo01_515MealTotal() As Long
-Dim Lmax    As Long     'sMax
-Dim i1      As Long     'sIndex
-Dim i2      As Long     '—“Index
+Dim Lmax    As Long     'è¡ŒMax
+Dim i1      As Long     'è¡ŒIndex
+Dim i2      As Long     'æ¬„Index
 Dim Wnissu  As Long
 
     Wnissu = Range("Nissu")
-    Lmax = Sheets("ÛH").UsedRange.Rows.Count
+    Lmax = Sheets("æ‘‚é£Ÿ").UsedRange.Rows.Count
     i1 = Lmax + 2
     For i2 = 1 To 120
         Cells(i1, i2) = "=SUM(R5C:R[-2]C)"
@@ -1240,26 +1241,26 @@ Dim Wnissu  As Long
         Range("ks2_eiyoso").Offset(i2 / 2 - 1, 1) = Cells(i1 + 1, i2)
     Next i2
     
-    i1 = i1 + 1                             'ˆê“ú“–‚½‚è‡ŒvsIndex
-    If Mid(Range("Q3rec"), 7, 1) = "3" Then '”––¡‚É‚æ‚é•â³
-        If Cells(i1, 45) > 17 Then                           '¼µ16G
+    i1 = i1 + 1                             'ä¸€æ—¥å½“ãŸã‚Šåˆè¨ˆè¡ŒIndex
+    If Mid(Range("Q3rec"), 7, 1) = "3" Then 'è–„å‘³ã«ã‚ˆã‚‹è£œæ­£
+        If Cells(i1, 45) > 17 Then                           'ï½¼ï½µ16G
             Cells(i1, 45) = Cells(i1, 45) - 8                 ' -8G
-            Cells(i1, 21) = Cells(i1, 21) - 3149              'ÅÄØ³Ñ
-        ElseIf Cells(i1, 45) > 9 Then                        ' 9G²¶
+            Cells(i1, 21) = Cells(i1, 21) - 3149              'ï¾…ï¾„ï¾˜ï½³ï¾‘
+        ElseIf Cells(i1, 45) > 9 Then                        ' 9Gï½²ï½¶
             Cells(i1, 21) = Cells(i1, 21) - _
                           WorksheetFunction.RoundDown( _
                           (Cells(i1, 45) - 9) / 0.00254, 2)
-            Cells(i1, 45) = 9                                 '²ÁØÂ
+            Cells(i1, 45) = 9                                 'ï½²ï¾ï¾˜ï¾‚
         End If
-        If Cells(i1, 46) > 17 Then                           '¼µ16G
+        If Cells(i1, 46) > 17 Then                           'ï½¼ï½µ16G
             Cells(i1, 46) = Cells(i1, 46) - 8                ' -8G
-            Cells(i1, 22) = Cells(i1, 22) - 3149             'ÅÄØ³Ñ
+            Cells(i1, 22) = Cells(i1, 22) - 3149             'ï¾…ï¾„ï¾˜ï½³ï¾‘
             Range("ks2_hosei23") = 1
-        ElseIf Cells(i1, 46) > 9 Then                        ' 9G²¶
+        ElseIf Cells(i1, 46) > 9 Then                        ' 9Gï½²ï½¶
             Cells(i1, 22) = Cells(i1, 22) - _
                           WorksheetFunction.RoundDown( _
                           (Cells(i1, 46) - 9) / 0.00254, 2)
-            Cells(i1, 46) = 9                                 '²ÁØÂ
+            Cells(i1, 46) = 9                                 'ï½²ï¾ï¾˜ï¾‚
             Range("ks2_hosei23") = 2
         Else
             Range("ks2_hosei23") = 3
@@ -1270,7 +1271,7 @@ Dim Wnissu  As Long
     Range("ks2_hosei11") = Range("ks2_hosei23")
     
     
-    If Cells(i1, 32) < 40 Then              'VC•â³(16)
+    If Cells(i1, 32) < 40 Then              'VCè£œæ­£(16)
         If Cells(i1, 31) > 40 Then
             Cells(i1, 32) = 40
             Range("ks2_hosei16") = 1
@@ -1281,7 +1282,7 @@ Dim Wnissu  As Long
     Else
         Range("ks2_hosei16") = 3
     End If
-    If Cells(i1, 40) < 3 Then               'VE•â³(20)
+    If Cells(i1, 40) < 3 Then               'VEè£œæ­£(20)
         If Cells(i1, 39) > 3 Then
             Cells(i1, 40) = 3
             Range("ks2_hosei20") = 1
@@ -1298,19 +1299,19 @@ Dim Wnissu  As Long
     Next i2
 End Function
 '--------------------------------------------------------------------------------
-'   01_521@Šî‘bî•ñ‚Ù‚©æ“¾
-'           ˆø” Func 1:XV‚ ‚è 2:XV‚È‚µ
+'   01_521ã€€åŸºç¤æƒ…å ±ã»ã‹å–å¾—
+'           å¼•æ•° Func 1:æ›´æ–°ã‚ã‚Š 2:æ›´æ–°ãªã—
 '--------------------------------------------------------------------------------
 Function Eiyo01_521CalcDbGet(Func As Long) As Long
 Dim mySqlStr    As String
 Dim i1          As Long
 Dim i2          As Long
 
-    Call Eiyo99_w’èƒV[ƒgíœ("DBmirror")
-    Sheets.Add After:=Sheets(Sheets.Count)      'ƒV[ƒg’Ç‰Á
+    Call Eiyo99_æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤("DBmirror")
+    Sheets.Add After:=Sheets(Sheets.Count)      'ã‚·ãƒ¼ãƒˆè¿½åŠ 
     ActiveSheet.Name = "DBmirror"
-    Sheets("DBmirror").Range("m2:m3").NumberFormatLocal = "@"     'ZŠ[‚Q
-'   Šî‘bî•ñæ“¾
+    Sheets("DBmirror").Range("m2:m3").NumberFormatLocal = "@"     'ä½æ‰€ãƒ¼ï¼’
+'   åŸºç¤æƒ…å ±å–å¾—
     With Rst_Kiso
         .Index = "PrimaryKey"
         Rst_Kiso.Open Source:=Tbl_Kiso, ActiveConnection:=myCon, _
@@ -1334,7 +1335,7 @@ Dim i2          As Long
             Next
         End If
     End With
-'   Š—v—Êæ“¾
+'   æ‰€è¦é‡å–å¾—
     With Rst_Syoyo
         .Index = "PrimaryKey"
         Rst_Syoyo.Open Source:=Tbl_Syoyo, ActiveConnection:=myCon, _
@@ -1351,7 +1352,7 @@ Dim i2          As Long
             Next
         End If
     End With
-'   ƒGƒlƒ‹ƒM[^ƒJƒƒŠ[
+'   ã‚¨ãƒãƒ«ã‚®ãƒ¼ï¼ã‚«ãƒ­ãƒªãƒ¼
     With Rst_Energ
         .Index = "PrimaryKey"
         Rst_Energ.Open Source:=Tbl_Energ, ActiveConnection:=myCon, _
@@ -1370,88 +1371,88 @@ Dim i2          As Long
     End With
     
     If Func = 1 Then
-        i2 = Sheets("ŒŸØ").UsedRange.Rows.Count
-'       ‰¿‚Ì–ß‚µ
-        Rst_Kiso.Fields("Sfods1").Value = Sheets("ŒŸØ").Cells(i2, 115)
-        Rst_Kiso.Fields("Sfods2").Value = Sheets("ŒŸØ").Cells(i2, 116)
-        Rst_Kiso.Fields("Sfods3").Value = Sheets("ŒŸØ").Cells(i2, 117)
-        Rst_Kiso.Fields("Sfodh1").Value = Sheets("ŒŸØ").Cells(i2, 118)
-        Rst_Kiso.Fields("Sfodh2").Value = Sheets("ŒŸØ").Cells(i2, 119)
-        Rst_Kiso.Fields("Sfodh3").Value = Sheets("ŒŸØ").Cells(i2, 120)
-'       Š—v—Ê‚Ì–ß‚µ
+        i2 = Sheets("æ¤œè¨¼").UsedRange.Rows.Count
+'       è„‚è³ªã®æˆ»ã—
+        Rst_Kiso.Fields("Sfods1").Value = Sheets("æ¤œè¨¼").Cells(i2, 115)
+        Rst_Kiso.Fields("Sfods2").Value = Sheets("æ¤œè¨¼").Cells(i2, 116)
+        Rst_Kiso.Fields("Sfods3").Value = Sheets("æ¤œè¨¼").Cells(i2, 117)
+        Rst_Kiso.Fields("Sfodh1").Value = Sheets("æ¤œè¨¼").Cells(i2, 118)
+        Rst_Kiso.Fields("Sfodh2").Value = Sheets("æ¤œè¨¼").Cells(i2, 119)
+        Rst_Kiso.Fields("Sfodh3").Value = Sheets("æ¤œè¨¼").Cells(i2, 120)
+'       æ‰€è¦é‡ã®æˆ»ã—
         For i1 = 1 To 27
-            Rst_Syoyo.Fields(i1 * 5 - 3).Value = Sheets("ŒŸØ").Cells(i2, i1 * 2 - 1)
-            Rst_Syoyo.Fields(i1 * 5 - 2).Value = Sheets("ŒŸØ").Cells(i2, i1 * 2)
+            Rst_Syoyo.Fields(i1 * 5 - 3).Value = Sheets("æ¤œè¨¼").Cells(i2, i1 * 2 - 1)
+            Rst_Syoyo.Fields(i1 * 5 - 2).Value = Sheets("æ¤œè¨¼").Cells(i2, i1 * 2)
         Next i1
-'       ƒGƒlƒ‹ƒM[^ƒJƒƒŠ[‚Ì–ß‚µ
+'       ã‚¨ãƒãƒ«ã‚®ãƒ¼ï¼ã‚«ãƒ­ãƒªãƒ¼ã®æˆ»ã—
         For i1 = 1 To 15
-            Rst_Energ.Fields(i1 + 1).Value = Sheets("ŒŸØ").Cells(i2, i1 + 54)
-            Rst_Energ.Fields(i1 + 16).Value = Sheets("ŒŸØ").Cells(i2, i1 + 69)
-            Rst_Energ.Fields(i1 + 31).Value = WorksheetFunction.Round(Sheets("ŒŸØ").Cells(i2, i1 + 54) / 80, 2)
-            Rst_Energ.Fields(i1 + 58).Value = Sheets("ŒŸØ").Cells(i2, i1 + 84)
-            Rst_Energ.Fields(i1 + 73).Value = Sheets("ŒŸØ").Cells(i2, i1 + 99)
+            Rst_Energ.Fields(i1 + 1).Value = Sheets("æ¤œè¨¼").Cells(i2, i1 + 54)
+            Rst_Energ.Fields(i1 + 16).Value = Sheets("æ¤œè¨¼").Cells(i2, i1 + 69)
+            Rst_Energ.Fields(i1 + 31).Value = WorksheetFunction.Round(Sheets("æ¤œè¨¼").Cells(i2, i1 + 54) / 80, 2)
+            Rst_Energ.Fields(i1 + 58).Value = Sheets("æ¤œè¨¼").Cells(i2, i1 + 84)
+            Rst_Energ.Fields(i1 + 73).Value = Sheets("æ¤œè¨¼").Cells(i2, i1 + 99)
         Next i1
     End If
     
     Eiyo01_521CalcDbGet = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_522 •W€‘Ìd‚Ù‚©
+'   01_522ã€€æ¨™æº–ä½“é‡ã»ã‹
 '--------------------------------------------------------------------------------
 Function Eiyo01_522Mealcalc2() As Long
 Dim mySqlStr    As String
-Dim À‘Ìd      As Double
-Dim •W€‘Ìd    As Double
-Dim ˜Jì        As String   '˜Jì‹­“x@Q7.E‹Æ‚Ì‚SŒ…–Ú
-Dim ”DP        As Long
+Dim å®Ÿä½“é‡      As Double
+Dim æ¨™æº–ä½“é‡    As Double
+Dim åŠ´ä½œ        As String   'åŠ´ä½œå¼·åº¦ã€€Q7.è·æ¥­ã®ï¼”æ¡ç›®
+Dim å¦Šå¨         As Long
 Dim Wtemp       As Double
 Dim i1          As Long
-Dim Wcondition  As Long     'Š—v—ÊƒGƒlƒ‹ƒM[“K—pğŒ
-Dim Wenerg1     As Double   'w’è‚ ‚è‚Ì’²®´ÈÙ·Ş
-Dim Wenerg2     As Double   'w’èœŠO‚Ì’²®´ÈÙ·Ş
-Dim KisoCd1     As Long     '•K—v—Êƒ}ƒXƒ^‚ÌŠî‘bƒR[ƒh  Šî‘b‘ãÓAŠˆ“®‘ãÓ
-Dim KisoCd2     As Long     '•K—v—Êƒ}ƒXƒ^‚ÌŠî‘bƒR[ƒh@Š—v—Ê
-Dim KisoCd3     As Long     '•K—v—Êƒ}ƒXƒ^‚ÌŠî‘bƒR[ƒh@”DPö“û
-Dim ”N—î        As Long
+Dim Wcondition  As Long     'æ‰€è¦é‡ã‚¨ãƒãƒ«ã‚®ãƒ¼é©ç”¨æ¡ä»¶
+Dim Wenerg1     As Double   'æŒ‡å®šã‚ã‚Šã®èª¿æ•´ï½´ï¾ˆï¾™ï½·ï¾
+Dim Wenerg2     As Double   'æŒ‡å®šé™¤å¤–ã®èª¿æ•´ï½´ï¾ˆï¾™ï½·ï¾
+Dim KisoCd1     As Long     'å¿…è¦é‡ãƒã‚¹ã‚¿ã®åŸºç¤ã‚³ãƒ¼ãƒ‰  åŸºç¤ä»£è¬ã€æ´»å‹•ä»£è¬
+Dim KisoCd2     As Long     'å¿…è¦é‡ãƒã‚¹ã‚¿ã®åŸºç¤ã‚³ãƒ¼ãƒ‰ã€€æ‰€è¦é‡
+Dim KisoCd3     As Long     'å¿…è¦é‡ãƒã‚¹ã‚¿ã®åŸºç¤ã‚³ãƒ¼ãƒ‰ã€€å¦Šå¨ æˆä¹³
+Dim å¹´é½¢        As Long
 Dim Warray      As Variant
 Dim Wtext       As String
 
-    À‘Ìd = Range("Weght")
-    ”N—î = Range("Age")
-    ˜Jì = Mid(Range("Qjob1"), 4, 1)
-    ”DP = Range("Qcnd1")
-'   •W€‘Ìd
-    If ”N—î <= 12 Then
-        •W€‘Ìd = À‘Ìd
+    å®Ÿä½“é‡ = Range("Weght")
+    å¹´é½¢ = Range("Age")
+    åŠ´ä½œ = Mid(Range("Qjob1"), 4, 1)
+    å¦Šå¨  = Range("Qcnd1")
+'   æ¨™æº–ä½“é‡
+    If å¹´é½¢ <= 12 Then
+        æ¨™æº–ä½“é‡ = å®Ÿä½“é‡
     ElseIf Range("Hight") <= 150 Then
-        •W€‘Ìd = Range("Hight") - 100
+        æ¨™æº–ä½“é‡ = Range("Hight") - 100
     ElseIf Range("Hight") <= 165 Then
-        •W€‘Ìd = WorksheetFunction.Round((Range("Hight") - 100) * 0.9, 1)
+        æ¨™æº–ä½“é‡ = WorksheetFunction.Round((Range("Hight") - 100) * 0.9, 1)
     Else
-        •W€‘Ìd = Range("Hight") - 110
+        æ¨™æº–ä½“é‡ = Range("Hight") - 110
     End If
-    Rst_Kiso.Fields("Aans1").Value = •W€‘Ìd
-    Range("ks2_weght") = À‘Ìd
-    Range("ks2_weght").Offset(0, 1) = •W€‘Ìd
-'   ”ì–“x
+    Rst_Kiso.Fields("Aans1").Value = æ¨™æº–ä½“é‡
+    Range("ks2_weght") = å®Ÿä½“é‡
+    Range("ks2_weght").Offset(0, 1) = æ¨™æº–ä½“é‡
+'   è‚¥æº€åº¦
     Rst_Kiso.Fields("Himanp").Value = WorksheetFunction.Round( _
-                                 (À‘Ìd - •W€‘Ìd) / À‘Ìd * 100, 0)
-'   ‘ÌŠiw”
-    If ”N—î <= 2 Then
-        Wtemp = À‘Ìd / (Range("Hight") ^ 2) * 10 ^ 4              '¶³Ìßw”
-    ElseIf ”N—î <= 12 Then
-        Wtemp = À‘Ìd / (Range("Hight") ^ 3) * 10 ^ 7              'Û°ÚÙw”
+                                 (å®Ÿä½“é‡ - æ¨™æº–ä½“é‡) / å®Ÿä½“é‡ * 100, 0)
+'   ä½“æ ¼æŒ‡æ•°
+    If å¹´é½¢ <= 2 Then
+        Wtemp = å®Ÿä½“é‡ / (Range("Hight") ^ 2) * 10 ^ 4              'ï½¶ï½³ï¾Œï¾ŸæŒ‡æ•°
+    ElseIf å¹´é½¢ <= 12 Then
+        Wtemp = å®Ÿä½“é‡ / (Range("Hight") ^ 3) * 10 ^ 7              'ï¾›ï½°ï¾šï¾™æŒ‡æ•°
     Else
-        Wtemp = WorksheetFunction.Round(À‘Ìd / •W€‘Ìd * 100, 0) 'ÌŞÛ°¶°w”
+        Wtemp = WorksheetFunction.Round(å®Ÿä½“é‡ / æ¨™æº–ä½“é‡ * 100, 0) 'ï¾Œï¾ï¾›ï½°ï½¶ï½°æŒ‡æ•°
     End If
     Rst_Kiso.Fields("Taiis").Value = Wtemp
-'   ‘Ì•\–ÊÏ
-    Rst_Kiso.Fields("Aansa").Value = Eiyo01_523_taihyou(À‘Ìd)
-    Rst_Kiso.Fields("Bansa").Value = Eiyo01_523_taihyou(•W€‘Ìd)
+'   ä½“è¡¨é¢ç©
+    Rst_Kiso.Fields("Aansa").Value = Eiyo01_523_taihyou(å®Ÿä½“é‡)
+    Rst_Kiso.Fields("Bansa").Value = Eiyo01_523_taihyou(æ¨™æº–ä½“é‡)
     Range("ks2_Aansa") = Rst_Kiso.Fields("Aansa").Value
     Range("ks2_Aansa").Offset(0, 1) = Rst_Kiso.Fields("Bansa").Value
-'   ¶Šˆw”
-    Select Case ˜Jì
+'   ç”Ÿæ´»æŒ‡æ•°
+    Select Case åŠ´ä½œ
         Case "A":  Wtemp = 0.35
         Case "B":  Wtemp = 0.5
         Case "C":  Wtemp = 0.75
@@ -1459,83 +1460,83 @@ Dim Wtext       As String
     End Select
     Rst_Kiso.Fields("Aansx").Value = Wtemp
     Range("ks2_Aansx") = Wtemp
-'   ’PˆÊ•\–ÊÏ‚ ‚½‚è‚ÌŠî‘b‘ãÓ
-    If ”N—î < 20 Then
-        KisoCd1 = ”N—î
-    ElseIf ”N—î < 80 Then
-        KisoCd1 = Int(”N—î / 10) * 10
+'   å˜ä½è¡¨é¢ç©ã‚ãŸã‚Šã®åŸºç¤ä»£è¬
+    If å¹´é½¢ < 20 Then
+        KisoCd1 = å¹´é½¢
+    ElseIf å¹´é½¢ < 80 Then
+        KisoCd1 = Int(å¹´é½¢ / 10) * 10
     Else
         KisoCd1 = 80
     End If
     If Range("Sex") = 1 Then: KisoCd1 = KisoCd1 + 100
-    mySqlStr = "SELECT Šî‘b‘ãÓ,Šˆ“®‘ãÓ FROM " & Tbl_Need & " Where Ncode = " & KisoCd1
+    mySqlStr = "SELECT åŸºç¤ä»£è¬,æ´»å‹•ä»£è¬ FROM " & Tbl_Need & " Where Ncode = " & KisoCd1
     Set Rst_Need = myCon.Execute(mySqlStr)
     If Rst_Need.EOF Then
-        MsgBox "•K—v—Êƒ}ƒXƒ^‚ÌƒL[‚È‚µ:" & KisoCd1
+        MsgBox "å¿…è¦é‡ãƒã‚¹ã‚¿ã®ã‚­ãƒ¼ãªã—:" & KisoCd1
     End If
-    Rst_Kiso.Fields("Aans3").Value = Rst_Need.Fields("Šî‘b‘ãÓ").Value
+    Rst_Kiso.Fields("Aans3").Value = Rst_Need.Fields("åŸºç¤ä»£è¬").Value
     Range("ks2_kisocd") = KisoCd1
     Range("ks2_kisot") = Rst_Kiso.Fields("Aans3").Value
-'   Šî‘b‘ãÓ
+'   åŸºç¤ä»£è¬
     Rst_Kiso.Fields("Aansb").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Aans3").Value _
-                                                           * Rst_Kiso.Fields("Aansa").Value * 24, 2)    'À‘Ìd‚ÌŠî‘b‘ãÓ^“ú
-    Rst_Kiso.Fields("Aansc").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Aansb").Value / 1440, 2)  'À‘Ìd‚ÌŠî‘b‘ãÓ^•ª
-    Rst_Kiso.Fields("Aansd").Value = Eiyo01_524ansd(Rst_Kiso.Fields("Aansb").Value)                     'À‘Ìd‚ÌE•W€—Ê
+                                                           * Rst_Kiso.Fields("Aansa").Value * 24, 2)    'å®Ÿä½“é‡ã®åŸºç¤ä»£è¬ï¼æ—¥
+    Rst_Kiso.Fields("Aansc").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Aansb").Value / 1440, 2)  'å®Ÿä½“é‡ã®åŸºç¤ä»£è¬ï¼åˆ†
+    Rst_Kiso.Fields("Aansd").Value = Eiyo01_524ansd(Rst_Kiso.Fields("Aansb").Value)                     'å®Ÿä½“é‡ã®Eæ¨™æº–é‡
     
     Rst_Kiso.Fields("Bansb").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Aans3").Value _
-                                                           * Rst_Kiso.Fields("Bansa").Value * 24, 2)    '•W€‘Ìd‚ÌŠî‘b‘ãÓ^“ú
-    Rst_Kiso.Fields("Bansc").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Bansb").Value / 1440, 2)  '•W€‘Ìd‚ÌŠî‘b‘ãÓ^•ª
-    Rst_Kiso.Fields("Bansd").Value = Eiyo01_524ansd(Rst_Kiso.Fields("Bansb").Value)                     '•W€‘Ìd‚ÌE•W€—Ê
-    Range("ks2_Aansb") = Rst_Kiso.Fields("Aansb").Value                 'À‘Ìd‚ÌŠî‘b‘ãÓ^“ú
-    Range("ks2_Aansc") = Rst_Kiso.Fields("Aansc").Value                 'À‘Ìd‚ÌŠî‘b‘ãÓ^•ª
-    Range("ks2_Aansd") = Rst_Kiso.Fields("Aansd").Value                 'À‘Ìd‚ÌE•W€—Ê
-    Range("ks2_Aansb").Offset(0, 1) = Rst_Kiso.Fields("Bansb").Value    '•W€‘Ìd‚ÌŠî‘b‘ãÓ^“ú
-    Range("ks2_Aansc").Offset(0, 1) = Rst_Kiso.Fields("Bansc").Value    '•W€‘Ìd‚ÌŠî‘b‘ãÓ^•ª
-    Range("ks2_Aansd").Offset(0, 1) = Rst_Kiso.Fields("Bansd").Value    '•W€‘Ìd‚ÌE•W€—Ê
+                                                           * Rst_Kiso.Fields("Bansa").Value * 24, 2)    'æ¨™æº–ä½“é‡ã®åŸºç¤ä»£è¬ï¼æ—¥
+    Rst_Kiso.Fields("Bansc").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Bansb").Value / 1440, 2)  'æ¨™æº–ä½“é‡ã®åŸºç¤ä»£è¬ï¼åˆ†
+    Rst_Kiso.Fields("Bansd").Value = Eiyo01_524ansd(Rst_Kiso.Fields("Bansb").Value)                     'æ¨™æº–ä½“é‡ã®Eæ¨™æº–é‡
+    Range("ks2_Aansb") = Rst_Kiso.Fields("Aansb").Value                 'å®Ÿä½“é‡ã®åŸºç¤ä»£è¬ï¼æ—¥
+    Range("ks2_Aansc") = Rst_Kiso.Fields("Aansc").Value                 'å®Ÿä½“é‡ã®åŸºç¤ä»£è¬ï¼åˆ†
+    Range("ks2_Aansd") = Rst_Kiso.Fields("Aansd").Value                 'å®Ÿä½“é‡ã®Eæ¨™æº–é‡
+    Range("ks2_Aansb").Offset(0, 1) = Rst_Kiso.Fields("Bansb").Value    'æ¨™æº–ä½“é‡ã®åŸºç¤ä»£è¬ï¼æ—¥
+    Range("ks2_Aansc").Offset(0, 1) = Rst_Kiso.Fields("Bansc").Value    'æ¨™æº–ä½“é‡ã®åŸºç¤ä»£è¬ï¼åˆ†
+    Range("ks2_Aansd").Offset(0, 1) = Rst_Kiso.Fields("Bansd").Value    'æ¨™æº–ä½“é‡ã®Eæ¨™æº–é‡
 
-'   Š—v—Ê@ƒGƒlƒ‹ƒM[  -------------------------------------------------------------------------------------
-    If Rst_Kiso.Fields("Tenes").Value = 1 Then              'ƒGƒlƒ‹ƒM[w’èE’l
+'   æ‰€è¦é‡ã€€ã‚¨ãƒãƒ«ã‚®ãƒ¼  -------------------------------------------------------------------------------------
+    If Rst_Kiso.Fields("Tenes").Value = 1 Then              'ã‚¨ãƒãƒ«ã‚®ãƒ¼æŒ‡å®šãƒ»å€¤
         Wenerg1 = Rst_Kiso.Fields("Tenee").Value
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 1
-    ElseIf Rst_Kiso.Fields("Tenes").Value = 2 Then          'ƒGƒlƒ‹ƒM[w’èEÀ‘Ìd
-        Wenerg1 = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tenee").Value * À‘Ìd, 2)
+    ElseIf Rst_Kiso.Fields("Tenes").Value = 2 Then          'ã‚¨ãƒãƒ«ã‚®ãƒ¼æŒ‡å®šãƒ»å®Ÿä½“é‡
+        Wenerg1 = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tenee").Value * ï¿½ï¿½ï¿½Ìd, 2)
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 2
-    ElseIf Rst_Kiso.Fields("Tenes").Value = 3 Then          'ƒGƒlƒ‹ƒM[w’èE•W€‘Ìd
-        Wenerg1 = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tenee").Value * •W€‘Ìd, 2)
+    ElseIf Rst_Kiso.Fields("Tenes").Value = 3 Then          'ã‚¨ãƒãƒ«ã‚®ãƒ¼æŒ‡å®šãƒ»æ¨™æº–ä½“é‡
+        Wenerg1 = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tenee").Value * ï¿½Wï¿½ï¿½ï¿½Ìd, 2)
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 3
-    ElseIf ”DP = 1 Then                                    '”DP‘OŠú
+    ElseIf ï¿½Dï¿½P = 1 Then                                    'å¦Šå¨ å‰æœŸ
         Wenerg1 = Rst_Kiso.Fields("Bansd").Value + 150
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value + 150
         Wcondition = 4
-    ElseIf ”DP = 2 Then                                    '”DPŒãŠú
+    ElseIf ï¿½Dï¿½P = 2 Then                                    'å¦Šå¨ å¾ŒæœŸ
         Wenerg1 = Rst_Kiso.Fields("Bansd").Value + 350
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value + 350
         Wcondition = 5
-    ElseIf ”DP = 3 Then                                    'ö“ûŠú
+    ElseIf ï¿½Dï¿½P = 3 Then                                    'æˆä¹³æœŸ
         Wenerg1 = Rst_Kiso.Fields("Bansd").Value + 700
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value + 700
         Wcondition = 6
-    ElseIf Rst_Kiso.Fields("Qill1").Value <> 0 Then         '“œ”A•a
+    ElseIf Rst_Kiso.Fields("Qill1").Value <> 0 Then         'ç³–å°¿ç—…
         Wenerg1 = Rst_Kiso.Fields("Bansd").Value - 200
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 7
-    ElseIf Rst_Kiso.Fields("Qsrmr").Value <> 0 Then         'ƒXƒ|[ƒc
+    ElseIf Rst_Kiso.Fields("Qsrmr").Value <> 0 Then         'ã‚¹ãƒãƒ¼ãƒ„
         Wenerg1 = Rst_Kiso.Fields("Aansb").Value _
                 + WorksheetFunction.RoundDown((Rst_Kiso.Fields("Qsrmr").Value + 1.2) _
                                              * Rst_Kiso.Fields("Qsmin").Value _
-                                             * Rst_Need.Fields("Šˆ“®‘ãÓ").Value _
+                                             * Rst_Need.Fields("æ´»å‹•ä»£è¬").Value _
                                              * Rst_Kiso.Fields("Aansc").Value, 2)
         Wenerg2 = Wenerg1
         Wcondition = 8
     ElseIf Rst_Kiso.Fields("Taiis").Value <= 90 Or _
-           Rst_Kiso.Fields("Taiis").Value >= 120 Then      '”ì–
+           Rst_Kiso.Fields("Taiis").Value >= 120 Then      'è‚¥æº€
         Wenerg1 = Rst_Kiso.Fields("Bansd").Value
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 9
-    Else                                                    '‚»‚Ì‘¼ˆê”Ê
+    Else                                                    'ãã®ä»–ä¸€èˆ¬
         Wenerg1 = Rst_Kiso.Fields("Aansd").Value
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 10
@@ -1545,21 +1546,21 @@ Dim Wtext       As String
     Range("ks2_energ").Offset(1, 0) = Wenerg1
     Range("ks2_energ").Offset(2, 0) = Wenerg2
     
-'   Š—v—Ê@‚»‚Ì‘¼  ------------------------------------------------------------------------------------------
+'   æ‰€è¦é‡ã€€ãã®ä»–  ------------------------------------------------------------------------------------------
     KisoCd2 = KisoCd1 + 1000
     mySqlStr = "SELECT * FROM " & Tbl_Need & " Where Ncode = " & KisoCd2
     Set Rst_Need = myCon.Execute(mySqlStr)
     If Rst_Need.EOF Then
-        MsgBox "•K—v—Êƒ}ƒXƒ^‚ÌƒL[‚È‚µ:" & KisoCd2
+        MsgBox "å¿…è¦é‡ãƒã‚¹ã‚¿ã®ã‚­ãƒ¼ãªã—:" & KisoCd2
     End If
     Range("ks2_syoyo") = KisoCd2
     For i1 = 2 To 27
         Rst_Syoyo.Fields(i1 * 5 - 1).Value = Rst_Need.Fields(i1 + 1).Value
         Range("ks2_syoyo").Offset(i1, 0) = Rst_Need.Fields(i1 + 1).Value
     Next i1
-    If ˜Jì = "B" Or ”N—î < 15 Then
+    If åŠ´ä½œ = "B" Or å¹´é½¢ < 15 Then
     Else
-        Select Case ˜Jì
+        Select Case åŠ´ä½œ
             Case "A":  KisoCd2 = 1200
             Case "C":  KisoCd2 = 1220
             Case Else: KisoCd2 = 1230
@@ -1574,7 +1575,7 @@ Dim Wtext       As String
         mySqlStr = "SELECT * FROM " & Tbl_Need & " Where Ncode = " & KisoCd2
         Set Rst_Need = myCon.Execute(mySqlStr)
         If Rst_Need.EOF Then
-            MsgBox "•K—v—Êƒ}ƒXƒ^‚ÌƒL[‚È‚µ:" & KisoCd2
+            MsgBox "å¿…è¦é‡ãƒã‚¹ã‚¿ã®ã‚­ãƒ¼ãªã—:" & KisoCd2
         End If
         Range("ks2_syoyo").Offset(0, 1) = KisoCd2
         For i1 = 2 To 27
@@ -1583,17 +1584,17 @@ Dim Wtext       As String
             Range("ks2_syoyo").Offset(i1, 1) = Rst_Need.Fields(i1 + 1).Value
         Next i1
     End If
-    Select Case ”DP
-        Case 1:    KisoCd3 = 1401   '”DP‘OŠú
-        Case 2:    KisoCd3 = 1402   '”DPŒãŠú
-        Case 3:    KisoCd3 = 1403   'ö“ûŠú
+    Select Case å¦Šå¨ 
+        Case 1:    KisoCd3 = 1401   'å¦Šå¨ å‰æœŸ
+        Case 2:    KisoCd3 = 1402   'å¦Šå¨ å¾ŒæœŸ
+        Case 3:    KisoCd3 = 1403   'æˆä¹³æœŸ
         Case Else: KisoCd3 = 0
     End Select
     If KisoCd3 > 0 Then
         mySqlStr = "SELECT * FROM " & Tbl_Need & " Where Ncode = " & KisoCd3
         Set Rst_Need = myCon.Execute(mySqlStr)
         If Rst_Need.EOF Then
-            MsgBox "•K—v—Êƒ}ƒXƒ^‚ÌƒL[‚È‚µ:" & KisoCd3
+            MsgBox "å¿…è¦é‡ãƒã‚¹ã‚¿ã®ã‚­ãƒ¼ãªã—:" & KisoCd3
         End If
         Range("ks2_syoyo").Offset(0, 2) = KisoCd3
         For i1 = 2 To 27
@@ -1602,25 +1603,25 @@ Dim Wtext       As String
             Range("ks2_syoyo").Offset(i1, 2) = Rst_Need.Fields(i1 + 1).Value
         Next i1
     End If
-'   Š—v—Ê@‚½‚ñ‚Ï‚­¿  --------------------------------------------------------------------------------------
+'   æ‰€è¦é‡ã€€ãŸã‚“ã±ãè³ª  --------------------------------------------------------------------------------------
     Wcondition = 0
-    If Rst_Kiso.Fields("Tanps").Value = 1 Then              '‚½‚ñ‚Ï‚­w’èE’l
+    If Rst_Kiso.Fields("Tanps").Value = 1 Then              'ãŸã‚“ã±ãæŒ‡å®šãƒ»å€¤
         Wtemp = Rst_Kiso.Fields("Tanpe").Value
         Wcondition = 1
-    ElseIf Rst_Kiso.Fields("Tanps").Value = 2 Then          '‚½‚ñ‚Ï‚­w’èEÀ‘Ìd
-        Wtemp = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tanpe").Value * À‘Ìd, 2)
+    ElseIf Rst_Kiso.Fields("Tanps").Value = 2 Then          'ãŸã‚“ã±ãæŒ‡å®šãƒ»å®Ÿä½“é‡
+        Wtemp = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tanpe").Value * å®Ÿä½“é‡, 2)
         Wcondition = 2
-    ElseIf Rst_Kiso.Fields("Tanps").Value = 3 Then          '‚½‚ñ‚Ï‚­w’èE•W€‘Ìd
-        Wtemp = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tanpe").Value * •W€‘Ìd, 2)
+    ElseIf Rst_Kiso.Fields("Tanps").Value = 3 Then          'ãŸã‚“ã±ãæŒ‡å®šãƒ»æ¨™æº–ä½“é‡
+        Wtemp = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tanpe").Value * æ¨™æº–ä½“é‡, 2)
         Wcondition = 3
-    ElseIf Rst_Kiso.Fields("Tanps").Value = 4 Then          '‚½‚ñ‚Ï‚­w’èEƒGƒlƒ‹ƒM[”ä
+    ElseIf Rst_Kiso.Fields("Tanps").Value = 4 Then          'ãŸã‚“ã±ãæŒ‡å®šãƒ»ã‚¨ãƒãƒ«ã‚®ãƒ¼æ¯”
         Wtemp = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tanpe").Value _
                                           * Wenerg1 / 400, 2)
         Wcondition = 4
-    ElseIf Rst_Kiso.Fields("Qsrmr").Value <> 0 Then         'ƒXƒ|[ƒc
-        Wtemp = À‘Ìd * 1.4
+    ElseIf Rst_Kiso.Fields("Qsrmr").Value <> 0 Then         'ã‚¹ãƒãƒ¼ãƒ„
+        Wtemp = å®Ÿä½“é‡ * 1.4
         Wcondition = 5
-    ElseIf Rst_Kiso.Fields("Qwcnt").Value <> 0 Then         '³´²Ä¥ºİÄÛ°Ù
+    ElseIf Rst_Kiso.Fields("Qwcnt").Value <> 0 Then         'ï½³ï½´ï½²ï¾„ï½¥ï½ºï¾ï¾„ï¾›ï½°ï¾™
         If Wenerg1 < 1412 Then
             Wtemp = 60
             Wcondition = 6
@@ -1629,21 +1630,21 @@ Dim Wtext       As String
             Wcondition = 7
         End If
     Else
-        If ”N—î < 21 Then
+        If å¹´é½¢ < 21 Then
             If Range("Sex") = 0 Then
-'                          3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20Ë
+'                          3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20ï¿½ï¿½
                 Wtext = "117,116,122,124,128,135,138,144,140,138,136,129,125,121,117,117,113,113"
             Else
                 Wtext = "117,120,126,132,137,144,149,148,144,146,139,133,131,129,129,124,121,121"
             End If
             Warray = Split(Wtext, ",")
-            Wtemp = Warray(”N—î - 3)
-            If Rst_Kiso.Fields("Qsyog").Value = 1 Then: Wtemp = Wtemp + 20  'áŠQÒ
+            Wtemp = Warray(å¹´é½¢ - 3)
+            If Rst_Kiso.Fields("Qsyog").Value = 1 Then: Wtemp = Wtemp + 20  'éšœå®³è€…
             Wcondition = 8
         Else
-            i1 = Int(”N—î / 10) - 2
+            i1 = Int(å¹´é½¢ / 10) - 2
             If i1 > 6 Then: i1 = 6
-            Select Case ˜Jì       ' 20  30  40  50  60  70  80      Ë‘ã
+            Select Case åŠ´ä½œ       ' 20  30  40  50  60  70  80      æ‰ä»£
                 Case "A":  Wtext = "130,140,150,150,160,160,160"    'X=0.35  (A)
                 Case "B":  Wtext = "120,130,130,135,140,145,150"    'X=0.5   (B)
                 Case "C":  Wtext = "120,130,130,130,140,140,140"    'X=0.75  (C)
@@ -1654,103 +1655,103 @@ Dim Wtext       As String
             Wcondition = 9
         End If
         Wtemp = Wenerg1 * Wtemp / 4000
-        Select Case ”DP
-            Case 1: Wtemp = Wtemp + 10  '”DP‘OŠú
-            Case 2: Wtemp = Wtemp + 20  '”DPŒãŠú
-            Case 3: Wtemp = Wtemp + 20  'ö“ûŠú
+        Select Case å¦Šå¨ 
+            Case 1: Wtemp = Wtemp + 10  'å¦Šå¨ å‰æœŸ
+            Case 2: Wtemp = Wtemp + 20  'å¦Šå¨ å¾ŒæœŸ
+            Case 3: Wtemp = Wtemp + 20  'æˆä¹³æœŸ
         End Select
     End If
     Wtemp = WorksheetFunction.RoundDown(Wtemp, 2)
-    Rst_Syoyo.Fields("Syoyo02").Value = WorksheetFunction.RoundDown(Wtemp, 2)       '‚½‚ñ‚Ï‚­¿  (02)
-    Rst_Syoyo.Fields("Syoyo03").Value = WorksheetFunction.RoundDown(Wtemp / 2, 2)   '“®•¨‚½‚ñ‚Ï‚­(03)
-    Rst_Syoyo.Fields("Syoyo04").Value = WorksheetFunction.RoundDown(Wtemp / 2, 2)   'A•¨‚½‚ñ‚Ï‚­(04)
+    Rst_Syoyo.Fields("Syoyo02").Value = WorksheetFunction.RoundDown(Wtemp, 2)       'ãŸã‚“ã±ãè³ª  (02)
+    Rst_Syoyo.Fields("Syoyo03").Value = WorksheetFunction.RoundDown(Wtemp / 2, 2)   'å‹•ç‰©ãŸã‚“ã±ã(03)
+    Rst_Syoyo.Fields("Syoyo04").Value = WorksheetFunction.RoundDown(Wtemp / 2, 2)   'æ¤ç‰©ãŸã‚“ã±ã(04)
     Range("ks2_syoyo").Offset(2, 3) = Wcondition
-'   Š—v—Ê@‰¿  --------------------------------------------------------------------------
-    If ”DP > 0 Then
+'   æ‰€è¦é‡ã€€è„‚è³ª  --------------------------------------------------------------------------
+    If å¦Šå¨  > 0 Then
         Wtemp = 275
-    ElseIf ”N—î < 21 Then
-        If ˜Jì = "A" Then
+    ElseIf å¹´é½¢ < 21 Then
+        If åŠ´ä½œ = "A" Then
             Wtemp = 225
         Else
             Wtemp = 275
         End If
     Else
-        Select Case ˜Jì
+        Select Case åŠ´ä½œ
             Case "A", "B": Wtemp = 225
             Case Else:     Wtemp = 275
         End Select
     End If
     Wtemp = WorksheetFunction.RoundDown(Wenerg1 * Wtemp / 9000, 2)
-    Rst_Syoyo.Fields("Syoyo05").Value = Wtemp                                       '‰¿   (05)
+    Rst_Syoyo.Fields("Syoyo05").Value = Wtemp                                       'è„‚è³ª  (05)
     Rst_Syoyo.Fields("Syoyo26").Value = WorksheetFunction.Round(Wtemp * 0.34, 2)    'S      (24)
     Rst_Syoyo.Fields("Syoyo25").Value = WorksheetFunction.Round(Wtemp * 0.66, 2)    'P      (25)
-    Rst_Syoyo.Fields("Syoyo24").Value = 300                                         'ºÚ½ÃÛ°Ù(24)
+    Rst_Syoyo.Fields("Syoyo24").Value = 300                                         'ï½ºï¾šï½½ï¾ƒï¾›ï½°ï¾™(24)
     
     Rst_Syoyo.Fields("Syoyo06").Value = WorksheetFunction.RoundDown((Wenerg1 _
                                       - Rst_Syoyo.Fields("Syoyo02").Value * 4 _
-                                      - Rst_Syoyo.Fields("Syoyo05").Value * 9) / 4, 2)  '“œ¿(06)
-    If Rst_Kiso.Fields("Qill1").Value <> 0 Then                                         '»“œ(27)
-        Rst_Syoyo.Fields("Syoyo27").Value = 10          '“œ”A•a
+                                      - Rst_Syoyo.Fields("Syoyo05").Value * 9) / 4, 2)  'ç³–è³ª(06)
+    If Rst_Kiso.Fields("Qill1").Value <> 0 Then                                         'ç ‚ç³–(27)
+        Rst_Syoyo.Fields("Syoyo27").Value = 10          'ç³–å°¿ç—…
     ElseIf Rst_Kiso.Fields("Qwcnt").Value <> 0 Then
-        Rst_Syoyo.Fields("Syoyo27").Value = 10          '³´²Ä¥ºİÄÛ°Ù
+        Rst_Syoyo.Fields("Syoyo27").Value = 10          'ï½³ï½´ï½²ï¾„ï½¥ï½ºï¾ï¾„ï¾›ï½°ï¾™
     Else
-        Rst_Syoyo.Fields("Syoyo27").Value = 30          '‚»‚Ì‘¼(ˆê”Ê)
+        Rst_Syoyo.Fields("Syoyo27").Value = 30          'ãã®ä»–(ä¸€èˆ¬)
     End If
-    Rst_Syoyo.Fields("Syoyo07").Value = WorksheetFunction.RoundDown(Wenerg1 * 0.0099, 2)    'H•¨‚¹‚ñ‚¢(07)
-'   ¶Ù¼³Ñ(08) ------------------------------------------------------------------------------------------------
+    Rst_Syoyo.Fields("Syoyo07").Value = WorksheetFunction.RoundDown(Wenerg1 * 0.0099, 2)    'é£Ÿç‰©ã›ã‚“ã„(07)
+'   ï½¶ï¾™ï½¼ï½³ï¾‘(08) ------------------------------------------------------------------------------------------------
     Wcondition = 0
-    If ”N—î < 21 Then
+    If å¹´é½¢ < 21 Then
         If Range("Sex") = 0 Then
-'                      3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20Ë
+'                      3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20ï¿½ï¿½
             Wtext = "171,168,169,173,176,165,169,177,187,188,177,156,134,124,115,109,103,103"
         Else
             Wtext = "173,169,169,174,182,177,184,184,175,158,142,133,119,108,100,100,100,100"
         End If
         Warray = Split(Wtext, ",")
-        Wtemp = WorksheetFunction.RoundDown(À‘Ìd * Warray(”N—î - 3) / 10, 2)
+        Wtemp = WorksheetFunction.RoundDown(å®Ÿä½“é‡ * Warray(å¹´é½¢ - 3) / 10, 2)
         Wcondition = 1
-    ElseIf ”N—î < 60 Then
-        Wtemp = À‘Ìd * 10
+    ElseIf å¹´é½¢ < 60 Then
+        Wtemp = å®Ÿä½“é‡ * 10
         Wcondition = 2
     Else
         Wtemp = 600
         Wcondition = 3
     End If
-    Select Case ”DP
+    Select Case å¦Šå¨ 
         Case 1, 2
-            Wtemp = Wtemp + 400 '”DP‘OŒãŠú
+            Wtemp = Wtemp + 400 'å¦Šå¨ å‰å¾ŒæœŸ
             Wcondition = 4
         Case 3
-            Wtemp = Wtemp + 500 'ö“ûŠú
+            Wtemp = Wtemp + 500 'æˆä¹³æœŸ
             Wcondition = 5
     End Select
-    Rst_Syoyo.Fields("Syoyo08").Value = Wtemp   '¶Ù¼³Ñ(08)
-    Rst_Syoyo.Fields("Syoyo09").Value = Wtemp   'ƒŠƒ“ (09)
+    Rst_Syoyo.Fields("Syoyo08").Value = Wtemp   'ï½¶ï¾™ï½¼ï½³ï¾‘(08)
+    Rst_Syoyo.Fields("Syoyo09").Value = Wtemp   'ãƒªãƒ³ (09)
     Range("ks2_syoyo").Offset(8, 3) = Wcondition
-'   “S  ------------------------------------------------------------------------------------------------------
-    Select Case ”DP
-        Case 1:    Wtemp = 15               '”DP‘OŠú
-        Case 2, 3: Wtemp = 20               '”DPŒãŠúEö“ûŠú
+'   é‰„  ------------------------------------------------------------------------------------------------------
+    Select Case å¦Šå¨ 
+        Case 1:    Wtemp = 15               'å¦Šå¨ å‰æœŸ
+        Case 2, 3: Wtemp = 20               'å¦Šå¨ å¾ŒæœŸãƒ»æˆä¹³æœŸ
         Case Else
-            Select Case ”N—î
-                Case 1 To 5:   Wtemp = 8    '    ‚TËˆÈ‰º
-                Case 6 To 8:   Wtemp = 9    ' 6` 8Ë
-                Case 9 To 11:  Wtemp = 10   ' 9`11Ë
-                Case 12 To 19: Wtemp = 12   '12`19Ë
+            Select Case å¹´é½¢
+                Case 1 To 5:   Wtemp = 8    '    ï¼•æ‰ä»¥ä¸‹
+                Case 6 To 8:   Wtemp = 9    ' 6ã€œ 8æ‰
+                Case 9 To 11:  Wtemp = 10   ' 9ã€œ11æ‰
+                Case 12 To 19: Wtemp = 12   '12ã€œ19æ‰
                 Case 20 To 49
                     Select Case Range("Sex")
-                        Case 0:    Wtemp = 10   '20`49Ë‚Ì’j
-                        Case Else: Wtemp = 12   '20`49Ë‚Ì—
+                        Case 0:    Wtemp = 10   '20ã€œ49æ‰ã®ç”·
+                        Case Else: Wtemp = 12   '20ã€œ49æ‰ã®å¥³
                     End Select
-                Case Else: Wtemp = 10           '50ËˆÈã
+                Case Else: Wtemp = 10           '50æ‰ä»¥ä¸Š
             End Select
     End Select
     Rst_Syoyo.Fields("Syoyo10").Value = Wtemp
-'   VB1/VB2/Å²±¼İ  -------------------------------------------------------------------------------------------
+'   VB1/VB2/ï¾…ï½²ï½±ï½¼ï¾  -------------------------------------------------------------------------------------------
     Rst_Syoyo.Fields("Syoyo13").Value = WorksheetFunction.RoundDown(Wenerg2 * 0.0004, 2)
     Rst_Syoyo.Fields("Syoyo14").Value = WorksheetFunction.RoundDown(Wenerg2 * 0.00055, 2)
     Rst_Syoyo.Fields("Syoyo15").Value = WorksheetFunction.RoundDown(Wenerg2 * 0.0066, 2)
-    Select Case ”DP
+    Select Case å¦Šå¨ 
         Case 1
             Rst_Syoyo.Fields("Syoyo13").Value = Rst_Syoyo.Fields("Syoyo13").Value + 0.1
             Rst_Syoyo.Fields("Syoyo14").Value = Rst_Syoyo.Fields("Syoyo14").Value + 0.1
@@ -1766,18 +1767,18 @@ Dim Wtext       As String
     End Select
     
     If Rst_Kiso.Fields("Qill2").Value = 313 Then
-        Rst_Syoyo.Fields("Syoyo23").Value = 6       '¼µ
-        Rst_Syoyo.Fields("Syoyo11").Value = 2800    'ÅÄØ³Ñ
+        Rst_Syoyo.Fields("Syoyo23").Value = 6       'ï½¼ï½µ
+        Rst_Syoyo.Fields("Syoyo11").Value = 2800    'ï¾…ï¾„ï¾˜ï½³ï¾‘
         Range("ks2_syoyo").Offset(11, 3) = 1
         Range("ks2_syoyo").Offset(23, 3) = 1
     Else
-        Rst_Syoyo.Fields("Syoyo23").Value = 10      '¼µ
+        Rst_Syoyo.Fields("Syoyo23").Value = 10      'ï½¼ï½µ
         Range("ks2_syoyo").Offset(23, 3) = 2
     End If
     Rst_Syoyo.Fields("Syoyo20").Value = WorksheetFunction.Round(Rst_Syoyo.Fields("Syoyo25").Value * 0.6, 2)     'VE
-    Rst_Syoyo.Fields("Syoyo21").Value = Rst_Syoyo.Fields("Syoyo11").Value                                       '¶Ø³Ñ <= ÅÄØ³Ñ
+    Rst_Syoyo.Fields("Syoyo21").Value = Rst_Syoyo.Fields("Syoyo11").Value                                       'ï½¶ï¾˜ï½³ï¾‘ <= ï¾…ï¾„ï¾˜ï½³ï¾‘
     Rst_Syoyo.Fields("Syoyo22").Value = WorksheetFunction.RoundDown(Rst_Syoyo.Fields("Syoyo08").Value / 2, 2)   'Mg=Ca/2
-'   ‰h—{‘f”ä—¦
+'   æ „é¤Šç´ æ¯”ç‡
     If Rst_Syoyo.Fields("Foodh01").Value = 0 Then
         Rst_Kiso.Fields("Per01").Value = 0
         Rst_Kiso.Fields("Per02").Value = 0
@@ -1819,7 +1820,7 @@ Dim Wtext       As String
     Rst_Need.Close
     Set Rst_Need = Nothing
 
-'   XVŒ‹‰Ê•\¦
+    '   æ›´æ–°çµæœè¡¨ç¤º
     For i1 = 1 To Rst_Kiso.Fields.Count
         Cells(3, i1).Value = Rst_Kiso.Fields(i1 - 1).Value
     Next
@@ -1828,47 +1829,47 @@ Dim Wtext       As String
     Next i1
 End Function
 '--------------------------------------------------------------------------------
-'   01_523 ‘Ì•\–ÊÏ
-'       ‚TÎˆÈ‰º    ‘Ìd^0.423 * g’·^0.362 * 382.89 / 10000
-'       ‚UÎˆÈã    ‘Ìd^0.444 * g’·^0.663 *  88.83 / 10000
+'   01_523 ä½“è¡¨é¢ç©
+'       ï¼•æ­³ä»¥ä¸‹    ä½“é‡^0.423 * èº«é•·^0.362 * 382.89 / 10000
+'       ï¼–æ­³ä»¥ä¸Š    ä½“é‡^0.444 * èº«é•·^0.663 *  88.83 / 10000
 '--------------------------------------------------------------------------------
-Function Eiyo01_523_taihyou(‘Ìd As Double) As Double
+Function Eiyo01_523_taihyou(ä½“é‡ As Double) As Double
 Dim Wtemp   As Double
 
     If Range("Age") < 6 Then
-        Wtemp = WorksheetFunction.Round(‘Ìd ^ 0.423 * Range("hight") ^ 0.362 * 382.89 / 10000, 2)
+        Wtemp = WorksheetFunction.Round(ï¿½Ìd ^ 0.423 * Range("hight") ^ 0.362 * 382.89 / 10000, 2)
     Else
-        Wtemp = WorksheetFunction.Round(‘Ìd ^ 0.444 * Range("hight") ^ 0.663 * 88.83 / 10000, 2)
+        Wtemp = WorksheetFunction.Round(ï¿½Ìd ^ 0.444 * Range("hight") ^ 0.663 * 88.83 / 10000, 2)
     End If
     Eiyo01_523_taihyou = Wtemp
 End Function
 '--------------------------------------------------------------------------------
-'   01_524 ƒGƒlƒ‹ƒM[•W€—Ê@¶ŠˆŠˆ“®‹­“x•â³
-'       áŠQÒ      50%
-'       ‚U‚OÎ‘ã    90%
-'       ‚V‚OÎ‘ã    80%
-'       ‚W‚OÎˆÈã  70%
-'       Šî‘b‘ãÓ^“ú * (•â³¶ŠˆŠˆ“®‹­“x+1) * 1.1
+'   01_524 ã‚¨ãƒãƒ«ã‚®ãƒ¼æ¨™æº–é‡ã€€ç”Ÿæ´»æ´»å‹•å¼·åº¦è£œæ­£
+'       éšœå®³è€…      50%
+'       ï¼–ï¼æ­³ä»£    90%
+'       ï¼—ï¼æ­³ä»£    80%
+'       ï¼˜ï¼æ­³ä»¥ä¸Š  70%
+'       åŸºç¤ä»£è¬ï¼æ—¥ * (è£œæ­£ç”Ÿæ´»æ´»å‹•å¼·åº¦+1) * 1.1
 '--------------------------------------------------------------------------------
-Function Eiyo01_524ansd(Šî‘b‘ãÓ As Double) As Double
+Function Eiyo01_524ansd(åŸºç¤ä»£è¬ As Double) As Double
 Dim Wtemp   As Double
     
-    If Rst_Kiso.Fields("Qsyog").Value = 1 Then                      'áŠQÒ
+    If Rst_Kiso.Fields("Qsyog").Value = 1 Then                      'éšœå®³è€…
         Wtemp = WorksheetFunction.Round(Rst_Kiso.Fields("Aansx").Value * 0.5, 2)
-    ElseIf Range("Age") < 60 Then                                   '‚U‚OÎ–¢–
+    ElseIf Range("Age") < 60 Then                                   'ï¼–ï¼æ­³æœªæº€
         Wtemp = Rst_Kiso.Fields("Aansx").Value
-    ElseIf Range("Age") >= 60 And Range("Age") <= 69 Then           '‚U‚OÎ‘ã
+    ElseIf Range("Age") >= 60 And Range("Age") <= 69 Then           'ï¼–ï¼æ­³ä»£
         Wtemp = WorksheetFunction.Round(Rst_Kiso.Fields("Aansx").Value * 0.9, 2)
-    ElseIf Range("Age") >= 70 And Range("Age") <= 79 Then           '‚V‚OÎ‘ã
+    ElseIf Range("Age") >= 70 And Range("Age") <= 79 Then           'ï¼—ï¼æ­³ä»£
         Wtemp = WorksheetFunction.Round(Rst_Kiso.Fields("Aansx").Value * 0.8, 2)
-    Else                                                            '‚W‚OÎˆÈã
+    Else                                                            'ï¼˜ï¼æ­³ä»¥ä¸Š
         Wtemp = WorksheetFunction.Round(Rst_Kiso.Fields("Aansx").Value * 0.7, 2)
     End If
-    Wtemp = WorksheetFunction.Round(Šî‘b‘ãÓ * (1 + Wtemp) * 1.1, 2)
+    Wtemp = WorksheetFunction.Round(åŸºç¤ä»£è¬ * (1 + Wtemp) * 1.1, 2)
     Eiyo01_524ansd = Wtemp
 End Function
 '--------------------------------------------------------------------------------
-'   01_525 ‰ß•s‘«ŒvZAƒAƒhƒoƒCƒX
+'   01_525 éä¸è¶³è¨ˆç®—ã€ã‚¢ãƒ‰ãƒã‚¤ã‚¹
 '--------------------------------------------------------------------------------
 Function Eiyo01_525MealDiffe() As Long
 Dim i1      As Long
@@ -1883,7 +1884,7 @@ Dim Wtext2  As String
             Wans2 = 5
         Else
             Wans1 = WorksheetFunction.Round(Rst_Syoyo.Fields(i1 * 5 - 2).Value _
-                                          / Rst_Syoyo.Fields(i1 * 5 - 1).Value * 100, 0) - 100   '‰ß•s‘«—¦
+                                          / Rst_Syoyo.Fields(i1 * 5 - 1).Value * 100, 0) - 100   'éä¸è¶³ç‡
             If Wans1 <= Fld_Field(i1, 16) Then
                 Wans2 = 1
             ElseIf Wans1 <= Fld_Field(i1, 17) Then
@@ -1899,8 +1900,8 @@ Dim Wtext2  As String
         Rst_Syoyo.Fields(i1 * 5 + 0).Value = Wans1
         Rst_Syoyo.Fields(i1 * 5 + 1).Value = Wans2
     Next i1
-'   ƒAƒhƒoƒCƒX
-    Wtext = Rst_Kiso.Fields("Q3rec").Value      'HKŠµ
+'   ã‚¢ãƒ‰ãƒã‚¤ã‚¹
+    Wtext = Rst_Kiso.Fields("Q3rec").Value      'é£Ÿç¿’æ…£
     Wans2 = 0
     For i1 = 1 To 10
         Wans1 = Val(Mid(Wtext, i1, 1))
@@ -1919,11 +1920,11 @@ Dim Wtext2  As String
             Case Else:     Wans1 = 3010
         End Select
     Else
-        Wans1 = 98  '2008/4/25 3050‚ğ0098‚É•ÏX
+        Wans1 = 98  '2008/4/25 3050ã‚’0098ã«å¤‰æ›´
     End If
     Rst_Kiso.Fields("Badv1").Value = Wans1
     
-    Wtext = Rst_Kiso.Fields("Q4rec").Value      '‹x—{
+    Wtext = Rst_Kiso.Fields("Q4rec").Value      'ä¼‘é¤Š
     Wans2 = 0
     For i1 = 1 To 5
         Wans1 = Val(Mid(Wtext, i1, 1))
@@ -1938,11 +1939,11 @@ Dim Wtext2  As String
             Case Else:     Wans1 = 3110
         End Select
     Else
-        Wans1 = 98  '2008/4/25 3150‚ğ0098‚É•ÏX
+        Wans1 = 98  '2008/4/25 3150ã‚’0098ã«å¤‰æ›´
     End If
     Rst_Kiso.Fields("Badv2").Value = Wans1
     
-    Wtext = Rst_Kiso.Fields("Q5rec").Value      '‰^“®
+    Wtext = Rst_Kiso.Fields("Q5rec").Value      'é‹å‹•
     Wans2 = 0
     For i1 = 1 To 3
         Wans1 = Val(Mid(Wtext, i1, 1))
@@ -1957,13 +1958,13 @@ Dim Wtext2  As String
             Case Else:    Wans1 = 3210
         End Select
     Else
-        Wans1 = 98  '2008/4/25 3250‚ğ0098‚É•ÏX
+        Wans1 = 98  '2008/4/25 3250ã‚’0098ã«å¤‰æ›´
     End If
     Rst_Kiso.Fields("Badv3").Value = Wans1
     
     Wtext = Rst_Kiso.Fields("Q6r_a").Value & Rst_Kiso.Fields("Q6r_b").Value _
           & Rst_Kiso.Fields("Q6r_c").Value & Rst_Kiso.Fields("Q6r_d").Value _
-          & Rst_Kiso.Fields("Q6r_e").Value                              'Œ’N’²¸
+          & Rst_Kiso.Fields("Q6r_e").Value                              'å¥åº·èª¿æŸ»
     Wans2 = 0
     For i1 = 1 To 35
         If Mid(Wtext, i1, 1) = "9" Then: Exit For
@@ -2004,13 +2005,13 @@ Dim Wtext2  As String
     End If
     Rst_Kiso.Fields("Badv5").Value = Wans1
     
-    If Rst_Kiso.Fields("Qsrmr").Value <> 0 Then            '  ³´²Ä ±ÄŞÊŞ²½
+    If Rst_Kiso.Fields("Qsrmr").Value <> 0 Then            '  ï½³ï½´ï½²ï¾„ ï½±ï¾„ï¾ï¾Šï¾ï½²ï½½
        Wans1 = 2801
     ElseIf Rst_Kiso.Fields("age").Value <= 12 Then
        Wans1 = 2806
     ElseIf Rst_Kiso.Fields("Taiis").Value < 120 Or _
            Rst_Kiso.Fields("Qcnd1").Value = 1 Or _
-           Rst_Kiso.Fields("Qcnd1").Value = 2 Then      ' 120%ĞÏİ OR Æİ¼İ
+           Rst_Kiso.Fields("Qcnd1").Value = 2 Then      ' 120%ï¾ï¾ï¾ OR ï¾†ï¾ï½¼ï¾
        Wans1 = 0
     Else
        Wans1 = 2803
@@ -2022,37 +2023,36 @@ Dim Wtext2  As String
     Rst_Kiso.Fields("Cadv3").Value = 98
     Rst_Kiso.Fields("Cadv4").Value = 98
     i1 = 1
-    If Rst_Syoyo.Fields("Syort20").Value < -37 Then     'VE Ì¿¸
+    If Rst_Syoyo.Fields("Syort20").Value < -37 Then     'VE ï¾Œï½¿ï½¸
        If Rst_Kiso.Fields("age").Value < 40 And _
           Rst_Kiso.Fields("Sex").Value = 1 Then
-           Call Eiyo01_526Cadvs(3630)                   '39²¶  µİÅ
+           Call Eiyo01_526Cadvs(3630)                   '39ï½²ï½¶  ï½µï¾ï¾…
        Else
-           Call Eiyo01_526Cadvs(3610)                   'µÄº & 40²¼Ş®³ µİÅ
+           Call Eiyo01_526Cadvs(3610)                   'ï½µï¾„ï½º & 40ï½²ï½¼ï¾ï½®ï½³ ï½µï¾ï¾…
        End If
     End If
     If Rst_Syoyo.Fields("Syort12") < -37 Then: Call Eiyo01_526Cadvs(3640)   'VA
     If Rst_Syoyo.Fields("Syort13") < -37 Then: Call Eiyo01_526Cadvs(3620)   'VB1
     If Rst_Syoyo.Fields("Syort08") < -37 Then: Call Eiyo01_526Cadvs(3650)   'CA
-    If Rst_Syoyo.Fields("Syort07") < -37 Then: Call Eiyo01_526Cadvs(3660)   '¾İ²
-    
-    If Rst_Syoyo.Fields("Syort23") > 12 Then: Call Eiyo01_527Cadvs(3730)    '¼µ
-    If Rst_Energ.Fields("Enet08") < 85 Then: Call Eiyo01_527Cadvs(3720)     '3¸Şİ ´²Ö³ ¾¯¼­
+    If Rst_Syoyo.Fields("Syort07") < -37 Then: Call Eiyo01_526Cadvs(3660)   'ï½¾ï¾ï½²
+
+    If Rst_Syoyo.Fields("Syort23") > 12 Then: Call Eiyo01_527Cadvs(3730)    'ï½¼ï½µ
+    If Rst_Energ.Fields("Enet08") < 85 Then: Call Eiyo01_527Cadvs(3720)     '3ï½¸ï¾ï¾ ï½´ï½²ï¾–ï½³ ï½¾ï½¯ï½¼ï½­
     If Rst_Syoyo.Fields("Syort08") < -37 Then: Call Eiyo01_527Cadvs(3760)   'CA
     If Rst_Energ.Fields("Enet08") < 85 Or _
-       Rst_Energ.Fields("Enet09") < 85 Then: Call Eiyo01_527Cadvs(3740)     '4¸Şİ
-    If Rst_Kiso.Fields("PER04") > 50 Then: Call Eiyo01_527Cadvs(3710)      'ÄŞ³ÌŞÂ ÀİÊß¸¼Â Ë
-    
+       Rst_Energ.Fields("Enet09") < 85 Then: Call Eiyo01_527Cadvs(3740)     '4ï½¸ï¾ï¾
+    If Rst_Kiso.Fields("PER04") > 50 Then: Call Eiyo01_527Cadvs(3710)      'ï¾„ï¾ï½³ï¾Œï¾ï¾‚ ï¾€ï¾ï¾Šï¾Ÿï½¸ï½¼ï¾‚ ï¾‹
     
 '                     ---- 0.35 ----  ---- 0.5 -----
     Wtext = Empty   '<=-110=><=111-=><=-110=><=111-=>
-    Wtext = Wtext & "00012023000120270001021500010211"  '   -20 µÄº
+    Wtext = Wtext & "00012023000120270001021500010211"  '   -20 ï½µï¾„ï½º
     Wtext = Wtext & "00012028000120210001021600010214"  ' 21-30
     Wtext = Wtext & "00013335000133340001202800012029"  ' 31-40
     Wtext = Wtext & "00013337000133360001202100012025"  ' 41-50
     Wtext = Wtext & "00012025000120290001021100010214"  ' 51-60
     Wtext = Wtext & "00012030000120260001021700010218"  ' 61-70
     Wtext = Wtext & "00012032000120310001020900010219"  ' 71-
-    Wtext = Wtext & "00010204000102030001021000010212"  '   -20 µİÅ
+    Wtext = Wtext & "00010204000102030001021000010212"  '   -20 ï½µï¾ï¾…
     Wtext = Wtext & "00012021000120220001020300010211"  ' 21-30
     Wtext = Wtext & "00012024000120230001021300010212"  ' 31-40
     Wtext = Wtext & "00012026000120250001020700010214"  ' 41-50
@@ -2062,12 +2062,12 @@ Dim Wtext2  As String
     If Rst_Kiso.Fields("Aansx") > 50 Then
         Wtext2 = "38394041"
     Else
-        If Rst_Kiso.Fields("Taiis").Value < 111 Then   'À²¶¸ ¼½³
+        If Rst_Kiso.Fields("Taiis").Value < 111 Then   'ï¾€ï½²ï½¶ï½¸ ï½¼ï½½ï½³
             Wans1 = 0
         Else
             Wans1 = 1
         End If
-        If Rst_Kiso.Fields("Aansx") = 0.5 Then: Wans1 = Wans1 + 2        '¾²¶Â ¼½³
+        If Rst_Kiso.Fields("Aansx") = 0.5 Then: Wans1 = Wans1 + 2        'ï½¾ï½²ï½¶ï¾‚ ï½¼ï½½ï½³
         Select Case Rst_Kiso.Fields("Age")
             Case 0 To 20:
             Case 21 To 30: Wans1 = Wans1 + 4
@@ -2077,7 +2077,7 @@ Dim Wtext2  As String
             Case 61 To 70: Wans1 = Wans1 + 20
             Case Else:     Wans1 = Wans1 + 24
         End Select
-        If Rst_Kiso.Fields("Sex") = 1 Then: Wans1 = Wans1 + 28        'µİÅ
+        If Rst_Kiso.Fields("Sex") = 1 Then: Wans1 = Wans1 + 28        'ï½µï¾ï¾…
         Wtext2 = Mid(Wtext, Wans1 * 8 + 1, 8)
     End If
     Rst_Kiso.Fields("Dadv1").Value = Left(Wtext2, 2)
@@ -2088,7 +2088,7 @@ Dim Wtext2  As String
     Eiyo01_525MealDiffe = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_526@CƒAƒhƒoƒCƒX‚P
+'   01_526 Cã‚¢ãƒ‰ãƒã‚¤ã‚¹ï¼‘
 '--------------------------------------------------------------------------------
 Function Eiyo01_526Cadvs(advc As Long)
     If Rst_Kiso.Fields("Cadv1").Value = 98 Then
@@ -2098,7 +2098,7 @@ Function Eiyo01_526Cadvs(advc As Long)
     End If
 End Function
 '--------------------------------------------------------------------------------
-'   01_527@CƒAƒhƒoƒCƒX‚Q
+'   01_527 Cã‚¢ãƒ‰ãƒã‚¤ã‚¹ï¼’
 '--------------------------------------------------------------------------------
 Function Eiyo01_527Cadvs(advc As Long)
     If Rst_Kiso.Fields("Cadv3").Value = 98 Then
@@ -2108,7 +2108,7 @@ Function Eiyo01_527Cadvs(advc As Long)
     End If
 End Function
 '--------------------------------------------------------------------------------
-'   01_528@‰h—{”ä—¦
+'   01_528 æ „é¤Šæ¯”ç‡
 '--------------------------------------------------------------------------------
 Function Eiyo01_528Eiyohirit() As Long
 Dim i1      As Long
@@ -2202,7 +2202,7 @@ Dim Wtemp   As Double
     Eiyo01_528Eiyohirit = 0
 End Function
 '--------------------------------------------------------------------------------
-'   01_540@‹ŒÛHŒvZ’l‚Ì”äŠr—p
+'   01_540 æ—§æ‘‚é£Ÿè¨ˆç®—å€¤ã®æ¯”è¼ƒç”¨
 '--------------------------------------------------------------------------------
 Function Eiyo01_540Old_Check() As Long
 Dim mySqlStr    As String
@@ -2213,7 +2213,7 @@ Dim Lmax2       As Long
 Dim Lmax3       As Long
 Dim Errcnt      As Long
 
-'   XVŒ‹‰Ê•\¦
+'   æ›´æ–°çµæœè¡¨ç¤º
     For i1 = 1 To Rst_Kiso.Fields.Count
         Cells(3, i1).Value = Rst_Kiso.Fields(i1 - 1).Value
     Next
@@ -2236,11 +2236,11 @@ Dim Errcnt      As Long
         Errcnt = Eiyo01_541diff(8, 9, Lmax2, Errcnt)
         Errcnt = Eiyo01_541diff(13, 14, Lmax3, Errcnt)
     End If
-    If Errcnt > 0 Then: MsgBox "•sˆê’v " & Errcnt
+    If Errcnt > 0 Then: MsgBox "ä¸ä¸€è‡´ " & Errcnt
     
 End Function
 '--------------------------------------------------------------------------------
-'   01_541@”äŠr
+'   01_541 æ¯”è¼ƒ
 '--------------------------------------------------------------------------------
 Function Eiyo01_541diff(i1 As Long, i2 As Long, Max As Long, Errcnt As Long) As Long
 Dim ii  As Long
@@ -2253,7 +2253,7 @@ Dim ii  As Long
     Eiyo01_541diff = Errcnt
 End Function
 '--------------------------------------------------------------------------------
-'   01_550@Šî‘bî•ñ‚Ù‚©Close
+'   01_550 åŸºç¤æƒ…å ±ã»ã‹Close
 '--------------------------------------------------------------------------------
 Function Eiyo01_550RstClose()
     Rst_Kiso.Update
@@ -2267,36 +2267,36 @@ Function Eiyo01_550RstClose()
     Set Rst_Energ = Nothing
 End Function
 '--------------------------------------------------------------------------------
-'   01_700@ƒJƒEƒ“ƒZƒŠƒ“ƒOƒV[ƒgì•\
+'   01_700 ã‚«ã‚¦ãƒ³ã‚»ãƒªãƒ³ã‚°ã‚·ãƒ¼ãƒˆä½œè¡¨
 '--------------------------------------------------------------------------------
-Function Eiyo01_700ì•\Click()
+Function Eiyo01_700ä½œè¡¨Click()
     
     If IsEmpty(Range("Fcode")) Or _
        Range("Fcode") <> Range("Fsave") Then
-        MsgBox "Šî‘bî•ñ‚ÌŒŸõ‚ªs‚í‚ê‚Ä‚¢‚Ü‚¹‚ñ"
+        MsgBox "åŸºç¤æƒ…å ±ã®æ¤œç´¢ãŒè¡Œã‚ã‚Œã¦ã„ã¾ã›ã‚“"
         Exit Function
     End If
-    Application.ScreenUpdating = False  '‰æ–Ê•`‰æ—}~
+    Application.ScreenUpdating = False  'ç”»é¢æç”»æŠ‘æ­¢
     Call Eiyo91DB_Open                  'DB Open
-    Call Eiyo01_511MealFldgt            '€–Ú—v‘fæ“¾
-    Call Eiyo01_701Sheet                '¶³İ¾Øİ¸Ş¼°Ä’Ç‰Á
+    Call Eiyo01_511MealFldgt            'é …ç›®è¦ç´ å–å¾—
+    Call Eiyo01_701Sheet                'ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„è¿½åŠ 
     Call Eiyo01_702DbGet                'DB Get(521)
-    Call Eiyo01_703Pset                 'ˆóü€–Ú‚Ìİ’è
-    Call Eiyo01_704Advic                'ƒAƒhƒoƒCƒX
-    Call Eiyo01_705Footer               'ƒR[ƒh•“ú•tAƒJƒ“ƒEƒZƒ‰[
+    Call Eiyo01_703Pset                 'å°åˆ·é …ç›®ã®è¨­å®š
+    Call Eiyo01_704Advic                'ã‚¢ãƒ‰ãƒã‚¤ã‚¹
+    Call Eiyo01_705Footer               'ã‚³ãƒ¼ãƒ‰ï¼†æ—¥ä»˜ã€ã‚«ãƒ³ã‚¦ã‚»ãƒ©ãƒ¼
     Call Eiyo920DB_Close                'DB Close
-'    Call Eiyo99_w’èƒV[ƒgíœ("DBmirror")
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Select
+'    Call Eiyo99_æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤("DBmirror")
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Select
 End Function
 '--------------------------------------------------------------------------------
-'   01_701@ƒV[ƒg’Ç‰Á
+'   01_701 ã‚·ãƒ¼ãƒˆè¿½åŠ 
 '--------------------------------------------------------------------------------
 Function Eiyo01_701Sheet()
-Const ShtName = "¶³İ¾Øİ¸Ş¼°Ä"
-Const Eiyo01Bk = "Eiyo01_Šî‘bÛH“ü—Í.xls"
-Const Eiyo02Bk = "Eiyo02_¶³İ¾Øİ¸Ş¼°Ä.xls"
+Const ShtName = "ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„"
+Const Eiyo01Bk = "Eiyo01_åŸºç¤æ‘‚é£Ÿå…¥åŠ›.xls"
+Const Eiyo02Bk = "Eiyo02_ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„.xls"
     
-    Call Eiyo99_w’èƒV[ƒgíœ(ShtName)
+    Call Eiyo99_æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤(ShtName)
     Workbooks.Open Filename:=ThisWorkbook.Path & "" & Eiyo02Bk, ReadOnly:=False    'openn
     Windows(Eiyo02Bk).Activate
     Sheets(ShtName).Copy After:=Workbooks(Eiyo01Bk).Sheets(3)                       'copy
@@ -2319,7 +2319,7 @@ Dim i1  As Long
     End If
 End Function
 '--------------------------------------------------------------------------------
-'   01_703@ˆóü€–Ú‚Ìİ’è
+'   01_703 å°åˆ·é …ç›®ã®è¨­å®š
 '--------------------------------------------------------------------------------
 Function Eiyo01_703Pset()
 Dim aa  As Worksheet
@@ -2330,57 +2330,57 @@ Dim i3  As Long
 Dim i4  As Long
 
     Set aa = Sheets("DBmirror")
-    Set bb = Sheets("¶³İ¾Øİ¸Ş¼°Ä")
-'   ’²¸“úEŠúŠÔ
-    bb.Range("p_date1") = Format(aa.Range("b2"), " yyyy""”N"" mm""Œ"" dd""“ú‚©‚ç") & _
-                     Format(aa.Range("b2") + aa.Range("c2") - 1, " mm""Œ"" dd""“ú‚Ü‚Å(") & _
-                     aa.Range("c2") & "“úŠÔ)"
-'   «•Ê
+    Set bb = Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„")
+'   èª¿æŸ»æ—¥ãƒ»æœŸé–“
+    bb.Range("p_date1") = Format(aa.Range("b2"), " yyyy""å¹´"" mm""æœˆ"" dd""æ—¥ã‹ã‚‰") & _
+                     Format(aa.Range("b2") + aa.Range("c2") - 1, " mm""æœˆ"" dd""æ—¥ã¾ã§(") & _
+                     aa.Range("c2") & "æ—¥é–“)"
+'   æ€§åˆ¥
     If aa.Range("e2") = 0 Then
-        bb.Range("P_sex") = "’j"
+        bb.Range("P_sex") = "ç”·"
     Else
-        bb.Range("P_sex") = "—"
+        bb.Range("P_sex") = "å¥³"
     End If
 '
-    bb.Range("P_age") = aa.Range("g2")              '”N—î
-    bb.Range("P_adrno") = aa.Range("k2")            '—X•Ö”Ô†
-    bb.Range("P_adrs1") = aa.Range("l2")            'ZŠ[‚P
-    bb.Range("P_adrs2") = "'" & aa.Range("m2")      'ZŠ[‚Q
-    bb.Range("P_namej") = aa.Range("d2") & "@—l"   '–¼
+    bb.Range("P_age") = aa.Range("g2")              'å¹´é½¢
+    bb.Range("P_adrno") = aa.Range("k2")            'éƒµä¾¿ç•ªå·
+    bb.Range("P_adrs1") = aa.Range("l2")            'ä½æ‰€ãƒ¼ï¼‘
+    bb.Range("P_adrs2") = "'" & aa.Range("m2")      'ä½æ‰€ãƒ¼ï¼’
+    bb.Range("P_namej") = aa.Range("d2") & "ã€€æ§˜"   'æ°å
     bb.Range("P_fcode") = aa.Range("a2")            'Fcode
-    bb.Range("P_hok1") = aa.Range("at2")            '•ÛŒ¯Ø‹L†
-    bb.Range("P_hok2") = aa.Range("au2")            '•ÛŒ¯Ø‚m‚n
-'   ‘ÌˆÊ
-    bb.Range("P_hight") = aa.Range("h2")            'g’·
-    bb.Range("P_weght") = aa.Range("i2")            '‘Ìd
+    bb.Range("P_hok1") = aa.Range("at2")            'ä¿é™ºè¨¼è¨˜å·
+    bb.Range("P_hok2") = aa.Range("au2")            'ä¿é™ºè¨¼ï¼®ï¼¯
+'   ä½“ä½
+    bb.Range("P_hight") = aa.Range("h2")            'èº«é•·
+    bb.Range("P_weght") = aa.Range("i2")            'ä½“é‡
     If aa.Range("g2") > 12 Or _
        aa.Range("ad2") = 0 Or _
        aa.Range("ag2") = 0 Then
-        bb.Range("P_aans1") = aa.Range("bl2")       '•W€‘Ìd
+        bb.Range("P_aans1") = aa.Range("bl2")       'æ¨™æº–ä½“é‡
     Else
         bb.Range("P_aans1") = Empty
     End If
-    If aa.Range("j2") = 0 Then                      '”ç‰º‰–b
+    If aa.Range("j2") = 0 Then                      'çš®ä¸‹è„‚è‚ª
         bb.Range("P_sibou") = Empty
     Else
         bb.Range("P_sibou") = aa.Range("j2")
     End If
-    If aa.Range("ad2") = 0 And aa.Range("ag2") = 0 Then '”DP/½Îß°Â
-        bb.Range("P_taii") = aa.Range("bx2")        '‘ÌˆÊw”
+    If aa.Range("ad2") = 0 And aa.Range("ag2") = 0 Then 'å¦Šå¨ /ï½½ï¾ï¾Ÿï½°ï¾‚
+        bb.Range("P_taii") = aa.Range("bx2")        'ä½“ä½æŒ‡æ•°
         If aa.Range("g2") < 3 Then
-            bb.Range("P_tsisu") = "(ƒJƒEƒvw”)"    '‚QËˆÈ‰º
+            bb.Range("P_tsisu") = "(ã‚«ã‚¦ãƒ—æŒ‡æ•°)"    'ï¼’æ‰ä»¥ä¸‹
         ElseIf aa.Range("g2") < 13 Then
-            bb.Range("P_tsisu") = "(ƒ[ƒŒƒ‹w”)"  '‚R`‚P‚QË
+            bb.Range("P_tsisu") = "(ãƒ­ãƒ¼ãƒ¬ãƒ«æŒ‡æ•°)"  'ï¼“ã€œï¼‘ï¼’æ‰
         ElseIf aa.Range("i2") < 150 Then
-            bb.Range("P_tsisu") = "(ƒuƒ[ƒJ[w”•Ï–@)"  'g’·150cm–¢–
+            bb.Range("P_tsisu") = "(ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼æŒ‡æ•°å¤‰æ³•)"  'èº«é•·150cmæœªæº€
         Else
-            bb.Range("P_tsisu") = "(ƒuƒ[ƒJ[w”•Ï–@)"  'g’·150cmˆÈã
+            bb.Range("P_tsisu") = "(ãƒ–ãƒ­ãƒ¼ã‚«ãƒ¼æŒ‡æ•°å¤‰æ³•)"  'èº«é•·150cmä»¥ä¸Š
         End If
     Else
         bb.Range("P_taii") = Empty
         bb.Range("P_tsisu") = Empty
     End If
-'   H•iÛæƒoƒ‰ƒ“ƒX
+'   é£Ÿå“æ‘‚å–ãƒãƒ©ãƒ³ã‚¹
     bb.Range("P_enec01") = aa.Cells(12, 3)
     bb.Range("P_enec02") = aa.Cells(12, 4)
     bb.Range("P_enec03") = aa.Cells(12, 5)
@@ -2442,12 +2442,12 @@ Dim i4  As Long
     bb.Range("P_enet99") = "=sum(V17:v36)"
     bb.Range("P_enes99") = "=sum(z20:z36)"
     bb.Range("P_enes98") = "=sum(z20:z36)*80"
-'   ŒŒ‰tŒŸ¸
+'   è¡€æ¶²æ¤œæŸ»
     bb.Range("P_bdate") = aa.Cells(2, 50)
     For i1 = 1 To 12
         bb.Range("P_bbl01").Offset(i1 - 1, 0) = aa.Cells(2, i1 + 50)
     Next i1
-'   ‰h—{‘fÛæƒoƒ‰ƒ“ƒX  i1:‰h—{‘fIndex 1`27  i2:sIndex 1`24
+'   æ „é¤Šç´ æ‘‚å–ãƒãƒ©ãƒ³ã‚¹  i1:æ „é¤Šç´ Index 1ã€œ27  i2:è¡ŒIndex 1ã€œ24
     For i1 = 1 To 27
         i2 = Fld_Field(i1, 24)
         If i2 > 0 Then
@@ -2457,7 +2457,7 @@ Dim i4  As Long
             i3 = aa.Range("f7").Offset(0, (i1 * 5 - 5))
             If i3 > -62.5 Then
 '                bb.Range("r44").Offset(i2, 0) = String((i3 + 62.5) * 52 / 125, "*")
-                bb.Range("r44").Offset(i2, 0) = String((i3 + 62.5) * 52 / 250, "¡")
+                bb.Range("r44").Offset(i2, 0) = String((i3 + 62.5) * 52 / 250, "â– ")
             End If
             bb.Range("al44").Offset(i2, 0) = i3 + 100
             If i3 < -37 And Fld_Field(i1, 22) = 1 Then
@@ -2484,7 +2484,7 @@ Dim i4  As Long
             
         End If
     Next i1
-'   ‰h—{‘f”ä—¦
+'   æ „é¤Šç´ æ¯”ç‡
     bb.Range("P_Per01") = aa.Cells(2, 78)
     bb.Range("P_Per02") = aa.Cells(2, 79)
     bb.Range("P_Per03") = aa.Cells(2, 80)
@@ -2498,7 +2498,7 @@ Dim i4  As Long
     Set bb = Nothing
 End Function
 '--------------------------------------------------------------------------------
-'   01_704@ƒAƒhƒoƒCƒX€–Ú‚Ìİ’è
+'   01_704 ã‚¢ãƒ‰ãƒã‚¤ã‚¹é …ç›®ã®è¨­å®š
 '--------------------------------------------------------------------------------
 Function Eiyo01_704Advic()
 Dim Wkey        As Variant
@@ -2537,7 +2537,7 @@ Dim Wadvic3(5)  As String
                 End If
             End If
         Next i1
-'       ƒEƒGƒCƒgEƒAƒhƒoƒCƒX
+'       ã‚¦ã‚¨ã‚¤ãƒˆãƒ»ã‚¢ãƒ‰ãƒã‚¤ã‚¹
         For i1 = 1 To 5
             Wadvic3(i1) = Empty
         Next i1
@@ -2560,196 +2560,196 @@ Dim Wadvic3(5)  As String
     End With
     Set Rst_Advic = Nothing
     
-'   ŒŸ¸
+'   æ¤œæŸ»
     If Sheets("DBmirror").Range("ck2") = 3330 Then
         Wadvic2(4) = Empty
         For i1 = 3 To 10
             If Mid(Range("q2"), i1, 1) = "1" Then
                 Select Case i1
-                    Case 3: Wadvic2(4) = Wadvic2(4) & "‹¹•”‚wü@ŒÄ‹z‹@”\@"
-                    Case 4: Wadvic2(4) = Wadvic2(4) & "S“d}@ŒŒˆ³@–¬”@"
-                    Case 5: Wadvic2(4) = Wadvic2(4) & "Á‰»ŠíŒn@"
-                    Case 6: Wadvic2(4) = Wadvic2(4) & "ŒŒ‰t@"
-                    Case 7: Wadvic2(4) = Wadvic2(4) & "¤@"
-                    Case 8: Wadvic2(4) = Wadvic2(4) & "ŠÌ‹@”\@"
-                    Case 9: Wadvic2(4) = Wadvic2(4) & "¨•@ˆôA@"
-                    Case 10: Wadvic2(4) = Wadvic2(4) & "Šá‰È@"
+                    Case 3: Wadvic2(4) = Wadvic2(4) & "èƒ¸éƒ¨ï¼¸ç·šã€€å‘¼å¸æ©Ÿèƒ½ã€€"
+                    Case 4: Wadvic2(4) = Wadvic2(4) & "å¿ƒé›»å›³ã€€è¡€åœ§ã€€è„ˆæ‹ã€€"
+                    Case 5: Wadvic2(4) = Wadvic2(4) & "æ¶ˆåŒ–å™¨ç³»ã€€"
+                    Case 6: Wadvic2(4) = Wadvic2(4) & "è¡€æ¶²ã€€"
+                    Case 7: Wadvic2(4) = Wadvic2(4) & "ç—”ã€€"
+                    Case 8: Wadvic2(4) = Wadvic2(4) & "è‚æ©Ÿèƒ½ã€€"
+                    Case 9: Wadvic2(4) = Wadvic2(4) & "è€³é¼»å’½å–‰ã€€"
+                    Case 10: Wadvic2(4) = Wadvic2(4) & "çœ¼ç§‘ã€€"
                 End Select
             End If
         Next i1
     End If
     
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an13") = Left(Wadvic1(1), 18)      'H¶Šˆ^KŠµ
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an14") = Mid(Wadvic1(1), 19, 18)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an15") = Mid(Wadvic1(1), 37, 18)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("aj16") = Left(Wadvic2(1), 22)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("aj17") = Mid(Wadvic2(1), 23, 22)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an20") = Left(Wadvic1(2), 18)      '‡–°‚Æ‹x—{
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an21") = Mid(Wadvic1(2), 19, 18)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an22") = Mid(Wadvic1(2), 37, 18)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("aj23") = Left(Wadvic2(2), 22)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("aj24") = Mid(Wadvic2(2), 23, 22)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an27") = Left(Wadvic1(3), 18)      '‰^“®
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an28") = Mid(Wadvic1(3), 19, 18)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an29") = Mid(Wadvic1(3), 37, 18)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("aj30") = Left(Wadvic2(3), 22)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("aj31") = Mid(Wadvic2(3), 23, 22)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an34") = Left(Wadvic1(4), 18)      'Œ’Nó‘Ô
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an35") = Mid(Wadvic1(4), 19, 18)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("an36") = Mid(Wadvic1(4), 37, 18)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("aj37") = Left(Wadvic1(5), 22)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("aj38") = Mid(Wadvic1(5), 23, 22)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an13") = Left(Wadvic1(1), 18)      'é£Ÿç”Ÿæ´»ï¼ç¿’æ…£
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an14") = Mid(Wadvic1(1), 19, 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an15") = Mid(Wadvic1(1), 37, 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("aj16") = Left(Wadvic2(1), 22)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("aj17") = Mid(Wadvic2(1), 23, 22)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an20") = Left(Wadvic1(2), 18)      'ç¡çœ ã¨ä¼‘é¤Š
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an21") = Mid(Wadvic1(2), 19, 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an22") = Mid(Wadvic1(2), 37, 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("aj23") = Left(Wadvic2(2), 22)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("aj24") = Mid(Wadvic2(2), 23, 22)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an27") = Left(Wadvic1(3), 18)      'é‹å‹•
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an28") = Mid(Wadvic1(3), 19, 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an29") = Mid(Wadvic1(3), 37, 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("aj30") = Left(Wadvic2(3), 22)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("aj31") = Mid(Wadvic2(3), 23, 22)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an34") = Left(Wadvic1(4), 18)      'å¥åº·çŠ¶æ…‹
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an35") = Mid(Wadvic1(4), 19, 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("an36") = Mid(Wadvic1(4), 37, 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("aj37") = Left(Wadvic1(5), 22)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("aj38") = Mid(Wadvic1(5), 23, 22)
     
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bc17") = Wadvic3(1)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bc18") = Wadvic3(2)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bc19") = Wadvic3(3)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bc20") = Wadvic3(4)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bc21") = Wadvic3(5)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bc17") = Wadvic3(1)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bc18") = Wadvic3(2)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bc19") = Wadvic3(3)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bc20") = Wadvic3(4)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bc21") = Wadvic3(5)
     
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bc63") = Left(Wadvic1(6), 18)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bc64") = Mid(Wadvic1(6), 19, 18)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bc65") = Left(Wadvic2(6), 18)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bc66") = Mid(Wadvic2(6), 19, 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bc63") = Left(Wadvic1(6), 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bc64") = Mid(Wadvic1(6), 19, 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bc65") = Left(Wadvic2(6), 18)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bc66") = Mid(Wadvic2(6), 19, 18)
     
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("u73") = Wadvic1(12)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("u74") = Wadvic2(12)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("u75") = Wadvic1(13)
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("u76") = Wadvic2(13)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("u73") = Wadvic1(12)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("u74") = Wadvic2(12)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("u75") = Wadvic1(13)
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("u76") = Wadvic2(13)
 End Function
 '--------------------------------------------------------------------------------
-'   01_705@ƒR[ƒh•“ú•t
+'   01_705 ã‚³ãƒ¼ãƒ‰ï¼†æ—¥ä»˜
 '--------------------------------------------------------------------------------
 Function Eiyo01_705Footer()
 Dim Wtext   As String
-    Wtext = "(" & Sheets("Šî‘b").Range("g3") & ":" & Format(Date, "yymmdd") & ")"
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("b80") = Wtext
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bd75") = Sheets("DBmirror").Range("db2")
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bd76") = Sheets("DBmirror").Range("dc2")
-    Sheets("¶³İ¾Øİ¸Ş¼°Ä").Range("bd77") = Sheets("DBmirror").Range("dd2")
+    Wtext = "(" & Sheets("åŸºç¤").Range("g3") & ":" & Format(Date, "yymmdd") & ")"
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("b80") = Wtext
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bd75") = Sheets("DBmirror").Range("db2")
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bd76") = Sheets("DBmirror").Range("dc2")
+    Sheets("ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾ï½¼ï½°ï¾„").Range("bd77") = Sheets("DBmirror").Range("dd2")
 End Function
 '--------------------------------------------------------------------------------
-'   01_810@Šî‘b‰æ–Êì¬
+'   01_810 åŸºç¤ç”»é¢ä½œæˆ
 '--------------------------------------------------------------------------------
-Function Eiyo01_810Šî‘b‰æ–Êì¬()
-Const PgmName = "Eiyo01_Šî‘bÛH“ü—Í.xls"
-Const ShtName = "Šî‘b"
+Function Eiyo01_810åŸºç¤ç”»é¢ä½œæˆ()
+Const PgmName = "Eiyo01_åŸºç¤æ‘‚é£Ÿå…¥åŠ›.xls"
+Const ShtName = "åŸºç¤"
 Dim i1      As Long
 Dim i2      As Long
 Dim FldItem As Variant
 
     If ActiveWorkbook.Name <> PgmName Then
-        MsgBox PgmName & " ‚Å‚Í‚ ‚è‚Ü‚¹‚ñ"
+        MsgBox PgmName & " ã§ã¯ã‚ã‚Šã¾ã›ã‚“"
         End
     End If
     If ActiveSheet.Name <> ShtName Then
-        MsgBox ShtName & " ‚Å‚Í‚ ‚è‚Ü‚¹‚ñ"
+        MsgBox ShtName & " ã§ã¯ã‚ã‚Šã¾ã›ã‚“"
         End
     End If
     Call Eiyo01_000init
-'   ‰æ–Ê‚Ìì¬
-    Call Eiyo930Screen_Hold                 '‰æ–Ê—}~‚Ù‚©
-    While (ActiveSheet.Shapes.Count > 0)    'ƒRƒ}ƒ“ƒhƒ{ƒ^ƒ“æÁ
+'   ç”»é¢ã®ä½œæˆ
+    Call Eiyo930Screen_Hold                 'ç”»é¢æŠ‘æ­¢ã»ã‹
+    While (ActiveSheet.Shapes.Count > 0)    'ã‚³ãƒãƒ³ãƒ‰ãƒœã‚¿ãƒ³å–æ¶ˆ
         ActiveSheet.Shapes(1).Cut
     Wend
-    Cells.Delete Shift:=xlUp                '‘SÁ‹
-    Cells.NumberFormatLocal = "@"           '‘S‰æ–Ê•¶š—ñ‘®«
+    Cells.Delete Shift:=xlUp                'å…¨æ¶ˆå»
+    Cells.NumberFormatLocal = "@"           'å…¨ç”»é¢æ–‡å­—åˆ—å±æ€§
     Cells.Select
-    With Selection.Font                     '•¶šƒtƒHƒ“ƒg
-        .Name = "‚l‚r ƒSƒVƒbƒN"
+    With Selection.Font                     'æ–‡å­—ãƒ•ã‚©ãƒ³ãƒˆ
+        .Name = "ï¼­ï¼³ ã‚´ã‚·ãƒƒã‚¯"
         .Size = 11
     End With
-    Selection.ColumnWidth = 1.75            '—ñ•
-    Selection.Interior.ColorIndex = 40      '‘S‰æ–Ê”wŒiFi’W“•j
+    Selection.ColumnWidth = 1.75            'åˆ—å¹…
+    Selection.Interior.ColorIndex = 40      'å…¨ç”»é¢èƒŒæ™¯è‰²ï¼ˆæ·¡ç‡ˆï¼‰
     
-'   •\‘è
+'   è¡¨é¡Œ
     Range("G1:AA1").Select
-    Selection.MergeCells = True                 '•\‘èƒZƒ‹˜AŒ‹
-    Selection.HorizontalAlignment = xlCenter    '•\‘èƒZƒ“ƒ^ƒŠƒ“ƒO
-    Selection.Interior.ColorIndex = 37          '•\‘èFiƒy[ƒ‹ƒuƒ‹[j
-    With Selection.Font                         'ƒtƒHƒ“ƒg
-        .FontStyle = "‘¾š"
+    Selection.MergeCells = True                 'è¡¨é¡Œã‚»ãƒ«é€£çµ
+    Selection.HorizontalAlignment = xlCenter    'è¡¨é¡Œã‚»ãƒ³ã‚¿ãƒªãƒ³ã‚°
+    Selection.Interior.ColorIndex = 37          'è¡¨é¡Œè‰²ï¼ˆãƒšãƒ¼ãƒ«ãƒ–ãƒ«ãƒ¼ï¼‰
+    With Selection.Font                         'ãƒ•ã‚©ãƒ³ãƒˆ
+        .FontStyle = "å¤ªå­—"
         .Size = 16
     End With
-    Range("G01") = "‰h—{ŒvZiŠî‘bj‚Q‚V‰h—{‘f”Å"
+    Range("G01") = "æ „é¤Šè¨ˆç®—ï¼ˆåŸºç¤ï¼‰ï¼’ï¼—æ „é¤Šç´ ç‰ˆ"
     Range("A01").VerticalAlignment = xlTop
     Range("A01") = "v-01"
-    Range("A03") = "ƒR[ƒh"
-    Range("A04") = "’²¸ŠúŠÔ"
-    Range("A05") = "–¼"
-    Range("A06") = "«•Ê"
-    Range("i06") = "(0:’j 1:—)"
-    Range("A07") = "¶”NŒ“ú"
-    Range("a08") = "g’·"
+    Range("A03") = "ã‚³ãƒ¼ãƒ‰"
+    Range("A04") = "èª¿æŸ»æœŸé–“"
+    Range("A05") = "æ°å"
+    Range("A06") = "æ€§åˆ¥"
+    Range("i06") = "(0:ç”· 1:å¥³)"
+    Range("A07") = "ç”Ÿå¹´æœˆæ—¥"
+    Range("a08") = "èº«é•·"
     Range("j08") = "cm"
-    Range("a09") = "‘Ìd"
+    Range("a09") = "ä½“é‡"
     Range("j09") = "Kg"
-    Range("a10") = "”ç‰º‰–b"
+    Range("a10") = "çš®ä¸‹è„‚è‚ª"
     Range("j10") = "cm"
-    Range("A11") = "—X•Ö”Ô†"
-    Range("A12") = "ZŠ[‚P"
-    Range("A13") = "ZŠ[‚Q"
-    Range("A14") = "’nˆæ"
-    Range("a15") = "“s“¹•{Œ§"
-    Range("a16") = "3.HK"
-    Range("a17") = "4.‹x—{"
-    Range("a18") = "5.‰^“®"
-    Range("a19") = "6.Œ’N"
-    Range("m08") = "7.E‹Æ"
-    Range("m09") = "A.å•w"
-    Range("m10") = "B.”DP"
-    Range("m11") = "C.“œ”A"
-    Range("m14") = "D.‚ŒŒˆ³"
-    Range("m15") = "E.½Îß°Â"
-    Range("m16") = "F.‰^“®•”"
-    Range("m17") = "*.‹i‰Œ"
-    Range("m18") = "G.gáŠQ"
-    Range("m19") = "H.³´²ÄCT"
-    Range("m20") = "´ÈÙ·Ş°w’è"
+    Range("A11") = "éƒµä¾¿ç•ªå·"
+    Range("A12") = "ä½æ‰€ãƒ¼ï¼‘"
+    Range("A13") = "ä½æ‰€ãƒ¼ï¼’"
+    Range("A14") = "åœ°åŸŸ"
+    Range("a15") = "éƒ½é“åºœçœŒ"
+    Range("a16") = "3.é£Ÿç¿’"
+    Range("a17") = "4.ä¼‘é¤Š"
+    Range("a18") = "5.é‹å‹•"
+    Range("a19") = "6.å¥åº·"
+    Range("m08") = "7.è·æ¥­"
+    Range("m09") = "A.ä¸»å©¦"
+    Range("m10") = "B.å¦Šå¨ "
+    Range("m11") = "C.ç³–å°¿"
+    Range("m14") = "D.é«˜è¡€åœ§"
+    Range("m15") = "E.ï½½ï¾ï¾Ÿï½°ï¾‚"
+    Range("m16") = "F.é‹å‹•éƒ¨"
+    Range("m17") = "*.å–«ç…™"
+    Range("m18") = "G.èº«éšœå®³"
+    Range("m19") = "H.ï½³ï½´ï½²ï¾„CT"
+    Range("m20") = "ï½´ï¾ˆï¾™ï½·ï¾ï½°æŒ‡å®š"
     Range("M20").Characters(Start:=7, Length:=2).Font.Size = 9
-    Range("m21") = "ÀİÊß¸ w’è"
+    Range("m21") = "ï¾€ï¾ï¾Šï¾Ÿï½¸ æŒ‡å®š"
     Range("M21").Characters(Start:=7, Length:=2).Font.Size = 9
-    Range("m22") = "(0:–³ 1:w’è 2:À‘Ìd 3:•W€‘Ìd)"
-    Range("m23") = "¶³İ¾×°1"
-    Range("m24") = "¶³İ¾×°2"
-    Range("m25") = "¶³İ¾×°3"
+    Range("m22") = "(0:ç„¡ 1:æŒ‡å®š 2:å®Ÿä½“é‡ 3:æ¨™æº–ä½“é‡)"
+    Range("m23") = "ï½¶ï½³ï¾ï½¾ï¾—ï½°1"
+    Range("m24") = "ï½¶ï½³ï¾ï½¾ï¾—ï½°2"    
+    Range("m25") = "ï½¶ï½³ï¾ï½¾ï¾—ï½°3"
     
-    Range("x03") = "ŒŒ‰tŒ^"
-    Range("x04") = "xĞ•”CD"
-    Range("x05") = "•ÛŒ’‹L†"
+    Range("x03") = "è¡€æ¶²å‹"
+    Range("x04") = "æ”¯ç¤¾éƒ¨CD"
+    Range("x05") = "ä¿å¥è¨˜å·"
     Range("x06") = "      No"
-    Range("x07") = "’èŠúŒ’f"
-    Range("x08") = "˜r(L,R)"
-    Range("x09") = "ŒŸ¸“ú"
-    Range("x10") = "ÔŒŒ‹…”"
-    Range("x11") = "ŒŒF‘f—Ê"
-    Range("x12") = "ÍÏÄ¸Ø¯Ä"
-    Range("x13") = "ºÚ½ÃÛ°Ù"
+    Range("x07") = "å®šæœŸå¥è¨º"
+    Range("x08") = "è…•(L,R)"
+    Range("x09") = "æ¤œæŸ»æ—¥"
+    Range("x10") = "èµ¤è¡€çƒæ•°"
+    Range("x11") = "è¡€è‰²ç´ é‡"
+    Range("x12") = "ï¾ï¾ï¾„ï½¸ï¾˜ï½¯ï¾„"
+    Range("x13") = "ï½ºï¾šï½½ï¾ƒï¾›ï½°ï¾™"
     Range("x14") = "HDL"
-    Range("x15") = "’†«‰–b"
+    Range("x15") = "ä¸­æ€§è„‚è‚ª"
     Range("x16") = "G.O.T."
     Range("x17") = "G.P.T."
-    Range("x18") = "”A_"
-    Range("x19") = "ŒŒ“œ"
-    Range("x20") = "ŒŒˆ³Å‚"
-    Range("x21") = "    Å’á"
+    Range("x18") = "å°¿é…¸"
+    Range("x19") = "è¡€ç³–"
+    Range("x20") = "è¡€åœ§æœ€é«˜"
+    Range("x21") = "    æœ€ä½"
     
-    Cells.Locked = True                             '‘SƒZƒ‹‚ğƒƒbƒN
+    Cells.Locked = True                             'å…¨ã‚»ãƒ«ã‚’ãƒ­ãƒƒã‚¯
     For i1 = 0 To UBound(Fld_Adrs1)
         FldItem = Split(Fld_Adrs1(i1), ",")
         Range(Trim(FldItem(1))).Select
-        Selection.MergeCells = True                 'ƒZƒ‹Œ‹‡
+        Selection.MergeCells = True                 'ã‚»ãƒ«çµåˆ
         Range(Left(FldItem(1), 4)).Name = Trim(FldItem(0))
         If FldItem(2) = "i" Then
-            With Selection.Borders                      '“ü—Í€–Ú‚Ì˜gŒrü
+            With Selection.Borders                      'å…¥åŠ›é …ç›®ã®æ ç½«ç·š
                 .LineStyle = xlContinuous
                 .ColorIndex = xlAutomatic
                 .Weight = xlThin
             End With
-            Selection.Interior.ColorIndex = xlNone      '“ü—Í€–Ú‚Ì”’”²‚«‰»
-            Selection.Locked = False                    '“ü—Í€–Ú‚Ì•ÛŒì‰ğœ
+            Selection.Interior.ColorIndex = xlNone      'å…¥åŠ›é …ç›®ã®ç™½æŠœãåŒ–
+            Selection.Locked = False                    'å…¥åŠ›é …ç›®ã®ä¿è­·è§£é™¤
         End If
         Select Case FldItem(4)
-            Case "90": Selection.NumberFormatLocal = "G/•W€"
+            Case "90": Selection.NumberFormatLocal = "G/æ¨™æº–"
             Case "91": Selection.NumberFormatLocal = "#0.0"
             Case "92": Selection.NumberFormatLocal = "#0.00"
             Case "Ds"
@@ -2759,7 +2759,7 @@ Dim FldItem As Variant
                 Selection.NumberFormatLocal = "gy.m.d"
                 Selection.HorizontalAlignment = xlLeft
             Case "J "
-                With Selection.Validation           'Š¿š€–Ú
+                With Selection.Validation           'æ¼¢å­—é …ç›®
                     .Delete
                     .Add Type:=xlValidateInputOnly, AlertStyle:=xlValidAlertStop, Operator:=xlBetween
                     .IgnoreBlank = True
@@ -2777,109 +2777,109 @@ Dim FldItem As Variant
     Next i1
     
     Range("Fsave").Font.ColorIndex = 40
-    Range("Gyyyy").NumberFormatLocal = "gy"     '¶”NŒ“ú‚Ì˜a—ï”N•\¦
+    Range("Gyyyy").NumberFormatLocal = "gy"     'ç”Ÿå¹´æœˆæ—¥ã®å’Œæš¦å¹´è¡¨ç¤º
     Range("Gyyyy") = "=RC[-5]"
-    Range("Age").NumberFormatLocal = "G/•W€"
+    Range("Age").NumberFormatLocal = "G/æ¨™æº–"
     Range("Age") = "=DATEDIF(RC[-7],R[-3]C[-7],""y"")"
-    Range("p07") = "Ë"
+    Range("p07") = "æ‰"
 
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=10, Top:=350, Width:=60, Height:=30)
-        .Object.Caption = "‰æ–ÊÁ‹"
-        .Name = "ƒNƒŠƒA"
+        .Object.Caption = "ç”»é¢æ¶ˆå»"
+        .Name = "ã‚¯ãƒªã‚¢"
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=100, Top:=350, Width:=60, Height:=30)
-        .Object.Caption = "ÃŞ°ÀŒÄo"
-        .Name = "ŒŸõ"
+        .Object.Caption = "ï¾ƒï¾ï½°ï¾€å‘¼å‡º"
+        .Name = "æ¤œç´¢"
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=170, Top:=350, Width:=60, Height:=30)
-        .Object.Caption = "ÃŞ°À“o˜^"
-        .Name = "XV"
-    End With
+        .Object.Caption = "ï¾ƒï¾ï½°ï¾€ç™»éŒ²"
+        .Name = "æ›´æ–°"
+    End With        
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=240, Top:=350, Width:=60, Height:=30)
-        .Object.Caption = "¶³İ¾Øİ¸Ş" & vbLf & "¼°Äì•\"
-        .Name = "ì•\"
+        .Object.Caption = "ï½¶ï½³ï¾ï½¾ï¾˜ï¾ï½¸ï¾" & vbLf & "ï½¼ï½°ï¾„ä½œè¡¨"
+        .Name = "ä½œè¡¨"
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=330, Top:=450, Width:=60, Height:=30)
-        .Object.Caption = "ÃŞ°ÀæÁ"
-        .Name = "æÁ"
+        .Object.Caption = "ï¾ƒï¾ï½°ï¾€å–æ¶ˆ"
+        .Name = "å–æ¶ˆ"
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=400, Top:=350, Width:=60, Height:=30)
-        .Object.Caption = "I—¹"
-        .Name = "I—¹"
+        .Object.Caption = "çµ‚äº†"
+        .Name = "çµ‚äº†"
     End With
     
-    Range("Gmesg").Font.Bold = True                            'ƒƒbƒZ[ƒWƒGƒŠƒA
+    Range("Gmesg").Font.Bold = True                            'ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¨ãƒªã‚¢
     Range("Gmesg").Font.ColorIndex = 3
-    Cells.FormatConditions.Delete               'ƒV[ƒg‘S‘Ì‚©‚çğŒ•t‚«‘®‚ğíœ‚·‚é
+    Cells.FormatConditions.Delete               'ã‚·ãƒ¼ãƒˆå…¨ä½“ã‹ã‚‰æ¡ä»¶ä»˜ãæ›¸å¼ã‚’å‰Šé™¤ã™ã‚‹
     Cells.FormatConditions.Add Type:=xlExpression, Formula1:="=AND(CELL(""row"")=ROW(),CELL(""col"")=COLUMN())"
     Cells.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
     Cells.FormatConditions(1).Interior.Color = 255
     
-    Call Eiyo01_820‘€ìƒKƒCƒh
+    Call Eiyo01_820æ“ä½œã‚¬ã‚¤ãƒ‰
     Range("g4").Select
-    Call Eiyo940Screen_Start    '‰æ–Ê•`‰æ‚Ù‚©
+    Call Eiyo940Screen_Start    'ç”»é¢æç”»ã»ã‹
 End Function
 '--------------------------------------------------------------------------------
-'   01_820 ‘€ìƒKƒCƒh
+'   01_820 æ“ä½œã‚¬ã‚¤ãƒ‰
 '--------------------------------------------------------------------------------
-Function Eiyo01_820‘€ìƒKƒCƒh()
-    Call Eiyo930Screen_Hold     '‰æ–Ê—}~‚Ù‚©
+Function Eiyo01_820æ“ä½œã‚¬ã‚¤ãƒ‰()
+    Call Eiyo930Screen_Hold     'ç”»é¢æŠ‘æ­¢ã»ã‹
     Columns("ah:hz").Delete Shift:=xlToLeft
-    Range("ah01") = "1.l‚ğŒŸõ‚·‚é"
-    Range("ah02") = "@‰æ–Ê‚Ì‚¢‚Ã‚ê‚©‚Ì€–Ú‚É"
-    Range("ah03") = "@“ü—ÍŒãAuŒŸõv‚ğ‰Ÿ‰º‚µ‚Ä‚­‚¾‚³‚¢B"
-    Range("ah04") = "@“¯–¼‚È‚Ç•¡”ŠY“–Ò‚Ìê‡‚ÍA‰E‘¤‚Ìˆê——‚©‚ç"
-    Range("ah05") = "@ƒR[ƒh‚ğƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚Ä‘I‘ğ‚µ‚Ü‚·B"
-    Range("ah07") = "@uŒŸõv‚ÍŒ´‘¥w‘O•ûˆê’vx‚Å‚·A"
-    Range("ah08") = "@æ“ª‚É[%]‚ğ•t‚¯‚é‚ÆwŠÜ‚Şx‚É‚È‚è‚Ü‚·B"
-    Range("ah10") = "2.l‚ğ“o˜^‚·‚é"
-    Range("ah11") = "@‰æ–Ê‚ÌŠe€–Ú‚ğ“ü—Í‚µ"
-    Range("ah12") = "@uXVv‚ğ‰Ÿ‰º‚µ‚Ä‚­‚¾‚³‚¢B"
-    Range("ah14") = "3.l‚Ì•ÏXEæÁ"
-    Range("ah15") = "@l‚ğŒŸõ‚µA"
-    Range("ah16") = "@C³Œã‚ÉuXVv‚Ü‚½‚ÍuæÁv‚ğ‰Ÿ‰º‚µ‚Ä‚­‚¾‚³‚¢B"
-    Range("ah18") = "4.ÛH‚Ì“o˜^"
-    Range("ah19") = "@l‚Ì“o˜^‚Ü‚½‚ÍÆ‰ïŒãuÛHvƒV[ƒg‚ÉØ‚è‘Ö‚¦‚Ä‚­‚¾‚³‚¢"
-    Call Eiyo940Screen_Start    '‰æ–Ê•`‰æ‚Ù‚©
+    Range("ah01") = "1.äººã‚’æ¤œç´¢ã™ã‚‹"
+    Range("ah02") = "ã€€ç”»é¢ã®ã„ã¥ã‚Œã‹ã®é …ç›®ã«"
+    Range("ah03") = "ã€€å…¥åŠ›å¾Œã€ã€Œæ¤œç´¢ã€ã‚’æŠ¼ä¸‹ã—ã¦ãã ã•ã„ã€‚"
+    Range("ah04") = "ã€€åŒåãªã©è¤‡æ•°è©²å½“è€…ã®å ´åˆã¯ã€å³å´ã®ä¸€è¦§ã‹ã‚‰"
+    Range("ah05") = "ã€€ã‚³ãƒ¼ãƒ‰ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦é¸æŠã—ã¾ã™ã€‚"
+    Range("ah07") = "ã€€ã€Œæ¤œç´¢ã€ã¯åŸå‰‡ã€å‰æ–¹ä¸€è‡´ã€ã§ã™ã€"
+    Range("ah08") = "ã€€å…ˆé ­ã«[%]ã‚’ä»˜ã‘ã‚‹ã¨ã€å«ã‚€ã€ã«ãªã‚Šã¾ã™ã€‚"
+    Range("ah10") = "2.äººã‚’ç™»éŒ²ã™ã‚‹"
+    Range("ah11") = "ã€€ç”»é¢ã®å„é …ç›®ã‚’å…¥åŠ›ã—"
+    Range("ah12") = "ã€€ã€Œæ›´æ–°ã€ã‚’æŠ¼ä¸‹ã—ã¦ãã ã•ã„ã€‚"
+    Range("ah14") = "3.äººã®å¤‰æ›´ãƒ»å–æ¶ˆ"
+    Range("ah15") = "ã€€äººã‚’æ¤œç´¢ã—ã€"
+    Range("ah16") = "ã€€ä¿®æ­£å¾Œã«ã€Œæ›´æ–°ã€ã¾ãŸã¯ã€Œå–æ¶ˆã€ã‚’æŠ¼ä¸‹ã—ã¦ãã ã•ã„ã€‚"
+    Range("ah18") = "4.æ‘‚é£Ÿã®ç™»éŒ²"
+    Range("ah19") = "ã€€äººã®ç™»éŒ²ã¾ãŸã¯ç…§ä¼šå¾Œã€Œæ‘‚é£Ÿã€ã‚·ãƒ¼ãƒˆã«åˆ‡ã‚Šæ›¿ãˆã¦ãã ã•ã„"
+    Call Eiyo940Screen_Start    'ç”»é¢æç”»ã»ã‹
 End Function
 '--------------------------------------------------------------------------------
-'   01_830@ÛH‰æ–Êì¬
+'   01_830 æ‘‚é£Ÿç”»é¢ä½œæˆ
 '--------------------------------------------------------------------------------
-Function Eiyo01_830ÛH‰æ–Êì¬()
-Const PgmName = "Eiyo01_Šî‘bÛH“ü—Í.xls"
-Const ShtName = "ÛH"
+Function Eiyo01_830æ‘‚é£Ÿç”»é¢ä½œæˆ()
+Const PgmName = "Eiyo01_åŸºç¤æ‘‚é£Ÿå…¥åŠ›.xls"
+Const ShtName = "æ‘‚é£Ÿ"
 Dim i1      As Long
 Dim i2      As Long
 Dim FldItem As Variant
 
     If ActiveWorkbook.Name <> PgmName Then
-        MsgBox PgmName & " ‚Å‚Í‚ ‚è‚Ü‚¹‚ñ"
+        MsgBox PgmName & " ã§ã¯ã‚ã‚Šã¾ã›ã‚“"
         End
     End If
     If ActiveSheet.Name <> ShtName Then
-        MsgBox ShtName & " ‚Å‚Í‚ ‚è‚Ü‚¹‚ñ"
+        MsgBox ShtName & " ã§ã¯ã‚ã‚Šã¾ã›ã‚“"
         End
     End If
     Call Eiyo01_000init
-'   ‰æ–Ê‚Ìì¬
-    Call Eiyo930Screen_Hold     '‰æ–Ê—}~‚Ù‚©
-    ActiveWindow.FreezePanes = False        'ƒEƒCƒ“ƒh˜gŒÅ’è‚Ì‰ğœ
+'   ç”»é¢ã®ä½œæˆ
+    Call Eiyo930Screen_Hold     'ç”»é¢æŠ‘æ­¢ã»ã‹
+    ActiveWindow.FreezePanes = False        'ã‚¦ã‚¤ãƒ³ãƒ‰æ å›ºå®šã®è§£é™¤
     
-    While (ActiveSheet.Shapes.Count > 0)    'ƒRƒ}ƒ“ƒhƒ{ƒ^ƒ“æÁ
+    While (ActiveSheet.Shapes.Count > 0)    'ã‚³ãƒãƒ³ãƒ‰ãƒœã‚¿ãƒ³å–æ¶ˆ
         ActiveSheet.Shapes(1).Cut
     Wend
-    Cells.Delete Shift:=xlUp                '‘SÁ‹
+    Cells.Delete Shift:=xlUp                'å…¨æ¶ˆå»
     Cells.Select
-    With Selection.Font                     '•¶šƒtƒHƒ“ƒg
-        .Name = "‚l‚r ƒSƒVƒbƒN"
+    With Selection.Font                     'æ–‡å­—ãƒ•ã‚©ãƒ³ãƒˆ
+        .Name = "ï¼­ï¼³ ã‚´ã‚·ãƒƒã‚¯"
         .Size = 11
     End With
-    Cells.Interior.ColorIndex = 34          '‘S‰æ–Ê”wŒiFi’W—Îj
+    Cells.Interior.ColorIndex = 34          'å…¨ç”»é¢èƒŒæ™¯è‰²ï¼ˆæ·¡ç·‘ï¼‰
     Columns("A:B").Interior.ColorIndex = xlNone
     Columns("d").Interior.ColorIndex = xlNone
     Columns("f").Interior.ColorIndex = xlNone
-    Rows("1:4").Interior.ColorIndex = 34       '‘S‰æ–Ê”wŒiFi’W—Îj
-    Cells.Select                               'Œrü
+    Rows("1:4").Interior.ColorIndex = 34       'å…¨ç”»é¢èƒŒæ™¯è‰²ï¼ˆæ·¡ç·‘ï¼‰
+    Cells.Select                               'ç½«ç·š
     With Selection.Borders
         .LineStyle = xlContinuous
         .ColorIndex = 40
@@ -2904,28 +2904,27 @@ Dim FldItem As Variant
     Selection.Borders(xlEdgeRight).LineStyle = xlNone
     Selection.Borders(xlInsideVertical).LineStyle = xlNone
     Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
-
-'   •\‘è
-    With Range("d1").Font                         'ƒtƒHƒ“ƒg
-        .FontStyle = "‘¾š"
+'   è¡¨é¡Œ
+    With Range("d1").Font                         'ãƒ•ã‚©ãƒ³ãƒˆ
+        .FontStyle = "å¤ªå­—"
         .Size = 16
     End With
-    Range("D01") = "‰h—{ŒvZiÛHj"
+    Range("D01") = "æ „é¤Šè¨ˆç®—ï¼ˆæ‘‚é£Ÿï¼‰"
     Range("A01").VerticalAlignment = xlTop
     Range("A01") = "v-01"
 '    Range("a2") = "=Fcode & ":" & Namej
     Columns("A:A").NumberFormatLocal = "yyyy/mm/dd"
     Columns("F:F").NumberFormatLocal = "0.0 "
-    Range("A4") = "ÛH“ú"
-    Range("B4") = "H‹æ•ª"
-    Range("D4") = "H•iCD"
-    Range("E4") = "•i–¼EŞ—¿@»ÌßØÒİÄ"
-    Range("F4") = "Ûæ—Ê"
-    Range("k3") = "EH•iCD—“‚ğƒ_ƒuƒ‹ƒNƒŠƒbƒN‚·‚é‚Æƒƒjƒ…[‚É•Ï‚í‚è‚Ü‚·"
-    Range("k2") = "EÛæ—Ê‚ªƒ[ƒ‚Ìs‚Ííœ‚³‚ê‚Ü‚·"
-    Range("k3") = "E’Ç‰Á‚ÍÅIs‚ÌŒã‚ë‚É“ü—Í‚µ‚Ä‚­‚¾‚³‚¢"
+    Range("A4") = "æ‘‚é£Ÿæ—¥"
+    Range("B4") = "é£ŸåŒºåˆ†"
+    Range("D4") = "é£Ÿå“CD"
+    Range("E4") = "å“åãƒ»ææ–™ã€€ï½»ï¾Œï¾Ÿï¾˜ï¾’ï¾ï¾„"
+    Range("F4") = "æ‘‚å–é‡"
+    Range("k3") = "ãƒ»é£Ÿå“CDæ¬„ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã¨ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã«å¤‰ã‚ã‚Šã¾ã™"
+    Range("k2") = "ãƒ»æ‘‚å–é‡ãŒã‚¼ãƒ­ã®è¡Œã¯å‰Šé™¤ã•ã‚Œã¾ã™"
+    Range("k3") = "ãƒ»è¿½åŠ ã¯æœ€çµ‚è¡Œã®å¾Œã‚ã«å…¥åŠ›ã—ã¦ãã ã•ã„"
     Range("k1:k2").Font.Size = 9
-    Call Eiyo01_840H•iƒ}ƒXƒ^(4, 6)
+    Call Eiyo01_840é£Ÿå“ãƒã‚¹ã‚¿(4, 6)    
     Columns("A:D").HorizontalAlignment = xlCenter
     Rows("1:2").HorizontalAlignment = xlGeneral
     Range("a1:a2,B4").HorizontalAlignment = xlGeneral
@@ -2940,76 +2939,76 @@ Dim FldItem As Variant
     Columns("K:K").ColumnWidth = 20
     Range("G:I").EntireColumn.Hidden = True
     
-    Cells.Locked = True                             '‘SƒZƒ‹‚ğƒƒbƒN
-    Range("A:B,D:D,F:F").Locked = False             '“ü—Í—ñ‚Ì‰ğœ
-    Rows("1:3").Locked = True                       '•\‘ès‚ÌƒƒbƒN
+    Cells.Locked = True                             'å…¨ã‚»ãƒ«ã‚’ãƒ­ãƒƒã‚¯
+    Range("A:B,D:D,F:F").Locked = False             'å…¥åŠ›åˆ—ã®è§£é™¤
+    Rows("1:3").Locked = True                       'è¡¨é¡Œè¡Œã®ãƒ­ãƒƒã‚¯
     
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=300, Top:=5, Width:=50, Height:=25)
-        .Object.Caption = "“o˜^"
-        .Name = "“o˜^"
+        .Object.Caption = "ç™»éŒ²"
+        .Name = "ç™»éŒ²"
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=650, Top:=5, Width:=50, Height:=25)
-        .Object.Caption = "ŒŸØ"
-        .Name = "ŒŸØ"
+        .Object.Caption = "æ¤œè¨¼"
+        .Name = "æ¤œè¨¼"
     End With
-    
-    Range("a3").Font.Bold = True                    'ƒƒbƒZ[ƒWƒGƒŠƒA
+
+    Range("a3").Font.Bold = True                    'ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¨ãƒªã‚¢
     Range("a3").Font.ColorIndex = 3
     Range("E5").Select
-    ActiveWindow.FreezePanes = True                 'ƒEƒCƒ“ƒh˜gŒÅ’è‚Ìİ’è
+    ActiveWindow.FreezePanes = True                 'ã‚¦ã‚¤ãƒ³ãƒ‰æ å›ºå®šã®è¨­å®š
     
-'    ActiveSheet.Protect UserInterfaceOnly:=True     '•ÛŒì‚ğ—LŒø‚É‚·‚é
+'    ActiveSheet.Protect UserInterfaceOnly:=True     'ä¿è­·ã‚’æœ‰åŠ¹ã«ã™ã‚‹
     Range("g4").Select
-    Call Eiyo940Screen_Start                        '‰æ–Ê•`‰æ‚Ù‚©
+    Call Eiyo940Screen_Start                        'ç”»é¢æç”»ã»ã‹
 End Function
 '--------------------------------------------------------------------------------
-'   01_840@H•iƒ}ƒXƒ^€‘è
+'   01_840 é£Ÿå“ãƒã‚¹ã‚¿é …é¡Œ
 '--------------------------------------------------------------------------------
-Function Eiyo01_840H•iƒ}ƒXƒ^(il As Long, ic As Long)
+Function Eiyo01_840é£Ÿå“ãƒã‚¹ã‚¿(il As Long, ic As Long)
 Dim Wtext   As String
 Dim Warray  As Variant
 Dim i1      As Long
 
     Wtext = Empty
-    Wtext = Wtext & vbLf & "ƒR[ƒh"
-    Wtext = Wtext & vbLf & "H•i–¼"
-    Wtext = Wtext & vbLf & "“Ç‚İi•ª—Şj"
-    Wtext = Wtext & vbLf & "’PˆÊ"           '“ü—Í’PˆÊ
-    Wtext = Wtext & vbLf & "ƒRƒƒ“ƒg"
-    Wtext = Wtext & vbLf & "“o˜^’PˆÊ"
-    Wtext = Wtext & vbLf & "Š·ZŒW”"
-    Wtext = Wtext & vbLf & "ÒÆ­°ˆÊ’u‚P"
-    Wtext = Wtext & vbLf & "ÒÆ­°ˆÊ’u‚Q"
-    Wtext = Wtext & vbLf & "Hğ"           '0:H 1:ğ 2:»ÌßØÒİÄ
-    Wtext = Wtext & vbLf & "ÛH”ÍˆÍ‰ºŒÀ"
-    Wtext = Wtext & vbLf & "ÛH”ÍˆÍãŒÀ"
-    Wtext = Wtext & vbLf & "‰h—{‘f-01"
-    Wtext = Wtext & vbLf & "‰h—{‘f-02"
-    Wtext = Wtext & vbLf & "‰h—{‘f-03"
-    Wtext = Wtext & vbLf & "‰h—{‘f-04"
-    Wtext = Wtext & vbLf & "‰h—{‘f-05"
-    Wtext = Wtext & vbLf & "‰h—{‘f-06"
-    Wtext = Wtext & vbLf & "‰h—{‘f-07"
-    Wtext = Wtext & vbLf & "‰h—{‘f-08"
-    Wtext = Wtext & vbLf & "‰h—{‘f-09"
-    Wtext = Wtext & vbLf & "‰h—{‘f-10"
-    Wtext = Wtext & vbLf & "‰h—{‘f-11"
-    Wtext = Wtext & vbLf & "‰h—{‘f-12"
-    Wtext = Wtext & vbLf & "‰h—{‘f-13"
-    Wtext = Wtext & vbLf & "‰h—{‘f-14"
-    Wtext = Wtext & vbLf & "‰h—{‘f-15"
-    Wtext = Wtext & vbLf & "‰h—{‘f-16"
-    Wtext = Wtext & vbLf & "‰h—{‘f-17"
-    Wtext = Wtext & vbLf & "‰h—{‘f-18"
-    Wtext = Wtext & vbLf & "‰h—{‘f-19"
-    Wtext = Wtext & vbLf & "‰h—{‘f-20"
-    Wtext = Wtext & vbLf & "‰h—{‘f-21"
-    Wtext = Wtext & vbLf & "‰h—{‘f-22"
-    Wtext = Wtext & vbLf & "‰h—{‘f-23"
-    Wtext = Wtext & vbLf & "‰h—{‘f-24"
-    Wtext = Wtext & vbLf & "‰h—{‘f-25"
-    Wtext = Wtext & vbLf & "‰h—{‘f-26"
-    Wtext = Wtext & vbLf & "‰h—{‘f-27"
+    Wtext = Wtext & vbLf & "ã‚³ãƒ¼ãƒ‰"
+    Wtext = Wtext & vbLf & "é£Ÿå“å"
+    Wtext = Wtext & vbLf & "èª­ã¿ï¼ˆåˆ†é¡ï¼‰"
+    Wtext = Wtext & vbLf & "å˜ä½"           'å…¥åŠ›å˜ä½
+    Wtext = Wtext & vbLf & "ã‚³ãƒ¡ãƒ³ãƒˆ"
+    Wtext = Wtext & vbLf & "ç™»éŒ²å˜ä½"
+    Wtext = Wtext & vbLf & "æ›ç®—ä¿‚æ•°"
+    Wtext = Wtext & vbLf & "ï¾’ï¾†ï½­ï½°ä½ç½®ï¼‘"
+    Wtext = Wtext & vbLf & "ï¾’ï¾†ï½­ï½°ä½ç½®ï¼’"
+    Wtext = Wtext & vbLf & "é£Ÿé…’"           '0:é£Ÿ 1:é…’ 2:ï½»ï¾Œï¾Ÿï¾˜ï¾’ï¾ï¾„
+    Wtext = Wtext & vbLf & "æ‘‚é£Ÿç¯„å›²ä¸‹é™"
+    Wtext = Wtext & vbLf & "æ‘‚é£Ÿç¯„å›²ä¸Šé™"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -01"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -02"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -03"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -04"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -05"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -06"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -07"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -08"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -09"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -10"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -11"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -12"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -13"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -14"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -15"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -16"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -17"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -18"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -19"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -20"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -21"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -22"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -23"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -24"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -25"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -26"
+    Wtext = Wtext & vbLf & "æ „é¤Šç´ -27"
     Wtext = Wtext & vbLf & "ENE/C 01"
     Wtext = Wtext & vbLf & "ENE/C 02"
     Wtext = Wtext & vbLf & "ENE/C 03"
@@ -3055,23 +3054,23 @@ Dim i1      As Long
     Wtext = Wtext & vbLf & "CL 13"
     Wtext = Wtext & vbLf & "CL 14"
     Wtext = Wtext & vbLf & "CL 15"
-    Wtext = Wtext & vbLf & "‰¿E“®•¨"
-    Wtext = Wtext & vbLf & "‰¿E‹›‰î"
-    Wtext = Wtext & vbLf & "‰¿EA•¨"
+    Wtext = Wtext & vbLf & "è„‚è³ªãƒ»å‹•ç‰©"
+    Wtext = Wtext & vbLf & "è„‚è³ªãƒ»é­šä»‹"
+    Wtext = Wtext & vbLf & "è„‚è³ªãƒ»æ¤ç‰©"
     Warray = Split(Wtext, vbLf)
     For i1 = 1 To UBound(Warray)
         Cells(il, ic + i1) = Warray(i1)
     Next i1
 End Function
 '--------------------------------------------------------------------------------
-'   01_900  –ˆ’©ˆê”Ô‚É‚c‚a‚ÌƒRƒs[‚ğ‚Æ‚éB
-'           ƒ^ƒCƒ€ƒXƒ^ƒ“ƒv‚Í‘O“ú‚ÌÅIXV‚Æ‚È‚é
+'   01_900  æ¯æœä¸€ç•ªã«ï¼¤ï¼¢ã®ã‚³ãƒ”ãƒ¼ã‚’ã¨ã‚‹ã€‚
+'           ã‚¿ã‚¤ãƒ ã‚¹ã‚¿ãƒ³ãƒ—ã¯å‰æ—¥ã®æœ€çµ‚æ›´æ–°æ™‚åˆ»ã¨ãªã‚‹
 '--------------------------------------------------------------------------------
 Function Eiyo01_900WorkbookOpen()
-Dim F_name          As String   'ŒŸõ‚µ‚½ƒtƒ@ƒCƒ‹–¼
-Dim F_dbname_today  As String   'DB+–{“ú
+Dim F_name          As String   'æ¤œç´¢ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«å
+Dim F_dbname_today  As String   'DB+æœ¬æ—¥
 Dim F_dbname_min    As String   'DB+00000000
-Dim F_dbname_max    As String   'DB+2TŠÔ‘O
+Dim F_dbname_max    As String   'DB+2é€±é–“å‰
 Dim W_path          As String
 
     W_path = ThisWorkbook.Path & "BackUp"""
@@ -3079,23 +3078,23 @@ Dim W_path          As String
     F_dbname_min = "Eiyo_00000000.mdb"
     F_dbname_max = "Eiyo_" & Format(Date - 14, "yyyymmdd") & ".mdb"
     
-    SetCurrentDirectory (W_path)            'Dir•ÏX
-    If Dir(F_dbname_today) = "" Then        '¡“ú‚Ì•Û‘¶ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚È‚¢
+    SetCurrentDirectory (W_path)            'Dirå¤‰æ›´
+    If Dir(F_dbname_today) = "" Then        'ä»Šæ—¥ã®ä¿å­˜ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„
         F_name = Dir("*", vbNormal)
         Do While F_name <> ""
             If (F_name > F_dbname_min And F_name < F_dbname_max) Then
                Kill F_name
             End If
-            F_name = Dir                    ' Ÿ‚ÌƒtƒHƒ‹ƒ_–¼‚ğ•Ô‚µ‚Ü‚·B
+            F_name = Dir                    ' æ¬¡ã®ãƒ•ã‚©ãƒ«ãƒ€åã‚’è¿”ã—ã¾ã™ã€‚
         Loop
         FileCopy ThisWorkbook.Path & myFileName, F_dbname_today
     End If
 End Function
 '--------------------------------------------------------------------------------
-'   03_030  ƒNƒŠƒA‚Ìƒ{ƒ^ƒ“EƒNƒŠƒbƒN
+'   03_030  ã‚¯ãƒªã‚¢ã®ãƒœã‚¿ãƒ³ãƒ»ã‚¯ãƒªãƒƒã‚¯
 '--------------------------------------------------------------------------------
-Function Eiyo03_030ƒNƒŠƒAClick()
-    Call Eiyo930Screen_Hold     '‰æ–Ê—}~‚Ù‚©
+Function Eiyo03_030ã‚¯ãƒªã‚¢Click()
+    Call Eiyo930Screen_Hold     'ç”»é¢æŠ‘æ­¢ã»ã‹
     Range("b3:b11") = Empty
     Range("b12") = Empty
     Range("b13:b14") = Empty
@@ -3104,14 +3103,14 @@ Function Eiyo03_030ƒNƒŠƒAClick()
     Range("j22:j24").ClearContents
     Range("a17") = Empty
     Columns("n:hz").Delete Shift:=xlToLeft
-    
+
     Range("b3").Select
-    Call Eiyo940Screen_Start    '‰æ–Ê•`‰æ‚Ù‚©
+    Call Eiyo940Screen_Start    'ç”»é¢æç”»ã»ã‹
 End Function
 '--------------------------------------------------------------------------------
-'   03_100  ŒŸõ_Click
+'   03_100  æ¤œç´¢_Click
 '--------------------------------------------------------------------------------
-Function Eiyo03_100ŒŸõClick()
+Function Eiyo03_100æ¤œç´¢Click()
 Dim Wsql    As String
 Dim i1      As Long
 
@@ -3120,10 +3119,10 @@ Dim i1      As Long
         If Not IsEmpty(Cells(i1, 2)) Then: Exit For
     Next i1
     If i1 > 14 Then
-        Range("a17") = "ƒL[‚ª‚ ‚è‚Ü‚¹‚ñ"
+        Range("a17") = "ã‚­ãƒ¼ãŒã‚ã‚Šã¾ã›ã‚“"
         Exit Function
     End If
-    Call Eiyo930Screen_Hold     '‰æ–Ê—}~‚Ù‚©
+    Call Eiyo930Screen_Hold     'ç”»é¢æŠ‘æ­¢ã»ã‹
     Columns("n:hz").Delete Shift:=xlToLeft
     
     Wsql = "SELECT * FROM " & Tbl_Food & " Where "
@@ -3145,12 +3144,12 @@ Dim i1      As Long
     Call Eiyo91DB_Open      'DB Open
     Set Rst_Food = myCon.Execute(Wsql)
     If Rst_Food.EOF Then
-        Range("a17") = "ŠY“–ƒf[ƒ^‚Í‚ ‚è‚Ü‚¹‚ñ"
+        Range("a17") = "è©²å½“ãƒ‡ãƒ¼ã‚¿ã¯ã‚ã‚Šã¾ã›ã‚“"
     Else
         With Rst_Food
-            Range("n2").CopyFromRecordset Rst_Food  'ƒŒƒR[ƒh
-            If IsEmpty(Range("n3")) Then            'ŠY“–‚ª‚PŒ‚Ì‚Æ‚«
-                For i1 = 1 To 12                    '‰æ–Ê€–Ú‚Ì‡Ÿˆ—
+            Range("n2").CopyFromRecordset Rst_Food  'ãƒ¬ã‚³ãƒ¼ãƒ‰
+            If IsEmpty(Range("n3")) Then            'è©²å½“ãŒï¼‘ä»¶ã®ã¨ã
+                For i1 = 1 To 12                    'ç”»é¢é …ç›®ã®é †æ¬¡å‡¦ç†
                     Cells(i1 + 2, 2) = Cells(2, i1 + 13)
                 Next i1
                 For i1 = 13 To 39
@@ -3166,75 +3165,75 @@ Dim i1      As Long
                 Cells(24, 10) = Cells(2, 100)
                 Columns("n:hz").Delete Shift:=xlToLeft
             Else
-                For i1 = 1 To .Fields.Count                     'ƒtƒB[ƒ‹ƒh–¼
+                For i1 = 1 To .Fields.Count                     'ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å
                     Cells(1, i1 + 13).Value = .Fields(i1 - 1).Name
                 Next
-                Columns("n:hz").EntireColumn.AutoFit           '•
+                Columns("n:hz").EntireColumn.AutoFit           'å¹…
                 i1 = Range("n1").End(xlDown).Row
-                Range("N:N").Locked = False                     '“ü—Í—ñ‚Ì‰ğœ
+                Range("N:N").Locked = False                     'å…¥åŠ›åˆ—ã®è§£é™¤
             End If
             .Close
         End With
     End If
-    Set Rst_Food = Nothing              'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+    Set Rst_Food = Nothing              'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
     Call Eiyo920DB_Close                'DB Close
     Columns("J:L").EntireColumn.AutoFit
-    Call Eiyo940Screen_Start            '‰æ–Ê•`‰æ‚Ù‚©
+    Call Eiyo940Screen_Start            'ç”»é¢æç”»ã»ã‹
 End Function
 '--------------------------------------------------------------------------------
-'   03_110  ‘OŒŸõ_Click
+'   03_110  å‰æ¤œç´¢_Click
 '--------------------------------------------------------------------------------
-Function Eiyo03_110‘OŒŸõClick()
+Function Eiyo03_110å‰æ¤œç´¢Click()
 Dim Wsql    As String
 Dim Wkey    As Long
 
     Range("a17") = Empty
     Wkey = Range("b03")
-    Call Eiyo930Screen_Hold             '‰æ–Ê—}~‚Ù‚©
+    Call Eiyo930Screen_Hold             'ç”»é¢æŠ‘æ­¢ã»ã‹
     Call Eiyo91DB_Open                  'DB Open
     Wsql = "SELECT Foodc FROM " & Tbl_Food & " Where Foodc < " & Wkey & " Order by Foodc DESC"
     Set Rst_Food = myCon.Execute(Wsql)
     If Rst_Food.EOF Then
-        Range("a17") = "ŠY“–ƒf[ƒ^‚Í‚ ‚è‚Ü‚¹‚ñ"
+        Range("a17") = "è©²å½“ãƒ‡ãƒ¼ã‚¿ã¯ã‚ã‚Šã¾ã›ã‚“"
     Else
         With Rst_Food
             Range("b03") = .Fields(0).Value
             .Close
         End With
     End If
-    Set Rst_Food = Nothing      'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+    Set Rst_Food = Nothing      'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
     Call Eiyo920DB_Close        'DB Close
-    Call Eiyo03_100ŒŸõClick
+    Call Eiyo03_100æ¤œç´¢Click
 End Function
 '--------------------------------------------------------------------------------
-'   03_120  ŸŒŸõ_Click
+'   03_120  æ¬¡æ¤œç´¢_Click
 '--------------------------------------------------------------------------------
-Function Eiyo03_120ŸŒŸõClick()
+Function Eiyo03_120æ¬¡æ¤œç´¢Click()
 Dim Wsql    As String
 Dim Wkey    As Long
 
     Range("a17") = Empty
     Wkey = Range("b03")
-    Call Eiyo930Screen_Hold             '‰æ–Ê—}~‚Ù‚©
+    Call Eiyo930Screen_Hold             'ç”»é¢æŠ‘æ­¢ã»ã‹
     Call Eiyo91DB_Open                  'DB Open
     Wsql = "SELECT Foodc FROM " & Tbl_Food & " Where Foodc > " & Wkey & " Order by Foodc"
     Set Rst_Food = myCon.Execute(Wsql)
     If Rst_Food.EOF Then
-        Range("a17") = "ŠY“–ƒf[ƒ^‚Í‚ ‚è‚Ü‚¹‚ñ"
+        Range("a17") = "è©²å½“ãƒ‡ãƒ¼ã‚¿ã¯ã‚ã‚Šã¾ã›ã‚“"
     Else
         With Rst_Food
             Range("b03") = .Fields(0).Value
             .Close
         End With
     End If
-    Set Rst_Food = Nothing      'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+    Set Rst_Food = Nothing      'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
     Call Eiyo920DB_Close        'DB Close
-    Call Eiyo03_100ŒŸõClick
+    Call Eiyo03_100æ¤œç´¢Click
 End Function
 '--------------------------------------------------------------------------------
-'   03_200  XV
+'   03_200  æ›´æ–°
 '--------------------------------------------------------------------------------
-Function Eiyo03_200XVClick()
+Function Eiyo03_200æ›´æ–°Click()
 Dim i1      As Long
 Dim Wsw     As Long
 Dim Wtemp   As Variant
@@ -3243,15 +3242,15 @@ Dim Wtemp   As Variant
     Range("a17") = Empty
     If Range("b3") < 1 Then: Exit Function
     Call Eiyo91DB_Open                      'DB Open
-    '€”õ‚±‚±‚Ü‚Å
+    'æº–å‚™ã“ã“ã¾ã§
     With Rst_Food
-        'ƒCƒ“ƒfƒbƒNƒX‚Ìİ’è
+        'ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¨­å®š
         .Index = "PrimaryKey"
-        'ƒŒƒR[ƒhƒZƒbƒg‚ğŠJ‚­
+        'ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã‚’é–‹ã
         Rst_Food.Open Source:=Tbl_Food, ActiveConnection:=myCon, _
             CursorType:=adOpenKeyset, LockType:=adLockOptimistic, _
             Options:=adCmdTableDirect
-        '”Ô†‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©ŒŸõ‚·‚é
+        'ç•ªå·ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹æ¤œç´¢ã™ã‚‹
         If Not .EOF Then .Seek Range("b3")
         If .EOF Then
             .AddNew
@@ -3267,7 +3266,7 @@ Dim Wtemp   As Variant
                 .Fields(i1 - 1).Value = Wtemp
             Next i1
             .Update
-            Range("a17") = "’Ç‰Á‚³‚ê‚Ü‚µ‚½"
+            Range("a17") = "è¿½åŠ ã•ã‚Œã¾ã—ãŸ"
         Else
             For i1 = 2 To 87
                 Select Case i1
@@ -3284,52 +3283,52 @@ Dim Wtemp   As Variant
                 End If
             Next i1
             If Wsw = 0 Then
-                Range("a17") = "•ÏX€–Ú‚ª‚ ‚è‚Ü‚¹‚ñ"
+                Range("a17") = "å¤‰æ›´é …ç›®ãŒã‚ã‚Šã¾ã›ã‚“"
             Else
-                If MsgBox("•ÏX€–Ú‚Í" & Wsw & "ƒ•Š‚Å‚·AXV‚µ‚Ä‚æ‚ë‚µ‚¢‚Å‚·‚©", vbOKCancel) = vbOK Then
+                If MsgBox("å¤‰æ›´é …ç›®ã¯" & Wsw & "ãƒµæ‰€ã§ã™ã€æ›´æ–°ã—ã¦ã‚ˆã‚ã—ã„ã§ã™ã‹", vbOKCancel) = vbOK Then
                     .Update
-                    Range("a17") = "XV‚³‚ê‚Ü‚µ‚½"
+                    Range("a17") = "æ›´æ–°ã•ã‚Œã¾ã—ãŸ"
                 End If
             End If
         End If
 '        .Close
     End With
-    Set Rst_Food = Nothing      'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+    Set Rst_Food = Nothing      'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
     Call Eiyo920DB_Close        'DB Close
 End Function
 '--------------------------------------------------------------------------------
-'   03_300  æÁ
+'   03_300  å–æ¶ˆ
 '--------------------------------------------------------------------------------
-Function Eiyo03_300æÁClick()
+Function Eiyo03_300å–æ¶ˆClick()
     Range("a17") = Empty
     Call Eiyo91DB_Open      'DB Open
-    '€”õ‚±‚±‚Ü‚Å
+    'æº–å‚™ã“ã“ã¾ã§
     With Rst_Food
-        'ƒCƒ“ƒfƒbƒNƒX‚Ìİ’è
+        'ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®è¨­å®š
         .Index = "PrimaryKey"
-        'ƒŒƒR[ƒhƒZƒbƒg‚ğŠJ‚­
+        'ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚»ãƒƒãƒˆã‚’é–‹ã
         Rst_Food.Open Source:=Tbl_Food, ActiveConnection:=myCon, _
             CursorType:=adOpenKeyset, LockType:=adLockOptimistic, _
             Options:=adCmdTableDirect
-        '”Ô†‚ª“o˜^‚³‚ê‚Ä‚¢‚é‚©ŒŸõ‚·‚é
+        'ç•ªå·ãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‹æ¤œç´¢ã™ã‚‹
         If Not .EOF Then .Seek Range("b3")
         If .EOF Then
-            Range("a17") = "ƒL[‚ª‘¶İ‚µ‚Ü‚¹‚ñ"
+            Range("a17") = "ã‚­ãƒ¼ãŒå­˜åœ¨ã—ã¾ã›ã‚“"
         Else
-            If MsgBox("íœ‚µ‚Ä‚æ‚ë‚µ‚¢‚Å‚·‚©", vbOKCancel) = vbOK Then
+            If MsgBox("å‰Šé™¤ã—ã¦ã‚ˆã‚ã—ã„ã§ã™ã‹", vbOKCancel) = vbOK Then
                 .Delete
-                Range("a17") = "æÁ‚³‚ê‚Ü‚µ‚½"
+                Range("a17") = "å–æ¶ˆã•ã‚Œã¾ã—ãŸ"
             End If
         End If
         .Close
     End With
-    Set Rst_Food = Nothing      'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+    Set Rst_Food = Nothing      'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
     Call Eiyo920DB_Close        'DB Close
 End Function
 '--------------------------------------------------------------------------------
-'   03_400  H•iƒR[ƒhƒf[ƒ^‚Ìì¬
+'   03_400  é£Ÿå“ã‚³ãƒ¼ãƒ‰ãƒ‡ãƒ¼ã‚¿ã®ä½œæˆ
 '--------------------------------------------------------------------------------
-Function Eiyo03_400ƒR[ƒhClick()
+Function Eiyo03_400ã‚³ãƒ¼ãƒ‰Click()
 Dim i1      As Long
 Dim Wsql    As String
 
@@ -3339,17 +3338,17 @@ Dim Wsql    As String
     Wsql = "SELECT Foodc,Fname FROM " & Tbl_Food & " Order by Foodc"
     Set Rst_Food = myCon.Execute(Wsql)
     If Rst_Food.EOF Then
-        Range("a17") = "ŠY“–ƒf[ƒ^‚Í‚ ‚è‚Ü‚¹‚ñ"
+        Range("a17") = "è©²å½“ãƒ‡ãƒ¼ã‚¿ã¯ã‚ã‚Šã¾ã›ã‚“"
     Else
         With Rst_Food
             Range("AA1").CopyFromRecordset Rst_Food
             .Close
         End With
     End If
-    Set Rst_Food = Nothing      'ƒIƒuƒWƒFƒNƒg‚Ì‰ğ•ú
+    Set Rst_Food = Nothing      'ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è§£æ”¾
     Call Eiyo920DB_Close        'DB Close
     
-    Open ThisWorkbook.Path & "H•iƒR[ƒh.txt" For Output As #22
+    Open ThisWorkbook.Path & "é£Ÿå“ã‚³ãƒ¼ãƒ‰.txt" For Output As #22
     For i1 = 1 To Range("aa60000").End(xlUp).Row
         Print #2, Cells(i1, 27) & vbTab & Cells(i1, 28)
     Next i1
@@ -3358,53 +3357,53 @@ Dim Wsql    As String
     Call Eiyo940Screen_Start
 End Function
 '--------------------------------------------------------------------------------
-'   03_810  ƒV[ƒg‚Ìì¬
+'   03_810  ã‚·ãƒ¼ãƒˆã®ä½œæˆ
 '--------------------------------------------------------------------------------
-Function Eiyo03_810H•isheet_make()
-    Call Eiyo930Screen_Hold     '‰æ–Ê—}~‚Ù‚©
-    Call Eiyo03_811_init        'ƒV[ƒg‚Ì‰Šú‰»
-    Call Eiyo03_812_zokusei     'ƒL[A–¼ÌA‘®«
-    Call Eiyo03_813_eiyoso      '‰h—{‘f
-    Call Eiyo03_814_shokugun    'H•iŒQ
-    Call Eiyo03_815_sisitu      '‰¿
-    Call Eiyo03_816_keisen      'ŒrüA—ñ•
-    Call Eiyo03_817_button      'ƒRƒ}ƒ“ƒhEƒ{ƒ^ƒ“
-    Call Eiyo940Screen_Start    '‰æ–Ê•`‰æ‚Ù‚©
+Function Eiyo03_810é£Ÿå“sheet_make()
+    Call Eiyo930Screen_Hold     'ç”»é¢æŠ‘æ­¢ã»ã‹
+    Call Eiyo03_811_init        'ã‚·ãƒ¼ãƒˆã®åˆæœŸåŒ–
+    Call Eiyo03_812_zokusei     'ã‚­ãƒ¼ã€åç§°ã€å±æ€§
+    Call Eiyo03_813_eiyoso      'æ „é¤Šç´ 
+    Call Eiyo03_814_shokugun    'é£Ÿå“ç¾¤
+    Call Eiyo03_815_sisitu      'è„‚è³ª
+    Call Eiyo03_816_keisen      'ç½«ç·šã€åˆ—å¹…
+    Call Eiyo03_817_button      'ã‚³ãƒãƒ³ãƒ‰ãƒ»ãƒœã‚¿ãƒ³
+    Call Eiyo940Screen_Start    'ç”»é¢æç”»ã»ã‹
 End Function
 '--------------------------------------------------------------------------------
-'   03_811  ƒV[ƒg‚Ì‰Šú‰»
+'   03_811  ã‚·ãƒ¼ãƒˆã®åˆæœŸåŒ–
 '--------------------------------------------------------------------------------
 Function Eiyo03_811_init()
-    Sheets("H•iƒ}ƒXƒ^").Select
-    While (ActiveSheet.Shapes.Count > 0)    'ƒRƒ}ƒ“ƒhƒ{ƒ^ƒ“æÁ
+    Sheets("é£Ÿå“ãƒã‚¹ã‚¿").Select
+    While (ActiveSheet.Shapes.Count > 0)    'ã‚³ãƒãƒ³ãƒ‰ãƒœã‚¿ãƒ³å–æ¶ˆ
         ActiveSheet.Shapes(1).Cut
     Wend
-    Cells.Delete Shift:=xlUp                '‘SÁ‹
-    Cells.NumberFormatLocal = "@"           '‘S‰æ–Ê•¶š—ñ‘®«
-    Range("e1") = "¦@H•iƒ}ƒXƒ^@Æ‰ïEXV@¦"
+    Cells.Delete Shift:=xlUp                'å…¨æ¶ˆå»
+    Cells.NumberFormatLocal = "@"           'å…¨ç”»é¢æ–‡å­—åˆ—å±æ€§
+    Range("e1") = "â€»ã€€é£Ÿå“ãƒã‚¹ã‚¿ã€€ç…§ä¼šãƒ»æ›´æ–°ã€€â€»"
     Range("e1").Font.Size = 16
 End Function
 '--------------------------------------------------------------------------------
-'   03_812  ƒL[A–¼ÌA‘®«
+'   03_812  ã‚­ãƒ¼ã€åç§°ã€å±æ€§
 '--------------------------------------------------------------------------------
 Function Eiyo03_812_zokusei()
 Dim i1      As Long
 Dim Wtext   As String
 Dim Warray  As Variant
-'   ‘®«‚Ù‚©
+'   å±æ€§ã»ã‹
     Wtext = Empty
-    Wtext = Wtext & vbLf & "H•iƒR[ƒh"
-    Wtext = Wtext & vbLf & "H•i–¼"
-    Wtext = Wtext & vbLf & "“Ç‚İ(•ª—Şj"
-    Wtext = Wtext & vbLf & "“ü—Í’PˆÊ"
-    Wtext = Wtext & vbLf & "“E—v"
-    Wtext = Wtext & vbLf & "“o˜^’PˆÊ"
-    Wtext = Wtext & vbLf & "’PˆÊŠ·Z’l"
-    Wtext = Wtext & vbLf & "ÒÆ­°ˆÊ’u‚P"
-    Wtext = Wtext & vbLf & "ÒÆ­°ˆÊ’u‚Q"
-    Wtext = Wtext & vbLf & "H•i•ª—Ş"
-    Wtext = Wtext & vbLf & "ÛH—Ê‰ºŒÀ"
-    Wtext = Wtext & vbLf & "ÛH—ÊãŒÀ"
+    Wtext = Wtext & vbLf & "é£Ÿå“ã‚³ãƒ¼ãƒ‰"
+    Wtext = Wtext & vbLf & "é£Ÿå“å"
+    Wtext = Wtext & vbLf & "èª­ã¿(åˆ†é¡ï¼‰"
+    Wtext = Wtext & vbLf & "å…¥åŠ›å˜ä½"
+    Wtext = Wtext & vbLf & "æ‘˜è¦"
+    Wtext = Wtext & vbLf & "ç™»éŒ²å˜ä½"
+    Wtext = Wtext & vbLf & "å˜ä½æ›ç®—å€¤"
+    Wtext = Wtext & vbLf & "ï¾’ï¾†ï½­ï½°ä½ç½®ï¼‘"
+    Wtext = Wtext & vbLf & "ï¾’ï¾†ï½­ï½°ä½ç½®ï¼’"
+    Wtext = Wtext & vbLf & "é£Ÿå“åˆ†é¡"
+    Wtext = Wtext & vbLf & "æ‘‚é£Ÿé‡ä¸‹é™"
+    Wtext = Wtext & vbLf & "æ‘‚é£Ÿé‡ä¸Šé™"
     Warray = Split(Wtext, vbLf)
     If UBound(Warray) <> 12 Then
         MsgBox "Program Error No.01 " & UBound(Warray)
@@ -3413,8 +3412,8 @@ Dim Warray  As Variant
     For i1 = 1 To UBound(Warray)
         Cells(i1 + 2, 1) = Warray(i1)
     Next i1
-    Range("c12") = "0:H•i 1:ğ—Ş 2:»ÌßØÒİÄ"
-'   ƒZƒ‹Œ‹‡
+    Range("c12") = "0:é£Ÿå“ 1:é…’é¡ 2:ï½»ï¾Œï¾Ÿï¾˜ï¾’ï¾ï¾„"
+'   ã‚»ãƒ«çµåˆ
     Warray = Array(, 2, 3, 3, 2, 3, 2, 2, 2, 2, 1, 2, 2)
     For i1 = 1 To UBound(Warray)
         Range(Cells(i1 + 2, 2).Address & ":" & Cells(i1 + 2, Warray(i1) + 1).Address).Select
@@ -3425,51 +3424,51 @@ Dim Warray  As Variant
             .TintAndShade = 0
             .Weight = xlThin
         End With
-        With Selection.Interior                         '”wŒiF
+        With Selection.Interior                         'èƒŒæ™¯è‰²
             .Pattern = xlNone
             .TintAndShade = 0
             .PatternTintAndShade = 0
         End With
-        Selection.Locked = False                        '•ÛŒì‰ğœ
+        Selection.Locked = False                        'ä¿è­·è§£é™¤
         Selection.FormulaHidden = False
     Next i1
-    Range("a17").Locked = False                        '•ÛŒì‰ğœ
+    Range("a17").Locked = False                        'ä¿è­·è§£é™¤
 End Function
 '--------------------------------------------------------------------------------
-'   03_813  ‰h—{‘f
+'   03_813  æ „é¤Šç´ 
 '--------------------------------------------------------------------------------
 Function Eiyo03_813_eiyoso()
 Dim i1      As Long
 Dim Wtext   As String
 Dim Warray  As Variant
     Wtext = Empty
-    Wtext = Wtext & vbLf & "01:ƒGƒlƒ‹ƒM["
-    Wtext = Wtext & vbLf & "02:‚½‚ñ‚Ï‚­¿"
-    Wtext = Wtext & vbLf & "03:“®•¨«‚½‚ñ‚Ï‚­¿"
-    Wtext = Wtext & vbLf & "04:A•¨«‚½‚ñ‚Ï‚­¿"
-    Wtext = Wtext & vbLf & "05:‰¿"
-    Wtext = Wtext & vbLf & "06:“œ¿"
-    Wtext = Wtext & vbLf & "07:H•¨‚¹‚ñ‚¢"
-    Wtext = Wtext & vbLf & "08:ƒJƒ‹ƒVƒEƒ€"
-    Wtext = Wtext & vbLf & "09:ƒŠƒ“"
-    Wtext = Wtext & vbLf & "10:“S"
-    Wtext = Wtext & vbLf & "11:ƒiƒgƒŠƒEƒ€"
-    Wtext = Wtext & vbLf & "12:ƒrƒ^ƒ~ƒ“‚`"
-    Wtext = Wtext & vbLf & "13:ƒrƒ^ƒ~ƒ“‚a‚P"
-    Wtext = Wtext & vbLf & "14:ƒrƒ^ƒ~ƒ“‚a‚Q"
-    Wtext = Wtext & vbLf & "15:ƒiƒCƒAƒVƒ“"
-    Wtext = Wtext & vbLf & "16:ƒrƒ^ƒ~ƒ“‚b"
-    Wtext = Wtext & vbLf & "17:ƒrƒ^ƒ~ƒ“‚a‚U"
-    Wtext = Wtext & vbLf & "18:ƒpƒ“ƒgƒeƒ“_"
-    Wtext = Wtext & vbLf & "19:—t_"
-    Wtext = Wtext & vbLf & "20:ƒrƒ^ƒ~ƒ“‚d"
-    Wtext = Wtext & vbLf & "21:ƒJƒŠƒEƒ€"
-    Wtext = Wtext & vbLf & "22:ƒ}ƒOƒlƒVƒEƒ€"
-    Wtext = Wtext & vbLf & "23:H‰–"
-    Wtext = Wtext & vbLf & "24:ƒRƒŒƒXƒeƒ[ƒ‹"
-    Wtext = Wtext & vbLf & "25:•s–O˜a‰–b_"
-    Wtext = Wtext & vbLf & "26:–O˜a‰–b_"
-    Wtext = Wtext & vbLf & "27:»“œ"
+    Wtext = Wtext & vbLf & "01:ã‚¨ãƒãƒ«ã‚®ãƒ¼"
+    Wtext = Wtext & vbLf & "02:ãŸã‚“ã±ãè³ª"
+    Wtext = Wtext & vbLf & "03:å‹•ç‰©æ€§ãŸã‚“ã±ãè³ª"
+    Wtext = Wtext & vbLf & "04:æ¤ç‰©æ€§ãŸã‚“ã±ãè³ª"
+    Wtext = Wtext & vbLf & "05:è„‚è³ª"
+    Wtext = Wtext & vbLf & "06:ç³–è³ª"
+    Wtext = Wtext & vbLf & "07:é£Ÿç‰©ã›ã‚“ã„"
+    Wtext = Wtext & vbLf & "08:ã‚«ãƒ«ã‚·ã‚¦ãƒ "
+    Wtext = Wtext & vbLf & "09:ãƒªãƒ³"
+    Wtext = Wtext & vbLf & "10:é‰„"
+    Wtext = Wtext & vbLf & "11:ãƒŠãƒˆãƒªã‚¦ãƒ "
+    Wtext = Wtext & vbLf & "12:ãƒ“ã‚¿ãƒŸãƒ³ï¼¡"
+    Wtext = Wtext & vbLf & "13:ãƒ“ã‚¿ãƒŸãƒ³ï¼¢ï¼‘"
+    Wtext = Wtext & vbLf & "14:ãƒ“ã‚¿ãƒŸãƒ³ï¼¢ï¼’"
+    Wtext = Wtext & vbLf & "15:ãƒŠã‚¤ã‚¢ã‚·ãƒ³"
+    Wtext = Wtext & vbLf & "16:ãƒ“ã‚¿ãƒŸãƒ³ï¼£"
+    Wtext = Wtext & vbLf & "17:ãƒ“ã‚¿ãƒŸãƒ³ï¼¢ï¼–"
+    Wtext = Wtext & vbLf & "18:ãƒ‘ãƒ³ãƒˆãƒ†ãƒ³é…¸"
+    Wtext = Wtext & vbLf & "19:è‘‰é…¸"
+    Wtext = Wtext & vbLf & "20:ãƒ“ã‚¿ãƒŸãƒ³ï¼¥"
+    Wtext = Wtext & vbLf & "21:ã‚«ãƒªã‚¦ãƒ "
+    Wtext = Wtext & vbLf & "22:ãƒã‚°ãƒã‚·ã‚¦ãƒ "
+    Wtext = Wtext & vbLf & "23:é£Ÿå¡©"
+    Wtext = Wtext & vbLf & "24:ã‚³ãƒ¬ã‚¹ãƒ†ãƒ­ãƒ¼ãƒ«"
+    Wtext = Wtext & vbLf & "25:ä¸é£½å’Œè„‚è‚ªé…¸"
+    Wtext = Wtext & vbLf & "26:é£½å’Œè„‚è‚ªé…¸"
+    Wtext = Wtext & vbLf & "27:ç ‚ç³–"
     Warray = Split(Wtext, vbLf)
     If UBound(Warray) <> 27 Then
         MsgBox "Program Error No.02 " & UBound(Warray)
@@ -3478,7 +3477,7 @@ Dim Warray  As Variant
     For i1 = 1 To UBound(Warray)
         Cells(i1 + 3, 6) = Warray(i1)
     Next i1
-    Cells(3, 6) = "‰h—{‘f"
+    Cells(3, 6) = "æ „é¤Šç´ "
     Wtext = Empty
     Wtext = Wtext & vbLf & "Kcal"
     Wtext = Wtext & vbLf & "g"
@@ -3498,7 +3497,7 @@ Dim Warray  As Variant
     Wtext = Wtext & vbLf & "mg"
     Wtext = Wtext & vbLf & "mg"
     Wtext = Wtext & vbLf & "mg"
-    Wtext = Wtext & vbLf & "ƒÊg"
+    Wtext = Wtext & vbLf & "Î¼g"
     Wtext = Wtext & vbLf & "mg"
     Wtext = Wtext & vbLf & "mg"
     Wtext = Wtext & vbLf & "mg"
@@ -3517,29 +3516,29 @@ Dim Warray  As Variant
     Next i1
 End Function
 '--------------------------------------------------------------------------------
-'   03_814  H•iŒQ
+'   03_814  é£Ÿå“ç¾¤
 '--------------------------------------------------------------------------------
 Function Eiyo03_814_shokugun()
 Dim i1      As Long
 Dim Wtext   As String
 Dim Warray  As Variant
     Wtext = Empty
-    Wtext = Wtext & vbLf & "H•iŒQ"
-    Wtext = Wtext & vbLf & "01:‘å“¤»•i"
-    Wtext = Wtext & vbLf & "02:‹›‰î—Ş"
-    Wtext = Wtext & vbLf & "03:“÷@—Ş"
-    Wtext = Wtext & vbLf & "04:—‘"
-    Wtext = Wtext & vbLf & "05:ŠC@‘"
-    Wtext = Wtext & vbLf & "06:“û»•i"
-    Wtext = Wtext & vbLf & "07:¬@‹›"
-    Wtext = Wtext & vbLf & "08:—Î‰©F–ìØ"
-    Wtext = Wtext & vbLf & "09:’WF–ìØ"
-    Wtext = Wtext & vbLf & "10:‰Ê@•¨"
-    Wtext = Wtext & vbLf & "11:’@—Ş"
-    Wtext = Wtext & vbLf & "12:‚¢‚à—Ş"
-    Wtext = Wtext & vbLf & "13:»@“œ"
-    Wtext = Wtext & vbLf & "14:A•¨«–û‰"
-    Wtext = Wtext & vbLf & "15:“®•¨«–û‰"
+    Wtext = Wtext & vbLf & "é£Ÿå“ç¾¤"
+    Wtext = Wtext & vbLf & "01:å¤§è±†è£½å“"
+    Wtext = Wtext & vbLf & "02:é­šä»‹é¡"
+    Wtext = Wtext & vbLf & "03:è‚‰ã€€é¡"
+    Wtext = Wtext & vbLf & "04:åµ"
+    Wtext = Wtext & vbLf & "05:æµ·ã€€è‰"
+    Wtext = Wtext & vbLf & "06:ä¹³è£½å“"
+    Wtext = Wtext & vbLf & "07:å°ã€€é­š"
+    Wtext = Wtext & vbLf & "08:ç·‘é»„è‰²é‡èœ"
+    Wtext = Wtext & vbLf & "09:æ·¡è‰²é‡èœ"
+    Wtext = Wtext & vbLf & "10:æœã€€ç‰©"
+    Wtext = Wtext & vbLf & "11:ç©€ã€€é¡"
+    Wtext = Wtext & vbLf & "12:ã„ã‚‚é¡"
+    Wtext = Wtext & vbLf & "13:ç ‚ã€€ç³–"
+    Wtext = Wtext & vbLf & "14:æ¤ç‰©æ€§æ²¹è„‚"
+    Wtext = Wtext & vbLf & "15:å‹•ç‰©æ€§æ²¹è„‚"
     Warray = Split(Wtext, vbLf)
     If UBound(Warray) <> 16 Then
         MsgBox "Program Error No.04 " & UBound(Warray)
@@ -3548,9 +3547,9 @@ Dim Warray  As Variant
     For i1 = 1 To UBound(Warray)
         Cells(i1 + 2, 9) = Warray(i1)
     Next i1
-    Cells(3, 10) = "¶ÛØ°"
-    Cells(3, 11) = "d—Ê"
-    Cells(3, 12) = "¶Ù¼³Ñ"
+    Cells(3, 10) = "ï½¶ï¾›ï¾˜ï½°"
+    Cells(3, 11) = "é‡é‡"
+    Cells(3, 12) = "ï½¶ï¾™ï½¼ï½³ï¾‘"
     Cells(19, 9) = "Total"
     Cells(20, 10) = "(kcal)"
     Cells(20, 11) = "(g)"
@@ -3558,16 +3557,16 @@ Dim Warray  As Variant
     Range("j3:l3,i19,j20:l20").HorizontalAlignment = xlRight
 End Function
 '--------------------------------------------------------------------------------
-'   03_815  ‰¿
+'   03_815  è„‚è³ª
 '--------------------------------------------------------------------------------
 Function Eiyo03_815_sisitu()
 Dim i1      As Long
 Dim Wtext   As String
 Dim Warray  As Variant
     Wtext = Empty
-    Wtext = Wtext & vbLf & "‰¿(“®•¨)"
-    Wtext = Wtext & vbLf & "‰¿(‹›‰î)"
-    Wtext = Wtext & vbLf & "‰¿(A•¨)"
+    Wtext = Wtext & vbLf & "è„‚è³ª(å‹•ç‰©)"
+    Wtext = Wtext & vbLf & "è„‚è³ª(é­šä»‹)"
+    Wtext = Wtext & vbLf & "è„‚è³ª(æ¤ç‰©)"
     Wtext = Wtext & vbLf & "g"
     Wtext = Wtext & vbLf & "g"
     Wtext = Wtext & vbLf & "g"
@@ -3584,13 +3583,13 @@ Dim Warray  As Variant
     Range("I22:I25").HorizontalAlignment = xlRight
 End Function
 '--------------------------------------------------------------------------------
-'   03_816  ŒrüA—ñ•
+'   03_816  ç½«ç·šã€åˆ—å¹…
 '--------------------------------------------------------------------------------
 Function Eiyo03_816_keisen()
 Dim i1      As Long
 Dim Wtext   As String
 Dim Warray  As Variant
-'   Œrü
+'   ç½«ç·š
     Range("g4:g30,j4:l18,j22:j24").Select
     With Selection.Borders
         .LineStyle = xlContinuous
@@ -3604,29 +3603,29 @@ Dim Warray  As Variant
         .TintAndShade = 0
         .Weight = xlThin
     End With
-    With Selection.Interior                         '”wŒiF
+    With Selection.Interior                         'èƒŒæ™¯è‰²
         .Pattern = xlNone
         .TintAndShade = 0
         .PatternTintAndShade = 0
     End With
-    Selection.Locked = False                        '•ÛŒì‰ğœ
+    Selection.Locked = False                        'ä¿è­·è§£é™¤
     Selection.FormulaHidden = False
-'   —ñ•
+'   åˆ—å¹…
     Columns("F:F").ShrinkToFit = True
     Cells.EntireColumn.AutoFit
     Warray = Array(, 0, 1.75, 5, 18, 2, 15, 0, 7)
     For i1 = 1 To UBound(Warray)
         If Warray(i1) > 0 Then: Columns(i1).ColumnWidth = Warray(i1)
     Next i1
-'    Range("B4:C4,B6:C6,B11:C11,B12:C12").NumberFormatLocal = "#,##0.00;[Ô]-#,##0.00"
-    Range("B9,B13,B14").NumberFormatLocal = "#,##0.00;[Ô]-#,##0.00"
-    Range("g4:g30,j4:l19,j22:j25").NumberFormatLocal = "#,##0.00;[Ô]-#,##0.00"
-'   ƒJ[ƒ\ƒ‹ˆÊ’u‚ğ–¾Šm‰»‚·‚é
-    Cells.FormatConditions.Delete               'ƒV[ƒg‘S‘Ì‚©‚çğŒ•t‚«‘®‚ğíœ‚·‚é
+'    Range("B4:C4,B6:C6,B11:C11,B12:C12").NumberFormatLocal = "#,##0.00;[èµ¤]-#,##0.00"
+    Range("B9,B13,B14").NumberFormatLocal = "#,##0.00;[èµ¤]-#,##0.00"
+    Range("g4:g30,j4:l19,j22:j25").NumberFormatLocal = "#,##0.00;[èµ¤]-#,##0.00"
+'   ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã‚’æ˜ç¢ºåŒ–ã™ã‚‹
+    Cells.FormatConditions.Delete               'ã‚·ãƒ¼ãƒˆå…¨ä½“ã‹ã‚‰æ¡ä»¶ä»˜ãæ›¸å¼ã‚’å‰Šé™¤ã™ã‚‹
     Cells.FormatConditions.Add Type:=xlExpression, Formula1:="=AND(CELL(""row"")=ROW(),CELL(""col"")=COLUMN())"
     Cells.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
     Cells.FormatConditions(1).Interior.Color = 255
-'   ‡Œv‚Ì®‚ÆğŒ•t‚«‘®
+'   åˆè¨ˆã®å¼ã¨æ¡ä»¶ä»˜ãæ›¸å¼
     Range("J19") = "=SUM(J4:J18)"
     Range("k19") = "=SUM(k4:k18)"
     Range("l19") = "=SUM(l4:l18)"
@@ -3646,78 +3645,78 @@ Dim Warray  As Variant
         Selection.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
         Selection.FormatConditions(1).Interior.ColorIndex = 6
     Next i1
-    
-    Range("a17").Font.Bold = True           'ƒƒbƒZ[ƒWƒGƒŠƒAiÔ‘¾•¶šj
+
+    Range("a17").Font.Bold = True           'ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚¨ãƒªã‚¢ï¼ˆèµ¤å¤ªæ–‡å­—ï¼‰
     Range("a17").Font.ColorIndex = 3
 End Function
 '--------------------------------------------------------------------------------
-'   03_817 ƒRƒ}ƒ“ƒhEƒ{ƒ^ƒ“
+'   03_817 ã‚³ãƒãƒ³ãƒ‰ãƒ»ãƒœã‚¿ãƒ³
 '--------------------------------------------------------------------------------
 Function Eiyo03_817_button()
-    While (ActiveSheet.Shapes.Count > 0)    'ƒRƒ}ƒ“ƒhƒ{ƒ^ƒ“æÁ
+    While (ActiveSheet.Shapes.Count > 0)    'ã‚³ãƒãƒ³ãƒ‰ãƒœã‚¿ãƒ³å–æ¶ˆ
         ActiveSheet.Shapes(1).Cut
     Wend
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=10, Top:=250, Width:=50, Height:=30)
-        .Object.Caption = "ƒNƒŠƒA"
-        .Name = "ƒNƒŠƒA"
+        .Object.Caption = "ã‚¯ãƒªã‚¢"
+        .Name = "ã‚¯ãƒªã‚¢"
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=70, Top:=250, Width:=50, Height:=30)
-        .Object.Caption = "ŒŸõ"
-        .Name = "ŒŸõ"
+        .Object.Caption = "æ¤œç´¢"
+        .Name = "æ¤œç´¢"
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=130, Top:=250, Width:=50, Height:=30)
-        .Object.Caption = "XV"
-        .Name = "XV"
+        .Object.Caption = "æ›´æ–°"
+        .Name = "æ›´æ–°"
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=10, Top:=300, Width:=50, Height:=30)
-        .Object.Caption = "‘OŒŸõ"
-        .Name = "‘OŒŸõ"
+        .Object.Caption = "å‰æ¤œç´¢"
+        .Name = "å‰æ¤œç´¢"
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=70, Top:=300, Width:=50, Height:=30)
-        .Object.Caption = "ŸŒŸõ"
-        .Name = "ŸŒŸõ"
+        .Object.Caption = "æ¬¡æ¤œç´¢"
+        .Name = "æ¬¡æ¤œç´¢"
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=130, Top:=300, Width:=50, Height:=30)
-        .Object.Caption = "æÁ"
-        .Name = "æÁ"
+        .Object.Caption = "å–æ¶ˆ"
+        .Name = "å–æ¶ˆ"
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=70, Top:=350, Width:=50, Height:=30)
-        .Object.Caption = "I—¹"
-        .Name = "I—¹"
+        .Object.Caption = "çµ‚äº†"
+        .Name = "çµ‚äº†"
     End With
 End Function
 '--------------------------------------------------------------------------------
-'   ‹¤’Êˆ—@Eiyo.mdb ‚ÌƒI[ƒvƒ“
+'   å…±é€šå‡¦ç†ã€€Eiyo.mdb ã®ã‚ªãƒ¼ãƒ—ãƒ³
 '--------------------------------------------------------------------------------
 Function Eiyo91DB_Open()
     myCon.Open "Provider=Microsoft.Jet.OLEDB.4.0;" & _
                "Data Source=" & ThisWorkbook.Path & "Eiyo.mdb;"""
 End Function
 '--------------------------------------------------------------------------------
-'   ‹¤’Êˆ—@Eiyo.mdb ‚ÌƒNƒ[ƒY
+'   å…±é€šå‡¦ç†ã€€Eiyo.mdb ã®ã‚¯ãƒ­ãƒ¼ã‚º
 '--------------------------------------------------------------------------------
 Function Eiyo920DB_Close()
     myCon.Close
     Set myCon = Nothing
 End Function
 '--------------------------------------------------------------------------------
-'   ‹¤’Êˆ—@‰æ–Ê—}~‚Ù‚©
+'   å…±é€šå‡¦ç†ã€€ç”»é¢æŠ‘æ­¢ã»ã‹
 '--------------------------------------------------------------------------------
 Function Eiyo930Screen_Hold()
-    Application.ScreenUpdating = False      '‰æ–Ê•`‰æ—}~
-    Application.EnableEvents = False        'ƒCƒxƒ“ƒg”­¶—}~
-    ActiveSheet.Unprotect                   'ƒV[ƒg‚Ì•ÛŒì‚ğ‰ğœ
+    Application.ScreenUpdating = False      'ç”»é¢æç”»æŠ‘æ­¢
+    Application.EnableEvents = False        'ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”ŸæŠ‘æ­¢
+    ActiveSheet.Unprotect                   'ã‚·ãƒ¼ãƒˆã®ä¿è­·ã‚’è§£é™¤
 End Function
 '--------------------------------------------------------------------------------
-'   ‹¤’Êˆ—@‰æ–Ê•`‰æ‚Ù‚©
+'   å…±é€šå‡¦ç†ã€€ç”»é¢æç”»ã»ã‹
 '--------------------------------------------------------------------------------
 Function Eiyo940Screen_Start()
-    Application.ScreenUpdating = True           '‰æ–Ê•`‰æ‚Ì•œŠˆ
-    Application.EnableEvents = True             'ƒCƒxƒ“ƒg”­¶ÄŠJ
-    ActiveSheet.Protect UserInterfaceOnly:=True '•ÛŒì‚ğ—LŒø‚É‚·‚é
+    Application.ScreenUpdating = True           'ç”»é¢æç”»ã®å¾©æ´»
+    Application.EnableEvents = True             'ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿå†é–‹
+    ActiveSheet.Protect UserInterfaceOnly:=True 'ä¿è­·ã‚’æœ‰åŠ¹ã«ã™ã‚‹
 End Function
 '--------------------------------------------------------------------------------
-'   ‹¤’Êˆ—@ƒ{ƒ^ƒ“ì¬
+'   å…±é€šå‡¦ç†ã€€ãƒœã‚¿ãƒ³ä½œæˆ
 '--------------------------------------------------------------------------------
 Function Eiyo950Button_Add(in_L As Long, in_t As Long, in_W As Long, in_H As Long, in_text As String)
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=in_L, Top:=in_t, Width:=in_W, Height:=in_H)
@@ -3726,11 +3725,11 @@ Function Eiyo950Button_Add(in_L As Long, in_t As Long, in_W As Long, in_H As Lon
     End With
 End Function
 '--------------------------------------------------------------------------------
-'   ‹¤’Êˆ—@w’èƒV[ƒgíœ
+'   å…±é€šå‡¦ç†ã€€æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤
 '--------------------------------------------------------------------------------
-Function Eiyo99_w’èƒV[ƒgíœ(Sname As String)
-    Application.DisplayAlerts = False                                   'Šm”F—}~
-    If Not IsError(Evaluate(Sname & "!a1")) Then: Sheets(Sname).Delete  'ƒV[ƒgíœ
-    Application.DisplayAlerts = True                                    'Šm”F•œŠˆ
+Function Eiyo99_æŒ‡å®šã‚·ãƒ¼ãƒˆå‰Šé™¤(Sname As String)
+    Application.DisplayAlerts = False                                   'ç¢ºèªæŠ‘æ­¢
+    If Not IsError(Evaluate(Sname & "!a1")) Then: Sheets(Sname).Delete  'ã‚·ãƒ¼ãƒˆå‰Šé™¤
+    Application.DisplayAlerts = True                                    'ç¢ºèªå¾©æ´»
 End Function
 
