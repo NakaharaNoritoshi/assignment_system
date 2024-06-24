@@ -1,8 +1,11 @@
 Attribute VB_Name = "Module1"
 Option Explicit
+
+' PtrSafeキーワードが追加されていることを確認
 Private Declare PtrSafe Function SetCurrentDirectory Lib "kernel32" Alias _
         "SetCurrentDirectoryA" (ByVal lpPathName As String) As Long
-Const myFileName = "Eiyo.mdb"""
+
+Const myFileName = "Eiyo.mdb"
 Const Tbl_Kiso = "F_Kiso"
 Const Tbl_Syoyo = "F_Syoyo"
 Const Tbl_Energ = "F_Energ"
@@ -11,6 +14,8 @@ Const Tbl_Food = "F_Food"
 Const Tbl_Field = "F_Field"
 Const Tbl_Need = "F_Need"
 Const Tbl_Advic = "F_Advic"
+
+' ADODB.ConnectionおよびRecordsetオブジェクトの参照設定を確認
 Dim myCon       As New ADODB.Connection
 Dim Rst_Kiso    As New ADODB.Recordset
 Dim Rst_Syoyo   As New ADODB.Recordset
@@ -20,6 +25,7 @@ Dim Rst_Food    As New ADODB.Recordset
 Dim Rst_Field   As New ADODB.Recordset
 Dim Rst_Need    As New ADODB.Recordset
 Dim Rst_Advic   As New ADODB.Recordset
+
 Dim Fld_Adrs1   As Variant
 'Dim Fld_Adrs2   As Variant
 Dim Fld_Area    As Variant
@@ -34,7 +40,8 @@ Dim Fld_Field   As Variant
 '   5:Sample
 '--------------------------------------------------------------------------------
 Function Eiyo01_000init()
-Dim Wtext   As String
+    Dim Wtext   As String
+
     Wtext = "Gmesg,a025:a025,o,00,X ,Message"
     Wtext = Wtext & vbLf & "Fcode,g003:k003,i,D,X,1234567890"    'Fcode
     Wtext = Wtext & vbLf & "Fsave,l003:p003,o,G,90,1234567890"   'Fcode save
@@ -52,9 +59,9 @@ Dim Wtext   As String
     Wtext = Wtext & vbLf & "Adrs1,g012:v012,i,D,J ,住所ー１＃住所ー１＃住所ー１＃住所ー"
     Wtext = Wtext & vbLf & "Adrs2,g013:v013,i,D,J ,住所ー２＃住所ー２＃住所ー２＃住所ー"
     Wtext = Wtext & vbLf & "Area1,g014:h014,o,D,X ,12"           '地区
-    Wtext = Wtext & vbLf & "Gare1,i014:i014,o,G,X ,地域名"       '地域
+    Wtext = Wtext & vbLf & "Gare1,i014:i014,o,G,X ,地域名"        '地域
     Wtext = Wtext & vbLf & "Area2,g015:h015,o,D,X ,12"           '地区
-    Wtext = Wtext & vbLf & "Gare2,i015:i015,o,G,X ,都府県"       '地域
+    Wtext = Wtext & vbLf & "Gare2,i015:i015,o,G,X ,都府県"        '地域
     Wtext = Wtext & vbLf & "Q3rec,g016:k016,i,D,X ,1234567890"   'Q3.食習
     Wtext = Wtext & vbLf & "Q4rec,g017:i017,i,D,X ,12345"        'Q4.休養
     Wtext = Wtext & vbLf & "Q5rec,g018:h018,i,D,X ,123"          'Q5.運動
@@ -81,9 +88,9 @@ Dim Wtext   As String
     Wtext = Wtext & vbLf & "Tenee,r020:u020,i,D,92,12345.67"     'Qi.ｴﾈﾙｷﾞｰ指定-2
     Wtext = Wtext & vbLf & "Tanps,q021:q021,i,D,90,1"            'Qj.ﾀﾝﾊﾟｸ指定-1
     Wtext = Wtext & vbLf & "Tanpe,r021:u021,i,D,92,12345.67"     'Qj.ﾀﾝﾊﾟｸ指定-2
-    Wtext = Wtext & vbLf & "ｶｳﾝｾﾗ1,q023:af23,i,D,J ,ｶｳﾝｾﾗ1"      '
-    Wtext = Wtext & vbLf & "ｶｳﾝｾﾗ2,q024:af24,i,D,J ,ｶｳﾝｾﾗ2"      '
-    Wtext = Wtext & vbLf & "ｶｳﾝｾﾗ3,q025:af25,i,D,J ,ｶｳﾝｾﾗ3"      '
+    Wtext = Wtext & vbLf & "ｶｳﾝｾﾗ1,q023:af23,i,D,J ,ｶｳﾝｾﾗ1"        '
+    Wtext = Wtext & vbLf & "ｶｳﾝｾﾗ2,q024:af24,i,D,J ,ｶｳﾝｾﾗ2"        '
+    Wtext = Wtext & vbLf & "ｶｳﾝｾﾗ3,q025:af25,i,D,J ,ｶｳﾝｾﾗ3"        '
     Wtext = Wtext & vbLf & "Blood,ab03:ac03,i,D,X ,12"           'B1.血液型
     Wtext = Wtext & vbLf & "Bscd1,ab04:ac04,i,D,X ,123"          'B2.支社部-1
     Wtext = Wtext & vbLf & "Bscd2,ad04:ae04,i,D,X ,12"           'B2.支社部-2
@@ -131,7 +138,8 @@ End Function
 '--------------------------------------------------------------------------------
 '   01_010 摂食画面のワークシートがアクティブになった
 '--------------------------------------------------------------------------------
-Function Eiyo01_010�ېH_Activate()
+'Function Eiyo01_010摂食_Activate()
+Function Eiyo01_010Activate()
     ActiveSheet.Unprotect                           'シートの保護を解除
 '    ActiveSheet.Protect UserInterfaceOnly:=True     '保護を有効にする
 End Function
@@ -139,7 +147,8 @@ End Function
 '   01_020 基礎画面のダブルクリック
 '   AA列（検索該当複数時）のダブルクリックは該当番号をセル[G3]に設定
 '--------------------------------------------------------------------------------
-Function Eiyo01_020��b_BeforedoubleClick()
+'Function Eiyo01_020基礎_BeforedoubleClick()
+Function Eiyo01_020BeforedoubleClick()
 Dim Wadrs   As String
 Dim Wcoul   As String
 Dim Wtext   As String
@@ -151,14 +160,16 @@ End Function
 '   01_030 クリア_Click
 '   入力項目の消去、帳票・検証シートの削除
 '--------------------------------------------------------------------------------
-Function Eiyo01_030クリアClick()
-Dim i1      As Long
-Dim FldItem As Variant
-Dim Lmax    As Long
+'Function Eiyo01_030クリアClick()
+Function Eiyo01Click()
+    Dim i1      As Long
+    Dim FldItem As Variant
+    Dim Lmax    As Long
 
-    Call Eiyo01_000init
-    Call Eiyo930Screen_Hold     '画面抑止ほか
+    Call Eiyo01_000init         ' 初期化関数を呼び出し
+    Call Eiyo930Screen_Hold     ' 画面抑止を行う関数を呼び出し
     
+    ' Fld_Adrs1 配列の要素数に基づいてループを実行
     For i1 = 0 To UBound(Fld_Adrs1)
         FldItem = Split(Fld_Adrs1(i1), ",")
         If FldItem(0) = "Gyyyy" Or _
@@ -169,34 +180,48 @@ Dim Lmax    As Long
         End If
     Next i1
 
-    Call Eiyo01_820操作ガイド
+    ' 操作ガイドを表示する関数を呼び出し
+    'Call Eiyo01_820操作ガイド
+    Call Eiyo01_820OperationGuide
+
+    ' シートの使用範囲の行数を取得
     Lmax = Sheets("摂食").UsedRange.Rows.Count
+    ' 行数が4を超える場合、5行目から最後の行を削除
     If Lmax > 4 Then: Sheets("摂食").Rows("5:" & Lmax).Delete Shift:=xlUp
+    
+    ' 指定したシートを削除
     Call Eiyo99_指定シート削除("検証")
     Call Eiyo99_指定シート削除("検証2")
     Call Eiyo99_指定シート削除("DBmirror")
     Call Eiyo99_指定シート削除("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ")
-    Range("Fcode").Select
-    Call Eiyo940Screen_Start    '画面描画ほか
+
+    Range("Fcode").Select       ' セルを選択
+    
+    Call Eiyo940Screen_Start    ' 画面描画を再開する関数を呼び出し
 End Function
 '--------------------------------------------------------------------------------
 '   01_100 検索_Click
 '       基礎情報の検索、特定された場合に摂食情報も取得する
 '--------------------------------------------------------------------------------
-Function Eiyo01_100検索Click()
+'Function Eiyo01_100検索Click()
+Function Eiyo01_100Click()
 Dim FldItem     As Variant
 Dim i1          As Long
 
-    Call Eiyo930Screen_Hold     '画面抑止ほか
+    Call Eiyo930Screen_Hold     ' 画面抑止ほか
     Call Eiyo01_000init
     Range("Gmesg") = Empty
+
+    ' Fld_Adrs1 配列の要素をループして検索キーを探す
     For i1 = 1 To UBound(Fld_Adrs1)
         FldItem = Split(Fld_Adrs1(i1), ",")
-        If FldItem(2) = "i" And Range(Trim(FldItem(0))) <> Empty Then: Exit For
+        If FldItem(2) = "i" And Range(Trim(FldItem(0))) <> Empty Then
+            Exit For
+        End If
     Next i1
     
-    If FldItem(0) = "Qtony" Or _
-       FldItem(0) = "Qkoke" Then
+    ' 特定の条件に基づいてセルの値を設定
+    If FldItem(0) = "Qtony" Or FldItem(0) = "Qkoke" Then
         i1 = i1 + 1
         FldItem = Split(Fld_Adrs1(i1), ",")
         If FldItem(0) = "Qill1" Then
@@ -206,67 +231,81 @@ Dim i1          As Long
         End If
     End If
     
+    ' 検索キーが見つからなかった場合の処理
     If i1 > UBound(Fld_Adrs1) Then
         Range("Gmesg") = "検索キーがありません"
     Else
-        Call Eiyo01_110検索(i1)
+        'Call Eiyo01_110検索(i1)
+        Call Eiyo01_110Search(i1)
     End If
     
-    If IsEmpty(Range("Fcode")) = False And _
-       Range("Fcode") = Range("Fsave") Then         '特定された場合は摂食情報
-        Application.ScreenUpdating = False          '画面描画抑止
+    ' 特定の条件に基づいて摂食情報を取得
+    If IsEmpty(Range("Fcode")) = False And Range("Fcode") = Range("Fsave") Then
+        Application.ScreenUpdating = False          ' 画面描画抑止
         Call Eiyo01_130MealGet
         Sheets("基礎").Select
     End If
+
+    ' Fcode セルを選択
     Range("Fcode").Select
-    Call Eiyo940Screen_Start                        '画面描画ほか
+    Call Eiyo940Screen_Start                        ' 画面描画ほか
 End Function
 '--------------------------------------------------------------------------------
 '   01_110 ＤＢ検索処理     F-024
 '--------------------------------------------------------------------------------
 Function Eiyo01_110検索(i1 As Long)
-Dim mySqlStr    As String
-Dim i2          As Long
-Dim in_key      As String
-Dim Wtbl        As String
-Dim FldItem     As Variant
-Dim Wtext       As String
-Dim FldName     As String
+    Dim mySqlStr    As String
+    Dim i2          As Long
+    Dim in_key      As String
+    Dim Wtbl        As String
+    Dim FldItem     As Variant
+    Dim Wtext       As String
+    Dim FldName     As String
 
+    ' 指定された範囲の列を削除
     Columns("ah:hz").Delete Shift:=xlToLeft
     FldItem = Split(Fld_Adrs1(i1), ",")
     Range("Fsave") = Empty
         
     'SQLで読み込むデータを指定する
     in_key = Range(Trim(FldItem(0))).Text
-    If Left(in_key, 1) = "%" Then: in_key = "%" & Right(in_key, Len(in_key) - 1)
-    Call Eiyo91DB_Open      'DB Open
+    If Left(in_key, 1) = "%" Then
+        in_key = "%" & Right(in_key, Len(in_key) - 1)
+    End If
+
+    Call Eiyo91DB_Open      ' DBを開く
+
+    ' SQLクエリの作成
     If FldItem(0) = "Fcode" Then
         mySqlStr = "SELECT * FROM " & Tbl_Kiso & " Where Fcode = """ & in_key & """"
     Else
-        mySqlStr = "SELECT * FROM " & Tbl_Kiso & " Where " & _
-                   Trim(FldItem(0)) & " like """ & in_key & "%"""
+        mySqlStr = "SELECT * FROM " & Tbl_Kiso & " Where " & Trim(FldItem(0)) & " like """ & in_key & "%"""
     End If
+
+    ' SQLクエリの実行
     Set Rst_Kiso = myCon.Execute(mySqlStr)
     If Rst_Kiso.EOF Then
         Range("Gmesg") = "該当データはありません"
         Range("Fcode").Select
     Else
         With Rst_Kiso
-            Range("Ah2").CopyFromRecordset Rst_Kiso           'レコード
-            If Range("Ah3") = Empty Then                        '該当が１件のとき
-                For i1 = 1 To UBound(Fld_Adrs1)                 '画面項目の順次処理
+            Range("Ah2").CopyFromRecordset Rst_Kiso                 ' レコード
+            
+            ' 該当が１件のときの処理
+            If Range("Ah3") = Empty Then
+                For i1 = 1 To UBound(Fld_Adrs1)                     
                     FldItem = Split(Fld_Adrs1(i1), ",")
                     If FldItem(3) = "D" Then
-                        For i2 = 0 To .Fields.Count - 1             'フィールド名
-                            If .Fields(i2).Name = Trim(FldItem(0)) And _
-                               .Fields(i2).Name <> "Age" Then
+                        For i2 = 0 To .Fields.Count - 1             
+                            If .Fields(i2).Name = Trim(FldItem(0)) And .Fields(i2).Name <> "Age" Then
                                 Range(Trim(FldItem(0))) = Range("ah2").Offset(0, i2)
                                 Exit For
                             End If
                         Next i2
                     End If
                 Next i1
+
+                ' 特定のセルの値に応じた処理
                 If Range("Qill1") = "000000" Then
                     Range("Qtony") = "0"
                 Else
@@ -285,36 +324,51 @@ Dim FldName     As String
                     Range("Q6r_d") = Mid(Wtext, 31, 10)
                     Range("Q6r_e") = Mid(Wtext, 41, 10)
                 End If
-                Range("Gare1") = Eiyo01_120�n��("1" & Range("area1"))
-                Range("Gare2") = Eiyo01_120�n��("2" & Range("area2"))
+
+                ' カスタム関数を呼び出して値を設定
+                Range("Gare1") = Eiyo01_120地域("1" & Range("area1"))
+                Range("Gare2") = Eiyo01_120地域("2" & Range("area2"))
+
+                ' Fsave に Fcode の値を設定
                 Range("Fsave") = Range("Fcode")
                 Call Eiyo01_820操作ガイド
+
+            ' 該当が複数件のときの処理
             Else
-                For i1 = 1 To .Fields.Count                     'フィールド名
+                For i1 = 1 To .Fields.Count                     
                     Cells(1, i1 + 33).Value = .Fields(i1 - 1).Name
                 Next
-                Columns("ah:hz").EntireColumn.AutoFit           '幅
+                Columns("ah:hz").EntireColumn.AutoFit           ' 列幅を自動調整
                 i1 = Range("ah1").End(xlDown).Row
                 Range("Ah2:ah" & i1).Locked = False             '入力可
                 Range("Ah2:ah" & i1).Interior.ColorIndex = 34
             End If
+
             .Close
         End With
     End If
-    Set Rst_Kiso = Nothing                        'オブジェクトの解放
-    Call Eiyo920DB_Close    'DB Close
+
+    Set Rst_Kiso = Nothing      ' オブジェクトの解放
+    Call Eiyo920DB_Close        ' DBを閉じる
 End Function
 '--------------------------------------------------------------------------------
 '   01_120 地域・都道府県表示
 '--------------------------------------------------------------------------------
 Function Eiyo01_120地域(in_code As String) As String
-Dim i1      As Long
-Dim Witem   As Variant
+    Dim i1      As Long
+    Dim Witem   As Variant
 
+    ' 初期値を空に設定
     Eiyo01_120地域 = Empty
+
+    ' Fld_Area 配列をループ
     For i1 = 0 To UBound(Fld_Area)
+        ' 各要素をカンマで分割
         Witem = Split(Fld_Area(i1), ",")
+
+        ' 入力コードが一致する場合
         If Witem(0) = in_code Then
+            ' 一致する地域名を設定し、ループを終了
             Eiyo01_120地域 = Witem(1)
             Exit For
         End If
@@ -324,57 +378,81 @@ End Function
 '   01_130　摂食取得
 '--------------------------------------------------------------------------------
 Function Eiyo01_130MealGet()
-Dim mySqlStr    As String
-Dim Lmax        As Long
-Dim i1          As Long
+    Dim mySqlStr    As String
+    Dim Lmax        As Long
+    Dim i1          As Long
 
-    Sheets("摂食").Select
-    Application.EnableEvents = False                'イベント発生抑止
-'    ActiveSheet.Unprotect                           'シートの保護を解除
+    Sheets("摂食").Select                    ' 摂食シートを選択
+    Application.EnableEvents = False        ' イベントの発生を抑止
+'    ActiveSheet.Unprotect                  ' シートの保護を解除
+
+    ' 範囲の初期化
     Range("b1") = Empty
     Range("a2") = Range("Fcode") & ":" & Range("Namej")
+
+    ' 不要な行を削除
     Lmax = ActiveSheet.UsedRange.Rows.Count
     If Lmax > 4 Then: Rows("5:" & Lmax).Delete Shift:=xlUp
         
-    'SQLで読み込むデータを指定する
-    Call Eiyo91DB_Open      'DB Open
+    'SQLでデータを取得
+    Call Eiyo91DB_Open      'DBを開く
     mySqlStr = "SELECT Sdate,Ekubn,Foodc,Suryo FROM " & Tbl_Meal & " Where Fcode = """ & Range("Fcode") & """"
     Set Rst_Meal = myCon.Execute(mySqlStr)
+
+    ' レコードが空かどうかを確認
     If Rst_Meal.EOF Then
         Lmax = 0
     Else
-        Range("A5").CopyFromRecordset Rst_Meal           'レコード
+        Range("A5").CopyFromRecordset Rst_Meal      ' レコードをシートに貼り付け
     End If
     
+    ' データの加工
     Lmax = ActiveSheet.UsedRange.Rows.Count
     For i1 = 5 To Lmax
         Cells(i1, 6) = Cells(i1, 4)
         Cells(i1, 4) = Cells(i1, 3)
-        Cells(i1, 3) = Eiyo01_401食事区分(Cells(i1, 2))
-        Call Eiyo01_402食品マスタ(i1)
+        Cells(i1, 3) = Eiyo01_401食事区分(Cells(i1, 2)) ' 関数呼び出し
+        Call Eiyo01_402食品マスタ(i1)                   ' 関数呼び出し
     Next i1
+
+    ' オブジェクトの解放とデータベースのクローズ
     Set Rst_Meal = Nothing                    'オブジェクトの解放
-    Call Eiyo920DB_Close    'DB Close
+    Call Eiyo920DB_Close    'DBを閉じる
+
+    ' イベントの再有効化
+    Application.EnableEvents = True
 End Function
 '--------------------------------------------------------------------------------
 '   01_200 更新_Click
 '--------------------------------------------------------------------------------
 Function Eiyo01_200更新Click()
-Dim Rtn As Long
-    Call Eiyo930Screen_Hold                     '画面抑止ほか
+    Dim Rtn As Long
+
+    ' 画面操作の準備
+    Call Eiyo930Screen_Hold        '画面抑止ほか
+
+    ' 初期化
     Call Eiyo01_000init
-    Rtn = Eiyo01_210KeyCheck                    'キーチェック
-    If Rtn = 0 Then: Rtn = Eiyo01_220項目Check  '項目チェック
-    If Rtn = 0 Then: Rtn = Eiyo01_230DB更新     'DB更新
-    Call Eiyo940Screen_Start                    '画面描画ほか
+
+    'キーチェック
+    Rtn = Eiyo01_210KeyCheck
+    If Rtn = 0 Then
+        Rtn = Eiyo01_220項目Check  '項目チェック
+    If Rtn = 0 Then
+        Rtn = Eiyo01_230DB更新     'DB更新
+    End If
+
+    ' 画面描画の復帰
+    Call Eiyo940Screen_Start       '画面描画ほか
 End Function
 '--------------------------------------------------------------------------------
 '   01_210 キーチェック
 '--------------------------------------------------------------------------------
 Function Eiyo01_210KeyCheck() As Long
-Dim mySqlStr    As String
+    Dim mySqlStr    As String
 
-    Call Eiyo91DB_Open      'DB Open
+    Call Eiyo91DB_Open      'DBを開く
+
     mySqlStr = "SELECT * FROM " & Tbl_Kiso & " Where Fcode = """ & Range("Fcode") & """"
     Set Rst_Kiso = myCon.Execute(mySqlStr)
     If Rst_Kiso.EOF Then
@@ -392,21 +470,26 @@ Dim mySqlStr    As String
             Eiyo01_210KeyCheck = 1
         End If
     End If
-    Set Rst_Kiso = Nothing                        'オブジェクトの解放
-    Call Eiyo920DB_Close    'DB Close
+
+    Set Rst_Kiso = Nothing  'オブジェクトの解放
+
+    Call Eiyo920DB_Close    'DBを閉じる
 End Function
 '--------------------------------------------------------------------------------
 '   01_220 項目チェック
 '--------------------------------------------------------------------------------
 Function Eiyo01_220項目Check() As Long
-Dim Witem   As Variant
-Dim Wlen    As Long
-Dim i1      As Long
-Dim Wtemp   As String
+    ' 変数の宣言
+    Dim Witem   As Variant  ' 配列またはオブジェクト型の変数
+    Dim Wlen    As Long     ' 長整数型の変数
+    Dim i1      As Long     ' 長整数型の変数
+    Dim Wtemp   As String   ' 文字列型の変数
 
-    Eiyo01_220項目Check = 1
-    Range("Gmesg") = Empty
-'   コード
+    ' 関数の初期値を設定
+    Eiyo01_220項目Check = 1  ' 戻り値を 1 に初期化
+    Range("Gmesg") = Empty  ' メッセージ表示用のセルを空にする
+
+    ' コードのチェック
 '    Witem = Range("Fcode")
 '    If IsNumeric(Witem) = True And Len(Witem) <= 10 Then
 '    Else
@@ -414,14 +497,16 @@ Dim Wtemp   As String
 '        Range("Fcode").Activate
 '        Exit Function
 '    End If
-'   調査期間開始日
+
+    ' 調査期間開始日のチェック
     If IsDate(Range("Date1")) Then
     Else
         Range("Gmesg") = "調査期間開始日を実在日にしてください"
         Range("Date1").Activate
         Exit Function
     End If
-'   調査期間日数
+
+    ' 調査期間日数のチェック
     Witem = Range("Nissu")
     If IsNumeric(Witem) = True And Len(Witem) = 1 Then
     Else
@@ -429,9 +514,11 @@ Dim Wtemp   As String
         Range("Nissu").Activate
         Exit Function
     End If
-'   氏名
-    If Eiyo01_221����check("Namej", "����", 10) = 1 Then: Exit Function
-'   性別
+
+    ' 氏名の桁数チェック
+    If Eiyo01_221桁数check("Namej", "氏名", 10) = 1 Then: Exit Function
+
+    ' 性別のチェック
     Witem = Range("sex")
     If Witem = "" Or Witem = "0" Or Witem = "1" Then
     Else
@@ -439,7 +526,8 @@ Dim Wtemp   As String
         Range("sex").Activate
         Exit Function
     End If
-'   生年月日
+
+    ' 生年月日のチェック
     If IsDate(Range("Birth")) Then
     Else
         Range("Gmesg") = "生年月日を実在日にしてください"
@@ -447,14 +535,17 @@ Dim Wtemp   As String
         Exit Function
     End If
     
+    ' 身長、体重、皮下脂肪の数値チェック
     If Eiyo01_223数値lcheck("Hight", "身長", 3, 1, 300) = 1 Then: Exit Function
     If Eiyo01_223数値lcheck("Weght", "体重", 3, 1, 300) = 1 Then: Exit Function
     If Eiyo01_223数値lcheck("Sibou", "皮下脂肪", 2, 1, 50) = 1 Then: Exit Function
     
+    ' 郵便番号、住所の桁数チェック
     If Eiyo01_221桁数check("Adrno", "郵便番号", 18) = 1 Then: Exit Function
     If Eiyo01_221桁数check("Adrs1", "住所ー１", 18) = 1 Then: Exit Function
     If Eiyo01_221桁数check("Adrs2", "住所ー２", 18) = 1 Then: Exit Function
-'   地区・地域
+
+    ' 地区・地域のチェック
     Wtemp = Left(Range("adrs1"), 2)
     For i1 = 0 To UBound(Fld_Area)
         Witem = Split(Fld_Area(i1), ",")
@@ -467,6 +558,8 @@ Dim Wtemp   As String
             Exit For
         End If
     Next i1
+
+    ' Q3～Q6、QA～QGの数値チェック
     If Eiyo01_222数字check("Q3rec", "Q3.食習慣", 10) = 1 Then: Exit Function
     If Eiyo01_222数字check("Q4rec", "Q4.休養", 5) = 1 Then: Exit Function
     If Eiyo01_222数字check("Q5rec", "Q5.運動", 3) = 1 Then: Exit Function
@@ -475,12 +568,14 @@ Dim Wtemp   As String
     If Eiyo01_222数字check("Q6r_c", "Q6.健康３", 10) = 1 Then: Exit Function
     If Eiyo01_222数字check("Q6r_d", "Q6.健康４", 10) = 1 Then: Exit Function
     If Eiyo01_222数字check("Q6r_e", "Q6.健康５", 10) = 1 Then: Exit Function
-'   職業
+
+    ' 職業の桁数チェック
     Range("Qjob1") = UCase(Range("Qjob1"))
     If Len(Range("Qjob1")) = 4 Then
     Else
         Range("Gmesg") = "職業は４桁としてください　" & Len(Range("Qjob1"))
         Range("Qjob1").Activate
+        Exit Function
     End If
 
     If Eiyo01_222数字check("Qsyuf", "QA.主婦", 1) = 1 Then: Exit Function
@@ -491,12 +586,15 @@ Dim Wtemp   As String
     Else
         Range("Qill1") = "000321"
     End If
+
     If Eiyo01_222数字check("Qkoke", "QC.糖尿", 1) = 1 Then: Exit Function
     If Range("Qkoke") = "0" Then
         Range("Qill2") = "000000"
     Else
         Range("Qill2") = "000313"
     End If
+
+    ' QE、QF、QGの数値チェック
     If Eiyo01_223数値lcheck("Qsrmr", "QE.ｽﾎﾟｰﾂ1", 3, 0, 1000) = 1 Then: Exit Function
     If Eiyo01_223数値lcheck("Qsmin", "QE.ｽﾎﾟｰﾂ2", 3, 0, 1000) = 1 Then: Exit Function
     If Eiyo01_222数字check("Qclab", "QF.運動部", 1) = 1 Then: Exit Function
@@ -507,7 +605,8 @@ Dim Wtemp   As String
     If Eiyo01_222数字check("Tanps", "ﾀﾝﾊﾟｸ指定", 1) = 1 Then: Exit Function
     If Eiyo01_223数値lcheck("Tenee", "ｴﾈﾙｷﾞ指定", 5, 2, 100000) = 1 Then: Exit Function
     If Eiyo01_223数値lcheck("Tanpe", "ﾀﾝﾊﾟｸ指定", 5, 2, 100000) = 1 Then: Exit Function
-'
+
+    ' 血液型のチェック
     Range("Blood") = UCase(Range("Blood"))
     Wtemp = Range("Blood")
     If Wtemp = "" Or Wtemp = "A" Or Wtemp = "B" Or Wtemp = "O" Or Wtemp = "AB" Then
@@ -517,12 +616,14 @@ Dim Wtemp   As String
         Exit Function
     End If
 
+    ' 保険証の桁数チェック
     If Eiyo01_221桁数check("Bscd1", "支店", 3) = 1 Then: Exit Function
     If Eiyo01_221桁数check("Bscd2", "支部", 2) = 1 Then: Exit Function
     If Eiyo01_221桁数check("Bhok1", "保険証記号", 8) = 1 Then: Exit Function
     If Eiyo01_221桁数check("Bhok2", "保険証No", 8) = 1 Then: Exit Function
     If Eiyo01_221桁数check("Bhant", "定期健診", 2) = 1 Then: Exit Function
-'
+
+    ' 検査腕のチェック
     Range("Barm") = UCase(Range("Barm"))
     Wtemp = Range("Barm")
     If Wtemp = "" Or Wtemp = "L" Or Wtemp = "R" Then
@@ -531,13 +632,16 @@ Dim Wtemp   As String
         Range("Barm").Activate
         Exit Function
     End If
-'   血液検査日
+
+    ' 血液検査日のチェック
     If IsEmpty(Range("Bdate")) Or IsDate(Range("Bdate")) Then
     Else
         Range("Gmesg") = "血液検査日を実在日にしてください"
         Range("Bdate").Activate
         Exit Function
     End If
+
+    ' 血液検査結果の数値チェック
     If Eiyo01_223数値check("Bbl01", "赤血球数", 3, 1, 10000) = 1 Then: Exit Function
     If Eiyo01_223数値check("Bbl02", "血色素量", 3, 1, 10000) = 1 Then: Exit Function
     If Eiyo01_223数値check("Bbl03", "ﾍﾏﾄｸﾘｯﾄ", 3, 1, 10000) = 1 Then: Exit Function
@@ -550,17 +654,25 @@ Dim Wtemp   As String
     If Eiyo01_223数値check("Bbl10", "血糖", 3, 1, 10000) = 1 Then: Exit Function
     If Eiyo01_223数値check("Bbl11", "血圧最高", 3, 1, 10000) = 1 Then: Exit Function
     If Eiyo01_223数値check("Bbl12", "血圧最低", 3, 1, 10000) = 1 Then: Exit Function
-    Eiyo01_220項目Check = 0
+
+    ' 関数の戻り値を設定
+    Eiyo01_220項目Check = 0 ' 全てのチェックが正常終了した場合に戻り値を 0 に設定
 End Function
 '--------------------------------------------------------------------------------
 '   01_221 桁数チェック
 '--------------------------------------------------------------------------------
 Function Eiyo01_221桁数check(Ifld As String, Iname As String, Ilen As Long) As Long
+    
+    ' セルの内容が許容する最大桁数を超えているかをチェック
     If Len(Range(Ifld)) > Ilen Then
+        ' エラーメッセージをセルに表示
         Range("Gmesg") = Iname & "は" & Ilen & "桁以内にしてください" & Len(Range(Ifld))
+        ' 問題のあるセルをアクティブにする
         Range(Ifld).Activate
+        ' 関数の戻り値を設定し、エラーがあることを示す
         Eiyo01_221桁数check = 1
     Else
+        ' 問題がない場合は関数の戻り値を設定し、エラーがないことを示す
         Eiyo01_221桁数check = 0
     End If
 End Function
@@ -568,17 +680,25 @@ End Function
 '   01_222 固定桁数字項目チェック
 '--------------------------------------------------------------------------------
 Function Eiyo01_222数字check(Ifld As String, Iname As String, Ilen As Long) As Long
-Dim Witem   As Variant
-Dim Wlen    As Long
+    Dim Witem   As Variant
+    Dim Wlen    As Long
 
+    ' セルが空の場合、指定された桁数の"0"で埋める
     If Range(Ifld) = Empty Then: Range(Ifld) = String(Ilen, "0")
-    Witem = Range(Ifld)
-    Wlen = Len(Witem)
+
+    Witem = Range(Ifld) ' セルの内容を取得
+    Wlen = Len(Witem)   ' セルの内容の桁数を取得
+
+    ' セルの内容が数値であり、指定された桁数と一致しているかをチェック
     If IsNumeric(Witem) And Wlen = Ilen Then
+        ' 問題がない場合は関数の戻り値を設定し、エラーがないことを示す
         Eiyo01_222数字check = 0
     Else
+        ' エラーメッセージをセルに表示
         Range("Gmesg") = Iname & "は" & Ilen & "桁の数字にしてください　" & Wlen
+        ' 問題のあるセルをアクティブにする
         Range(Ifld).Activate
+        ' 関数の戻り値を設定し、エラーがあることを示す
         Eiyo01_222数字check = 1
     End If
 End Function
@@ -587,14 +707,21 @@ End Function
 '--------------------------------------------------------------------------------
 Function Eiyo01_223数値check(Ifld As String, Iname As String, _
                               Ilen1 As Long, Ilen2 As Long, Imax As Long) As Long
-Dim Witem   As Variant
+    Dim Witem   As Variant
     
+    ' セルの内容を取得
     Witem = Range(Ifld)
-    If IsNumeric(Witem) And Witem < Imax Then
+
+    ' セルの内容が数値であり、Imaxより小さいかをチェック
+    If IsNumeric(Witem) And Witem >= Ilen2 And Witem <= Imax Then
+        ' 問題がない場合は関数の戻り値を設定し、エラーがないことを示す
         Eiyo01_223数値lcheck = 0
     Else
-        Range("Gmesg") = Iname & "は上" & Ilen1 & "桁下" & Ilen2 & "桁以内の数値にしてください"
+        ' エラーメッセージをセルに表示
+        Range("Gmesg") = Iname & "は上限" & Ilen1 & "桁、下限" & Ilen2 & "桁以内の数値にしてください"
+        ' 問題のあるセルをアクティブにする
         Range(Ifld).Activate
+        ' 関数の戻り値を設定し、エラーがあることを示す
         Eiyo01_223数値check = 1
     End If
 End Function
@@ -603,55 +730,80 @@ End Function
 '   Microsoft ActiveX Data Objects 2.X Library 参照設定
 '--------------------------------------------------------------------------------
 Function Eiyo01_230DB更新() As Long
-Dim FldItem     As Variant
-Dim FldName     As String
-Dim i1          As Long
+    Dim FldItem     As Variant  ' 画面項目の配列
+    Dim FldName     As String   ' フィールド名
+    Dim i1          As Long     ' カウンタ変数
 
-    Call Eiyo91DB_Open      'DB Open
+    Call Eiyo91DB_Open      'DBを開く
     '準備ここまで
-    With Rst_Kiso
+
+    With Rst_Kiso           ' レコードセットを操作するためのWithステートメント
         'インデックスの設定
         .Index = "PrimaryKey"
+
         'レコードセットを開く
         Rst_Kiso.Open Source:=Tbl_Kiso, ActiveConnection:=myCon, _
             CursorType:=adOpenKeyset, LockType:=adLockOptimistic, _
             Options:=adCmdTableDirect
+
         '番号が登録されているか検索する
         If Not .EOF Then .Seek Range("Fcode")
+
         If .EOF Then
+            ' レコードが見つからなかった場合、新規追加する
             .AddNew
             Range("Gmesg") = "追加登録されました。"
-            Range("Fsave") = Range("Fcode")
+            Range("Fsave") = Range("Fcode") ' 登録されたコードを記録
         Else
+            ' レコードが見つかった場合、更新する
             Range("Gmesg") = "更新されました。"
         End If
-        For i1 = 1 To UBound(Fld_Adrs1)                 '画面項目の順次処理
-            FldItem = Split(Fld_Adrs1(i1), ",")         '
+
+        ' 画面項目を順次処理して、データベースに反映する
+        For i1 = 1 To UBound(Fld_Adrs1)                 
+            FldItem = Split(Fld_Adrs1(i1), ",")         
             If FldItem(3) = "D" Then
                 FldName = Trim(FldItem(0))
                 .Fields(FldName).Value = Range(FldName).Value
             End If
         Next i1
+
+        ' レコードを更新する
         .Update
+
+        ' レコードセットを閉じる
         .Close
     End With
+
     Set Rst_Kiso = Nothing      'オブジェクトの解放
-    Call Eiyo920DB_Close        'DB Close
-    Eiyo01_230DB更新 = 0
+    Call Eiyo920DB_Close        'DBを閉じる
+
+    Eiyo01_230DB更新 = 0        ' 関数の戻り値を設定
 End Function
 '--------------------------------------------------------------------------------
 '   01_300　取消_Click
 '--------------------------------------------------------------------------------
 Function Eiyo01_300取消Click()
+    ' Fcodeが保存されているFsaveと同じで、かつFcodeが空でない場合
     If Range("Fcode") = Range("Fsave") And _
         IsEmpty(Range("Fcode")) = False Then
-        Call Eiyo91DB_Open      'DB Open
+
+        Call Eiyo91DB_Open      'DBを開く
+
+        ' Tbl_KisoからFcodeに一致するレコードを削除するSQL文の実行
         myCon.Execute "DELETE FROM " & Tbl_Kiso & " Where Fcode = """ & Range("Fcode") & """"
+        ' Tbl_MealからFcodeに一致するレコードを削除するSQL文の実行
         myCon.Execute "DELETE FROM " & Tbl_Meal & " Where Fcode = """ & Range("Fcode") & """"
+        
+        ' メッセージを出力
         Range("Gmesg") = "取消削除されました。"
+
+        ' Fsaveを空にする（保存されているコードをクリアする）
         Range("Fsave") = Empty
-        Call Eiyo920DB_Close    'DB Close
+
+        Call Eiyo920DB_Close    'DBを閉じる
     Else
+        ' FcodeがFsaveと異なる、またはFcodeが空の場合にエラーメッセージを出力
         Range("Gmesg") = "検索されていません。"
     End If
 End Function
@@ -659,14 +811,22 @@ End Function
 '   01_400　摂食表示
 '--------------------------------------------------------------------------------
 Function Eiyo01_400MealDisp()
-Dim Rtn     As Long
-Dim Wmsg    As String
+    Dim Rtn     As Long     ' メッセージボックスの戻り値を格納する変数
+    Dim Wmsg    As String   ' 表示するメッセージを格納する変数
     
+    ' セルに基礎情報（FcodeとNamej）を表示
     Range("a2") = Range("Fcode") & ":" & Range("Namej")
+
+    ' 基礎情報の検索が行われていない場合のメッセージ
     Wmsg = "基礎情報の検索が行われていません"
+
+    ' Fcodeが空であるか、FcodeがFsaveと異なる場合
     If IsEmpty(Range("Fcode")) Or Range("Fcode") <> Range("Fsave") Then
+        ' メッセージボックスを表示してユーザーに警告する
+        ' Popup(メッセージ, 表示時間(秒), タイトル, ボタンの種類)
         Rtn = CreateObject("WScript.Shell").Popup(Wmsg, 3, "Microsoft Excel", 0)
-        Sheets("基礎").Select
+        
+        Sheets("基礎").Select   ' 基礎シートを選択する
     End If
 End Function
 '--------------------------------------------------------------------------------
@@ -674,34 +834,50 @@ End Function
 '--------------------------------------------------------------------------------
 Function Eiyo01_401食事区分(kbn As Long) As String
     Select Case kbn
-        Case 1: Eiyo01_401食事区分 = "朝"
-        Case 2: Eiyo01_401食事区分 = "昼"
-        Case 3: Eiyo01_401食事区分 = "夕"
-        Case 4: Eiyo01_401食事区分 = "夜"
-        Case 5: Eiyo01_401食事区分 = "間"
-        Case Else: Eiyo01_401食事区分 = Empty
+        Case 1
+            Eiyo01_401食事区分 = "朝"   ' kbnが1の場合、朝を設定
+        Case 2
+            Eiyo01_401食事区分 = "昼"   ' kbnが2の場合、昼を設定
+        Case 3
+            Eiyo01_401食事区分 = "夕"   ' kbnが3の場合、夕を設定
+        Case 4
+            Eiyo01_401食事区分 = "夜"   ' kbnが4の場合、夜を設定
+        Case 5
+            Eiyo01_401食事区分 = "間"   ' kbnが5の場合、間を設定
+        Case Else
+            Eiyo01_401食事区分 = Empty  ' 上記以外の場合、空文字列を設定
     End Select
 End Function
 '--------------------------------------------------------------------------------
 '   01_402　食品マスタ取得
 '--------------------------------------------------------------------------------
 Function Eiyo01_402食品マスタ(in_line As Long)
-Dim mySqlStr    As String
+    Dim mySqlStr    As String
+
+    ' セルが空の場合、関数を終了して該当セルをクリア
     If IsEmpty(Cells(in_line, 4)) Then
-        Cells(in_line, 5) = Empty
-        Range("g" & in_line & ":z" & in_line) = Empty
+        Cells(in_line, 5) = Empty   ' 検索結果表示セルを空にする
+        Range("g" & in_line & ":z" & in_line) = Empty   ' 関連セルも空にする
         Exit Function
     End If
         
+    ' SQL文の生成（指定された食品コードに該当するレコードを取得）
     mySqlStr = "SELECT * FROM " & Tbl_Food & " Where Foodc = " & Cells(in_line, 4)
+    
+    ' データベースからレコードセットを取得
     Set Rst_Food = myCon.Execute(mySqlStr)
+
+    ' レコードが存在しない場合の処理
     If Rst_Food.EOF Then
-        Cells(in_line, 5) = "キーなし"
-        Range("g" & in_line & ":z" & in_line) = Empty
+        Cells(in_line, 5) = "キーなし"  ' 指定された食品コードが見つからない場合の表示
+        Range("g" & in_line & ":z" & in_line) = Empty   ' 関連セルを空にする
     Else
-        Cells(in_line, 7).CopyFromRecordset Rst_Food
-        Cells(in_line, 5) = Cells(in_line, 8)
+        ' レコードが存在する場合の処理
+        Cells(in_line, 7).CopyFromRecordset Rst_Food    ' レコードセットから情報をセルにコピー
+        Cells(in_line, 5) = Cells(in_line, 8)           ' 表示セルに食品名を設定
     End If
+    
+    ' レコードセットをクローズしてオブジェクトを解放
     Rst_Food.Close
     Set Rst_Food = Nothing
 End Function
@@ -709,56 +885,88 @@ End Function
 '   01_410　摂食画面が変更された
 '--------------------------------------------------------------------------------
 Function Eiyo01_410MealChange(ChangeCell As String)
-Dim Wl      As Long
-Dim Wc      As Long
+    Dim Wl      As Long
+    Dim Wc      As Long
 
+    ' 変更されたセルの行と列を取得
     Wl = Range(ChangeCell).Row
     Wc = Range(ChangeCell).Column
-'    ActiveSheet.Unprotect                           'シートの保護を解除
+    
+    ' シートの保護を解除
+    ' ActiveSheet.Unprotect
+
+    ' 変更されたセルの列番号に応じて処理を分岐                        
     Select Case Wc
+        ' 列1が変更された場合、列2のセルを選択
         Case 1: Cells(Wl, 2).Select
+        ' 列2が変更された場合
         Case 2
+            ' 列3に食事区分を設定し、列4のセルを選択
             Cells(Wl, 3) = Eiyo01_401食事区分(Cells(Wl, 2))
             Cells(Wl, 4).Select
+        ' 列4が変更された場合
         Case 4
-            'SQLで読み込むデータを指定する
-            Call Eiyo91DB_Open      'DB Open
+            ' データベースを開き、食品マスタを呼び出し、データベースを閉じる
+            Call Eiyo91DB_Open      'DBを開く
             Call Eiyo01_402食品マスタ(Wl)
-            Call Eiyo920DB_Close    'DB Close
+            Call Eiyo920DB_Close    'DBを閉じる
+
+            ' 行が5より大きい場合の処理
             If Wl > 5 Then
+                ' 列1が空の場合、前の行の列1をコピー
                 If IsEmpty(Cells(Wl, 1)) Then: Cells(Wl, 1) = Cells(Wl - 1, 1)
+                ' 列2が空の場合、前の行の列2と列3をコピー
                 If IsEmpty(Cells(Wl, 2)) Then
                     Cells(Wl, 2) = Cells(Wl - 1, 2)
                     Cells(Wl, 3) = Cells(Wl - 1, 3)
                 End If
             End If
-            Cells(Wl, 6).Select
+
+            Cells(Wl, 6).Select ' 列6のセルを選択
+
+        ' 列6が変更された場合、次の行の列4のセルを選択
         Case 6: Cells(Wl + 1, 4).Select
     End Select
-'    ActiveSheet.Protect UserInterfaceOnly:=True     '保護を有効にする
+
+    ' シートの保護を再度有効にする
+    ' ActiveSheet.Protect UserInterfaceOnly:=True
 End Function
 '--------------------------------------------------------------------------------
 '   01_420　メニューが選択された
 '--------------------------------------------------------------------------------
 Function Eiyo01_420Menu(in_cell As String)
-Dim Wcode   As String
-Dim Wname   As String
-Dim Rtn     As Long
-Dim Wmsg    As String
-Dim Wcell   As String
+    Dim Wcode   As String
+    Dim Wname   As String
+    Dim Rtn     As Long
+    Dim Wmsg    As String
+    Dim Wcell   As String
 
+    ' in_cellのセルから10列右のセルの値をWcodeに設定
     Wcode = Range(in_cell).Offset(0, 10)
+
+    ' Wcodeが空なら関数を終了
     If Wcode = "" Then: Exit Function
+
+    ' in_cellのセルの値をWnameに設定
     Wname = Range(in_cell)
+
+    ' "摂食"シートのb1セルが空かどうかを確認
     If IsEmpty(Sheets("摂食").Range("b1")) Then
         Wmsg = Wcode & ":" & Wname & "が選択されました。"
         Rtn = CreateObject("WScript.Shell").Popup(Wmsg, 3, "Microsoft Excel", 0)
     Else
-        Application.EnableEvents = False            'イベント発生抑止
+        ' イベント発生を抑止してから、"摂食"シートを選択
+        Application.EnableEvents = False
         Sheets("摂食").Select
+
+        ' b1セルの値をWcellに保存し、b1セルを空にする
         Wcell = Range("b1")
         Range("b1") = Empty
-        Application.EnableEvents = True             'イベント発生再開
+
+        ' イベント発生を再開
+        Application.EnableEvents = True
+
+        ' Wcellの位置にWcodeを設定
         Range(Wcell) = Wcode
     End If
 End Function
@@ -766,72 +974,98 @@ End Function
 '   01_500　登録 Click
 '--------------------------------------------------------------------------------
 Function Eiyo01_500MealCalc(in_Func As Long)
-    Call Eiyo930Screen_Hold                                 '画面抑止ほか
-    Call Eiyo91DB_Open                                      'DB Open
-    If Eiyo01_501MealEntry = 1 Then: GoTo Eiyo01_503Exit    '未入力チェック
-    If Eiyo01_502Mealscope = 1 Then: GoTo Eiyo01_503Exit    '摂食量の範囲チェック
-    If Eiyo01_503Mealzerod = 1 Then: GoTo Eiyo01_503Exit    '摂食量ゼロの削除
-    If Eiyo01_504MealDoubl = 1 Then: GoTo Eiyo01_503Exit    '摂食の重複入力
-    If Eiyo01_510MealUdate = 1 Then: GoTo Eiyo01_503Exit    'ＤＢ更新
-    If Eiyo01_511MealFldgt = 1 Then: GoTo Eiyo01_501Exit    '項目要素取得
-    If Eiyo01_512MealSheet = 1 Then: GoTo Eiyo01_501Exit    '摂食計算シート
-    If Eiyo01_513kenso2sht = 1 Then: GoTo Eiyo01_501Exit    '検証２シート作成
-    If Eiyo01_514MealCalc1 = 1 Then: GoTo Eiyo01_501Exit    '摂食計算
-    If Eiyo01_515MealTotal = 1 Then: GoTo Eiyo01_501Exit    '摂食量合計
-    If Eiyo01_521CalcDbGet(1) = 1 Then: GoTo Eiyo01_501Exit '摂食量合計
-    If Eiyo01_522Mealcalc2 = 1 Then: GoTo Eiyo01_501Exit    '標準体重ほか
-    If Eiyo01_525MealDiffe = 1 Then: GoTo Eiyo01_501Exit    '過不足アドバイス
-    If Eiyo01_528Eiyohirit = 1 Then: GoTo Eiyo01_501Exit    '栄養比率
+    ' 画面抑止などの処理を実行
+    Call Eiyo930Screen_Hold
+    Call Eiyo91DB_Open                                      ' DBを開く
+    
+    ' 以下の各処理を実行し、エラーがあれば指定のラベルにジャンプ
+    If Eiyo01_501MealEntry = 1 Then: GoTo Eiyo01_503Exit    ' 未入力チェック
+    If Eiyo01_502Mealscope = 1 Then: GoTo Eiyo01_503Exit    ' 摂食量の範囲チェック
+    If Eiyo01_503Mealzerod = 1 Then: GoTo Eiyo01_503Exit    ' 摂食量ゼロの削除
+    If Eiyo01_504MealDoubl = 1 Then: GoTo Eiyo01_503Exit    ' 摂食の重複入力
+    If Eiyo01_510MealUdate = 1 Then: GoTo Eiyo01_503Exit    ' ＤＢ更新
+    If Eiyo01_511MealFldgt = 1 Then: GoTo Eiyo01_501Exit    ' 項目要素取得
+    If Eiyo01_512MealSheet = 1 Then: GoTo Eiyo01_501Exit    ' 摂食計算シート
+    If Eiyo01_513kenso2sht = 1 Then: GoTo Eiyo01_501Exit    ' 検証２シート作成
+    If Eiyo01_514MealCalc1 = 1 Then: GoTo Eiyo01_501Exit    ' 摂食計算
+    If Eiyo01_515MealTotal = 1 Then: GoTo Eiyo01_501Exit    ' 摂食量合計
+    If Eiyo01_521CalcDbGet(1) = 1 Then: GoTo Eiyo01_501Exit ' 摂食量合計
+    If Eiyo01_522Mealcalc2 = 1 Then: GoTo Eiyo01_501Exit    ' 標準体重ほか
+    If Eiyo01_525MealDiffe = 1 Then: GoTo Eiyo01_501Exit    ' 過不足アドバイス
+    If Eiyo01_528Eiyohirit = 1 Then: GoTo Eiyo01_501Exit    ' 栄養比率
+    
+    ' in_Funcが2の場合の処理
     If in_Func = 2 Then
-        If Eiyo01_540Old_Check = 1 Then: GoTo Eiyo01_501Exit    '旧計算値
-'    Else
-'        Call Eiyo99_指定シート削除("DBmirror")
+        If Eiyo01_540Old_Check = 1 Then: GoTo Eiyo01_501Exit    ' 旧計算値
+    ' Else
+        ' 指定シート削除の処理
+        ' Call Eiyo99_指定シート削除("DBmirror")
     End If
+
 Eiyo01_501Exit:
+    ' リセットを閉じる処理を実行
     Call Eiyo01_550RstClose
+
 Eiyo01_503Exit:
-    Call Eiyo920DB_Close                'DB Close
-    Sheets("基礎").Select
-    Call Eiyo940Screen_Start            '画面描画ほか
+    Call Eiyo920DB_Close        ' DBを閉じる
+    Sheets("基礎").Select       ' "基礎"シートを選択
+    Call Eiyo940Screen_Start    ' 画面描画などの処理を再開
 End Function
 '--------------------------------------------------------------------------------
 '   01_501　摂食情報未入力チェック
 '--------------------------------------------------------------------------------
 Function Eiyo01_501MealEntry() As Long
-Dim Lmax    As Long
-Dim i1      As Long
-Dim Wnon    As Long
+    Dim Lmax    As Long
+    Dim i1      As Long
+    Dim Wnon    As Long
 
+    ' 初期値を1に設定（エラーあり）
     Eiyo01_501MealEntry = 1
+
+    ' アクティブシートの使用範囲の行数を取得
     Lmax = ActiveSheet.UsedRange.Rows.Count
+
+    ' 使用範囲が5行未満の場合、メッセージを表示して終了
     If Lmax < 5 Then
         MsgBox "データがありません"
         Exit Function
     End If
-        
+    
+    ' Wnonを初期化
     Wnon = 0
+
+    ' 指定範囲のセルの色をリセット
     Range("a5:b" & Lmax).Interior.ColorIndex = xlNone
     Range("d5:d" & Lmax).Interior.ColorIndex = xlNone
     Range("f5:f" & Lmax).Interior.ColorIndex = xlNone
+
+    ' 5行目から最終行までループ
     For i1 = 5 To Lmax
+        ' 6列目のセルが0でない場合にチェックを実施
         If Cells(i1, 6) <> 0 Then
+            ' 1列目の日付が無効、範囲外の場合はセルの色を変更し、ループを抜ける
             If IsDate(Cells(i1, 1)) = False Or _
                Cells(i1, 1) < Range("Date1") Or _
                Cells(i1, 1) > Range("Date1") + Range("Nissu") - 1 Then
                 Cells(i1, 1).Interior.ColorIndex = 6
                 Exit For
+            ' 2列目が空の場合はセルの色を変更し、ループを抜ける
             ElseIf IsEmpty(Cells(i1, 2)) Then
                 Cells(i1, 2).Interior.ColorIndex = 6
                 Exit For
+            ' 4列目が空の場合はセルの色を変更し、ループを抜ける
             ElseIf IsEmpty(Cells(i1, 4)) Then
                 Cells(i1, 4).Interior.ColorIndex = 6
                 Exit For
             End If
         End If
     Next i1
+
+    ' エラーがあった場合はメッセージを表示
     If i1 <= Lmax Then
         MsgBox ("誤りの項目を修正してください。")
     Else
+        ' エラーがなければ0を返す
         Eiyo01_501MealEntry = 0
     End If
 End Function
