@@ -9,63 +9,63 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Option Explicit
 
-Private Sub ƒNƒŠƒA_Click()
-    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_030ƒNƒŠƒAClick"
+Private Sub ã‚¯ãƒªã‚¢_Click()
+    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_030ã‚¯ãƒªã‚¢Click"
 End Sub
 
-Private Sub ŒŸõ_Click()
-    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_100ŒŸõClick"
+Private Sub æ¤œç´¢_Click()
+    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_100æ¤œç´¢Click"
 End Sub
 
-Private Sub XV_Click()
-    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_200XVClick"
+Private Sub æ›´æ–°_Click()
+    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_200æ›´æ–°Click"
 End Sub
 
-Private Sub æÁ_Click()
-    If MsgBox("æÁ‚ğÀs‚µ‚Ü‚·‚©", vbOKCancel) = vbOK Then
-        Application.Run macro:="Eiyo_Macro.xla!Eiyo01_300æÁClick"
+Private Sub å–æ¶ˆ_Click()
+    If MsgBox("å–æ¶ˆã‚’å®Ÿè¡Œã—ã¾ã™ã‹", vbOKCancel) = vbOK Then
+        Application.Run macro:="Eiyo_Macro.xla!Eiyo01_300å–æ¶ˆClick"
     End If
 End Sub
 
-Private Sub ì•\_Click()
-    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_700ì•\Click"
+Private Sub ä½œè¡¨_Click()
+    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_700ä½œè¡¨Click"
 End Sub
 
-Private Sub I—¹_Click()
-    ActiveWorkbook.Close savechanges:=False     '•Û‘¶‚¹‚¸‚ÉI—¹
+Private Sub çµ‚äº†_Click()
+    ActiveWorkbook.Close savechanges:=False     'ä¿å­˜ã›ãšã«çµ‚äº†
 End Sub
 
 Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, Cancel As Boolean)
-    If Left(Target.Address, 4) = "$AH$" Then        'ƒtƒ@ƒ~ƒŠ[ƒR[ƒhˆê——‚©‚ç‚Ì‘I‘ğ
+    If Left(Target.Address, 4) = "$AH$" Then        'ãƒ•ã‚¡ãƒŸãƒªãƒ¼ã‚³ãƒ¼ãƒ‰ä¸€è¦§ã‹ã‚‰ã®é¸æŠ
         Range("Fcode") = Target.Value
         Cancel = True
-        ŒŸõ_Click
-    ElseIf Left(Target.Address, 4) = "$Q$8" Then    'E‹Æ‚Æ˜Jì
+        æ¤œç´¢_Click
+    ElseIf Left(Target.Address, 4) = "$Q$8" Then    'è·æ¥­ã¨åŠ´ä½œ
         Cancel = True
-        Sheets("E‹Æ‚Æ˜Jì").Select
+        Sheets("è·æ¥­ã¨åŠ´ä½œ").Select
     End If
 End Sub
 '--------------------------------------------------------------------------------
-'   ƒ[ƒNƒV[ƒg‚Ì’l‚ª•ÏX‚³‚ê‚½
+'   ãƒ¯ãƒ¼ã‚¯ã‚·ãƒ¼ãƒˆã®å€¤ãŒå¤‰æ›´ã•ã‚ŒãŸ
 '--------------------------------------------------------------------------------
 Private Sub Worksheet_Change(ByVal Target As Range)
-    If Target.Address = Range("Adrno").Address Then         '—X•Ö”Ô†
+    If Target.Address = Range("Adrno").Address Then         'éƒµä¾¿ç•ªå·
         If Len(Target.Text) > 3 And Range("adrs1") = Empty Then
-            Application.EnableEvents = False    'ƒCƒxƒ“ƒg”­¶—}~
-            ' —X•Ö”Ô†‚ğ‘SŠp•ÏŠ·‚µZŠ‚É“]‹L
+            Application.EnableEvents = False    'ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”ŸæŠ‘æ­¢
+            ' éƒµä¾¿ç•ªå·ã‚’å…¨è§’å¤‰æ›ã—ä½æ‰€ã«è»¢è¨˜
             Range("adrs1").Value = StrConv(Range("Adrno").Value, vbWide)
-            ' ZŠ‚Ì¾Ù‚ğ‘I‘ğ
+            ' ä½æ‰€ã®ï½¾ï¾™ã‚’é¸æŠ
             Range("adrs1").Select
-            ' F2 ¨ Shift+Home ¨ F13 ‚ğ‹[‘•“ü—Í‚·‚é
-            SendKeys "{F2}", True       ' •ÒWÓ°ÄŞ
-            SendKeys "+{HOME}", True    ' •¶š—ñ‘S‘Ì‚ğ‘I‘ğ
-            SendKeys "{F13}", True      ' Ä•ÏŠ·(MS-IME)
-            Application.EnableEvents = True     'ƒCƒxƒ“ƒg”­¶ÄŠJ
+            ' F2 â†’ Shift+Home â†’ F13 ã‚’æ“¬è£…å…¥åŠ›ã™ã‚‹
+            SendKeys "{F2}", True       ' ç·¨é›†ï¾“ï½°ï¾„ï¾
+            SendKeys "+{HOME}", True    ' æ–‡å­—åˆ—å…¨ä½“ã‚’é¸æŠ
+            SendKeys "{F13}", True      ' å†å¤‰æ›(MS-IME)
+            Application.EnableEvents = True     'ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿå†é–‹
         End If
     End If
 End Sub
 '--------------------------------------------------------------------------------
-'   ƒAƒNƒeƒBƒu‚É‚È‚Á‚½ƒZƒ‹‚ğ‹­’²•\¦‚·‚é‚½‚ßƒZƒ‹‚ª‘I‘ğ‚³‚¹‚½‚Æ‚«‰æ–ÊXV‚·‚é
+'   ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ãªã£ãŸã‚»ãƒ«ã‚’å¼·èª¿è¡¨ç¤ºã™ã‚‹ãŸã‚ã‚»ãƒ«ãŒé¸æŠã•ã›ãŸã¨ãç”»é¢æ›´æ–°ã™ã‚‹
 '--------------------------------------------------------------------------------
 Private Sub Worksheet_SelectionChange(ByVal Traget As Range)
     Application.ScreenUpdating = True

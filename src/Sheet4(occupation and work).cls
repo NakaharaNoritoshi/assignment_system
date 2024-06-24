@@ -9,33 +9,33 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Option Explicit
 '--------------------------------------------------------------------------------
-'   E‹Æ‚Æ˜Jì‚ğƒ_ƒuƒ‹ƒNƒŠƒbƒN‚Å‘I‘ğ
+'   è·æ¥­ã¨åŠ´ä½œã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã§é¸æŠ
 '--------------------------------------------------------------------------------
 Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, Cancel As Boolean)
-    Dim Wline As Long 's
-    Dim Wcolu As Long '—“
-    Dim Šî‘bƒV[ƒg As Worksheet
+    Dim Wline As Long 'è¡Œ
+    Dim Wcolu As Long 'æ¬„
+    Dim åŸºç¤ã‚·ãƒ¼ãƒˆ As Worksheet
 
-    ' Šî‘bƒV[ƒg‚ğƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Äæ“¾
-    Set Šî‘bƒV[ƒg = ThisWorkbook.Sheets("Šî‘b")
+    ' åŸºç¤ã‚·ãƒ¼ãƒˆã‚’ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦å–å¾—
+    Set åŸºç¤ã‚·ãƒ¼ãƒˆ = ThisWorkbook.Sheets("åŸºç¤")
 
-    ' ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚ÌƒCƒxƒ“ƒg‚ğƒLƒƒƒ“ƒZƒ‹
+    ' ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã®ã‚¤ãƒ™ãƒ³ãƒˆã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«
     Cancel = True
 
-    ' ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚³‚ê‚½ƒZƒ‹‚Ìs‚Æ—ñ‚ğæ“¾
+    ' ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸã‚»ãƒ«ã®è¡Œã¨åˆ—ã‚’å–å¾—
     Wline = Target.Row
     Wcolu = Target.Column
 
-    ' —ñ‚Ì’l‚ğ’²®
+    ' åˆ—ã®å€¤ã‚’èª¿æ•´
     Select Case Wcolu
         Case 2: Wcolu = 3
         Case 6: Wcolu = 7
         Case 10: Wcolu = 11
     End Select
 
-    ' Šî‘bƒV[ƒg‚ÌƒZƒ‹‚É’l‚ğİ’è
-    Šî‘bƒV[ƒg.Range("Qjob1").Value = Target.Parent.Cells(Wline, Wcolu).Value
+    ' åŸºç¤ã‚·ãƒ¼ãƒˆã®ã‚»ãƒ«ã«å€¤ã‚’è¨­å®š
+    åŸºç¤ã‚·ãƒ¼ãƒˆ.Range("Qjob1").Value = Target.Parent.Cells(Wline, Wcolu).Value
 
-    ' Šî‘bƒV[ƒg‚ğ‘I‘ğ
-    Šî‘bƒV[ƒg.Select
+    ' åŸºç¤ã‚·ãƒ¼ãƒˆã‚’é¸æŠ
+    åŸºç¤ã‚·ãƒ¼ãƒˆ.Select
 End Sub

@@ -9,7 +9,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Option Explicit
 '--------------------------------------------------------------------------------
-'   ƒI[ƒvƒ“‚³‚ê‚½‚çƒ}ƒNƒ‚àƒI[ƒvƒ“‚·‚é
+'   ã‚ªãƒ¼ãƒ—ãƒ³ã•ã‚ŒãŸã‚‰ãƒã‚¯ãƒ­ã‚‚ã‚ªãƒ¼ãƒ—ãƒ³ã™ã‚‹
 '--------------------------------------------------------------------------------
 Private Sub Workbook_Open()
     Dim macroPath As String
@@ -18,17 +18,16 @@ Private Sub Workbook_Open()
     If Dir(macroPath) <> "" Then
         Workbooks.Open macroPath, ReadOnly:=True
     Else
-        MsgBox "Eiyo_macro.xla‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB", vbExclamation
+        MsgBox "Eiyo_macro.xlaãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚", vbExclamation
     End If
     Application.Run "Eiyo01_900WorkbookOpen"
     Exit Sub
 
 ErrorHandler:
-    MsgBox "ƒ}ƒNƒ‚Ì“Ç‚İ‚İ’†‚ÉƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½: " & Err.Description, vbCritical
+    MsgBox "ãƒã‚¯ãƒ­ã®èª­ã¿è¾¼ã¿ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ: " & Err.Description, vbCritical
 End Sub
-
 '--------------------------------------------------------------------------------
-'   ©ƒuƒbƒN‚ğ•Â‚¶‚é‘O‚Éƒ}ƒNƒ‚ğ•Â‚¶‚é
+'   è‡ªãƒ–ãƒƒã‚¯ã‚’é–‰ã˜ã‚‹å‰ã«ãƒã‚¯ãƒ­ã‚’é–‰ã˜ã‚‹
 '--------------------------------------------------------------------------------
 Private Sub Workbook_BeforeClose(Cancel As Boolean)
     Const Gname = "Eiyo"
@@ -46,7 +45,7 @@ Private Sub Workbook_BeforeClose(Cancel As Boolean)
         On Error Resume Next
         If Workbooks("Eiyo_macro.xla").ReadOnly Then
             Workbooks("Eiyo_macro.xla").Close savechanges:=False
-        ElseIf MsgBox("Eiyo_macro.xla ‚ğ•Û‘¶‚µ‚Ü‚·‚©", vbYesNo) = vbYes Then
+        ElseIf MsgBox("Eiyo_macro.xla ã‚’ä¿å­˜ã—ã¾ã™ã‹", vbYesNo) = vbYes Then
             Workbooks("Eiyo_macro.xla").Close savechanges:=True
         Else
             Workbooks("Eiyo_macro.xla").Close savechanges:=False

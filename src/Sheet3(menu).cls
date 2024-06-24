@@ -9,7 +9,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Option Explicit
 '--------------------------------------------------------------------------------
-'   ƒƒjƒ…[‚ğƒ_ƒuƒ‹ƒNƒŠƒbƒN‚Å‘I‘ğ
+'   ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã§é¸æŠ
 '--------------------------------------------------------------------------------
 Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, Cancel As Boolean)
     Application.Run "Eiyo_Macro.xla!Eiyo01_420Menu", Target.Address
