@@ -1073,232 +1073,332 @@ End Function
 '   01_502　摂食量の範囲チェック
 '--------------------------------------------------------------------------------
 Function Eiyo01_502Mealscope() As Long
-Dim Lmax    As Long
-Dim i1      As Long
-Dim Wover   As Long
-Dim Wmsg    As String
+    Dim Lmax    As Long
+    Dim i1      As Long
+    Dim Wover   As Long
+    Dim Wmsg    As String
 
+    ' 初期値を1に設定（エラーあり）
     Eiyo01_502Mealscope = 1
+
+    ' アクティブシートの使用範囲の行数を取得
     Lmax = ActiveSheet.UsedRange.Rows.Count
+
+    ' 異常値のカウントを初期化
     Wover = 0
+
+    ' 5行目から最終行までループ
     For i1 = 5 To Lmax
+        ' 6列目のセルが0でない場合にチェックを実施
         If Cells(i1, 6) <> 0 Then
+            ' 6列目の値が17列目の値より小さい、または18列目の値より大きい場合
             If Cells(i1, 6) < Cells(i1, 17) Or _
                Cells(i1, 6) > Cells(i1, 18) Then
+               ' 異常値のカウントを増やす
                 Wover = Wover + 1
+                ' 異常値のセルの背景色を変更
                 Cells(i1, 6).Interior.ColorIndex = 6
             Else
+                ' 正常値のセルの背景色をリセット
                 Cells(i1, 6).Interior.ColorIndex = xlNone
             End If
         End If
     Next i1
+
+    ' 異常値がある場合、メッセージを表示
     If Wover > 0 Then
         Wmsg = "摂食量の異常値が" & Wover & "ヵ所あります"
         i1 = CreateObject("WScript.Shell").Popup(Wmsg, 1, "Microsoft Excel", 0)
         Eiyo01_502Mealscope = 0
     End If
+
+    ' 最終的にエラーなしに設定
     Eiyo01_502Mealscope = 0
 End Function
 '--------------------------------------------------------------------------------
 '   01_503　摂食量ゼロの削除
 '--------------------------------------------------------------------------------
 Function Eiyo01_503Mealzerod() As Long
-Dim Lmax    As Long
-Dim i1      As Long
-Dim Wzero   As Long
-Dim Wmsg    As String
+    Dim Lmax    As Long
+    Dim i1      As Long
+    Dim Wzero   As Long
+    Dim Wmsg    As String
 
+    ' アクティブシートの使用範囲の行数を取得
     Lmax = ActiveSheet.UsedRange.Rows.Count
+    ' 摂食量がゼロの行数カウントを初期化
     Wzero = 0
+
+    ' 5行目から最終行までループ
     For i1 = 5 To Lmax
+        ' 6列目の値がゼロの場合
         If Cells(i1, 6) = 0 Then
-            Wzero = Wzero + 1
-            Rows(i1).Delete Shift:=xlUp
-            Lmax = Lmax - 1
+            Wzero = Wzero + 1   ' 摂食量ゼロの行数を増やす
+            Rows(i1).Delete Shift:=xlUp ' 行を削除して、シフトアップ
+            Lmax = Lmax - 1     ' 削除後の行に対してインデックスを調整
         End If
     Next i1
+
+    ' 摂食量ゼロの行が1つ以上あった場合、メッセージを表示
     If Wzero > 0 Then
+        ' メッセージを設定
         Wmsg = "摂食量ゼロの" & Wzero / 2 & "行を削除しました。"
+        ' ポップアップメッセージを表示
         i1 = CreateObject("WScript.Shell").Popup(Wmsg, 1, "Microsoft Excel", 0)
     End If
+
+    ' 正常終了を示すために0を返す
     Eiyo01_503Mealzerod = 0
 End Function
 '--------------------------------------------------------------------------------
 '   01_504　摂食の重複チェック
 '--------------------------------------------------------------------------------
 Function Eiyo01_504MealDoubl() As Long
-Dim Lmax    As Long
-Dim i1      As Long
+    Dim Lmax    As Long
+    Dim i1      As Long
 
+    ' 初期化: 関数が失敗した場合に1を返す
     Eiyo01_504MealDoubl = 1
+
+    ' シートの使用行数を取得
     Lmax = ActiveSheet.UsedRange.Rows.Count
+
+    ' 5行目から最後の行までループし、2列目（B列）の値を数値に変換
     For i1 = 5 To Lmax
         Cells(i1, 2) = Val(Cells(i1, 2))
     Next i1
+
+    ' 5行目から最後の行までをソート
     Rows("5:" & Lmax).Sort key1:=Range("A5"), order1:=xlAscending, _
                            key2:=Range("B5"), order2:=xlAscending, _
                            key3:=Range("D5"), order3:=xlAscending, Header:=xlNo
+    
+    ' 重複チェックのためのインデックスを初期化
     i1 = 6
+
+    ' 4列目（D列）が空でない限りループ
     Do Until IsEmpty(Cells(i1, 4))
+        ' 直前の行と現在の行の1列目、2列目、4列目の値が同じか確認
         If Cells(i1 - 1, 1) & Cells(i1 - 1, 2) & Cells(i1 - 1, 4) = _
             Cells(i1, 1) & Cells(i1, 2) & Cells(i1, 4) Then
+            ' 重複があれば、6列目（F列）の値を加算し、現在の行を削除
             Cells(i1 - 1, 6) = Cells(i1 - 1, 6) + Cells(i1, 6)
             Rows(i1).Delete Shift:=xlUp
         Else
-            i1 = i1 + 1
+            i1 = i1 + 1 ' 重複がなければ次の行に進む
         End If
     Loop
+
+    ' 処理が正常に終了したことを示すために0を返す
     Eiyo01_504MealDoubl = 0
 End Function
 '--------------------------------------------------------------------------------
 '   01_510　摂食DB登録
 '--------------------------------------------------------------------------------
 Function Eiyo01_510MealUdate() As Long
-Dim Lmax    As Long
-Dim i1      As Long
-Dim Wkey    As Variant
+    Dim Lmax    As Long
+    Dim i1      As Long
+    Dim Wkey    As Variant
 
+    ' データの最終行を取得
     Lmax = Range("a4").End(xlDown).Row
+
+    ' 現在の食事データを削除
     myCon.Execute "DELETE FROM " & Tbl_Meal & " Where Fcode = """ & Range("Fcode") & """"
-    '準備ここまで
+    
+    ' レコードセットの操作
     With Rst_Meal
         'インデックスの設定
         .Index = "PrimaryKey"
+
         'レコードセットを開く
         Rst_Meal.Open Source:=Tbl_Meal, ActiveConnection:=myCon, _
             CursorType:=adOpenKeyset, LockType:=adLockOptimistic, _
             Options:=adCmdTableDirect
+
+        ' 5行目から最終行までループ
         For i1 = 5 To Lmax
-        '番号が登録されているか検索する
+            ' 検索キーの設定
             Wkey = Array(Range("Fcode"), Cells(i1, 1), Cells(i1, 2), Cells(i1, 4))
+            
+            ' 番号が登録されているか検索する
             If Not .EOF Then .Seek Wkey
             If .EOF Then: .AddNew
+            
+            ' フィールドに値を設定
             .Fields(0).Value = Range("Fcode").Value
             .Fields(1).Value = Cells(i1, 1).Value
             .Fields(2).Value = Cells(i1, 2).Value
             .Fields(3).Value = Cells(i1, 4).Value
             .Fields(4).Value = Cells(i1, 6).Value
             .Fields(5).Value = Cells(i1, 16).Value
-            .Update
+
+            .Update ' レコードを更新
         Next i1
-        .Close
+
+        .Close  ' レコードセットを閉じる
     End With
-    Set Rst_Meal = Nothing                    'オブジェクトの解放
-    Eiyo01_510MealUdate = 0
+
+    Set Rst_Meal = Nothing      'オブジェクトの解放
+    Eiyo01_510MealUdate = 0     ' 正常終了
 End Function
 '--------------------------------------------------------------------------------
 '   01_511　栄養素項目の各種情報取得   F-018
 '--------------------------------------------------------------------------------
 Function Eiyo01_511MealFldgt() As Long
-    
-    Sheets.Add After:=Sheets(Sheets.Count)      'シート追加
-    'レコードセットを開く
+    ' 新しいシートを追加
+    Sheets.Add After:=Sheets(Sheets.Count)
+    ' レコードセットを開く
     Rst_Field.Open Source:=Tbl_Field, _
                 ActiveConnection:=myCon, _
                 CursorType:=adOpenForwardOnly, _
                 LockType:=adLockReadOnly, _
                 Options:=adCmdTableDirect
-    'レコード
+
+    ' レコードセットのデータをシートにコピー
     Range("a1").CopyFromRecordset Rst_Field
+    ' コピーしたデータの範囲を変数に格納
     Fld_Field = ActiveSheet.UsedRange
-    Rst_Field.Close
-    Set Rst_Field = Nothing    'オブジェクトの解放
-    Application.DisplayAlerts = False               '確認抑止
+    Rst_Field.Close ' レコードセットを閉じる
+    Set Rst_Field = Nothing 'オブジェクトの解放
+
+    ' シートを削除する前に確認メッセージを無効にする
+    Application.DisplayAlerts = False   ' 確認抑止
     ActiveSheet.Delete
-    Application.DisplayAlerts = True                '確認復活
+    Application.DisplayAlerts = True    ' 確認メッセージを再度有効にする
+
+    ' 関数が正常終了したことを示す
     Eiyo01_511MealFldgt = 0
 End Function
 '--------------------------------------------------------------------------------
 '   01_512　摂食計算シート作成
 '--------------------------------------------------------------------------------
 Function Eiyo01_512MealSheet() As Long
-Dim i1      As Long     '行Index
-Dim i2      As Long     '欄Index
-Dim Wno     As String
-Dim Wtext   As String
+    Dim i1      As Long     '行Index
+    Dim i2      As Long     '欄Index
+    Dim Wno     As String
+    Dim Wtext   As String
 
+    ' "検証"シートを削除するカスタム関数を呼び出し
     Call Eiyo99_指定シート削除("検証")
-    Sheets.Add After:=Sheets(Sheets.Count)      'シート追加
+
+    ' 新しいシートを追加し、名前を "検証" に設定
+    Sheets.Add After:=Sheets(Sheets.Count)
     ActiveSheet.Name = "検証"
+
+    ' セルD1にタイトルを設定
     Range("d1") = "栄養計算　摂食検証"
+
+    ' セルA2に "摂食" シートのA2セルの値を設定
     Range("a2") = Sheets("摂食").Range("a2")
-    Wtext = Empty
-    For i1 = 1 To 27                            '栄養素
-        Wno = Format(i1, "00")
-        Wtext = Wtext & "摂取量" & Wno & vbTab
-        Wtext = Wtext & "熱損後" & Wno & vbTab
+
+    Wtext = Empty   ' 初期化
+
+    ' 1から27までの栄養素についてループ
+    For i1 = 1 To 27
+        Wno = Format(i1, "00")  ' 2桁の番号にフォーマット
+        Wtext = Wtext & "摂取量" & Wno & vbTab  ' 摂取量をWtextに追加
+        Wtext = Wtext & "熱損後" & Wno & vbTab  ' 熱損後をWtextに追加
     Next i1
+
+    ' 1から15までのエネルギーCについてループ
     For i1 = 1 To 15
         Wtext = Wtext & "ｴﾈﾙｷﾞC" & Format(i1, "00") & vbTab
     Next i1
+
+    ' 1から15までのエネルギーWについてループ
     For i1 = 1 To 15
         Wtext = Wtext & "ｴﾈﾙｷﾞW" & Format(i1, "00") & vbTab
     Next i1
+
+    ' 1から15までのカルシウム1についてループ
     For i1 = 1 To 15
         Wtext = Wtext & "ｶﾙｼｳﾑ1" & Format(i1, "00") & vbTab
     Next i1
+
+    ' 1から15までのカルシウム2についてループ
     For i1 = 1 To 15
         Wtext = Wtext & "ｶﾙｼｳﾑ2" & Format(i1, "00") & vbTab
     Next i1
+
+    ' その他の栄養素を追加
     Wtext = Wtext & "脂質動物" & vbTab
     Wtext = Wtext & "脂質魚介" & vbTab
     Wtext = Wtext & "脂質植物" & vbTab
     Wtext = Wtext & "熱損動物" & vbTab
     Wtext = Wtext & "熱損魚介" & vbTab
     Wtext = Wtext & "熱損植物"
+
+    ' Wtextをタブ区切りでスプリットし、範囲a4:dp4に設定
     Range("a4:dp4") = Split(Wtext, vbTab)
-    ActiveWindow.FreezePanes = False        'ウインド枠固定の解除
-    Range("a5").Select
-    ActiveWindow.FreezePanes = True         'ウインド枠固定の設定
+
+    ActiveWindow.FreezePanes = False    ' ウインド枠固定の解除
+    Range("a5").Select                  ' セルA5を選択
+    ActiveWindow.FreezePanes = True     ' ウインド枠固定の設定
+
+    ' セルの数値フォーマットを設定
     Cells.NumberFormatLocal = "#,##0.00;[赤]-#,##0.00"
+
+    ' 関数が正常終了したことを示す
     Eiyo01_512MealSheet = 0
 End Function
 '--------------------------------------------------------------------------------
 '   01_513　検証２シート作成
 '--------------------------------------------------------------------------------
 Function Eiyo01_513kenso2sht() As Long
-Dim i1      As Long
+    Dim i1      As Long
+
+    ' "検証2"シートを削除するカスタム関数を呼び出し
     Call Eiyo99_指定シート削除("検証2")
-    Sheets.Add After:=Sheets(Sheets.Count)      'シート追加
+
+    ' 新しいシートを追加し、名前を "検証2" に設定
+    Sheets.Add After:=Sheets(Sheets.Count)
     ActiveSheet.Name = "検証2"
-    Cells.Interior.ColorIndex = 36              '全画面背景色
-'   表題
+
+    ' 全てのセルの背景色を色インデックス36に設定
+    Cells.Interior.ColorIndex = 36
+
+
+    ' 表題の設定
     Range("C1:F1").Select
-    Selection.MergeCells = True                 '表題セル連結
-    Selection.HorizontalAlignment = xlCenter    '表題センタリング
-    Selection.Interior.ColorIndex = 37          '表題色（ペールブルー）
-    With Selection.Font                         'フォント
+    Selection.MergeCells = True                 ' セルC1からF1までを結合
+    Selection.HorizontalAlignment = xlCenter    ' センタリング
+    Selection.Interior.ColorIndex = 37          ' 色をペールブルーに設定
+    With Selection.Font                         ' フォント設定
         .FontStyle = "太字"
         .Size = 16
     End With
     Range("C1") = "栄養計算　検証資料２"
     
-'   栄養素名
+    ' 栄養素名の設定
     Range("a4") = "No.栄養素名"
     Range("b4") = "単位"
     For i1 = 1 To 27
+        ' No.と栄養素名の設定
         Cells(4 + i1, 1) = Format(i1, "00") & "." & Fld_Field(i1, 4)
-        Cells(4 + i1, 2) = Fld_Field(i1, 5)
+        Cells(4 + i1, 2) = Fld_Field(i1, 5) ' 単位の設定
     Next i1
-'   摂取量
+
+    ' 摂取量の設定
     Range("c3") = "<========= 熱損後摂取量 ==========>"
     Range("c4") = "総量"
     Range("d4") = "／日"
     Range("e4") = "式"
     Range("f4") = "補正後"
     Range("c4:p4").HorizontalAlignment = xlCenter
-    Range("c5:d31,f5:f31").Interior.ColorIndex = xlNone      '白抜き化
-    With Range("c5:d31,f5:f31").Borders                      '枠罫線
+    Range("c5:d31,f5:f31").Interior.ColorIndex = xlNone ' 白抜き化
+    With Range("c5:d31,f5:f31").Borders                 ' 枠罫線の設定
         .LineStyle = xlContinuous
         .ColorIndex = xlAutomatic
         .Weight = xlThin
     End With
     Range("c5:d31,f5:f31").NumberFormatLocal = "#,##0.00;[赤]-#,##0.00"
-    Range("c5").Name = "ks2_eiyoso"
-'   摂取量の補正条件
-    Range("e:e,o:o").HorizontalAlignment = xlCenter '横中央
-    Range("e15,e20,e24,e27").Interior.ColorIndex = xlNone   '白抜き化
-    With Range("e15,e20,e24,e27").Borders                   '枠罫線
+    Range("c5").Name = "ks2_eiyoso" ' 名前の設定
+
+    ' 摂取量の補正条件の設定
+    Range("e:e,o:o").HorizontalAlignment = xlCenter         ' 横中央
+    Range("e15,e20,e24,e27").Interior.ColorIndex = xlNone   ' 白抜き化
+    With Range("e15,e20,e24,e27").Borders                   ' 枠罫線の設定
         .LineStyle = xlContinuous
         .ColorIndex = xlAutomatic
         .Weight = xlThin
@@ -1307,7 +1407,8 @@ Dim i1      As Long
     Range("e20").Name = "ks2_hosei16"
     Range("e24").Name = "ks2_hosei20"
     Range("e27").Name = "ks2_hosei23"
-'   基礎情報
+
+    ' 基礎情報の設定
     Range("i4") = "実体重"
     Range("j4") = "標準体重"
     Range("h5") = "a.体重"
@@ -1327,16 +1428,17 @@ Dim i1      As Long
     Range("i22") = "h = f * (1+c) * 1.1"
     Range("F05").Copy Range("I5:j6,i9:i11,i12:j13,i16:j16,i18:i19")
     Range("E15").Copy Range("I10,i17")
-    Range("i05").Name = "ks2_weght"     '体重
-    Range("i06").Name = "ks2_Aansa"     '体表面積
-    Range("i09").Name = "ks2_Aansx"     '生活指数
-    Range("i10").Name = "ks2_kisocd"    '基礎コード
-    Range("i11").Name = "ks2_kisot"     '面積当り基礎代謝
-    Range("i12").Name = "ks2_Aansb"     '基礎代謝／日
-    Range("i13").Name = "ks2_Aansc"     '基礎代謝／日
-    Range("i16").Name = "ks2_Aansd"     'ｴﾈﾙｷﾞｰ標準量
-    Range("i17").Name = "ks2_energ"     '所要量ｴﾈﾙｷﾞｰ条件
-'   所要量(ｴﾈﾙｷﾞｰ以外)
+    Range("i05").Name = "ks2_weght"     ' 名前の設定：体重
+    Range("i06").Name = "ks2_Aansa"     ' 名前の設定：体表面積
+    Range("i09").Name = "ks2_Aansx"     ' 名前の設定：生活指数
+    Range("i10").Name = "ks2_kisocd"    ' 名前の設定：基礎コード
+    Range("i11").Name = "ks2_kisot"     ' 名前の設定：面積当り基礎代謝
+    Range("i12").Name = "ks2_Aansb"     ' 名前の設定：基礎代謝／日
+    Range("i13").Name = "ks2_Aansc"     ' 名前の設定：基礎代謝／日
+    Range("i16").Name = "ks2_Aansd"     ' 名前の設定：ｴﾈﾙｷﾞｰ標準量
+    Range("i17").Name = "ks2_energ"     ' 名前の設定：所要量ｴﾈﾙｷﾞｰ条件
+
+    ' 所要量（ｴﾈﾙｷﾞｰ以外）の設定
     Range("l3") = "所要TBL"
     Range("m3") = "生活強度"
     Range("n3") = "妊娠補正"
@@ -1345,21 +1447,29 @@ Dim i1      As Long
     Range("q3") = "摘要"
     Range("E15").Copy Range("l4:n4")
     Range("F05").Copy Range("l6:n31")
-    Range("l4").Name = "ks2_syoyo"
+    Range("l4").Name = "ks2_syoyo"      ' 名前の設定
+
     Range("F05").Copy Range("p5:p31")
 
+    ' ページ設定の調整
     With ActiveSheet.PageSetup
-        .Orientation = xlLandscape                      '横長
-'        .PrintHeadings = True                           '行列番号
-        .LeftMargin = Application.InchesToPoints(0.4)   '左余白
-        .RightMargin = Application.InchesToPoints(0.2)  '右余白
+        .Orientation = xlLandscape                      ' 横長
+'        .PrintHeadings = True                          ' 行列番号
+        .LeftMargin = Application.InchesToPoints(0.4)   ' 左余白
+        .RightMargin = Application.InchesToPoints(0.2)  ' 右余白
         .Zoom = False
-        .FitToPagesWide = 1                             '横１頁
-        .FitToPagesTall = 1                             '縦１頁
+        .FitToPagesWide = 1                             ' 横１頁に合わせる
+        .FitToPagesTall = 1                             ' 縦１頁に合わせる
     End With
-    Cells.EntireColumn.AutoFit                          '列幅
+
+    ' 列幅の自動調整
+    Cells.EntireColumn.AutoFit
+
+    ' 特定の列の幅の設定
     Range("C:D,F:F,I:J,L:N,P:P").ColumnWidth = 10
     Range("G:G,K:K").ColumnWidth = 4
+
+    ' 各セルへのデータの設定
     Range("a01") = Range("Namej")
     Range("a02") = "[" & Range("Fcode") & "]"
     Range("q05") = "ｴﾈﾙｷﾞｰ1"
@@ -1389,6 +1499,8 @@ Dim i1      As Long
     Range("q29") = "脂質 66%"
     Range("q30") = "脂質 34%"
     Range("q31") = "糖尿/ｳｴｲﾄ･ｺﾝﾄﾛｰﾙ/一般"
+
+    ' 最初のシートを選択して関数の戻り値を設定
     Sheets("検証").Selec
     Eiyo01_513kenso2sht = 0
 End Function
@@ -1396,39 +1508,45 @@ End Function
 '   01_514　摂食計算
 '--------------------------------------------------------------------------------
 Function Eiyo01_514MealCalc1() As Long
-Dim aa      As Variant
-Dim bb      As Worksheet
-Dim i1      As Long     '行Index
-Dim i2      As Long     '欄Index
-Dim Lmax    As Long     '行Max
-Dim Wtemp1  As Double
-Dim wtemp2  As Double
+    Dim aa      As Variant
+    Dim bb      As Worksheet
+    Dim i1      As Long         '行Index
+    Dim i2      As Long         '欄Index
+    Dim Lmax    As Long         '行Max
+    Dim Wtemp1  As Double
+    Dim wtemp2  As Double
     
-    aa = Sheets("摂食").UsedRange
-    Set bb = Sheets("検証")
-    Lmax = UBound(aa, 1)
+    aa = Sheets("摂食").UsedRange   ' "摂食"シートの使用範囲を配列に格納
+    Set bb = Sheets("検証")         ' "検証"シートをオブジェクト変数に設定
+    Lmax = UBound(aa, 1)            ' 配列の行数を取得
+    
+    ' 各行について処理
     For i1 = 5 To Lmax
+        ' 栄養素の計算
         For i2 = 1 To 27
             If i1 = 10 And i2 = 2 Then
                 Wtemp1 = 1
             End If
             
-'           栄養素計算 =   摂取量(F) * 栄養素(S)       * 換算値(M)
+'           栄養素計算 = 摂取量(F) * 栄養素(S) * 換算値(M)
             Wtemp1 = WorksheetFunction.Round(aa(i1, 6) * aa(i1, i2 + 18) * aa(i1, 13), 2)
             If aa(i1, 16) = 2 Then
                 wtemp2 = Wtemp1
             Else
                 wtemp2 = WorksheetFunction.Round(Wtemp1 * (100 - Fld_Field(i2, 20)) / 100, 2)
             End If
+            ' 検証シートに結果を設定
             bb.Cells(i1, i2 * 2 - 1) = Wtemp1
             bb.Cells(i1, i2 * 2) = wtemp2
         Next i2
+
+        ' エネルギー計算
         For i2 = 1 To 15
-'           ｴﾈﾙｷﾞｰC              =      摂取量(F) * ｴﾈﾙｷﾞｰC(AT)     * 換算値(M)
+            ' エネルギーC = 摂取量(F) * エネルギーC(AT) * 換算値(M)
             Cells(i1, i2 + 54) = WorksheetFunction.Round(aa(i1, 6) * aa(i1, i2 + 45) * aa(i1, 13), 2)
-'           ｴﾈﾙｷﾞｰW              =      摂取量(F) * ｴﾈﾙｷﾞｰW(BI)     * 換算値(M)
+            ' エネルギーW = 摂取量(F) * エネルギーW(BI) * 換算値(M)
             Cells(i1, i2 + 69) = WorksheetFunction.Round(aa(i1, 6) * aa(i1, i2 + 60) * aa(i1, 13), 2)
-'           ｶﾙｼｳﾑ  =       摂取量(F) * ｶﾙｼｳﾑ           * 換算値
+            ' カルシウム = 摂取量(F) * カルシウム * 換算値
             Wtemp1 = WorksheetFunction.Round(aa(i1, 6) * aa(i1, i2 + 75) * aa(i1, 13), 2)
             If aa(i1, 16) = 2 Then
                 wtemp2 = Wtemp1
@@ -1438,63 +1556,78 @@ Dim wtemp2  As Double
             Cells(i1, i2 + 84) = Wtemp1
             Cells(i1, i2 + 99) = wtemp2
         Next i2
+
+        ' 脂質の計算
         For i2 = 1 To 3
-'           脂質    =      摂取量(F) * 脂質(CM)        * 換算値(M)
+            ' 脂質 = 摂取量(F) * 脂質(CM) * 換算値(M)
             Wtemp1 = WorksheetFunction.Round(aa(i1, 6) * aa(i1, i2 + 90) * aa(i1, 13), 2)
             If aa(i1, 16) = 2 Then
                 wtemp2 = Wtemp1
             Else
                 wtemp2 = WorksheetFunction.Round(Wtemp1 * (100 - Fld_Field(i2, 20)) / 100, 2) '�M��?
             End If
+            ' 検証シートに結果を設定
             bb.Cells(i1, i2 + 114) = Wtemp1
             bb.Cells(i1, i2 + 117) = wtemp2
         Next i2
     Next i1
+
+    ' 変数を解放
     Set aa = Nothing
     Set bb = Nothing
+
+    ' 関数の戻り値を設定
     Eiyo01_514MealCalc1 = 0
 End Function
 '--------------------------------------------------------------------------------
 '   01_515　摂食量合計
 '--------------------------------------------------------------------------------
 Function Eiyo01_515MealTotal() As Long
-Dim Lmax    As Long     '行Max
-Dim i1      As Long     '行Index
-Dim i2      As Long     '欄Index
-Dim Wnissu  As Long
+    Dim Lmax    As Long     '行Max
+    Dim i1      As Long     '行Index
+    Dim i2      As Long     '欄Index
+    Dim Wnissu  As Long
 
+    ' "Nissu"という名前の範囲の値を取得
     Wnissu = Range("Nissu")
+
+    ' "摂食"シートの使用範囲の行数を取得
     Lmax = Sheets("摂食").UsedRange.Rows.Count
+
+    ' 処理を開始する行を設定
     i1 = Lmax + 2
+
+    ' 各列についてSUMとROUNDの数式を設定
     For i2 = 1 To 120
         Cells(i1, i2) = "=SUM(R5C:R[-2]C)"
         Cells(i1 + 1, i2) = "=round(R[-1]C/" & Wnissu & ",2)"
     Next i2
+
+    ' 栄養素の結果をks2_eiyosoの範囲に設定
     For i2 = 2 To 54 Step 2
         Range("ks2_eiyoso").Offset(i2 / 2 - 1, 0) = Cells(i1, i2)
         Range("ks2_eiyoso").Offset(i2 / 2 - 1, 1) = Cells(i1 + 1, i2)
     Next i2
     
-    i1 = i1 + 1                             '一日当たり合計行Index
-    If Mid(Range("Q3rec"), 7, 1) = "3" Then '薄味による補正
-        If Cells(i1, 45) > 17 Then                           'ｼｵ16G
-            Cells(i1, 45) = Cells(i1, 45) - 8                 ' -8G
-            Cells(i1, 21) = Cells(i1, 21) - 3149              'ﾅﾄﾘｳﾑ
-        ElseIf Cells(i1, 45) > 9 Then                        ' 9Gｲｶ
-            Cells(i1, 21) = Cells(i1, 21) - _
-                          WorksheetFunction.RoundDown( _
-                          (Cells(i1, 45) - 9) / 0.00254, 2)
-            Cells(i1, 45) = 9                                 'ｲﾁﾘﾂ
+    ' 一日当たりの合計行Indexを設定
+    i1 = i1 + 1
+
+    ' 薄味による補正
+    If Mid(Range("Q3rec"), 7, 1) = "3" Then
+        If Cells(i1, 45) > 17 Then                              ' 塩16g以上の場合
+            Cells(i1, 45) = Cells(i1, 45) - 8                   ' 8g減
+            Cells(i1, 21) = Cells(i1, 21) - 3149                ' ナトリウム減
+        ElseIf Cells(i1, 45) > 9 Then                           ' 9g以上の場合
+            Cells(i1, 21) = Cells(i1, 21) - WorksheetFunction.RoundDown((Cells(i1, 45) - 9) / 0.00254, 2)
+            Cells(i1, 45) = 9                                   ' 9gに設定
         End If
-        If Cells(i1, 46) > 17 Then                           'ｼｵ16G
-            Cells(i1, 46) = Cells(i1, 46) - 8                ' -8G
-            Cells(i1, 22) = Cells(i1, 22) - 3149             'ﾅﾄﾘｳﾑ
+        If Cells(i1, 46) > 17 Then                              ' 塩16g以上の場合
+            Cells(i1, 46) = Cells(i1, 46) - 8                   ' 8g減
+            Cells(i1, 22) = Cells(i1, 22) - 3149                ' ナトリウム減
             Range("ks2_hosei23") = 1
-        ElseIf Cells(i1, 46) > 9 Then                        ' 9Gｲｶ
-            Cells(i1, 22) = Cells(i1, 22) - _
-                          WorksheetFunction.RoundDown( _
-                          (Cells(i1, 46) - 9) / 0.00254, 2)
-            Cells(i1, 46) = 9                                 'ｲﾁﾘﾂ
+        ElseIf Cells(i1, 46) > 9 Then                           ' 9g以上の場合
+            Cells(i1, 22) = Cells(i1, 22) - WorksheetFunction.RoundDown((Cells(i1, 46) - 9) / 0.00254, 2)
+            Cells(i1, 46) = 9                                   ' 9gに設定
             Range("ks2_hosei23") = 2
         Else
             Range("ks2_hosei23") = 3
@@ -1504,8 +1637,8 @@ Dim Wnissu  As Long
     End If
     Range("ks2_hosei11") = Range("ks2_hosei23")
     
-    
-    If Cells(i1, 32) < 40 Then              'VC補正(16)
+    ' VC補正
+    If Cells(i1, 32) < 40 Then
         If Cells(i1, 31) > 40 Then
             Cells(i1, 32) = 40
             Range("ks2_hosei16") = 1
@@ -1516,7 +1649,9 @@ Dim Wnissu  As Long
     Else
         Range("ks2_hosei16") = 3
     End If
-    If Cells(i1, 40) < 3 Then               'VE補正(20)
+
+    'VE補正
+    If Cells(i1, 40) < 3 Then
         If Cells(i1, 39) > 3 Then
             Cells(i1, 40) = 3
             Range("ks2_hosei20") = 1
@@ -1528,6 +1663,7 @@ Dim Wnissu  As Long
         Range("ks2_hosei20") = 3
     End If
 
+    ' 栄養素の結果をks2_eiyosoの範囲に設定
     For i2 = 2 To 54 Step 2
         Range("ks2_eiyoso").Offset(i2 / 2 - 1, 3) = Cells(i1, i2)
     Next i2
@@ -1537,26 +1673,35 @@ End Function
 '           引数 Func 1:更新あり 2:更新なし
 '--------------------------------------------------------------------------------
 Function Eiyo01_521CalcDbGet(Func As Long) As Long
-Dim mySqlStr    As String
-Dim i1          As Long
-Dim i2          As Long
+    Dim mySqlStr    As String
+    Dim i1          As Long
+    Dim i2          As Long
 
+    ' "DBmirror"シートが存在する場合は削除する関数を呼び出し
     Call Eiyo99_指定シート削除("DBmirror")
-    Sheets.Add After:=Sheets(Sheets.Count)      'シート追加
+
+    ' 新しいシートを追加し、名前を"DBmirror"に設定
+    Sheets.Add After:=Sheets(Sheets.Count)
     ActiveSheet.Name = "DBmirror"
+
+    ' "DBmirror"シートのM2:M3セルの書式を文字列に設定
     Sheets("DBmirror").Range("m2:m3").NumberFormatLocal = "@"     '住所ー２
-'   基礎情報取得
+
+    ' 基礎情報の取得
     With Rst_Kiso
         .Index = "PrimaryKey"
         Rst_Kiso.Open Source:=Tbl_Kiso, ActiveConnection:=myCon, _
             CursorType:=adOpenKeyset, LockType:=adLockOptimistic, _
             Options:=adCmdTableDirect
+            
 '        If Int(Range("Fcode") / 10000) = 33 Then
 '            .Seek 110000 + Range("Fcode") Mod 10000
 '            For i1 = 1 To .Fields.Count
 '                Cells(4, i1).Value = .Fields(i1 - 1).Value
 '            Next
 '        End If
+
+        ' "Fcode"の値に基づいてレコードを検索
         .Seek Range("Fcode")
         If .EOF Then
             .AddNew
@@ -1569,7 +1714,8 @@ Dim i2          As Long
             Next
         End If
     End With
-'   所要量取得
+
+    ' 所要量の取得
     With Rst_Syoyo
         .Index = "PrimaryKey"
         Rst_Syoyo.Open Source:=Tbl_Syoyo, ActiveConnection:=myCon, _
@@ -1586,7 +1732,8 @@ Dim i2          As Long
             Next
         End If
     End With
-'   エネルギー／カロリー
+
+    ' エネルギー／カロリーの取得
     With Rst_Energ
         .Index = "PrimaryKey"
         Rst_Energ.Open Source:=Tbl_Energ, ActiveConnection:=myCon, _
@@ -1604,21 +1751,25 @@ Dim i2          As Long
         End If
     End With
     
+    ' Funcが1の場合、検証シートの値をデータベースに戻す
     If Func = 1 Then
         i2 = Sheets("検証").UsedRange.Rows.Count
-'       脂質の戻し
+
+        ' 脂質の戻し
         Rst_Kiso.Fields("Sfods1").Value = Sheets("検証").Cells(i2, 115)
         Rst_Kiso.Fields("Sfods2").Value = Sheets("検証").Cells(i2, 116)
         Rst_Kiso.Fields("Sfods3").Value = Sheets("検証").Cells(i2, 117)
         Rst_Kiso.Fields("Sfodh1").Value = Sheets("検証").Cells(i2, 118)
         Rst_Kiso.Fields("Sfodh2").Value = Sheets("検証").Cells(i2, 119)
         Rst_Kiso.Fields("Sfodh3").Value = Sheets("検証").Cells(i2, 120)
-'       所要量の戻し
+
+        ' 所要量の戻し
         For i1 = 1 To 27
             Rst_Syoyo.Fields(i1 * 5 - 3).Value = Sheets("検証").Cells(i2, i1 * 2 - 1)
             Rst_Syoyo.Fields(i1 * 5 - 2).Value = Sheets("検証").Cells(i2, i1 * 2)
         Next i1
-'       エネルギー／カロリーの戻し
+
+        ' エネルギー／カロリーの戻し
         For i1 = 1 To 15
             Rst_Energ.Fields(i1 + 1).Value = Sheets("検証").Cells(i2, i1 + 54)
             Rst_Energ.Fields(i1 + 16).Value = Sheets("検証").Cells(i2, i1 + 69)
@@ -1628,34 +1779,37 @@ Dim i2          As Long
         Next i1
     End If
     
+    ' 関数の戻り値を0に設定
     Eiyo01_521CalcDbGet = 0
 End Function
 '--------------------------------------------------------------------------------
 '   01_522　標準体重ほか
 '--------------------------------------------------------------------------------
 Function Eiyo01_522Mealcalc2() As Long
-Dim mySqlStr    As String
-Dim 実体重      As Double
-Dim 標準体重    As Double
-Dim 労作        As String   '労作強度　Q7.職業の４桁目
-Dim 妊娠        As Long
-Dim Wtemp       As Double
-Dim i1          As Long
-Dim Wcondition  As Long     '所要量エネルギー適用条件
-Dim Wenerg1     As Double   '指定ありの調整ｴﾈﾙｷﾞ
-Dim Wenerg2     As Double   '指定除外の調整ｴﾈﾙｷﾞ
-Dim KisoCd1     As Long     '必要量マスタの基礎コード  基礎代謝、活動代謝
-Dim KisoCd2     As Long     '必要量マスタの基礎コード　所要量
-Dim KisoCd3     As Long     '必要量マスタの基礎コード　妊娠授乳
-Dim 年齢        As Long
-Dim Warray      As Variant
-Dim Wtext       As String
+    Dim mySqlStr    As String
+    Dim 実体重      As Double
+    Dim 標準体重    As Double
+    Dim 労作        As String   ' 労作強度　Q7.職業の４桁目
+    Dim 妊娠        As Long
+    Dim Wtemp       As Double
+    Dim i1          As Long
+    Dim Wcondition  As Long     ' 所要量エネルギー適用条件
+    Dim Wenerg1     As Double   ' 指定ありの調整ｴﾈﾙｷﾞ
+    Dim Wenerg2     As Double   ' 指定除外の調整ｴﾈﾙｷﾞ
+    Dim KisoCd1     As Long     ' 必要量マスタの基礎コード  基礎代謝、活動代謝
+    Dim KisoCd2     As Long     ' 必要量マスタの基礎コード　所要量
+    Dim KisoCd3     As Long     ' 必要量マスタの基礎コード　妊娠授乳
+    Dim 年齢        As Long
+    Dim Warray      As Variant
+    Dim Wtext       As String
 
+    ' 体重・年齢・労作強度・妊娠情報を取得
     実体重 = Range("Weght")
     年齢 = Range("Age")
     労作 = Mid(Range("Qjob1"), 4, 1)
     妊娠 = Range("Qcnd1")
-'   標準体重
+
+    ' 標準体重を計算
     If 年齢 <= 12 Then
         標準体重 = 実体重
     ElseIf Range("Hight") <= 150 Then
@@ -1668,24 +1822,27 @@ Dim Wtext       As String
     Rst_Kiso.Fields("Aans1").Value = 標準体重
     Range("ks2_weght") = 実体重
     Range("ks2_weght").Offset(0, 1) = 標準体重
-'   肥満度
-    Rst_Kiso.Fields("Himanp").Value = WorksheetFunction.Round( _
-                                 (実体重 - 標準体重) / 実体重 * 100, 0)
-'   体格指数
+
+    ' 肥満度を計算
+    Rst_Kiso.Fields("Himanp").Value = WorksheetFunction.Round((実体重 - 標準体重) / 実体重 * 100, 0)
+
+    ' 体格指数を計算
     If 年齢 <= 2 Then
-        Wtemp = 実体重 / (Range("Hight") ^ 2) * 10 ^ 4              'ｶｳﾌﾟ指数
+        Wtemp = 実体重 / (Range("Hight") ^ 2) * 10 ^ 4              ' カウプ指数
     ElseIf 年齢 <= 12 Then
-        Wtemp = 実体重 / (Range("Hight") ^ 3) * 10 ^ 7              'ﾛｰﾚﾙ指数
+        Wtemp = 実体重 / (Range("Hight") ^ 3) * 10 ^ 7              ' ローレル指数
     Else
-        Wtemp = WorksheetFunction.Round(実体重 / 標準体重 * 100, 0) 'ﾌﾞﾛｰｶｰ指数
+        Wtemp = WorksheetFunction.Round(実体重 / 標準体重 * 100, 0) ' ブローカー指数
     End If
     Rst_Kiso.Fields("Taiis").Value = Wtemp
-'   体表面積
+
+    ' 体表面積を計算
     Rst_Kiso.Fields("Aansa").Value = Eiyo01_523_taihyou(実体重)
     Rst_Kiso.Fields("Bansa").Value = Eiyo01_523_taihyou(標準体重)
     Range("ks2_Aansa") = Rst_Kiso.Fields("Aansa").Value
     Range("ks2_Aansa").Offset(0, 1) = Rst_Kiso.Fields("Bansa").Value
-'   生活指数
+
+    ' 生活指数を計算
     Select Case 労作
         Case "A":  Wtemp = 0.35
         Case "B":  Wtemp = 0.5
@@ -1694,7 +1851,8 @@ Dim Wtext       As String
     End Select
     Rst_Kiso.Fields("Aansx").Value = Wtemp
     Range("ks2_Aansx") = Wtemp
-'   単位表面積あたりの基礎代謝
+
+    ' 単位表面積あたりの基礎代謝を計算
     If 年齢 < 20 Then
         KisoCd1 = 年齢
     ElseIf 年齢 < 80 Then
@@ -1711,53 +1869,54 @@ Dim Wtext       As String
     Rst_Kiso.Fields("Aans3").Value = Rst_Need.Fields("基礎代謝").Value
     Range("ks2_kisocd") = KisoCd1
     Range("ks2_kisot") = Rst_Kiso.Fields("Aans3").Value
-'   基礎代謝
+
+    ' 基礎代謝を計算
     Rst_Kiso.Fields("Aansb").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Aans3").Value _
-                                                           * Rst_Kiso.Fields("Aansa").Value * 24, 2)    '実体重の基礎代謝／日
-    Rst_Kiso.Fields("Aansc").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Aansb").Value / 1440, 2)  '実体重の基礎代謝／分
-    Rst_Kiso.Fields("Aansd").Value = Eiyo01_524ansd(Rst_Kiso.Fields("Aansb").Value)                     '実体重のE標準量
+                                                           * Rst_Kiso.Fields("Aansa").Value * 24, 2)    ' 実体重の基礎代謝／日
+    Rst_Kiso.Fields("Aansc").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Aansb").Value / 1440, 2)  ' 実体重の基礎代謝／分
+    Rst_Kiso.Fields("Aansd").Value = Eiyo01_524ansd(Rst_Kiso.Fields("Aansb").Value)                     ' 実体重のE標準量
     
     Rst_Kiso.Fields("Bansb").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Aans3").Value _
-                                                           * Rst_Kiso.Fields("Bansa").Value * 24, 2)    '標準体重の基礎代謝／日
-    Rst_Kiso.Fields("Bansc").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Bansb").Value / 1440, 2)  '標準体重の基礎代謝／分
-    Rst_Kiso.Fields("Bansd").Value = Eiyo01_524ansd(Rst_Kiso.Fields("Bansb").Value)                     '標準体重のE標準量
-    Range("ks2_Aansb") = Rst_Kiso.Fields("Aansb").Value                 '実体重の基礎代謝／日
-    Range("ks2_Aansc") = Rst_Kiso.Fields("Aansc").Value                 '実体重の基礎代謝／分
-    Range("ks2_Aansd") = Rst_Kiso.Fields("Aansd").Value                 '実体重のE標準量
-    Range("ks2_Aansb").Offset(0, 1) = Rst_Kiso.Fields("Bansb").Value    '標準体重の基礎代謝／日
-    Range("ks2_Aansc").Offset(0, 1) = Rst_Kiso.Fields("Bansc").Value    '標準体重の基礎代謝／分
-    Range("ks2_Aansd").Offset(0, 1) = Rst_Kiso.Fields("Bansd").Value    '標準体重のE標準量
+                                                           * Rst_Kiso.Fields("Bansa").Value * 24, 2)    ' 標準体重の基礎代謝／日
+    Rst_Kiso.Fields("Bansc").Value = WorksheetFunction.Round(Rst_Kiso.Fields("Bansb").Value / 1440, 2)  ' 標準体重の基礎代謝／分
+    Rst_Kiso.Fields("Bansd").Value = Eiyo01_524ansd(Rst_Kiso.Fields("Bansb").Value)                     ' 標準体重のE標準量
+    Range("ks2_Aansb") = Rst_Kiso.Fields("Aansb").Value                 ' 実体重の基礎代謝／日
+    Range("ks2_Aansc") = Rst_Kiso.Fields("Aansc").Value                 ' 実体重の基礎代謝／分
+    Range("ks2_Aansd") = Rst_Kiso.Fields("Aansd").Value                 ' 実体重のE標準量
+    Range("ks2_Aansb").Offset(0, 1) = Rst_Kiso.Fields("Bansb").Value    ' 標準体重の基礎代謝／日
+    Range("ks2_Aansc").Offset(0, 1) = Rst_Kiso.Fields("Bansc").Value    ' 標準体重の基礎代謝／分
+    Range("ks2_Aansd").Offset(0, 1) = Rst_Kiso.Fields("Bansd").Value    ' 標準体重のE標準量
 
-'   所要量　エネルギー  -------------------------------------------------------------------------------------
-    If Rst_Kiso.Fields("Tenes").Value = 1 Then              'エネルギー指定・値
+    ' 所要量エネルギーを計算  -------------------------------------------------------------------------------------
+    If Rst_Kiso.Fields("Tenes").Value = 1 Then              ' エネルギー指定が値の場合
         Wenerg1 = Rst_Kiso.Fields("Tenee").Value
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 1
-    ElseIf Rst_Kiso.Fields("Tenes").Value = 2 Then          'エネルギー指定・実体重
-        Wenerg1 = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tenee").Value * ���̏d, 2)
+    ElseIf Rst_Kiso.Fields("Tenes").Value = 2 Then          ' エネルギー指定が実体重の場合
+        Wenerg1 = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tenee").Value * 実体重, 2)
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 2
-    ElseIf Rst_Kiso.Fields("Tenes").Value = 3 Then          'エネルギー指定・標準体重
-        Wenerg1 = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tenee").Value * �W���̏d, 2)
+    ElseIf Rst_Kiso.Fields("Tenes").Value = 3 Then          ' エネルギー指定が標準体重の場合
+        Wenerg1 = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tenee").Value * 標準体重, 2)
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 3
-    ElseIf �D�P = 1 Then                                    '妊娠前期
+    ElseIf 妊娠 = 1 Then                                    ' 妊娠前期の場合
         Wenerg1 = Rst_Kiso.Fields("Bansd").Value + 150
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value + 150
         Wcondition = 4
-    ElseIf �D�P = 2 Then                                    '妊娠後期
+    ElseIf 妊娠 = 2 Then                                    ' 妊娠後期の場合
         Wenerg1 = Rst_Kiso.Fields("Bansd").Value + 350
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value + 350
         Wcondition = 5
-    ElseIf �D�P = 3 Then                                    '授乳期
+    ElseIf 妊娠 = 3 Then                                    ' 授乳期の場合
         Wenerg1 = Rst_Kiso.Fields("Bansd").Value + 700
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value + 700
         Wcondition = 6
-    ElseIf Rst_Kiso.Fields("Qill1").Value <> 0 Then         '糖尿病
+    ElseIf Rst_Kiso.Fields("Qill1").Value <> 0 Then         ' 糖尿病の場合
         Wenerg1 = Rst_Kiso.Fields("Bansd").Value - 200
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 7
-    ElseIf Rst_Kiso.Fields("Qsrmr").Value <> 0 Then         'スポーツ
+    ElseIf Rst_Kiso.Fields("Qsrmr").Value <> 0 Then         ' スポーツの場合
         Wenerg1 = Rst_Kiso.Fields("Aansb").Value _
                 + WorksheetFunction.RoundDown((Rst_Kiso.Fields("Qsrmr").Value + 1.2) _
                                              * Rst_Kiso.Fields("Qsmin").Value _
@@ -1766,32 +1925,43 @@ Dim Wtext       As String
         Wenerg2 = Wenerg1
         Wcondition = 8
     ElseIf Rst_Kiso.Fields("Taiis").Value <= 90 Or _
-           Rst_Kiso.Fields("Taiis").Value >= 120 Then      '肥満
+           Rst_Kiso.Fields("Taiis").Value >= 120 Then      ' 肥満の場合
         Wenerg1 = Rst_Kiso.Fields("Bansd").Value
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 9
-    Else                                                    'その他一般
+    Else                                                    ' その他一般の場合
         Wenerg1 = Rst_Kiso.Fields("Aansd").Value
         Wenerg2 = Rst_Kiso.Fields("Aansd").Value
         Wcondition = 10
     End If
+
+    ' 計算結果をフィールドに設定
     Rst_Syoyo.Fields("Syoyo01").Value = Wenerg1
+
+    ' 結果をシートに出力
     Range("ks2_energ") = Wcondition
     Range("ks2_energ").Offset(1, 0) = Wenerg1
     Range("ks2_energ").Offset(2, 0) = Wenerg2
     
-'   所要量　その他  ------------------------------------------------------------------------------------------
+    ' 所要量　その他の計算  ------------------------------------------------------------------------------------------
+    ' 一連の操作を行うために使用する基礎コード
     KisoCd2 = KisoCd1 + 1000
     mySqlStr = "SELECT * FROM " & Tbl_Need & " Where Ncode = " & KisoCd2
     Set Rst_Need = myCon.Execute(mySqlStr)
+
+    ' 必要量マスタのレコードが見つからない場合のエラーメッセージ
     If Rst_Need.EOF Then
         MsgBox "必要量マスタのキーなし:" & KisoCd2
     End If
+
+    ' 結果をシートに出力
     Range("ks2_syoyo") = KisoCd2
     For i1 = 2 To 27
         Rst_Syoyo.Fields(i1 * 5 - 1).Value = Rst_Need.Fields(i1 + 1).Value
         Range("ks2_syoyo").Offset(i1, 0) = Rst_Need.Fields(i1 + 1).Value
     Next i1
+
+    ' 労作が"B"または年齢が15未満でない場合に追加の操作を行う
     If 労作 = "B" Or 年齢 < 15 Then
     Else
         Select Case 労作
@@ -1799,6 +1969,8 @@ Dim Wtext       As String
             Case "C":  KisoCd2 = 1220
             Case Else: KisoCd2 = 1230
         End Select
+
+        ' 性別に応じてコードを調整
         If Range("Sex") = 1 Then: KisoCd2 = KisoCd2 + 100
         Select Case Range("age")
             Case 15 To 19: KisoCd2 = KisoCd2 + 1
@@ -1806,11 +1978,15 @@ Dim Wtext       As String
             Case 40 To 59: KisoCd2 = KisoCd2 + 3
             Case Else:     KisoCd2 = KisoCd2 + 4
         End Select
+
+        ' 再度必要量マスタからデータを取得し、結果をシートに出力
         mySqlStr = "SELECT * FROM " & Tbl_Need & " Where Ncode = " & KisoCd2
         Set Rst_Need = myCon.Execute(mySqlStr)
+
         If Rst_Need.EOF Then
             MsgBox "必要量マスタのキーなし:" & KisoCd2
         End If
+
         Range("ks2_syoyo").Offset(0, 1) = KisoCd2
         For i1 = 2 To 27
             Rst_Syoyo.Fields(i1 * 5 - 1).Value = _
@@ -1818,18 +1994,23 @@ Dim Wtext       As String
             Range("ks2_syoyo").Offset(i1, 1) = Rst_Need.Fields(i1 + 1).Value
         Next i1
     End If
+
+    ' 妊娠に応じて必要量マスタからデータを取得し、結果をシートに出力
     Select Case 妊娠
-        Case 1:    KisoCd3 = 1401   '妊娠前期
-        Case 2:    KisoCd3 = 1402   '妊娠後期
-        Case 3:    KisoCd3 = 1403   '授乳期
+        Case 1:    KisoCd3 = 1401   ' 妊娠前期
+        Case 2:    KisoCd3 = 1402   ' 妊娠後期
+        Case 3:    KisoCd3 = 1403   ' 授乳期
         Case Else: KisoCd3 = 0
     End Select
+
     If KisoCd3 > 0 Then
         mySqlStr = "SELECT * FROM " & Tbl_Need & " Where Ncode = " & KisoCd3
         Set Rst_Need = myCon.Execute(mySqlStr)
+
         If Rst_Need.EOF Then
             MsgBox "必要量マスタのキーなし:" & KisoCd3
         End If
+
         Range("ks2_syoyo").Offset(0, 2) = KisoCd3
         For i1 = 2 To 27
             Rst_Syoyo.Fields(i1 * 5 - 1).Value = _
@@ -1837,25 +2018,27 @@ Dim Wtext       As String
             Range("ks2_syoyo").Offset(i1, 2) = Rst_Need.Fields(i1 + 1).Value
         Next i1
     End If
-'   所要量　たんぱく質  --------------------------------------------------------------------------------------
+
+    ' 所要量　たんぱく質の計算  --------------------------------------------------------------------------------------
     Wcondition = 0
-    If Rst_Kiso.Fields("Tanps").Value = 1 Then              'たんぱく指定・値
+
+    ' たんぱく質の計算条件に応じて処理を分岐
+    If Rst_Kiso.Fields("Tanps").Value = 1 Then              ' たんぱく指定・値
         Wtemp = Rst_Kiso.Fields("Tanpe").Value
         Wcondition = 1
-    ElseIf Rst_Kiso.Fields("Tanps").Value = 2 Then          'たんぱく指定・実体重
+    ElseIf Rst_Kiso.Fields("Tanps").Value = 2 Then          ' たんぱく指定・実体重
         Wtemp = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tanpe").Value * 実体重, 2)
         Wcondition = 2
-    ElseIf Rst_Kiso.Fields("Tanps").Value = 3 Then          'たんぱく指定・標準体重
+    ElseIf Rst_Kiso.Fields("Tanps").Value = 3 Then          ' たんぱく指定・標準体重
         Wtemp = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tanpe").Value * 標準体重, 2)
         Wcondition = 3
-    ElseIf Rst_Kiso.Fields("Tanps").Value = 4 Then          'たんぱく指定・エネルギー比
-        Wtemp = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tanpe").Value _
-                                          * Wenerg1 / 400, 2)
+    ElseIf Rst_Kiso.Fields("Tanps").Value = 4 Then          ' たんぱく指定・エネルギー比
+        Wtemp = WorksheetFunction.RoundDown(Rst_Kiso.Fields("Tanpe").Value * Wenerg1 / 400, 2)
         Wcondition = 4
-    ElseIf Rst_Kiso.Fields("Qsrmr").Value <> 0 Then         'スポーツ
+    ElseIf Rst_Kiso.Fields("Qsrmr").Value <> 0 Then         ' スポーツ
         Wtemp = 実体重 * 1.4
         Wcondition = 5
-    ElseIf Rst_Kiso.Fields("Qwcnt").Value <> 0 Then         'ｳｴｲﾄ･ｺﾝﾄﾛｰﾙ
+    ElseIf Rst_Kiso.Fields("Qwcnt").Value <> 0 Then         ' ウエイト・コントロール
         If Wenerg1 < 1412 Then
             Wtemp = 60
             Wcondition = 6
@@ -1864,11 +2047,14 @@ Dim Wtext       As String
             Wcondition = 7
         End If
     Else
+        ' 年齢に応じてたんぱく質を設定する
         If 年齢 < 21 Then
             If Range("Sex") = 0 Then
-'                          3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20��
+                ' 3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20��
+                ' 女性の場合の年齢ごとのたんぱく質量
                 Wtext = "117,116,122,124,128,135,138,144,140,138,136,129,125,121,117,117,113,113"
             Else
+                ' 男性の場合の年齢ごとのたんぱく質量
                 Wtext = "117,120,126,132,137,144,149,148,144,146,139,133,131,129,129,124,121,121"
             End If
             Warray = Split(Wtext, ",")
@@ -1876,31 +2062,44 @@ Dim Wtext       As String
             If Rst_Kiso.Fields("Qsyog").Value = 1 Then: Wtemp = Wtemp + 20  '障害者
             Wcondition = 8
         Else
+            ' 年齢に応じてたんぱく質を設定する
             i1 = Int(年齢 / 10) - 2
             If i1 > 6 Then: i1 = 6
             Select Case 労作       ' 20  30  40  50  60  70  80      才代
-                Case "A":  Wtext = "130,140,150,150,160,160,160"    'X=0.35  (A)
-                Case "B":  Wtext = "120,130,130,135,140,145,150"    'X=0.5   (B)
-                Case "C":  Wtext = "120,130,130,130,140,140,140"    'X=0.75  (C)
-                Case Else: Wtext = "120,130,130,130,135,135,135"    'X=1     (D)
+                Case "A":  Wtext = "130,140,150,150,160,160,160"    ' X=0.35  (A)
+                Case "B":  Wtext = "120,130,130,135,140,145,150"    ' X=0.5   (B)
+                Case "C":  Wtext = "120,130,130,130,140,140,140"    ' X=0.75  (C)
+                Case Else: Wtext = "120,130,130,130,135,135,135"    ' X=1     (D)
             End Select
             Warray = Split(Wtext, ",")
             Wtemp = Warray(i1)
             Wcondition = 9
         End If
+
+        ' エネルギーとの関連性に応じてたんぱく質を調整
         Wtemp = Wenerg1 * Wtemp / 4000
+
+        ' 妊娠に応じてたんぱく質を調整
         Select Case 妊娠
-            Case 1: Wtemp = Wtemp + 10  '妊娠前期
-            Case 2: Wtemp = Wtemp + 20  '妊娠後期
-            Case 3: Wtemp = Wtemp + 20  '授乳期
+            Case 1: Wtemp = Wtemp + 10  ' 妊娠前期
+            Case 2: Wtemp = Wtemp + 20  ' 妊娠後期
+            Case 3: Wtemp = Wtemp + 20  ' 授乳期
         End Select
     End If
+
+    ' 計算結果を小数点第二位で丸める
     Wtemp = WorksheetFunction.RoundDown(Wtemp, 2)
-    Rst_Syoyo.Fields("Syoyo02").Value = WorksheetFunction.RoundDown(Wtemp, 2)       'たんぱく質  (02)
-    Rst_Syoyo.Fields("Syoyo03").Value = WorksheetFunction.RoundDown(Wtemp / 2, 2)   '動物たんぱく(03)
-    Rst_Syoyo.Fields("Syoyo04").Value = WorksheetFunction.RoundDown(Wtemp / 2, 2)   '植物たんぱく(04)
+
+    ' 結果をデータベースのフィールドに設定する
+    Rst_Syoyo.Fields("Syoyo02").Value = WorksheetFunction.RoundDown(Wtemp, 2)       ' たんぱく質  (02)
+    Rst_Syoyo.Fields("Syoyo03").Value = WorksheetFunction.RoundDown(Wtemp / 2, 2)   ' 動物たんぱく(03)
+    Rst_Syoyo.Fields("Syoyo04").Value = WorksheetFunction.RoundDown(Wtemp / 2, 2)   ' 植物たんぱく(04)
+    
+    ' 結果をシートの指定セルに出力する
     Range("ks2_syoyo").Offset(2, 3) = Wcondition
-'   所要量　脂質  --------------------------------------------------------------------------
+
+    ' 所要量　脂質の計算  --------------------------------------------------------------------------
+    ' 脂質の計算条件に応じて処理を分岐
     If 妊娠 > 0 Then
         Wtemp = 275
     ElseIf 年齢 < 21 Then
@@ -1915,76 +2114,98 @@ Dim Wtext       As String
             Case Else:     Wtemp = 275
         End Select
     End If
+
+    ' 脂質量を計算し、小数点第二位で丸める
     Wtemp = WorksheetFunction.RoundDown(Wenerg1 * Wtemp / 9000, 2)
-    Rst_Syoyo.Fields("Syoyo05").Value = Wtemp                                       '脂質  (05)
-    Rst_Syoyo.Fields("Syoyo26").Value = WorksheetFunction.Round(Wtemp * 0.34, 2)    'S      (24)
-    Rst_Syoyo.Fields("Syoyo25").Value = WorksheetFunction.Round(Wtemp * 0.66, 2)    'P      (25)
-    Rst_Syoyo.Fields("Syoyo24").Value = 300                                         'ｺﾚｽﾃﾛｰﾙ(24)
+
+    ' 計算結果をデータベースのフィールドに設定する
+    Rst_Syoyo.Fields("Syoyo05").Value = Wtemp                                       ' 脂質  (05)
+    Rst_Syoyo.Fields("Syoyo26").Value = WorksheetFunction.Round(Wtemp * 0.34, 2)    ' S      (24)
+    Rst_Syoyo.Fields("Syoyo25").Value = WorksheetFunction.Round(Wtemp * 0.66, 2)    ' P      (25)
+    Rst_Syoyo.Fields("Syoyo24").Value = 300                                         ' コレステロール(24)
     
+    ' 糖質を計算し、小数点第二位で丸める
     Rst_Syoyo.Fields("Syoyo06").Value = WorksheetFunction.RoundDown((Wenerg1 _
                                       - Rst_Syoyo.Fields("Syoyo02").Value * 4 _
-                                      - Rst_Syoyo.Fields("Syoyo05").Value * 9) / 4, 2)  '糖質(06)
-    If Rst_Kiso.Fields("Qill1").Value <> 0 Then                                         '砂糖(27)
-        Rst_Syoyo.Fields("Syoyo27").Value = 10          '糖尿病
+                                      - Rst_Syoyo.Fields("Syoyo05").Value * 9) / 4, 2)  ' 糖質(06)
+    
+    ' 砂糖の設定
+    If Rst_Kiso.Fields("Qill1").Value <> 0 Then                                         ' 砂糖(27)
+        Rst_Syoyo.Fields("Syoyo27").Value = 10          ' 糖尿病の場合
     ElseIf Rst_Kiso.Fields("Qwcnt").Value <> 0 Then
-        Rst_Syoyo.Fields("Syoyo27").Value = 10          'ｳｴｲﾄ･ｺﾝﾄﾛｰﾙ
+        Rst_Syoyo.Fields("Syoyo27").Value = 10          ' ウエイト･コントロールの場合
     Else
-        Rst_Syoyo.Fields("Syoyo27").Value = 30          'その他(一般)
+        Rst_Syoyo.Fields("Syoyo27").Value = 30          ' その他の場合（一般）
     End If
-    Rst_Syoyo.Fields("Syoyo07").Value = WorksheetFunction.RoundDown(Wenerg1 * 0.0099, 2)    '食物せんい(07)
-'   ｶﾙｼｳﾑ(08) ------------------------------------------------------------------------------------------------
+
+    ' 食物繊維を計算し、小数点第二位で丸める
+    Rst_Syoyo.Fields("Syoyo07").Value = WorksheetFunction.RoundDown(Wenerg1 * 0.0099, 2)    ' 食物せんい(07)
+
+    ' カルシウムの計算(08) ------------------------------------------------------------------------------------------------
     Wcondition = 0
     If 年齢 < 21 Then
         If Range("Sex") = 0 Then
-'                      3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20��
+            ' 3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20才
+            ' 男性の場合の年齢ごとのカルシウム必要量
             Wtext = "171,168,169,173,176,165,169,177,187,188,177,156,134,124,115,109,103,103"
         Else
+            ' 女性の場合の年齢ごとのカルシウム必要量
             Wtext = "173,169,169,174,182,177,184,184,175,158,142,133,119,108,100,100,100,100"
         End If
         Warray = Split(Wtext, ",")
         Wtemp = WorksheetFunction.RoundDown(実体重 * Warray(年齢 - 3) / 10, 2)
         Wcondition = 1
     ElseIf 年齢 < 60 Then
+        ' 成人の場合のカルシウム必要量
         Wtemp = 実体重 * 10
         Wcondition = 2
     Else
+        ' 60歳以上の場合のカルシウム必要量
         Wtemp = 600
         Wcondition = 3
     End If
+
+    ' 妊娠に応じてカルシウム必要量を調整
     Select Case 妊娠
         Case 1, 2
-            Wtemp = Wtemp + 400 '妊娠前後期
+            Wtemp = Wtemp + 400 ' 妊娠前後期
             Wcondition = 4
         Case 3
-            Wtemp = Wtemp + 500 '授乳期
+            Wtemp = Wtemp + 500 ' 授乳期
             Wcondition = 5
     End Select
-    Rst_Syoyo.Fields("Syoyo08").Value = Wtemp   'ｶﾙｼｳﾑ(08)
-    Rst_Syoyo.Fields("Syoyo09").Value = Wtemp   'リン (09)
-    Range("ks2_syoyo").Offset(8, 3) = Wcondition
-'   鉄  ------------------------------------------------------------------------------------------------------
+
+    ' データベースにカルシウムの必要量を設定
+    Rst_Syoyo.Fields("Syoyo08").Value = Wtemp       ' カルシウム (08)
+    Rst_Syoyo.Fields("Syoyo09").Value = Wtemp       ' リン (09)
+    Range("ks2_syoyo").Offset(8, 3) = Wcondition    ' 条件の設定
+
+    ' 鉄の計算  ------------------------------------------------------------------------------------------------------
     Select Case 妊娠
-        Case 1:    Wtemp = 15               '妊娠前期
-        Case 2, 3: Wtemp = 20               '妊娠後期・授乳期
+        Case 1:    Wtemp = 15                   ' 妊娠前期
+        Case 2, 3: Wtemp = 20                   ' 妊娠後期・授乳期
         Case Else
             Select Case 年齢
-                Case 1 To 5:   Wtemp = 8    '    ５才以下
-                Case 6 To 8:   Wtemp = 9    ' 6〜 8才
-                Case 9 To 11:  Wtemp = 10   ' 9〜11才
-                Case 12 To 19: Wtemp = 12   '12〜19才
+                Case 1 To 5:   Wtemp = 8        ' ５才以下
+                Case 6 To 8:   Wtemp = 9        ' 6〜8才
+                Case 9 To 11:  Wtemp = 10       ' 9〜11才
+                Case 12 To 19: Wtemp = 12       ' 12〜19才
                 Case 20 To 49
                     Select Case Range("Sex")
-                        Case 0:    Wtemp = 10   '20〜49才の男
-                        Case Else: Wtemp = 12   '20〜49才の女
+                        Case 0:    Wtemp = 10   ' 20〜49才の男
+                        Case Else: Wtemp = 12   ' 20〜49才の女
                     End Select
-                Case Else: Wtemp = 10           '50才以上
+                Case Else: Wtemp = 10           ' 50才以上
             End Select
     End Select
-    Rst_Syoyo.Fields("Syoyo10").Value = Wtemp
-'   VB1/VB2/ﾅｲｱｼﾝ  -------------------------------------------------------------------------------------------
+    Rst_Syoyo.Fields("Syoyo10").Value = Wtemp   ' 鉄 (10)
+
+    ' VB1/VB2/ナイアシンの計算  -------------------------------------------------------------------------------------------
     Rst_Syoyo.Fields("Syoyo13").Value = WorksheetFunction.RoundDown(Wenerg2 * 0.0004, 2)
     Rst_Syoyo.Fields("Syoyo14").Value = WorksheetFunction.RoundDown(Wenerg2 * 0.00055, 2)
     Rst_Syoyo.Fields("Syoyo15").Value = WorksheetFunction.RoundDown(Wenerg2 * 0.0066, 2)
+    
+    ' 妊娠に応じてVB1/VB2/ナイアシンの必要量を調整
     Select Case 妊娠
         Case 1
             Rst_Syoyo.Fields("Syoyo13").Value = Rst_Syoyo.Fields("Syoyo13").Value + 0.1
@@ -2000,19 +2221,23 @@ Dim Wtext       As String
             Rst_Syoyo.Fields("Syoyo15").Value = Rst_Syoyo.Fields("Syoyo15").Value + 5
     End Select
     
+    ' 特定の条件に応じてフィールドに値を設定
     If Rst_Kiso.Fields("Qill2").Value = 313 Then
-        Rst_Syoyo.Fields("Syoyo23").Value = 6       'ｼｵ
-        Rst_Syoyo.Fields("Syoyo11").Value = 2800    'ﾅﾄﾘｳﾑ
-        Range("ks2_syoyo").Offset(11, 3) = 1
-        Range("ks2_syoyo").Offset(23, 3) = 1
+        Rst_Syoyo.Fields("Syoyo23").Value = 6       ' シオ
+        Rst_Syoyo.Fields("Syoyo11").Value = 2800    ' ナトリウム
+        Range("ks2_syoyo").Offset(11, 3) = 1        ' 条件の設定
+        Range("ks2_syoyo").Offset(23, 3) = 1        ' 条件の設定
     Else
-        Rst_Syoyo.Fields("Syoyo23").Value = 10      'ｼｵ
-        Range("ks2_syoyo").Offset(23, 3) = 2
+        Rst_Syoyo.Fields("Syoyo23").Value = 10      ' シオ
+        Range("ks2_syoyo").Offset(23, 3) = 2        ' 条件の設定
     End If
+
+    ' VE、カリウム、マグネシウムの計算
     Rst_Syoyo.Fields("Syoyo20").Value = WorksheetFunction.Round(Rst_Syoyo.Fields("Syoyo25").Value * 0.6, 2)     'VE
     Rst_Syoyo.Fields("Syoyo21").Value = Rst_Syoyo.Fields("Syoyo11").Value                                       'ｶﾘｳﾑ <= ﾅﾄﾘｳﾑ
     Rst_Syoyo.Fields("Syoyo22").Value = WorksheetFunction.RoundDown(Rst_Syoyo.Fields("Syoyo08").Value / 2, 2)   'Mg=Ca/2
-'   栄養素比率
+
+    ' 栄養素比率の計算
     If Rst_Syoyo.Fields("Foodh01").Value = 0 Then
         Rst_Kiso.Fields("Per01").Value = 0
         Rst_Kiso.Fields("Per02").Value = 0
@@ -2051,10 +2276,12 @@ Dim Wtext       As String
                                      Rst_Syoyo.Fields("Foodh25").Value * 100 _
                                      / Rst_Syoyo.Fields("Foodh26").Value, 1)
     End If
+    
+    ' データベースをクローズしてオブジェクトを解放
     Rst_Need.Close
     Set Rst_Need = Nothing
 
-    '   更新結果表示
+    ' 更新結果を表示
     For i1 = 1 To Rst_Kiso.Fields.Count
         Cells(3, i1).Value = Rst_Kiso.Fields(i1 - 1).Value
     Next
@@ -2068,13 +2295,19 @@ End Function
 '       ６歳以上    体重^0.444 * 身長^0.663 *  88.83 / 10000
 '--------------------------------------------------------------------------------
 Function Eiyo01_523_taihyou(体重 As Double) As Double
-Dim Wtemp   As Double
+    Dim Wtemp   As Double
 
+    ' 体重と年齢に応じて栄養素の必要量を計算する関数
+    ' 年齢によって式が異なる計算
     If Range("Age") < 6 Then
-        Wtemp = WorksheetFunction.Round(�̏d ^ 0.423 * Range("hight") ^ 0.362 * 382.89 / 10000, 2)
+        ' 6歳未満の場合の計算式
+        Wtemp = WorksheetFunction.Round(体重 ^ 0.423 * Range("hight") ^ 0.362 * 382.89 / 10000, 2)
     Else
-        Wtemp = WorksheetFunction.Round(�̏d ^ 0.444 * Range("hight") ^ 0.663 * 88.83 / 10000, 2)
+        ' 6歳以上の場合の計算式
+        Wtemp = WorksheetFunction.Round(体重 ^ 0.444 * Range("hight") ^ 0.663 * 88.83 / 10000, 2)
     End If
+    
+    ' 計算結果を関数の戻り値として設定
     Eiyo01_523_taihyou = Wtemp
 End Function
 '--------------------------------------------------------------------------------
@@ -2086,39 +2319,48 @@ End Function
 '       基礎代謝／日 * (補正生活活動強度+1) * 1.1
 '--------------------------------------------------------------------------------
 Function Eiyo01_524ansd(基礎代謝 As Double) As Double
-Dim Wtemp   As Double
+    Dim Wtemp   As Double
     
-    If Rst_Kiso.Fields("Qsyog").Value = 1 Then                      '障害者
+    ' 基礎代謝に基づいて活動代謝を計算する関数
+    ' 条件に応じて活動代謝を計算
+    If Rst_Kiso.Fields("Qsyog").Value = 1 Then                      ' 障害者の場合
         Wtemp = WorksheetFunction.Round(Rst_Kiso.Fields("Aansx").Value * 0.5, 2)
-    ElseIf Range("Age") < 60 Then                                   '６０歳未満
+    ElseIf Range("Age") < 60 Then                                   ' 60歳未満の場合
         Wtemp = Rst_Kiso.Fields("Aansx").Value
-    ElseIf Range("Age") >= 60 And Range("Age") <= 69 Then           '６０歳代
+    ElseIf Range("Age") >= 60 And Range("Age") <= 69 Then           ' 60〜69歳の場合
         Wtemp = WorksheetFunction.Round(Rst_Kiso.Fields("Aansx").Value * 0.9, 2)
-    ElseIf Range("Age") >= 70 And Range("Age") <= 79 Then           '７０歳代
+    ElseIf Range("Age") >= 70 And Range("Age") <= 79 Then           ' 70〜79歳の場合
         Wtemp = WorksheetFunction.Round(Rst_Kiso.Fields("Aansx").Value * 0.8, 2)
-    Else                                                            '８０歳以上
+    Else                                                            ' 80歳以上の場合
         Wtemp = WorksheetFunction.Round(Rst_Kiso.Fields("Aansx").Value * 0.7, 2)
     End If
+
+    ' 最終的な活動代謝を計算
     Wtemp = WorksheetFunction.Round(基礎代謝 * (1 + Wtemp) * 1.1, 2)
+    
+    ' 計算結果を関数の戻り値として設定
     Eiyo01_524ansd = Wtemp
 End Function
 '--------------------------------------------------------------------------------
 '   01_525 過不足計算、アドバイス
 '--------------------------------------------------------------------------------
 Function Eiyo01_525MealDiffe() As Long
-Dim i1      As Long
-Dim Wans1   As Long
-Dim Wans2   As Long
-Dim Wtext   As String
-Dim Wtext2  As String
+    Dim i1      As Long
+    Dim Wans1   As Long
+    Dim Wans2   As Long
+    Dim Wtext   As String
+    Dim Wtext2  As String
 
+    ' 食事の差異を計算する関数
+    ' 27回ループして各食事項目の過不足率と評価を計算
     For i1 = 1 To 27
         If Rst_Syoyo.Fields(i1 * 5 - 1).Value = 0 Then
             Wans1 = 0
             Wans2 = 5
         Else
-            Wans1 = WorksheetFunction.Round(Rst_Syoyo.Fields(i1 * 5 - 2).Value _
-                                          / Rst_Syoyo.Fields(i1 * 5 - 1).Value * 100, 0) - 100   '過不足率
+            ' 過不足率を計算
+            Wans1 = WorksheetFunction.Round(Rst_Syoyo.Fields(i1 * 5 - 2).Value / Rst_Syoyo.Fields(i1 * 5 - 1).Value * 100, 0) - 100
+            ' 評価を条件に応じて設定
             If Wans1 <= Fld_Field(i1, 16) Then
                 Wans2 = 1
             ElseIf Wans1 <= Fld_Field(i1, 17) Then
@@ -2131,11 +2373,13 @@ Dim Wtext2  As String
                 Wans2 = 5
             End If
         End If
+        ' 結果をデータベースに書き込む
         Rst_Syoyo.Fields(i1 * 5 + 0).Value = Wans1
         Rst_Syoyo.Fields(i1 * 5 + 1).Value = Wans2
     Next i1
-'   アドバイス
-    Wtext = Rst_Kiso.Fields("Q3rec").Value      '食習慣
+
+    ' 食習慣に基づいてアドバイスを設定
+    Wtext = Rst_Kiso.Fields("Q3rec").Value
     Wans2 = 0
     For i1 = 1 To 10
         Wans1 = Val(Mid(Wtext, i1, 1))
@@ -2154,11 +2398,12 @@ Dim Wtext2  As String
             Case Else:     Wans1 = 3010
         End Select
     Else
-        Wans1 = 98  '2008/4/25 3050を0098に変更
+        Wans1 = 98  ' 2008/4/25 3050を0098に変更
     End If
     Rst_Kiso.Fields("Badv1").Value = Wans1
     
-    Wtext = Rst_Kiso.Fields("Q4rec").Value      '休養
+    ' 休養に基づいてアドバイスを設定
+    Wtext = Rst_Kiso.Fields("Q4rec").Value
     Wans2 = 0
     For i1 = 1 To 5
         Wans1 = Val(Mid(Wtext, i1, 1))
@@ -2173,11 +2418,12 @@ Dim Wtext2  As String
             Case Else:     Wans1 = 3110
         End Select
     Else
-        Wans1 = 98  '2008/4/25 3150を0098に変更
+        Wans1 = 98  ' 2008/4/25 3150を0098に変更
     End If
     Rst_Kiso.Fields("Badv2").Value = Wans1
     
-    Wtext = Rst_Kiso.Fields("Q5rec").Value      '運動
+    ' 運動に基づいてアドバイスを設定
+    Wtext = Rst_Kiso.Fields("Q5rec").Value
     Wans2 = 0
     For i1 = 1 To 3
         Wans1 = Val(Mid(Wtext, i1, 1))
@@ -2192,10 +2438,11 @@ Dim Wtext2  As String
             Case Else:    Wans1 = 3210
         End Select
     Else
-        Wans1 = 98  '2008/4/25 3250を0098に変更
+        Wans1 = 98  ' 2008/4/25 3250を0098に変更
     End If
     Rst_Kiso.Fields("Badv3").Value = Wans1
     
+    ' 健康調査に基づいてアドバイスを設定
     Wtext = Rst_Kiso.Fields("Q6r_a").Value & Rst_Kiso.Fields("Q6r_b").Value _
           & Rst_Kiso.Fields("Q6r_c").Value & Rst_Kiso.Fields("Q6r_d").Value _
           & Rst_Kiso.Fields("Q6r_e").Value                              '健康調査
@@ -2217,7 +2464,8 @@ Dim Wtext2  As String
     End If
     Rst_Kiso.Fields("Badv4").Value = Wans1
     
-'             ....+....1....+....2....+....3....+....4....+....5
+    ' 特定の条件に基づいてアドバイスを設定
+            ' ....+....1....+....2....+....3....+....4....+....5
     Wtext2 = "00101100011010000110101101000101100111111111111111"
     Wans2 = 0
     For i1 = 1 To 50
@@ -2239,64 +2487,68 @@ Dim Wtext2  As String
     End If
     Rst_Kiso.Fields("Badv5").Value = Wans1
     
-    If Rst_Kiso.Fields("Qsrmr").Value <> 0 Then            '  ｳｴｲﾄ ｱﾄﾞﾊﾞｲｽ
+    ' 体重に基づいて体重管理のアドバイスを設定
+    If Rst_Kiso.Fields("Qsrmr").Value <> 0 Then
        Wans1 = 2801
     ElseIf Rst_Kiso.Fields("age").Value <= 12 Then
        Wans1 = 2806
     ElseIf Rst_Kiso.Fields("Taiis").Value < 120 Or _
            Rst_Kiso.Fields("Qcnd1").Value = 1 Or _
-           Rst_Kiso.Fields("Qcnd1").Value = 2 Then      ' 120%ﾐﾏﾝ OR ﾆﾝｼﾝ
+           Rst_Kiso.Fields("Qcnd1").Value = 2 Then      ' 120%未満 OR 妊娠
        Wans1 = 0
     Else
        Wans1 = 2803
     End If
     Rst_Kiso.Fields("Wadvs").Value = Wans1
     
+    ' 各項目の初期値を設定
     Rst_Kiso.Fields("Cadv1").Value = 98
     Rst_Kiso.Fields("Cadv2").Value = 98
     Rst_Kiso.Fields("Cadv3").Value = 98
     Rst_Kiso.Fields("Cadv4").Value = 98
+    
+    ' 特定の条件に基づいて追加のアドバイスを設定
     i1 = 1
-    If Rst_Syoyo.Fields("Syort20").Value < -37 Then     'VE ﾌｿｸ
+    If Rst_Syoyo.Fields("Syort20").Value < -37 Then     ' VE不足
        If Rst_Kiso.Fields("age").Value < 40 And _
           Rst_Kiso.Fields("Sex").Value = 1 Then
-           Call Eiyo01_526Cadvs(3630)                   '39ｲｶ  ｵﾝﾅ
+           Call Eiyo01_526Cadvs(3630)                   ' 39歳以下の女性
        Else
-           Call Eiyo01_526Cadvs(3610)                   'ｵﾄｺ & 40ｲｼﾞｮｳ ｵﾝﾅ
+           Call Eiyo01_526Cadvs(3610)                   ' 男性 & 40歳以上の女性
        End If
     End If
-    If Rst_Syoyo.Fields("Syort12") < -37 Then: Call Eiyo01_526Cadvs(3640)   'VA
-    If Rst_Syoyo.Fields("Syort13") < -37 Then: Call Eiyo01_526Cadvs(3620)   'VB1
-    If Rst_Syoyo.Fields("Syort08") < -37 Then: Call Eiyo01_526Cadvs(3650)   'CA
-    If Rst_Syoyo.Fields("Syort07") < -37 Then: Call Eiyo01_526Cadvs(3660)   'ｾﾝｲ
+    If Rst_Syoyo.Fields("Syort12") < -37 Then: Call Eiyo01_526Cadvs(3640)   ' VA
+    If Rst_Syoyo.Fields("Syort13") < -37 Then: Call Eiyo01_526Cadvs(3620)   ' VB1
+    If Rst_Syoyo.Fields("Syort08") < -37 Then: Call Eiyo01_526Cadvs(3650)   ' CA
+    If Rst_Syoyo.Fields("Syort07") < -37 Then: Call Eiyo01_526Cadvs(3660)   ' 繊維
 
-    If Rst_Syoyo.Fields("Syort23") > 12 Then: Call Eiyo01_527Cadvs(3730)    'ｼｵ
-    If Rst_Energ.Fields("Enet08") < 85 Then: Call Eiyo01_527Cadvs(3720)     '3ｸﾞﾝ ｴｲﾖｳ ｾｯｼｭ
-    If Rst_Syoyo.Fields("Syort08") < -37 Then: Call Eiyo01_527Cadvs(3760)   'CA
-    If Rst_Energ.Fields("Enet08") < 85 Or _
-       Rst_Energ.Fields("Enet09") < 85 Then: Call Eiyo01_527Cadvs(3740)     '4ｸﾞﾝ
-    If Rst_Kiso.Fields("PER04") > 50 Then: Call Eiyo01_527Cadvs(3710)      'ﾄﾞｳﾌﾞﾂ ﾀﾝﾊﾟｸｼﾂ ﾋ
+    If Rst_Syoyo.Fields("Syort23") > 12 Then: Call Eiyo01_527Cadvs(3730)    ' 塩
+    If Rst_Energ.Fields("Enet08") < 85 Then: Call Eiyo01_527Cadvs(3720)     ' 3群栄養摂取
+    If Rst_Syoyo.Fields("Syort08") < -37 Then: Call Eiyo01_527Cadvs(3760)   ' CA
+    If Rst_Energ.Fields("Enet08") < 85 Or Rst_Energ.Fields("Enet09") < 85 Then: Call Eiyo01_527Cadvs(3740)     ' 4群
+    If Rst_Kiso.Fields("PER04") > 50 Then: Call Eiyo01_527Cadvs(3710)       ' 動物タンパク質比
     
-'                     ---- 0.35 ----  ---- 0.5 -----
+    ' 体重に基づいて体重管理の追加のアドバイスを設定
+                    ' ---- 0.35 ----  ---- 0.5 -----
     Wtext = Empty   '<=-110=><=111-=><=-110=><=111-=>
-    Wtext = Wtext & "00012023000120270001021500010211"  '   -20 ｵﾄｺ
-    Wtext = Wtext & "00012028000120210001021600010214"  ' 21-30
-    Wtext = Wtext & "00013335000133340001202800012029"  ' 31-40
-    Wtext = Wtext & "00013337000133360001202100012025"  ' 41-50
-    Wtext = Wtext & "00012025000120290001021100010214"  ' 51-60
-    Wtext = Wtext & "00012030000120260001021700010218"  ' 61-70
-    Wtext = Wtext & "00012032000120310001020900010219"  ' 71-
-    Wtext = Wtext & "00010204000102030001021000010212"  '   -20 ｵﾝﾅ
-    Wtext = Wtext & "00012021000120220001020300010211"  ' 21-30
-    Wtext = Wtext & "00012024000120230001021300010212"  ' 31-40
-    Wtext = Wtext & "00012026000120250001020700010214"  ' 41-50
-    Wtext = Wtext & "00010205000120260001020500010208"  ' 51-60
-    Wtext = Wtext & "00010206000102050001020600010209"  ' 61-70
-    Wtext = Wtext & "00010209000102080001020900010208"  ' 71-
+    Wtext = Wtext & "00012023000120270001021500010211"  ' -20歳以下のオトコ
+    Wtext = Wtext & "00012028000120210001021600010214"  ' 21-30歳
+    Wtext = Wtext & "00013335000133340001202800012029"  ' 31-40歳
+    Wtext = Wtext & "00013337000133360001202100012025"  ' 41-50歳
+    Wtext = Wtext & "00012025000120290001021100010214"  ' 51-60歳
+    Wtext = Wtext & "00012030000120260001021700010218"  ' 61-70歳
+    Wtext = Wtext & "00012032000120310001020900010219"  ' 71歳以上
+    Wtext = Wtext & "00010204000102030001021000010212"  ' -20歳以下のオンナ
+    Wtext = Wtext & "00012021000120220001020300010211"  ' 21-30歳
+    Wtext = Wtext & "00012024000120230001021300010212"  ' 31-40歳
+    Wtext = Wtext & "00012026000120250001020700010214"  ' 41-50歳
+    Wtext = Wtext & "00010205000120260001020500010208"  ' 51-60歳
+    Wtext = Wtext & "00010206000102050001020600010209"  ' 61-70歳
+    Wtext = Wtext & "00010209000102080001020900010208"  ' 71歳以上
     If Rst_Kiso.Fields("Aansx") > 50 Then
         Wtext2 = "38394041"
     Else
-        If Rst_Kiso.Fields("Taiis").Value < 111 Then   'ﾀｲｶｸ ｼｽｳ
+        If Rst_Kiso.Fields("Taiis").Value < 111 Then   ' 体格指数
             Wans1 = 0
         Else
             Wans1 = 1
@@ -2319,14 +2571,19 @@ Dim Wtext2  As String
     Rst_Kiso.Fields("Dadv3").Value = Mid(Wtext2, 5, 2)
     Rst_Kiso.Fields("Dadv4").Value = Mid(Wtext2, 7, 2)
     
+    ' 関数の戻り値を設定
     Eiyo01_525MealDiffe = 0
 End Function
 '--------------------------------------------------------------------------------
 '   01_526 Cアドバイス１
 '--------------------------------------------------------------------------------
 Function Eiyo01_526Cadvs(advc As Long)
+
+    ' 特定の条件に基づいてアドバイスを設定する関数
+    ' Cadv1が初期値（98）の場合、アドバイスを設定
     If Rst_Kiso.Fields("Cadv1").Value = 98 Then
         Rst_Kiso.Fields("Cadv1").Value = advc
+    ' Cadv1が初期値でない場合、Cadv2が初期値の場合にアドバイスを設定
     ElseIf Rst_Kiso.Fields("Cadv2").Value = 98 Then
         Rst_Kiso.Fields("Cadv2").Value = advc
     End If
@@ -2335,8 +2592,12 @@ End Function
 '   01_527 Cアドバイス２
 '--------------------------------------------------------------------------------
 Function Eiyo01_527Cadvs(advc As Long)
+
+    ' 特定の条件に基づいてアドバイスを設定する関数
+    ' Cadv3が初期値（98）の場合、アドバイスを設定
     If Rst_Kiso.Fields("Cadv3").Value = 98 Then
         Rst_Kiso.Fields("Cadv3").Value = advc
+    ' Cadv3が初期値でない場合、Cadv4が初期値の場合にアドバイスを設定
     ElseIf Rst_Kiso.Fields("Cadv4").Value = 98 Then
         Rst_Kiso.Fields("Cadv4").Value = advc
     End If
@@ -2345,10 +2606,12 @@ End Function
 '   01_528 栄養比率
 '--------------------------------------------------------------------------------
 Function Eiyo01_528Eiyohirit() As Long
-Dim i1      As Long
-Dim Wtext2  As String
-Dim Wtemp   As Double
+    Dim i1      As Long     ' ループ用変数
+    Dim Wtext2  As String   ' 文字列変数
+    Dim Wtemp   As Double   ' 一時的な計算結果を格納する変数
 
+    ' 栄養補充計算を行う関数
+    ' 栄養補充計算のための基準値を決定
     i1 = WorksheetFunction.Round(Rst_Syoyo.Fields("Syoyo01").Value / 80, 0)
     Select Case i1
         Case 11: Wtext2 = "030101010401"
@@ -2394,6 +2657,8 @@ Dim Wtemp   As Double
         Case 63: Wtext2 = "150801032907"
         Case Else: Wtext2 = "000000000000"
     End Select
+
+    ' 計算結果をデータベースに格納
     Rst_Energ.Fields("Enes01").Value = Val(Mid(Wtext2, 1, 2))
     Rst_Energ.Fields("Enes02").Value = Val(Mid(Wtext2, 3, 2))
     Rst_Energ.Fields("Enes03").Value = Val(Mid(Wtext2, 5, 2))
@@ -2401,6 +2666,7 @@ Dim Wtemp   As Double
     Rst_Energ.Fields("Enes05").Value = Val(Mid(Wtext2, 9, 2))
     Rst_Energ.Fields("Enes06").Value = Val(Mid(Wtext2, 11, 2))
     
+    ' 一時変数Wtempを使用した計算と結果のデータベースへの格納
     Wtemp = Rst_Energ.Fields("Enec01").Value _
           + Rst_Energ.Fields("Enec02").Value _
           + Rst_Energ.Fields("Enec03").Value _
@@ -2433,21 +2699,23 @@ Dim Wtemp   As Double
     Wtemp = WorksheetFunction.Round(Wtemp / 80, 1)
     Rst_Energ.Fields("Enek06").Value = Wtemp - Rst_Energ.Fields("Enes06").Value
 
+    ' 関数の戻り値を設定（通常0を返す）
     Eiyo01_528Eiyohirit = 0
 End Function
 '--------------------------------------------------------------------------------
 '   01_540 旧摂食計算値の比較用
 '--------------------------------------------------------------------------------
 Function Eiyo01_540Old_Check() As Long
-Dim mySqlStr    As String
-Dim i1          As Long
-Dim i2          As Long
-Dim Lmax1       As Long
-Dim Lmax2       As Long
-Dim Lmax3       As Long
-Dim Errcnt      As Long
+    Dim mySqlStr    As String
+    Dim i1          As Long
+    Dim i2          As Long
+    Dim Lmax1       As Long
+    Dim Lmax2       As Long
+    Dim Lmax3       As Long
+    Dim Errcnt      As Long
 
-'   更新結果表示
+    ' データ比較とエラー数のチェックを行う関数
+    ' 更新結果を表示するために、各フィールドの値をセルに設定
     For i1 = 1 To Rst_Kiso.Fields.Count
         Cells(3, i1).Value = Rst_Kiso.Fields(i1 - 1).Value
     Next
@@ -2458,9 +2726,12 @@ Dim Errcnt      As Long
         Cells(13, i1).Value = Rst_Energ.Fields(i1 - 1).Value
     Next
     
+    ' 各範囲の最大列数を取得
     Lmax1 = Range("c1").End(xlToRight).Column
     Lmax2 = Range("c6").End(xlToRight).Column
     Lmax3 = Range("c11").End(xlToRight).Column
+
+    ' エラーチェックを実行
     If IsEmpty(Cells(4, 1)) Then
         Errcnt = Eiyo01_541diff(2, 3, Lmax1, 0)
         Errcnt = Eiyo01_541diff(7, 8, Lmax2, Errcnt)
@@ -2470,6 +2741,8 @@ Dim Errcnt      As Long
         Errcnt = Eiyo01_541diff(8, 9, Lmax2, Errcnt)
         Errcnt = Eiyo01_541diff(13, 14, Lmax3, Errcnt)
     End If
+
+    ' エラーカウントが1以上の場合、メッセージボックスを表示
     If Errcnt > 0 Then: MsgBox "不一致 " & Errcnt
     
 End Function
@@ -2477,25 +2750,37 @@ End Function
 '   01_541 比較
 '--------------------------------------------------------------------------------
 Function Eiyo01_541diff(i1 As Long, i2 As Long, Max As Long, Errcnt As Long) As Long
-Dim ii  As Long
+    Dim ii  As Long     ' ループ用変数
+
+    ' データの不一致をチェックし、エラーカウントを返す関数
+    ' 指定された範囲のセルを比較して、不一致があれば色を変えてエラーカウントを増やす
     For ii = 3 To Max
         If Cells(i1, ii) <> Cells(i2, ii) Then
-            Cells(i2, ii).Interior.ColorIndex = 4
-            Errcnt = Errcnt + 1
+            Cells(i2, ii).Interior.ColorIndex = 4   ' 赤色でマーキング
+            Errcnt = Errcnt + 1                     ' エラーカウントを増やす
         End If
     Next ii
+
+    ' エラーカウントを返す
     Eiyo01_541diff = Errcnt
 End Function
 '--------------------------------------------------------------------------------
 '   01_550 基礎情報ほかClose
 '--------------------------------------------------------------------------------
 Function Eiyo01_550RstClose()
+
+    ' レコードセットの更新とクローズを行う関数
+    ' 各レコードセットの更新を実行する
     Rst_Kiso.Update
     Rst_Syoyo.Update
     Rst_Energ.Update
+
+    ' 各レコードセットをクローズする
     Rst_Kiso.Close
     Rst_Syoyo.Close
     Rst_Energ.Close
+
+    ' レコードセットオブジェクトを解放する
     Set Rst_Kiso = Nothing
     Set Rst_Syoyo = Nothing
     Set Rst_Energ = Nothing
@@ -2505,45 +2790,68 @@ End Function
 '--------------------------------------------------------------------------------
 Function Eiyo01_700作表Click()
     
-    If IsEmpty(Range("Fcode")) Or _
-       Range("Fcode") <> Range("Fsave") Then
+    ' 作表ボタンがクリックされたときに実行する関数
+
+    If IsEmpty(Range("Fcode")) Or Range("Fcode") <> Range("Fsave") Then
         MsgBox "基礎情報の検索が行われていません"
         Exit Function
     End If
-    Application.ScreenUpdating = False  '画面描画抑止
-    Call Eiyo91DB_Open                  'DB Open
-    Call Eiyo01_511MealFldgt            '項目要素取得
-    Call Eiyo01_701Sheet                'ｶｳﾝｾﾘﾝｸﾞｼｰﾄ追加
-    Call Eiyo01_702DbGet                'DB Get(521)
-    Call Eiyo01_703Pset                 '印刷項目の設定
-    Call Eiyo01_704Advic                'アドバイス
-    Call Eiyo01_705Footer               'コード＆日付、カンウセラー
-    Call Eiyo920DB_Close                'DB Close
-'    Call Eiyo99_指定シート削除("DBmirror")
+
+    Application.ScreenUpdating = False  ' 画面の更新を停止する
+    Call Eiyo91DB_Open                  ' DBを開く
+    Call Eiyo01_511MealFldgt            ' 項目要素の取得
+    Call Eiyo01_701Sheet                ' カウンセリングシートの追加
+    Call Eiyo01_702DbGet                ' データベースからの取得（521）
+    Call Eiyo01_703Pset                 ' 印刷項目の設定
+    Call Eiyo01_704Advic                ' アドバイスの設定
+    Call Eiyo01_705Footer               ' コード＆日付、カウンセラーの設定
+    Call Eiyo920DB_Close                ' DBを閉じる
+    ' Call Eiyo99_指定シート削除("DBmirror")
+
+    ' 画面の更新を再開する
+    Application.ScreenUpdating = True
+
+    ' 「カウンセリングシート」を選択する
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Select
 End Function
 '--------------------------------------------------------------------------------
 '   01_701 シート追加
 '--------------------------------------------------------------------------------
 Function Eiyo01_701Sheet()
-Const ShtName = "ｶｳﾝｾﾘﾝｸﾞｼｰﾄ"
-Const Eiyo01Bk = "Eiyo01_基礎摂食入力.xls"
-Const Eiyo02Bk = "Eiyo02_ｶｳﾝｾﾘﾝｸﾞｼｰﾄ.xls"
+    Const ShtName = "ｶｳﾝｾﾘﾝｸﾞｼｰﾄ"
+    Const Eiyo01Bk = "Eiyo01_基礎摂食入力.xls"
+    Const Eiyo02Bk = "Eiyo02_ｶｳﾝｾﾘﾝｸﾞｼｰﾄ.xls"
     
+    ' 既存の「ｶｳﾝｾﾘﾝｸﾞｼｰﾄ」シートが存在していれば削除する
     Call Eiyo99_指定シート削除(ShtName)
-    Workbooks.Open Filename:=ThisWorkbook.Path & "" & Eiyo02Bk, ReadOnly:=False    'openn
+
+    ' Eiyo02Bkを読み取り専用で開く
+    Workbooks.Open Filename:=ThisWorkbook.Path & "" & Eiyo02Bk, ReadOnly:=False
+    
+    ' Eiyo02Bkをアクティブにする
     Windows(Eiyo02Bk).Activate
-    Sheets(ShtName).Copy After:=Workbooks(Eiyo01Bk).Sheets(3)                       'copy
-    Windows(Eiyo02Bk).Close savechanges:=False                                      'close
+
+    ' 「ｶｳﾝｾﾘﾝｸﾞｼｰﾄ」をEiyo01Bkのワークブックの3番目のシートの後ろにコピーする
+    Sheets(ShtName).Copy After:=Workbooks(Eiyo01Bk).Sheets(3)
+
+    ' Eiyo02Bkを閉じる（変更を保存しない）
+    Windows(Eiyo02Bk).Close savechanges:=False
+
+    ' Eiyo01Bkをアクティブにする
     Windows(Eiyo01Bk).Activate
 End Function
 '--------------------------------------------------------------------------------
 '   01_702 DB Get
 '--------------------------------------------------------------------------------
 Function Eiyo01_702DbGet()
-Dim i1  As Long
+    Dim i1  As Long
+
+    ' 「DBmirror!a1」がエラーであるかどうかを評価する
     If IsError(Evaluate("DBmirror!a1")) Then
+        ' 「DBmirror!a1」がエラーの場合、データベースから情報を取得する
         Call Eiyo01_521CalcDbGet(2)
+
+        ' レコードセットをクローズし、オブジェクトを解放する
         Rst_Kiso.Close
         Rst_Syoyo.Close
         Rst_Energ.Close
@@ -2556,65 +2864,75 @@ End Function
 '   01_703 印刷項目の設定
 '--------------------------------------------------------------------------------
 Function Eiyo01_703Pset()
-Dim aa  As Worksheet
-Dim bb  As Worksheet
-Dim i1  As Long
-Dim i2  As Long
-Dim i3  As Long
-Dim i4  As Long
+    Dim aa  As Worksheet
+    Dim bb  As Worksheet
+    Dim i1  As Long
+    Dim i2  As Long
+    Dim i3  As Long
+    Dim i4  As Long
 
+    ' 「DBmirror」と「ｶｳﾝｾﾘﾝｸﾞｼｰﾄ」のワークシートを設定する
     Set aa = Sheets("DBmirror")
     Set bb = Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ")
-'   調査日・期間
+
+    ' 調査日・期間の設定
     bb.Range("p_date1") = Format(aa.Range("b2"), " yyyy""年"" mm""月"" dd""日から") & _
                      Format(aa.Range("b2") + aa.Range("c2") - 1, " mm""月"" dd""日まで(") & _
                      aa.Range("c2") & "日間)"
-'   性別
+
+    ' 性別の設定
     If aa.Range("e2") = 0 Then
         bb.Range("P_sex") = "男"
     Else
         bb.Range("P_sex") = "女"
     End If
-'
-    bb.Range("P_age") = aa.Range("g2")              '年齢
-    bb.Range("P_adrno") = aa.Range("k2")            '郵便番号
-    bb.Range("P_adrs1") = aa.Range("l2")            '住所ー１
-    bb.Range("P_adrs2") = "'" & aa.Range("m2")      '住所ー２
-    bb.Range("P_namej") = aa.Range("d2") & "　様"   '氏名
-    bb.Range("P_fcode") = aa.Range("a2")            'Fcode
-    bb.Range("P_hok1") = aa.Range("at2")            '保険証記号
-    bb.Range("P_hok2") = aa.Range("au2")            '保険証ＮＯ
-'   体位
-    bb.Range("P_hight") = aa.Range("h2")            '身長
-    bb.Range("P_weght") = aa.Range("i2")            '体重
-    If aa.Range("g2") > 12 Or _
-       aa.Range("ad2") = 0 Or _
-       aa.Range("ag2") = 0 Then
-        bb.Range("P_aans1") = aa.Range("bl2")       '標準体重
+
+    ' その他の情報の設定
+    bb.Range("P_age") = aa.Range("g2")              ' 年齢
+    bb.Range("P_adrno") = aa.Range("k2")            ' 郵便番号
+    bb.Range("P_adrs1") = aa.Range("l2")            ' 住所ー１
+    bb.Range("P_adrs2") = "'" & aa.Range("m2")      ' 住所ー２
+    bb.Range("P_namej") = aa.Range("d2") & "　様"   ' 氏名
+    bb.Range("P_fcode") = aa.Range("a2")            ' Fcode
+    bb.Range("P_hok1") = aa.Range("at2")            ' 保険証記号
+    bb.Range("P_hok2") = aa.Range("au2")            ' 保険証ＮＯ
+    bb.Range("P_hight") = aa.Range("h2")            ' 身長
+    bb.Range("P_weght") = aa.Range("i2")            ' 体重
+    
+    ' 標準体重の設定
+    If aa.Range("g2") > 12 Or aa.Range("ad2") = 0 Or aa.Range("ag2") = 0 Then
+        bb.Range("P_aans1") = aa.Range("bl2")       ' 標準体重
     Else
         bb.Range("P_aans1") = Empty
     End If
-    If aa.Range("j2") = 0 Then                      '皮下脂肪
+
+    ' 皮下脂肪の設定
+    If aa.Range("j2") = 0 Then
         bb.Range("P_sibou") = Empty
     Else
         bb.Range("P_sibou") = aa.Range("j2")
     End If
-    If aa.Range("ad2") = 0 And aa.Range("ag2") = 0 Then '妊娠/ｽﾎﾟｰﾂ
-        bb.Range("P_taii") = aa.Range("bx2")        '体位指数
+
+    ' 妊娠/スポーツと体位指数の設定
+    If aa.Range("ad2") = 0 And aa.Range("ag2") = 0 Then
+        bb.Range("P_taii") = aa.Range("bx2")        ' 体位指数
+
+        ' 年齢に応じた体位指数の種類の設定
         If aa.Range("g2") < 3 Then
-            bb.Range("P_tsisu") = "(カウプ指数)"    '２才以下
+            bb.Range("P_tsisu") = "(カウプ指数)"    ' 2才以下
         ElseIf aa.Range("g2") < 13 Then
-            bb.Range("P_tsisu") = "(ローレル指数)"  '３〜１２才
+            bb.Range("P_tsisu") = "(ローレル指数)"  ' 3〜12才
         ElseIf aa.Range("i2") < 150 Then
-            bb.Range("P_tsisu") = "(ブローカー指数変法)"  '身長150cm未満
+            bb.Range("P_tsisu") = "(ブローカー指数変法)"  ' 身長150cm未満
         Else
-            bb.Range("P_tsisu") = "(ブローカー指数変法)"  '身長150cm以上
+            bb.Range("P_tsisu") = "(ブローカー指数変法)"  ' 身長150cm以上
         End If
     Else
         bb.Range("P_taii") = Empty
         bb.Range("P_tsisu") = Empty
     End If
-'   食品摂取バランス
+
+    ' 食品摂取バランスの設定
     bb.Range("P_enec01") = aa.Cells(12, 3)
     bb.Range("P_enec02") = aa.Cells(12, 4)
     bb.Range("P_enec03") = aa.Cells(12, 5)
@@ -2672,16 +2990,20 @@ Dim i4  As Long
     bb.Range("P_enek04") = aa.Cells(12, 57)
     bb.Range("P_enek05") = aa.Cells(12, 58)
     bb.Range("P_enek06") = aa.Cells(12, 59)
+    ' 合計の計算式を設定
     bb.Range("P_enec99") = "=sum(r17:r36)"
     bb.Range("P_enet99") = "=sum(V17:v36)"
     bb.Range("P_enes99") = "=sum(z20:z36)"
     bb.Range("P_enes98") = "=sum(z20:z36)*80"
-'   血液検査
+
+
+    ' 血液検査の設定
     bb.Range("P_bdate") = aa.Cells(2, 50)
     For i1 = 1 To 12
         bb.Range("P_bbl01").Offset(i1 - 1, 0) = aa.Cells(2, i1 + 50)
     Next i1
-'   栄養素摂取バランス  i1:栄養素Index 1〜27  i2:行Index 1〜24
+
+    ' 栄養素摂取バランスの設定 i1:栄養素Index 1〜27  i2:行Index 1〜24
     For i1 = 1 To 27
         i2 = Fld_Field(i1, 24)
         If i2 > 0 Then
@@ -2714,11 +3036,11 @@ Dim i4  As Long
                         Exit For
                     End If
                 Next i4
-            End If
-            
+            End If   
         End If
     Next i1
-'   栄養素比率
+
+    ' 栄養素比率の設定
     bb.Range("P_Per01") = aa.Cells(2, 78)
     bb.Range("P_Per02") = aa.Cells(2, 79)
     bb.Range("P_Per03") = aa.Cells(2, 80)
@@ -2728,6 +3050,7 @@ Dim i4  As Long
     bb.Range("P_Per07") = aa.Cells(2, 84) / 100
     bb.Range("P_Per08") = aa.Cells(2, 85) / 100
     
+    ' オブジェクトの解放
     Set aa = Nothing
     Set bb = Nothing
 End Function
@@ -2735,14 +3058,17 @@ End Function
 '   01_704 アドバイス項目の設定
 '--------------------------------------------------------------------------------
 Function Eiyo01_704Advic()
-Dim Wkey        As Variant
-Dim Wtext       As String
-Dim i1          As Long
-Dim Wadvic1(13) As String
-Dim Wadvic2(13) As String
-Dim Wadvic3(5)  As String
+    Dim Wkey        As Variant
+    Dim Wtext       As String
+    Dim i1          As Long
+    Dim Wadvic1(13) As String
+    Dim Wadvic2(13) As String
+    Dim Wadvic3(5)  As String
 
+    ' 初期化
     Wtext = Empty
+
+    ' シートからデータを取得して連結
     For i1 = 1 To 9
         Wtext = Wtext & vbTab & Sheets("DBmirror").Range("ch2").Offset(0, i1 - 1)
     Next i1
@@ -2751,11 +3077,14 @@ Dim Wadvic3(5)  As String
     Next i1
     Wkey = Split(Wtext, vbTab)
     
+    ' レコードセットを開く
     With Rst_Advic
         .Index = "PrimaryKey"
         Rst_Advic.Open Source:=Tbl_Advic, ActiveConnection:=myCon, _
             CursorType:=adOpenKeyset, LockType:=adLockOptimistic, _
             Options:=adCmdTableDirect
+
+        ' レコードの検索とデータの取得
         For i1 = 1 To 13
             .Seek Wkey(i1)
             If .EOF Then
@@ -2771,7 +3100,8 @@ Dim Wadvic3(5)  As String
                 End If
             End If
         Next i1
-'       ウエイト・アドバイス
+
+        ' ウエイト・アドバイスの取得
         For i1 = 1 To 5
             Wadvic3(i1) = Empty
         Next i1
@@ -2794,7 +3124,7 @@ Dim Wadvic3(5)  As String
     End With
     Set Rst_Advic = Nothing
     
-'   検査
+    ' 検査
     If Sheets("DBmirror").Range("ck2") = 3330 Then
         Wadvic2(4) = Empty
         For i1 = 3 To 10
@@ -2813,22 +3143,26 @@ Dim Wadvic3(5)  As String
         Next i1
     End If
     
-    Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an13") = Left(Wadvic1(1), 18)      '食生活／習慣
+    ' データをシートに書き込む
+    Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an13") = Left(Wadvic1(1), 18)      ' 食生活／習慣
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an14") = Mid(Wadvic1(1), 19, 18)
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an15") = Mid(Wadvic1(1), 37, 18)
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("aj16") = Left(Wadvic2(1), 22)
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("aj17") = Mid(Wadvic2(1), 23, 22)
-    Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an20") = Left(Wadvic1(2), 18)      '睡眠と休養
+
+    Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an20") = Left(Wadvic1(2), 18)      ' 睡眠と休養
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an21") = Mid(Wadvic1(2), 19, 18)
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an22") = Mid(Wadvic1(2), 37, 18)
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("aj23") = Left(Wadvic2(2), 22)
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("aj24") = Mid(Wadvic2(2), 23, 22)
-    Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an27") = Left(Wadvic1(3), 18)      '運動
+
+    Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an27") = Left(Wadvic1(3), 18)      ' 運動
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an28") = Mid(Wadvic1(3), 19, 18)
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an29") = Mid(Wadvic1(3), 37, 18)
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("aj30") = Left(Wadvic2(3), 22)
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("aj31") = Mid(Wadvic2(3), 23, 22)
-    Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an34") = Left(Wadvic1(4), 18)      '健康状態
+
+    Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an34") = Left(Wadvic1(4), 18)      ' 健康状態
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an35") = Mid(Wadvic1(4), 19, 18)
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("an36") = Mid(Wadvic1(4), 37, 18)
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("aj37") = Left(Wadvic1(5), 22)
@@ -2854,9 +3188,15 @@ End Function
 '   01_705 コード＆日付
 '--------------------------------------------------------------------------------
 Function Eiyo01_705Footer()
-Dim Wtext   As String
+    Dim Wtext As String
+
+    ' フッターに表示するテキストを作成
     Wtext = "(" & Sheets("基礎").Range("g3") & ":" & Format(Date, "yymmdd") & ")"
+    
+    ' テキストを指定したセルに書き込む
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("b80") = Wtext
+    
+    ' 特定のセルに他のシートからの値をコピー
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("bd75") = Sheets("DBmirror").Range("db2")
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("bd76") = Sheets("DBmirror").Range("dc2")
     Sheets("ｶｳﾝｾﾘﾝｸﾞｼｰﾄ").Range("bd77") = Sheets("DBmirror").Range("dd2")
@@ -2865,48 +3205,58 @@ End Function
 '   01_810 基礎画面作成
 '--------------------------------------------------------------------------------
 Function Eiyo01_810基礎画面作成()
-Const PgmName = "Eiyo01_基礎摂食入力.xls"
-Const ShtName = "基礎"
-Dim i1      As Long
-Dim i2      As Long
-Dim FldItem As Variant
+    Const PgmName = "Eiyo01_基礎摂食入力.xls"
+    Const ShtName = "基礎"
+    Dim i1      As Long
+    Dim i2      As Long
+    Dim FldItem As Variant
 
+    ' アクティブなブックが正しいプログラム名でない場合、終了する
     If ActiveWorkbook.Name <> PgmName Then
         MsgBox PgmName & " ではありません"
         End
     End If
+
+    ' アクティブなシートが正しいシート名でない場合、終了する
     If ActiveSheet.Name <> ShtName Then
         MsgBox ShtName & " ではありません"
         End
     End If
-    Call Eiyo01_000init
-'   画面の作成
-    Call Eiyo930Screen_Hold                 '画面抑止ほか
-    While (ActiveSheet.Shapes.Count > 0)    'コマンドボタン取消
+
+    Call Eiyo01_000init                     ' 初期化処理を呼び出す
+    ' 画面の作成
+    Call Eiyo930Screen_Hold                 ' 画面抑止などの設定を行う
+
+    ' コマンドボタンをすべて削除する
+    While (ActiveSheet.Shapes.Count > 0)
         ActiveSheet.Shapes(1).Cut
     Wend
-    Cells.Delete Shift:=xlUp                '全消去
-    Cells.NumberFormatLocal = "@"           '全画面文字列属性
+
+    ' 全セルを削除して文字列形式に設定し、フォントや背景色を設定する
+    Cells.Delete Shift:=xlUp                ' 全消去
+    Cells.NumberFormatLocal = "@"           ' 全画面文字列属性
     Cells.Select
-    With Selection.Font                     '文字フォント
+    With Selection.Font                     ' 文字フォント
         .Name = "ＭＳ ゴシック"
         .Size = 11
     End With
-    Selection.ColumnWidth = 1.75            '列幅
-    Selection.Interior.ColorIndex = 40      '全画面背景色（淡燈）
+    Selection.ColumnWidth = 1.75            ' 列幅
+    Selection.Interior.ColorIndex = 40      ' 全画面背景色（淡燈）
     
-'   表題
+    ' 表題の設定
     Range("G1:AA1").Select
-    Selection.MergeCells = True                 '表題セル連結
-    Selection.HorizontalAlignment = xlCenter    '表題センタリング
-    Selection.Interior.ColorIndex = 37          '表題色（ペールブルー）
-    With Selection.Font                         'フォント
+    Selection.MergeCells = True                 ' 表題セル連結
+    Selection.HorizontalAlignment = xlCenter    ' 表題センタリング
+    Selection.Interior.ColorIndex = 37          ' 表題色（ペールブルー）
+    With Selection.Font                         ' フォント
         .FontStyle = "太字"
         .Size = 16
     End With
     Range("G01") = "栄養計算（基礎）２７栄養素版"
     Range("A01").VerticalAlignment = xlTop
     Range("A01") = "v-01"
+
+    ' 各項目のラベルを設定する
     Range("A03") = "コード"
     Range("A04") = "調査期間"
     Range("A05") = "氏名"
@@ -2967,20 +3317,23 @@ Dim FldItem As Variant
     Range("x20") = "血圧最高"
     Range("x21") = "    最低"
     
-    Cells.Locked = True                             '全セルをロック
+    ' 全セルをロックする
+    Cells.Locked = True
+
+    ' 各項目のフォーマットや入力制限を設定する
     For i1 = 0 To UBound(Fld_Adrs1)
         FldItem = Split(Fld_Adrs1(i1), ",")
         Range(Trim(FldItem(1))).Select
-        Selection.MergeCells = True                 'セル結合
+        Selection.MergeCells = True                     ' セル結合
         Range(Left(FldItem(1), 4)).Name = Trim(FldItem(0))
         If FldItem(2) = "i" Then
-            With Selection.Borders                      '入力項目の枠罫線
+            With Selection.Borders                      ' 入力項目の枠罫線
                 .LineStyle = xlContinuous
                 .ColorIndex = xlAutomatic
                 .Weight = xlThin
             End With
-            Selection.Interior.ColorIndex = xlNone      '入力項目の白抜き化
-            Selection.Locked = False                    '入力項目の保護解除
+            Selection.Interior.ColorIndex = xlNone      ' 入力項目の白抜き化
+            Selection.Locked = False                    ' 入力項目の保護解除
         End If
         Select Case FldItem(4)
             Case "90": Selection.NumberFormatLocal = "G/標準"
@@ -2993,7 +3346,7 @@ Dim FldItem As Variant
                 Selection.NumberFormatLocal = "gy.m.d"
                 Selection.HorizontalAlignment = xlLeft
             Case "J "
-                With Selection.Validation           '漢字項目
+                With Selection.Validation               ' 漢字項目
                     .Delete
                     .Add Type:=xlValidateInputOnly, AlertStyle:=xlValidAlertStop, Operator:=xlBetween
                     .IgnoreBlank = True
@@ -3010,13 +3363,15 @@ Dim FldItem As Variant
         Selection.Value = FldItem(5)
     Next i1
     
+    ' 生年月日の和暦年表示と年齢計算の設定
     Range("Fsave").Font.ColorIndex = 40
-    Range("Gyyyy").NumberFormatLocal = "gy"     '生年月日の和暦年表示
+    Range("Gyyyy").NumberFormatLocal = "gy"
     Range("Gyyyy") = "=RC[-5]"
     Range("Age").NumberFormatLocal = "G/標準"
     Range("Age") = "=DATEDIF(RC[-7],R[-3]C[-7],""y"")"
     Range("p07") = "才"
 
+    ' ボタンの追加
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=10, Top:=350, Width:=60, Height:=30)
         .Object.Caption = "画面消去"
         .Name = "クリア"
@@ -3042,23 +3397,34 @@ Dim FldItem As Variant
         .Name = "終了"
     End With
     
-    Range("Gmesg").Font.Bold = True                            'メッセージエリア
+    ' メッセージエリアの設定
+    Range("Gmesg").Font.Bold = True
     Range("Gmesg").Font.ColorIndex = 3
-    Cells.FormatConditions.Delete               'シート全体から条件付き書式を削除する
+
+    ' 条件付き書式を設定して現在のセルを目立たせる
+    Cells.FormatConditions.Delete               ' シート全体から条件付き書式を削除する
     Cells.FormatConditions.Add Type:=xlExpression, Formula1:="=AND(CELL(""row"")=ROW(),CELL(""col"")=COLUMN())"
     Cells.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
     Cells.FormatConditions(1).Interior.Color = 255
     
+    ' 操作ガイドの表示
     Call Eiyo01_820操作ガイド
     Range("g4").Select
-    Call Eiyo940Screen_Start    '画面描画ほか
+
+    ' 画面の描画を最適化
+    Call Eiyo940Screen_Start
 End Function
 '--------------------------------------------------------------------------------
 '   01_820 操作ガイド
 '--------------------------------------------------------------------------------
 Function Eiyo01_820操作ガイド()
-    Call Eiyo930Screen_Hold     '画面抑止ほか
+    ' 画面抑止および他の設定を行う関数を呼び出す
+    Call Eiyo930Screen_Hold
+
+    ' AH列からHZ列までの列を削除する（左にシフト）
     Columns("ah:hz").Delete Shift:=xlToLeft
+
+    ' 操作ガイドの各項目に説明文をセルに設定する
     Range("ah01") = "1.人を検索する"
     Range("ah02") = "　画面のいづれかの項目に"
     Range("ah03") = "　入力後、「検索」を押下してください。"
@@ -3066,54 +3432,74 @@ Function Eiyo01_820操作ガイド()
     Range("ah05") = "　コードをダブルクリックして選択します。"
     Range("ah07") = "　「検索」は原則『前方一致』です、"
     Range("ah08") = "　先頭に[%]を付けると『含む』になります。"
+
     Range("ah10") = "2.人を登録する"
     Range("ah11") = "　画面の各項目を入力し"
     Range("ah12") = "　「更新」を押下してください。"
+
     Range("ah14") = "3.人の変更・取消"
     Range("ah15") = "　人を検索し、"
     Range("ah16") = "　修正後に「更新」または「取消」を押下してください。"
+
     Range("ah18") = "4.摂食の登録"
     Range("ah19") = "　人の登録または照会後「摂食」シートに切り替えてください"
-    Call Eiyo940Screen_Start    '画面描画ほか
+
+    ' 画面描画などの処理を行う関数を呼び出す
+    Call Eiyo940Screen_Start
 End Function
 '--------------------------------------------------------------------------------
 '   01_830 摂食画面作成
 '--------------------------------------------------------------------------------
 Function Eiyo01_830摂食画面作成()
-Const PgmName = "Eiyo01_基礎摂食入力.xls"
-Const ShtName = "摂食"
-Dim i1      As Long
-Dim i2      As Long
-Dim FldItem As Variant
+    Const PgmName = "Eiyo01_基礎摂食入力.xls"
+    Const ShtName = "摂食"
+    Dim i1      As Long
+    Dim i2      As Long
+    Dim FldItem As Variant
 
+    ' アクティブなブックが正しいプログラム名であることを確認する
     If ActiveWorkbook.Name <> PgmName Then
         MsgBox PgmName & " ではありません"
         End
     End If
+
+    ' アクティブなシートが摂食シートであることを確認する
     If ActiveSheet.Name <> ShtName Then
         MsgBox ShtName & " ではありません"
         End
     End If
+
+    ' 初期化処理を呼び出す
     Call Eiyo01_000init
-'   画面の作成
-    Call Eiyo930Screen_Hold     '画面抑止ほか
-    ActiveWindow.FreezePanes = False        'ウインド枠固定の解除
+
+    ' 画面の作成
+    Call Eiyo930Screen_Hold     ' 画面抑止およびその他の設定を行う関数を呼び出す
+    ActiveWindow.FreezePanes = False        ' ウィンドウ枠の固定を解除する
     
-    While (ActiveSheet.Shapes.Count > 0)    'コマンドボタン取消
+    ' シート上のすべてのシェイプ（図形やコントロール）を削除する
+    While (ActiveSheet.Shapes.Count > 0)
         ActiveSheet.Shapes(1).Cut
     Wend
-    Cells.Delete Shift:=xlUp                '全消去
+
+    ' シート上のすべてのセルを削除する（上にシフト）
+    Cells.Delete Shift:=xlUp
+
+    ' セルのフォント設定
     Cells.Select
-    With Selection.Font                     '文字フォント
+    With Selection.Font
         .Name = "ＭＳ ゴシック"
         .Size = 11
     End With
-    Cells.Interior.ColorIndex = 34          '全画面背景色（淡緑）
+
+    ' 全体の背景色を設定する
+    Cells.Interior.ColorIndex = 34              ' 淡緑
     Columns("A:B").Interior.ColorIndex = xlNone
     Columns("d").Interior.ColorIndex = xlNone
     Columns("f").Interior.ColorIndex = xlNone
-    Rows("1:4").Interior.ColorIndex = 34       '全画面背景色（淡緑）
-    Cells.Select                               '罫線
+    Rows("1:4").Interior.ColorIndex = 34       ' 淡緑
+
+    ' セルに罫線を設定する
+    Cells.Select
     With Selection.Borders
         .LineStyle = xlContinuous
         .ColorIndex = 40
@@ -3134,35 +3520,48 @@ Dim FldItem As Variant
     Selection.Borders(xlDiagonalUp).LineStyle = xlNone
     Selection.Borders(xlEdgeLeft).LineStyle = xlNone
     Selection.Borders(xlEdgeTop).LineStyle = xlNone
-'    Selection.Borders(xlEdgeBottom).LineStyle = xlNone
+    ' Selection.Borders(xlEdgeBottom).LineStyle = xlNone
     Selection.Borders(xlEdgeRight).LineStyle = xlNone
     Selection.Borders(xlInsideVertical).LineStyle = xlNone
     Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
-'   表題
-    With Range("d1").Font                         'フォント
+
+    ' 表題の設定
+    With Range("d1").Font
         .FontStyle = "太字"
         .Size = 16
     End With
     Range("D01") = "栄養計算（摂食）"
     Range("A01").VerticalAlignment = xlTop
     Range("A01") = "v-01"
-'    Range("a2") = "=Fcode & ":" & Namej
+    ' Range("a2") = "=Fcode & ":" & Namej
+
+    ' 列の書式設定
     Columns("A:A").NumberFormatLocal = "yyyy/mm/dd"
     Columns("F:F").NumberFormatLocal = "0.0 "
+
+    ' 各列の見出し設定
     Range("A4") = "摂食日"
     Range("B4") = "食区分"
     Range("D4") = "食品CD"
     Range("E4") = "品名・材料　ｻﾌﾟﾘﾒﾝﾄ"
     Range("F4") = "摂取量"
+
+    ' 操作ガイドの追加
     Range("k3") = "・食品CD欄をダブルクリックするとメニューに変わります"
     Range("k2") = "・摂取量がゼロの行は削除されます"
     Range("k3") = "・追加は最終行の後ろに入力してください"
     Range("k1:k2").Font.Size = 9
-    Call Eiyo01_840食品マスタ(4, 6)    
+
+    ' 食品マスタの初期化
+    Call Eiyo01_840食品マスタ(4, 6)
+
+    ' 列の水平方向の配置設定
     Columns("A:D").HorizontalAlignment = xlCenter
     Rows("1:2").HorizontalAlignment = xlGeneral
     Range("a1:a2,B4").HorizontalAlignment = xlGeneral
     Range("F4").HorizontalAlignment = xlCenter
+
+    ' 列の幅設定
     Columns("A:A").ColumnWidth = 10.88
     Columns("B:B").ColumnWidth = 2.25
     Columns("C:C").ColumnWidth = 3.25
@@ -3171,49 +3570,60 @@ Dim FldItem As Variant
     Columns("F:F").ColumnWidth = 7
     Columns("J:J").ColumnWidth = 4.25
     Columns("K:K").ColumnWidth = 20
+
+    ' 列の非表示設定
     Range("G:I").EntireColumn.Hidden = True
     
-    Cells.Locked = True                             '全セルをロック
-    Range("A:B,D:D,F:F").Locked = False             '入力列の解除
-    Rows("1:3").Locked = True                       '表題行のロック
+    Cells.Locked = True                       ' 全セルをロック
+    Range("A:B,D:D,F:F").Locked = False       ' 特定の列のロック解除
+    Rows("1:3").Locked = True                 ' 表題行をロック
     
+    ' 登録ボタンの追加
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=300, Top:=5, Width:=50, Height:=25)
         .Object.Caption = "登録"
         .Name = "登録"
     End With
+    ' 検証ボタンの追加
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=650, Top:=5, Width:=50, Height:=25)
         .Object.Caption = "検証"
         .Name = "検証"
     End With
 
-    Range("a3").Font.Bold = True                    'メッセージエリア
+    ' メッセージエリアの設定
+    Range("a3").Font.Bold = True
     Range("a3").Font.ColorIndex = 3
+
+    ' ウィンドウ枠の固定
     Range("E5").Select
-    ActiveWindow.FreezePanes = True                 'ウインド枠固定の設定
-    
-'    ActiveSheet.Protect UserInterfaceOnly:=True     '保護を有効にする
+    ActiveWindow.FreezePanes = True
+
+    ' 保護を有効にする
+    ' ActiveSheet.Protect UserInterfaceOnly:=True
     Range("g4").Select
-    Call Eiyo940Screen_Start                        '画面描画ほか
+
+    ' 画面描画などの処理を行う関数を呼び出す
+    Call Eiyo940Screen_Start
 End Function
 '--------------------------------------------------------------------------------
 '   01_840 食品マスタ項題
 '--------------------------------------------------------------------------------
 Function Eiyo01_840食品マスタ(il As Long, ic As Long)
-Dim Wtext   As String
-Dim Warray  As Variant
-Dim i1      As Long
+    Dim Wtext   As String
+    Dim Warray  As Variant
+    Dim i1      As Long
 
+    ' 文字列としての項目リストを作成する
     Wtext = Empty
     Wtext = Wtext & vbLf & "コード"
     Wtext = Wtext & vbLf & "食品名"
     Wtext = Wtext & vbLf & "読み（分類）"
-    Wtext = Wtext & vbLf & "単位"           '入力単位
+    Wtext = Wtext & vbLf & "単位"           ' 入力単位
     Wtext = Wtext & vbLf & "コメント"
     Wtext = Wtext & vbLf & "登録単位"
     Wtext = Wtext & vbLf & "換算係数"
     Wtext = Wtext & vbLf & "ﾒﾆｭｰ位置１"
     Wtext = Wtext & vbLf & "ﾒﾆｭｰ位置２"
-    Wtext = Wtext & vbLf & "食酒"           '0:食 1:酒 2:ｻﾌﾟﾘﾒﾝﾄ
+    Wtext = Wtext & vbLf & "食酒"           ' 0:食 1:酒 2:ｻﾌﾟﾘﾒﾝﾄ
     Wtext = Wtext & vbLf & "摂食範囲下限"
     Wtext = Wtext & vbLf & "摂食範囲上限"
     Wtext = Wtext & vbLf & "栄養素-01"
@@ -3291,7 +3701,11 @@ Dim i1      As Long
     Wtext = Wtext & vbLf & "脂質・動物"
     Wtext = Wtext & vbLf & "脂質・魚介"
     Wtext = Wtext & vbLf & "脂質・植物"
+
+    ' 改行文字で分割して配列に格納する
     Warray = Split(Wtext, vbLf)
+
+    ' 配列の内容を指定した行列に書き込む
     For i1 = 1 To UBound(Warray)
         Cells(il, ic + i1) = Warray(i1)
     Next i1
@@ -3301,64 +3715,86 @@ End Function
 '           タイムスタンプは前日の最終更新時刻となる
 '--------------------------------------------------------------------------------
 Function Eiyo01_900WorkbookOpen()
-Dim F_name          As String   '検索したファイル名
-Dim F_dbname_today  As String   'DB+本日
-Dim F_dbname_min    As String   'DB+00000000
-Dim F_dbname_max    As String   'DB+2週間前
-Dim W_path          As String
+    Dim F_name          As String   ' 検索したファイル名
+    Dim F_dbname_today  As String   ' 本日のデータベースファイル名
+    Dim F_dbname_min    As String   ' 最小のデータベースファイル名
+    Dim F_dbname_max    As String   ' 最大のデータベースファイル名
+    Dim W_path          As String   ' ファイルパス
 
-    W_path = ThisWorkbook.Path & "BackUp"""
-    F_dbname_today = W_path & "Eiyo_" & Format(Date, "yyyymmdd") & ".mdb"""
+    ' バックアップフォルダのパスを設定する
+    W_path = ThisWorkbook.Path & "\BackUp\"
+
+    ' 本日のデータベースファイル名を設定する
+    F_dbname_today = W_path & "Eiyo_" & Format(Date, "yyyymmdd") & ".mdb"
+    
+    ' 最小のデータベースファイル名（固定ファイル名）を設定する
     F_dbname_min = "Eiyo_00000000.mdb"
+
+    ' 最大のデータベースファイル名（14日前の日付で生成）を設定する
     F_dbname_max = "Eiyo_" & Format(Date - 14, "yyyymmdd") & ".mdb"
     
-    SetCurrentDirectory (W_path)            'Dir変更
-    If Dir(F_dbname_today) = "" Then        '今日の保存ファイルが存在しない
+    ' 現在のディレクトリをバックアップフォルダに変更する
+    SetCurrentDirectory (W_path)
+
+    ' 今日の保存ファイルが存在しない場合
+    If Dir(F_dbname_today) = "" Then
+        ' ファイルを検索し、範囲内のファイルを削除する
         F_name = Dir("*", vbNormal)
         Do While F_name <> ""
             If (F_name > F_dbname_min And F_name < F_dbname_max) Then
-               Kill F_name
+               Kill F_name      ' ファイルを削除する
             End If
-            F_name = Dir                    ' 次のフォルダ名を返します。
+            F_name = Dir        ' 次のファイル名を取得する
         Loop
-        FileCopy ThisWorkbook.Path & myFileName, F_dbname_today
+
+        ' バックアップフォルダに現在のブックをコピーする
+        ' FileCopy ThisWorkbook.Path & myFileName, F_dbname_today
+        FileCopy ThisWorkbook.Path & "\" & ThisWorkbook.Name, F_dbname_today
     End If
 End Function
 '--------------------------------------------------------------------------------
 '   03_030  クリアのボタン・クリック
 '--------------------------------------------------------------------------------
 Function Eiyo03_030クリアClick()
-    Call Eiyo930Screen_Hold     '画面抑止ほか
+    ' 画面の更新を抑止するための関数を呼び出す
+    Call Eiyo930Screen_Hold
+    ' 特定のセル範囲を空にする
     Range("b3:b11") = Empty
     Range("b12") = Empty
     Range("b13:b14") = Empty
+    ' 特定のセル範囲の内容をクリアする
     Range("g4:g30").ClearContents
     Range("j4:l18").ClearContents
     Range("j22:j24").ClearContents
     Range("a17") = Empty
+    ' 列の削除（右から左へ）
     Columns("n:hz").Delete Shift:=xlToLeft
 
-    Range("b3").Select
-    Call Eiyo940Screen_Start    '画面描画ほか
+    Range("b3").Select          ' 特定のセルに選択を移動する
+    Call Eiyo940Screen_Start    ' 画面の更新を開始するための関数を呼び出す
 End Function
 '--------------------------------------------------------------------------------
 '   03_100  検索_Click
 '--------------------------------------------------------------------------------
 Function Eiyo03_100検索Click()
-Dim Wsql    As String
-Dim i1      As Long
+    Dim Wsql    As String   ' SQLクエリの文字列
+    Dim i1      As Long     ' ループ用の変数
 
-    Range("a17") = Empty
+    Range("a17") = Empty    ' エラーメッセージをクリアする
     For i1 = 3 To 14
+        ' 最初に空でないセルを探す
         If Not IsEmpty(Cells(i1, 2)) Then: Exit For
     Next i1
     If i1 > 14 Then
-        Range("a17") = "キーがありません"
+        Range("a17") = "キーがありません"   ' エラーメッセージを表示して終了
         Exit Function
     End If
-    Call Eiyo930Screen_Hold     '画面抑止ほか
-    Columns("n:hz").Delete Shift:=xlToLeft
+
+    ' 画面の更新を抑止するための関数を呼び出す
+    Call Eiyo930Screen_Hold
+    Columns("n:hz").Delete Shift:=xlToLeft  ' 特定の列範囲を削除する
     
+    ' SQLクエリの構築
     Wsql = "SELECT * FROM " & Tbl_Food & " Where "
     Select Case i1
         Case 3:  Wsql = Wsql & "Foodc = " & StrConv(Range("b03"), vbNarrow)
@@ -3375,15 +3811,16 @@ Dim i1      As Long
         Case 14: Wsql = Wsql & "Enlhh = " & Range("b14")
     End Select
     
-    Call Eiyo91DB_Open      'DB Open
-    Set Rst_Food = myCon.Execute(Wsql)
+    Call Eiyo91DB_Open      ' DBを開く
+    Set Rst_Food = myCon.Execute(Wsql)  ' SQLクエリを実行し、結果をセットする
     If Rst_Food.EOF Then
-        Range("a17") = "該当データはありません"
+        Range("a17") = "該当データはありません" ' 該当データがない場合のエラーメッセージ
     Else
         With Rst_Food
-            Range("n2").CopyFromRecordset Rst_Food  'レコード
-            If IsEmpty(Range("n3")) Then            '該当が１件のとき
-                For i1 = 1 To 12                    '画面項目の順次処理
+            Range("n2").CopyFromRecordset Rst_Food  ' レコードセットをシートにコピーする
+            If IsEmpty(Range("n3")) Then            ' レコードが1件の場合
+                ' 画面項目の順次処理
+                For i1 = 1 To 12
                     Cells(i1 + 2, 2) = Cells(2, i1 + 13)
                 Next i1
                 For i1 = 13 To 39
@@ -3397,125 +3834,151 @@ Dim i1      As Long
                 Cells(22, 10) = Cells(2, 98)
                 Cells(23, 10) = Cells(2, 99)
                 Cells(24, 10) = Cells(2, 100)
-                Columns("n:hz").Delete Shift:=xlToLeft
+                Columns("n:hz").Delete Shift:=xlToLeft  ' 特定の列範囲を削除する
             Else
-                For i1 = 1 To .Fields.Count                     'フィールド名
+                ' フィールド名をシートに設定する
+                For i1 = 1 To .Fields.Count
                     Cells(1, i1 + 13).Value = .Fields(i1 - 1).Name
-                Next
-                Columns("n:hz").EntireColumn.AutoFit           '幅
-                i1 = Range("n1").End(xlDown).Row
-                Range("N:N").Locked = False                     '入力列の解除
+                Next i1
+                Columns("n:hz").EntireColumn.AutoFit    ' 列幅を自動調整する
+                i1 = Range("n1").End(xlDown).Row        ' 最終行を取得する
+                Range("N:N").Locked = False             ' 入力可能列を解除する
             End If
-            .Close
+            .Close      ' レコードセットを閉じる
         End With
     End If
-    Set Rst_Food = Nothing              'オブジェクトの解放
-    Call Eiyo920DB_Close                'DB Close
-    Columns("J:L").EntireColumn.AutoFit
-    Call Eiyo940Screen_Start            '画面描画ほか
+    Set Rst_Food = Nothing                  ' オブジェクトの解放
+    Call Eiyo920DB_Close                    ' DBを閉じる
+    Columns("J:L").EntireColumn.AutoFit     ' 列幅を自動調整する
+    Call Eiyo940Screen_Start                ' 画面の更新を開始する
 End Function
 '--------------------------------------------------------------------------------
 '   03_110  前検索_Click
 '--------------------------------------------------------------------------------
 Function Eiyo03_110前検索Click()
-Dim Wsql    As String
-Dim Wkey    As Long
+    Dim Wsql    As String       ' SQLクエリの文字列
+    Dim Wkey    As Long         ' 検索キー
 
-    Range("a17") = Empty
-    Wkey = Range("b03")
-    Call Eiyo930Screen_Hold             '画面抑止ほか
-    Call Eiyo91DB_Open                  'DB Open
+    Range("a17") = Empty        ' エラーメッセージをクリアする
+    Wkey = Range("b03")         ' 検索キーをセルから取得する
+
+    Call Eiyo930Screen_Hold     ' 画面の更新を抑止するための関数を呼び出す
+    Call Eiyo91DB_Open          ' DBを開く
+
+    ' SQLクエリの構築
     Wsql = "SELECT Foodc FROM " & Tbl_Food & " Where Foodc < " & Wkey & " Order by Foodc DESC"
-    Set Rst_Food = myCon.Execute(Wsql)
+    Set Rst_Food = myCon.Execute(Wsql)  ' SQLクエリを実行し、結果をセットする
+    
     If Rst_Food.EOF Then
-        Range("a17") = "該当データはありません"
+        Range("a17") = "該当データはありません" ' 該当データがない場合のエラーメッセージ
     Else
         With Rst_Food
-            Range("b03") = .Fields(0).Value
-            .Close
+            Range("b03") = .Fields(0).Value ' 該当する最大のFoodcをセルに設定する
+            .Close              ' レコードセットを閉じる
         End With
     End If
-    Set Rst_Food = Nothing      'オブジェクトの解放
-    Call Eiyo920DB_Close        'DB Close
-    Call Eiyo03_100検索Click
+
+    Set Rst_Food = Nothing      ' オブジェクトの解放
+    Call Eiyo920DB_Close        ' DBを閉じる
+    Call Eiyo03_100検索Click    ' 別の検索関数を呼び出す
 End Function
 '--------------------------------------------------------------------------------
 '   03_120  次検索_Click
 '--------------------------------------------------------------------------------
 Function Eiyo03_120次検索Click()
-Dim Wsql    As String
-Dim Wkey    As Long
+    Dim Wsql    As String       ' SQLクエリの文字列
+    Dim Wkey    As Long         ' 検索キー
 
-    Range("a17") = Empty
-    Wkey = Range("b03")
-    Call Eiyo930Screen_Hold             '画面抑止ほか
-    Call Eiyo91DB_Open                  'DB Open
+    Range("a17") = Empty        ' エラーメッセージをクリアする
+    Wkey = Range("b03")         ' 検索キーをセルから取得する
+
+    Call Eiyo930Screen_Hold     ' 画面の更新を抑止するための関数を呼び出す
+    Call Eiyo91DB_Open          ' DBを開く
+
+    ' SQLクエリの構築
     Wsql = "SELECT Foodc FROM " & Tbl_Food & " Where Foodc > " & Wkey & " Order by Foodc"
-    Set Rst_Food = myCon.Execute(Wsql)
+    Set Rst_Food = myCon.Execute(Wsql)  ' SQLクエリを実行し、結果をセットする
+
     If Rst_Food.EOF Then
-        Range("a17") = "該当データはありません"
+        Range("a17") = "該当データはありません"     ' 該当データがない場合のエラーメッセージ
     Else
         With Rst_Food
-            Range("b03") = .Fields(0).Value
+            Range("b03") = .Fields(0).Value     ' 該当する最小のFoodcをセルに設定する
             .Close
         End With
     End If
-    Set Rst_Food = Nothing      'オブジェクトの解放
-    Call Eiyo920DB_Close        'DB Close
-    Call Eiyo03_100検索Click
+
+    Set Rst_Food = Nothing      ' オブジェクトの解放
+    Call Eiyo920DB_Close        ' DBを閉じる
+    Call Eiyo03_100検索Click    ' 別の検索関数を呼び出す
 End Function
 '--------------------------------------------------------------------------------
 '   03_200  更新
 '--------------------------------------------------------------------------------
 Function Eiyo03_200更新Click()
-Dim i1      As Long
-Dim Wsw     As Long
-Dim Wtemp   As Variant
+    Dim i1      As Long         ' ループカウンタ
+    Dim Wsw     As Long         ' 更新項目のカウント
+    Dim Wtemp   As Variant      ' 一時的な値の格納
 
     Wsw = 0
-    Range("a17") = Empty
+    Range("a17") = Empty        ' エラーメッセージをクリアする
+
+    ' 入力チェック：B3の値が1未満の場合、処理を終了する
     If Range("b3") < 1 Then: Exit Function
-    Call Eiyo91DB_Open                      'DB Open
-    '準備ここまで
+
+
+    Call Eiyo91DB_Open          ' DBを開く
+
+    ' DB操作の準備
     With Rst_Food
-        'インデックスの設定
+        ' インデックスの設定
         .Index = "PrimaryKey"
-        'レコードセットを開く
+
+        ' レコードセットを開く
         Rst_Food.Open Source:=Tbl_Food, ActiveConnection:=myCon, _
             CursorType:=adOpenKeyset, LockType:=adLockOptimistic, _
             Options:=adCmdTableDirect
-        '番号が登録されているか検索する
+
+        ' 指定された番号が登録されているか検索する
         If Not .EOF Then .Seek Range("b3")
+
+        ' 登録されていない場合、新しいレコードを追加する
         If .EOF Then
             .AddNew
             For i1 = 1 To 87
                 Select Case i1
-                    Case 1 To 12: Wtemp = Cells(i1 + 2, 2)
-                    Case 13 To 39: Wtemp = Cells(i1 - 9, 7)
-                    Case 40 To 54: Wtemp = Cells(i1 - 36, 10)
-                    Case 55 To 69: Wtemp = Cells(i1 - 51, 11)
-                    Case 70 To 84: Wtemp = Cells(i1 - 66, 12)
-                    Case 85 To 87: Wtemp = Cells(i1 - 63, 10)
+                    Case 1 To 12: Wtemp = Cells(i1 + 2, 2)      ' B列の値
+                    Case 13 To 39: Wtemp = Cells(i1 - 9, 7)     ' G列の値
+                    Case 40 To 54: Wtemp = Cells(i1 - 36, 10)   ' J列の値
+                    Case 55 To 69: Wtemp = Cells(i1 - 51, 11)   ' K列の値
+                    Case 70 To 84: Wtemp = Cells(i1 - 66, 12)   ' L列の値
+                    Case 85 To 87: Wtemp = Cells(i1 - 63, 10)   ' J列の値
                 End Select
                 .Fields(i1 - 1).Value = Wtemp
             Next i1
             .Update
             Range("a17") = "追加されました"
+
+        ' 登録されている場合、更新する    
         Else
             For i1 = 2 To 87
                 Select Case i1
-                    Case 2 To 12: Wtemp = Cells(i1 + 2, 2)
-                    Case 13 To 39: Wtemp = Cells(i1 - 9, 7)
-                    Case 40 To 54: Wtemp = Cells(i1 - 36, 10)
-                    Case 55 To 69: Wtemp = Cells(i1 - 51, 11)
-                    Case 70 To 84: Wtemp = Cells(i1 - 66, 12)
-                    Case 85 To 87: Wtemp = Cells(i1 - 63, 10)
+                    Case 2 To 12: Wtemp = Cells(i1 + 2, 2)      ' B列の値
+                    Case 13 To 39: Wtemp = Cells(i1 - 9, 7)     ' G列の値
+                    Case 40 To 54: Wtemp = Cells(i1 - 36, 10)   ' J列の値
+                    Case 55 To 69: Wtemp = Cells(i1 - 51, 11)   ' K列の値
+                    Case 70 To 84: Wtemp = Cells(i1 - 66, 12)   ' L列の値
+                    Case 85 To 87: Wtemp = Cells(i1 - 63, 10)   ' J列の値
                 End Select
+
+                ' フィールド値が異なる場合、更新する
                 If .Fields(i1 - 1).Value <> Wtemp Then
                     .Fields(i1 - 1).Value = Wtemp
                     Wsw = Wsw + 1
                 End If
             Next i1
+
+            ' 変更がない場合のメッセージ
             If Wsw = 0 Then
                 Range("a17") = "変更項目がありません"
             Else
@@ -3525,30 +3988,36 @@ Dim Wtemp   As Variant
                 End If
             End If
         End If
-'        .Close
+        ' .Close    ' ここでレコードセットを閉じるコメントアウトされている
     End With
-    Set Rst_Food = Nothing      'オブジェクトの解放
-    Call Eiyo920DB_Close        'DB Close
+
+    Set Rst_Food = Nothing      ' オブジェクトの解放
+    Call Eiyo920DB_Close        ' DBを閉じる
 End Function
 '--------------------------------------------------------------------------------
 '   03_300  取消
 '--------------------------------------------------------------------------------
 Function Eiyo03_300取消Click()
-    Range("a17") = Empty
-    Call Eiyo91DB_Open      'DB Open
-    '準備ここまで
+    Range("a17") = Empty    ' メッセージを表示するセルを空にする
+    Call Eiyo91DB_Open      ' DBを開く
+    ' 準備ここまで
     With Rst_Food
-        'インデックスの設定
+        ' インデックスの設定
         .Index = "PrimaryKey"
-        'レコードセットを開く
+
+        ' レコードセットを開く
         Rst_Food.Open Source:=Tbl_Food, ActiveConnection:=myCon, _
             CursorType:=adOpenKeyset, LockType:=adLockOptimistic, _
             Options:=adCmdTableDirect
-        '番号が登録されているか検索する
+
+        ' 指定された番号が登録されているか検索する
         If Not .EOF Then .Seek Range("b3")
+
+        ' 登録されていない場合の処理
         If .EOF Then
             Range("a17") = "キーが存在しません"
         Else
+            ' 削除の確認メッセージを表示し、OKが押された場合に削除する
             If MsgBox("削除してよろしいですか", vbOKCancel) = vbOK Then
                 .Delete
                 Range("a17") = "取消されました"
@@ -3556,75 +4025,95 @@ Function Eiyo03_300取消Click()
         End If
         .Close
     End With
-    Set Rst_Food = Nothing      'オブジェクトの解放
-    Call Eiyo920DB_Close        'DB Close
+
+    Set Rst_Food = Nothing      ' オブジェクトの解放
+    Call Eiyo920DB_Close        ' DBを閉じる
 End Function
 '--------------------------------------------------------------------------------
 '   03_400  食品コードデータの作成
 '--------------------------------------------------------------------------------
 Function Eiyo03_400コードClick()
-Dim i1      As Long
-Dim Wsql    As String
+    Dim i1      As Long
+    Dim Wsql    As String
 
-    Call Eiyo930Screen_Hold
-    Call Eiyo91DB_Open      'DB Open
+    Call Eiyo930Screen_Hold     ' 画面を一時停止
+    Call Eiyo91DB_Open          ' DBを開く
     
+    ' SQL文を作成し、食品コードと名前を取得
     Wsql = "SELECT Foodc,Fname FROM " & Tbl_Food & " Order by Foodc"
     Set Rst_Food = myCon.Execute(Wsql)
+
+    ' データが存在しない場合の処理
     If Rst_Food.EOF Then
         Range("a17") = "該当データはありません"
     Else
+        ' データが存在する場合の処理
         With Rst_Food
+            ' 取得したデータをシートのAA1セルから貼り付け
             Range("AA1").CopyFromRecordset Rst_Food
             .Close
         End With
     End If
-    Set Rst_Food = Nothing      'オブジェクトの解放
-    Call Eiyo920DB_Close        'DB Close
+
+    Set Rst_Food = Nothing      ' オブジェクトの解放
+    Call Eiyo920DB_Close        ' DBを閉じる
     
-    Open ThisWorkbook.Path & "食品コード.txt" For Output As #22
+    ' テキストファイルを開いて書き込み
+    Open ThisWorkbook.Path & "\食品コード.txt" For Output As #22
     For i1 = 1 To Range("aa60000").End(xlUp).Row
-        Print #2, Cells(i1, 27) & vbTab & Cells(i1, 28)
+        Print #22, Cells(i1, 27) & vbTab & Cells(i1, 28)
     Next i1
-    Close
+    Close #22
+
+    ' 一時的に使用した列を削除
     Columns("Aa:BZ").Delete Shift:=xlToLeft
-    Call Eiyo940Screen_Start
+    Call Eiyo940Screen_Start    ' 画面描画を再開
 End Function
 '--------------------------------------------------------------------------------
 '   03_810  シートの作成
 '--------------------------------------------------------------------------------
 Function Eiyo03_810食品sheet_make()
-    Call Eiyo930Screen_Hold     '画面抑止ほか
-    Call Eiyo03_811_init        'シートの初期化
-    Call Eiyo03_812_zokusei     'キー、名称、属性
-    Call Eiyo03_813_eiyoso      '栄養素
-    Call Eiyo03_814_shokugun    '食品群
-    Call Eiyo03_815_sisitu      '脂質
-    Call Eiyo03_816_keisen      '罫線、列幅
-    Call Eiyo03_817_button      'コマンド・ボタン
-    Call Eiyo940Screen_Start    '画面描画ほか
+    Call Eiyo930Screen_Hold     ' 画面を一時停止して処理中の変化をユーザーに見せない
+    Call Eiyo03_811_init        ' シートの初期化
+    Call Eiyo03_812_zokusei     ' キー、名称、属性の設定
+    Call Eiyo03_813_eiyoso      ' 栄養素の設定
+    Call Eiyo03_814_shokugun    ' 食品群の設定
+    Call Eiyo03_815_sisitu      ' 脂質の設定
+    Call Eiyo03_816_keisen      ' 罫線と列幅の設定
+    Call Eiyo03_817_button      ' コマンド・ボタンの設定
+    Call Eiyo940Screen_Start    ' 画面描画を再開して処理結果をユーザーに見せる
 End Function
 '--------------------------------------------------------------------------------
 '   03_811  シートの初期化
 '--------------------------------------------------------------------------------
 Function Eiyo03_811_init()
+    ' "食品マスタ"シートを選択する
     Sheets("食品マスタ").Select
-    While (ActiveSheet.Shapes.Count > 0)    'コマンドボタン取消
+
+    ' シート上のすべての形状（ここではコマンドボタン）を削除する
+    While (ActiveSheet.Shapes.Count > 0)
         ActiveSheet.Shapes(1).Cut
     Wend
-    Cells.Delete Shift:=xlUp                '全消去
-    Cells.NumberFormatLocal = "@"           '全画面文字列属性
+
+    ' シート上のすべてのセルを削除する
+    Cells.Delete Shift:=xlUp
+    ' シート全体のセルのデータ形式を文字列に設定する
+    Cells.NumberFormatLocal = "@"
+
+    ' セルE1にタイトルを設定する
     Range("e1") = "※　食品マスタ　照会・更新　※"
+    ' タイトルのフォントサイズを16に設定する
     Range("e1").Font.Size = 16
 End Function
 '--------------------------------------------------------------------------------
 '   03_812  キー、名称、属性
 '--------------------------------------------------------------------------------
 Function Eiyo03_812_zokusei()
-Dim i1      As Long
-Dim Wtext   As String
-Dim Warray  As Variant
-'   属性ほか
+    Dim i1      As Long
+    Dim Wtext   As String
+    Dim Warray  As Variant
+
+    ' 属性ほか
     Wtext = Empty
     Wtext = Wtext & vbLf & "食品コード"
     Wtext = Wtext & vbLf & "食品名"
@@ -3638,43 +4127,64 @@ Dim Warray  As Variant
     Wtext = Wtext & vbLf & "食品分類"
     Wtext = Wtext & vbLf & "摂食量下限"
     Wtext = Wtext & vbLf & "摂食量上限"
+
+    ' 改行で文字列を分割して配列に格納
     Warray = Split(Wtext, vbLf)
+
+    ' 配列の要素数が13であるか確認
     If UBound(Warray) <> 12 Then
         MsgBox "Program Error No.01 " & UBound(Warray)
         End
     End If
+
+    ' 配列の内容をセルに書き込む
     For i1 = 1 To UBound(Warray)
         Cells(i1 + 2, 1) = Warray(i1)
     Next i1
+
+    ' 特定のセルに情報を入力
     Range("c12") = "0:食品 1:酒類 2:ｻﾌﾟﾘﾒﾝﾄ"
-'   セル結合
+
+    ' セル結合のための配列
     Warray = Array(, 2, 3, 3, 2, 3, 2, 2, 2, 2, 1, 2, 2)
+
+    ' セルの結合と書式設定
     For i1 = 1 To UBound(Warray)
         Range(Cells(i1 + 2, 2).Address & ":" & Cells(i1 + 2, Warray(i1) + 1).Address).Select
         Selection.MergeCells = True
+        
+        ' セル境界線の設定
         With Selection.Borders
             .LineStyle = xlContinuous
             .ColorIndex = xlAutomatic
             .TintAndShade = 0
             .Weight = xlThin
         End With
-        With Selection.Interior                         '背景色
+
+        ' セルの背景色設定
+        With Selection.Interior
             .Pattern = xlNone
             .TintAndShade = 0
             .PatternTintAndShade = 0
         End With
-        Selection.Locked = False                        '保護解除
+
+        ' セルの保護設定
+        Selection.Locked = False
         Selection.FormulaHidden = False
     Next i1
-    Range("a17").Locked = False                        '保護解除
+
+    ' 特定のセルの保護解除
+    Range("a17").Locked = False
 End Function
 '--------------------------------------------------------------------------------
 '   03_813  栄養素
 '--------------------------------------------------------------------------------
 Function Eiyo03_813_eiyoso()
-Dim i1      As Long
-Dim Wtext   As String
-Dim Warray  As Variant
+    Dim i1      As Long
+    Dim Wtext   As String
+    Dim Warray  As Variant
+
+    ' 栄養素のリストを文字列として作成
     Wtext = Empty
     Wtext = Wtext & vbLf & "01:エネルギー"
     Wtext = Wtext & vbLf & "02:たんぱく質"
@@ -3703,15 +4213,25 @@ Dim Warray  As Variant
     Wtext = Wtext & vbLf & "25:不飽和脂肪酸"
     Wtext = Wtext & vbLf & "26:飽和脂肪酸"
     Wtext = Wtext & vbLf & "27:砂糖"
+
+    ' 改行で分割して配列に格納
     Warray = Split(Wtext, vbLf)
+
+    ' 配列の要素数が28であるか確認
     If UBound(Warray) <> 27 Then
         MsgBox "Program Error No.02 " & UBound(Warray)
         End
     End If
+
+    ' 配列の内容をセルに書き込む
     For i1 = 1 To UBound(Warray)
         Cells(i1 + 3, 6) = Warray(i1)
     Next i1
+
+    ' セルに "栄養素" と記載
     Cells(3, 6) = "栄養素"
+
+    ' 単位のリストを文字列として作成
     Wtext = Empty
     Wtext = Wtext & vbLf & "Kcal"
     Wtext = Wtext & vbLf & "g"
@@ -3740,11 +4260,17 @@ Dim Warray  As Variant
     Wtext = Wtext & vbLf & "mg"
     Wtext = Wtext & vbLf & "mg"
     Wtext = Wtext & vbLf & "g"
+
+    ' 改行で分割して配列に格納
     Warray = Split(Wtext, vbLf)
+
+    ' 配列の要素数が28であるか確認
     If UBound(Warray) <> 27 Then
         MsgBox "Program Error No.03 " & UBound(Warray)
         End
     End If
+
+    ' 配列の内容をセルに書き込む
     For i1 = 1 To UBound(Warray)
         Cells(i1 + 3, 8) = Warray(i1)
     Next i1
@@ -3753,9 +4279,11 @@ End Function
 '   03_814  食品群
 '--------------------------------------------------------------------------------
 Function Eiyo03_814_shokugun()
-Dim i1      As Long
-Dim Wtext   As String
-Dim Warray  As Variant
+    Dim i1      As Long
+    Dim Wtext   As String
+    Dim Warray  As Variant
+
+    ' 食品群のリストを文字列として作成
     Wtext = Empty
     Wtext = Wtext & vbLf & "食品群"
     Wtext = Wtext & vbLf & "01:大豆製品"
@@ -3773,30 +4301,44 @@ Dim Warray  As Variant
     Wtext = Wtext & vbLf & "13:砂　糖"
     Wtext = Wtext & vbLf & "14:植物性油脂"
     Wtext = Wtext & vbLf & "15:動物性油脂"
+
+    ' 改行で分割して配列に格納
     Warray = Split(Wtext, vbLf)
+
+    ' 配列の要素数が17であるか確認
     If UBound(Warray) <> 16 Then
         MsgBox "Program Error No.04 " & UBound(Warray)
         End
     End If
+
+    ' 配列の内容をセルに書き込む
     For i1 = 1 To UBound(Warray)
         Cells(i1 + 2, 9) = Warray(i1)
     Next i1
+
+    ' 栄養素のタイトルをセルに書き込む
     Cells(3, 10) = "ｶﾛﾘｰ"
     Cells(3, 11) = "重量"
     Cells(3, 12) = "ｶﾙｼｳﾑ"
+
+    ' 合計行の設定
     Cells(19, 9) = "Total"
     Cells(20, 10) = "(kcal)"
     Cells(20, 11) = "(g)"
     Cells(20, 12) = "(g)"
+
+    ' 水平配置を右揃えに設定
     Range("j3:l3,i19,j20:l20").HorizontalAlignment = xlRight
 End Function
 '--------------------------------------------------------------------------------
 '   03_815  脂質
 '--------------------------------------------------------------------------------
 Function Eiyo03_815_sisitu()
-Dim i1      As Long
-Dim Wtext   As String
-Dim Warray  As Variant
+    Dim i1      As Long
+    Dim Wtext   As String
+    Dim Warray  As Variant
+
+    ' 脂質の種類と単位を文字列として作成
     Wtext = Empty
     Wtext = Wtext & vbLf & "脂質(動物)"
     Wtext = Wtext & vbLf & "脂質(魚介)"
@@ -3804,32 +4346,43 @@ Dim Warray  As Variant
     Wtext = Wtext & vbLf & "g"
     Wtext = Wtext & vbLf & "g"
     Wtext = Wtext & vbLf & "g"
+
+    ' 改行で分割して配列に格納
     Warray = Split(Wtext, vbLf)
+
+    ' 配列の要素数が7であるか確認
     If UBound(Warray) <> 6 Then
         MsgBox "Program Error No.05 " & UBound(Warray)
         End
     End If
+
+    ' 配列の内容をセルに書き込む
     For i1 = 1 To 3
         Cells(i1 + 21, 9) = Warray(i1)
         Cells(i1 + 21, 11) = Warray(i1 + 3)
     Next i1
+
+    ' Total行の設定
     Range("I25") = "Total"
+
+    ' 水平配置を右揃えに設定
     Range("I22:I25").HorizontalAlignment = xlRight
 End Function
 '--------------------------------------------------------------------------------
 '   03_816  罫線、列幅
 '--------------------------------------------------------------------------------
 Function Eiyo03_816_keisen()
-Dim i1      As Long
-Dim Wtext   As String
-Dim Warray  As Variant
-'   罫線
+    Dim i1      As Long
+    Dim Wtext   As String
+    Dim Warray  As Variant
+
+    ' 罫線の設定
     Range("g4:g30,j4:l18,j22:j24").Select
     With Selection.Borders
-        .LineStyle = xlContinuous
-        .ColorIndex = xlAutomatic
-        .TintAndShade = 0
-        .Weight = xlThin
+        .LineStyle = xlContinuous   ' 線の種類を実線に設定
+        .ColorIndex = xlAutomatic   ' 線の色を自動設定
+        .TintAndShade = 0           ' 彩度を0に設定
+        .Weight = xlThin            ' 線の太さを細線に設定
     End With
     With Selection.Borders(xlInsideHorizontal)
         .LineStyle = xlContinuous
@@ -3837,34 +4390,44 @@ Dim Warray  As Variant
         .TintAndShade = 0
         .Weight = xlThin
     End With
-    With Selection.Interior                         '背景色
-        .Pattern = xlNone
-        .TintAndShade = 0
-        .PatternTintAndShade = 0
+    With Selection.Interior         ' 背景色を設定
+        .Pattern = xlNone           ' 塗りつぶしパターンをなしに設定
+        .TintAndShade = 0           ' 彩度を0に設定
+        .PatternTintAndShade = 0    ' パターンの彩度を0に設定
     End With
-    Selection.Locked = False                        '保護解除
-    Selection.FormulaHidden = False
-'   列幅
-    Columns("F:F").ShrinkToFit = True
-    Cells.EntireColumn.AutoFit
+    Selection.Locked = False            ' セルの保護を解除
+    Selection.FormulaHidden = False     ' セルの隠し数式を非表示
+
+    ' 列幅の設定
+    Columns("F:F").ShrinkToFit = True   ' F列のデータを縮小して全体を表示
+    Cells.EntireColumn.AutoFit          ' 全列の自動調整
+
+    ' 列幅を配列から設定
     Warray = Array(, 0, 1.75, 5, 18, 2, 15, 0, 7)
     For i1 = 1 To UBound(Warray)
-        If Warray(i1) > 0 Then: Columns(i1).ColumnWidth = Warray(i1)
+        If Warray(i1) > 0 Then
+            Columns(i1).ColumnWidth = Warray(i1)    ' 指定された列の幅を設定
+        End If
     Next i1
-'    Range("B4:C4,B6:C6,B11:C11,B12:C12").NumberFormatLocal = "#,##0.00;[赤]-#,##0.00"
+
+    ' 数値の書式設定
+    ' Range("B4:C4,B6:C6,B11:C11,B12:C12").NumberFormatLocal = "#,##0.00;[赤]-#,##0.00"
     Range("B9,B13,B14").NumberFormatLocal = "#,##0.00;[赤]-#,##0.00"
     Range("g4:g30,j4:l19,j22:j25").NumberFormatLocal = "#,##0.00;[赤]-#,##0.00"
-'   カーソル位置を明確化する
-    Cells.FormatConditions.Delete               'シート全体から条件付き書式を削除する
+
+    ' カーソル位置を明確化するための条件付き書式
+    Cells.FormatConditions.Delete   'シート全体から条件付き書式を削除する
     Cells.FormatConditions.Add Type:=xlExpression, Formula1:="=AND(CELL(""row"")=ROW(),CELL(""col"")=COLUMN())"
     Cells.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
-    Cells.FormatConditions(1).Interior.Color = 255
-'   合計の式と条件付き書式
+    Cells.FormatConditions(1).Interior.Color = 255  ' 条件が真の場合の背景色を設定
+
+    ' 合計の式と条件付き書式
     Range("J19") = "=SUM(J4:J18)"
     Range("k19") = "=SUM(k4:k18)"
     Range("l19") = "=SUM(l4:l18)"
     Range("j25") = "=SUM(j22:j24)"
     
+    ' カーソル位置を明確化するための条件付き書式
     Wtext = Empty
     Wtext = Wtext & vbLf & "=G04<>J19"
     Wtext = Wtext & vbLf & "=G11<>L19"
@@ -3874,25 +4437,27 @@ Dim Warray  As Variant
     Wtext = Wtext & vbLf & "=J25<>G08"
     Warray = Split(Wtext, vbLf)
     For i1 = 1 To UBound(Warray)
-        Range(Right(Warray(i1), 3)).Select
-        Selection.FormatConditions.Add Type:=xlExpression, Formula1:=Warray(i1)
-        Selection.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority
-        Selection.FormatConditions(1).Interior.ColorIndex = 6
+        Range(Right(Warray(i1), 3)).Select  ' 条件式を適用する範囲を選択
+        Selection.FormatConditions.Add Type:=xlExpression, Formula1:=Warray(i1) ' 条件式を追加
+        Selection.FormatConditions(Selection.FormatConditions.Count).SetFirstPriority   ' 最優先条件として設定
+        Selection.FormatConditions(1).Interior.ColorIndex = 6   ' 条件が真の場合の背景色を設定
     Next i1
 
-    Range("a17").Font.Bold = True           'メッセージエリア（赤太文字）
-    Range("a17").Font.ColorIndex = 3
+    Range("a17").Font.Bold = True       ' メッセージエリアの文字を太字に設定
+    Range("a17").Font.ColorIndex = 3    ' メッセージエリアの文字色を赤色に設定
 End Function
 '--------------------------------------------------------------------------------
 '   03_817 コマンド・ボタン
 '--------------------------------------------------------------------------------
 Function Eiyo03_817_button()
-    While (ActiveSheet.Shapes.Count > 0)    'コマンドボタン取消
+    While (ActiveSheet.Shapes.Count > 0)    ' コマンドボタンを全て削除するループ
         ActiveSheet.Shapes(1).Cut
     Wend
+
+    ' 新しいコマンドボタンの追加
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=10, Top:=250, Width:=50, Height:=30)
-        .Object.Caption = "クリア"
-        .Name = "クリア"
+        .Object.Caption = "クリア"  ' ボタンのキャプションを設定
+        .Name = "クリア"            ' ボタンの名前を設定
     End With
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=70, Top:=250, Width:=50, Height:=30)
         .Object.Caption = "検索"
@@ -3923,39 +4488,43 @@ End Function
 '   共通処理　Eiyo.mdb のオープン
 '--------------------------------------------------------------------------------
 Function Eiyo91DB_Open()
+    ' Eiyo.mdb データベースへの接続を開く
     myCon.Open "Provider=Microsoft.Jet.OLEDB.4.0;" & _
-               "Data Source=" & ThisWorkbook.Path & "Eiyo.mdb;"""
+               "Data Source=" & ThisWorkbook.Path & "Eiyo.mdb;"
 End Function
 '--------------------------------------------------------------------------------
 '   共通処理　Eiyo.mdb のクローズ
 '--------------------------------------------------------------------------------
 Function Eiyo920DB_Close()
     myCon.Close
-    Set myCon = Nothing
+    Set myCon = Nothing ' オブジェクトの解放
 End Function
 '--------------------------------------------------------------------------------
 '   共通処理　画面抑止ほか
 '--------------------------------------------------------------------------------
 Function Eiyo930Screen_Hold()
-    Application.ScreenUpdating = False      '画面描画抑止
-    Application.EnableEvents = False        'イベント発生抑止
-    ActiveSheet.Unprotect                   'シートの保護を解除
+    ' 画面の更新を抑止し、イベントの発生を抑止し、シートの保護を解除する
+    Application.ScreenUpdating = False      ' 画面描画抑止
+    Application.EnableEvents = False        ' イベント発生抑止
+    ActiveSheet.Unprotect                   ' シートの保護を解除
 End Function
 '--------------------------------------------------------------------------------
 '   共通処理　画面描画ほか
 '--------------------------------------------------------------------------------
 Function Eiyo940Screen_Start()
-    Application.ScreenUpdating = True           '画面描画の復活
-    Application.EnableEvents = True             'イベント発生再開
-    ActiveSheet.Protect UserInterfaceOnly:=True '保護を有効にする
+    ' 画面の更新を再開し、イベントの発生を再開し、シートを保護する（ユーザーインターフェイスのみ）
+    Application.ScreenUpdating = True           ' 画面描画の復活
+    Application.EnableEvents = True             ' イベント発生再開
+    ActiveSheet.Protect UserInterfaceOnly:=True ' シートの保護を有効にする（ユーザーインターフェイスのみ）
 End Function
 '--------------------------------------------------------------------------------
 '   共通処理　ボタン作成
 '--------------------------------------------------------------------------------
 Function Eiyo950Button_Add(in_L As Long, in_t As Long, in_W As Long, in_H As Long, in_text As String)
+    ' 指定位置に指定サイズのコマンドボタンを追加し、キャプションと名前を設定する
     With ActiveSheet.OLEObjects.Add("Forms.CommandButton.1", Left:=in_L, Top:=in_t, Width:=in_W, Height:=in_H)
-        .Object.Caption = in_text
-        .Name = in_text
+        .Object.Caption = in_text   ' ボタンのキャプションを設定
+        .Name = in_text             ' ボタンの名前を設定
     End With
 End Function
 '--------------------------------------------------------------------------------
