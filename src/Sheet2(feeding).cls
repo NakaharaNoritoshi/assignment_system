@@ -9,39 +9,39 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Option Explicit
 '--------------------------------------------------------------------------------
-'   ÛH‚Ìƒ[ƒNƒV[ƒg‚ª‘I‘ğ‚³‚ê‚½
+'   æ‘‚é£Ÿã®ãƒ¯ãƒ¼ã‚¯ã‚·ãƒ¼ãƒˆãŒé¸æŠã•ã‚ŒãŸ
 '--------------------------------------------------------------------------------
 Private Sub Worksheet_Activate()
     Application.Run macro:="Eiyo_Macro.xla!Eiyo01_400MealDisp"
 End Sub
 '--------------------------------------------------------------------------------
-'   ƒ[ƒNƒV[ƒg’l‚ª•ÏX‚³‚ê‚½
+'   ãƒ¯ãƒ¼ã‚¯ã‚·ãƒ¼ãƒˆå€¤ãŒå¤‰æ›´ã•ã‚ŒãŸ
 '--------------------------------------------------------------------------------
 Private Sub Worksheet_Change(ByVal Target As Range)
-    Application.EnableEvents = False            'ƒCƒxƒ“ƒg”­¶—}~
+    Application.EnableEvents = False            'ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”ŸæŠ‘æ­¢
     Application.Run "Eiyo_Macro.xla!Eiyo01_410MealChange", Target.Address
-    Application.EnableEvents = True             'ƒCƒxƒ“ƒg”­¶ÄŠJ
+    Application.EnableEvents = True             'ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿå†é–‹
 End Sub
 '--------------------------------------------------------------------------------
-'   ƒ_ƒuƒ‹ƒNƒŠƒbƒN‚³‚ê‚½
+'   ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸ
 '--------------------------------------------------------------------------------
 Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, Cancel As Boolean)
-    Application.EnableEvents = False            'ƒCƒxƒ“ƒg”­¶—}~
+    Application.EnableEvents = False            'ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”ŸæŠ‘æ­¢
     Cancel = True
     Range("b1") = Target.Address
-    Application.EnableEvents = True             'ƒCƒxƒ“ƒg”­¶ÄŠJ
-    Sheets("ÒÆ­°").Select
+    Application.EnableEvents = True             'ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿå†é–‹
+    Sheets("ï¾’ï¾†ï½­ï½°").Select
 '    Application.Run "Eiyo_Macro.xla!Eiyo01_420Menu", Target.Address
 End Sub
 '--------------------------------------------------------------------------------
-'   ŒŸØ_Click
+'   æ¤œè¨¼_Click
 '--------------------------------------------------------------------------------
-Private Sub ŒŸØ_Click()
+Private Sub æ¤œè¨¼_Click()
     Application.Run "Eiyo_Macro.xla!Eiyo01_500MealCalc", 2
 End Sub
 '--------------------------------------------------------------------------------
-'   “o˜^_Click
+'   ç™»éŒ²_Click
 '--------------------------------------------------------------------------------
-Private Sub “o˜^_Click()
+Private Sub ç™»éŒ²_Click()
     Application.Run "Eiyo_Macro.xla!Eiyo01_500MealCalc", 1
 End Sub

@@ -9,64 +9,75 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = True
 Option Explicit
 
-Private Sub �N���A_Click()
-    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_030�N���AClick"
+' クリアボタンがクリックされたときの処理
+Private Sub クリア_Click()
+    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_030クリアClick"
 End Sub
 
-Private Sub ����_Click()
-    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_100����Click"
+' 検索ボタンがクリックされたときの処理
+Private Sub 検索_Click()
+    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_100検索Click"
 End Sub
 
-Private Sub �X�V_Click()
-    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_200�X�VClick"
+' 更新ボタンがクリックされたときの処理
+Private Sub 更新_Click()
+    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_200更新Click"
 End Sub
 
-Private Sub ���_Click()
-    If MsgBox("��������s���܂���", vbOKCancel) = vbOK Then
-        Application.Run macro:="Eiyo_Macro.xla!Eiyo01_300���Click"
+' 取消ボタンがクリックされたときの処理
+Private Sub 取消_Click()
+    If MsgBox("取消を実行しますか", vbOKCancel) = vbOK Then
+        Application.Run macro:="Eiyo_Macro.xla!Eiyo01_300取消Click"
     End If
 End Sub
 
-Private Sub ��\_Click()
-    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_700��\Click"
+' 作表ボタンがクリックされたときの処理
+Private Sub 作表_Click()
+    ' Eiyo_Macro.xla にある Eiyo01_700作表Click マクロを実行
+    Application.Run macro:="Eiyo_Macro.xla!Eiyo01_700作表Click"
 End Sub
 
-Private Sub �I��_Click()
-    ActiveWorkbook.Close savechanges:=False     '�ۑ������ɏI��
+' 終了ボタンがクリックされたときの処理
+Private Sub 終了_Click()
+    ActiveWorkbook.Close savechanges:=False ' 保存せずにアクティブなブックを閉じる
 End Sub
 
+' シート内でダブルクリックが発生したときの処理
 Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, Cancel As Boolean)
-    If Left(Target.Address, 4) = "$AH$" Then        '�t�@�~���[�R�[�h�ꗗ����̑I��
-        Range("Fcode") = Target.Value
+    If Left(Target.Address, 4) = "$AH$" Then    ' セルが$AH$列にある場合の処理
+        Range("Fcode") = Target.Value   ' "Fcode" 範囲にターゲットの値を設定し、検索ボタンクリック処理を呼び出す
         Cancel = True
-        ����_Click
-    ElseIf Left(Target.Address, 4) = "$Q$8" Then    '�E�ƂƘJ��
+        検索_Click
+    ElseIf Left(Target.Address, 4) = "$Q$8" Then    ' セルが$Q$8にある場合の処理
         Cancel = True
-        Sheets("�E�ƂƘJ��").Select
+        Sheets("職業と労作").Select                   ' "職業と労作" シートを選択
     End If
 End Sub
 '--------------------------------------------------------------------------------
-'   ���[�N�V�[�g�̒l���ύX���ꂽ
+'   ワークシートの値が変更された
 '--------------------------------------------------------------------------------
 Private Sub Worksheet_Change(ByVal Target As Range)
-    If Target.Address = Range("Adrno").Address Then         '�X�֔ԍ�
+    ' 郵便番号が入力されたセルが変更された場合の処理
+    If Target.Address = Range("Adrno").Address Then ' 郵便番号セルのアドレスが変更された場合
         If Len(Target.Text) > 3 And Range("adrs1") = Empty Then
-            Application.EnableEvents = False    '�C�x���g�����}�~
-            ' �X�֔ԍ���S�p�ϊ����Z���ɓ]�L
+            Application.EnableEvents = False    ' イベント発生を一時停止
+            ' 郵便番号を全角変換し住所に転記
             Range("adrs1").Value = StrConv(Range("Adrno").Value, vbWide)
-            ' �Z���̾ق�I��
+            ' 住所セルを選択
             Range("adrs1").Select
-            ' F2 �� Shift+Home �� F13 ���[�����͂���
-            SendKeys "{F2}", True       ' �ҏWӰ��
-            SendKeys "+{HOME}", True    ' ������S�̂�I��
-            SendKeys "{F13}", True      ' �ĕϊ�(MS-IME)
-            Application.EnableEvents = True     '�C�x���g�����ĊJ
+            ' キー操作をシミュレート F2 → Shift+Home → F13 を擬装入力する
+            SendKeys "{F2}", True       ' 編集モードにする
+            SendKeys "+{HOME}", True    ' 文字列全体を選択
+            SendKeys "{F13}", True      ' 再変換(MS-IME)
+            Application.EnableEvents = True     'イベント発生再開
         End If
     End If
 End Sub
 '--------------------------------------------------------------------------------
-'   �A�N�e�B�u�ɂȂ����Z���������\�����邽�߃Z�����I���������Ƃ���ʍX�V����
+'   アクティブになったセルを強調表示するためセルが選択させたとき画面更新する
 '--------------------------------------------------------------------------------
 Private Sub Worksheet_SelectionChange(ByVal Traget As Range)
-    Application.ScreenUpdating = True
+    ' SelectionChangeイベントが発生すると、このプロシージャが実行
+    ' Target は変更されたセル範囲を表す
+    Application.ScreenUpdating = True   ' 画面の更新を有効にする
 End Sub
